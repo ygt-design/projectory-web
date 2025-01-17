@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'FounderGrotesk_Regular';
+    src: url('../assets/fonts/FoundersGrotesk-Regular.otf') format('opentype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'FounderGrotesk_Regular', sans-serif;
+}
+
+body{
+    background-color: var(--black);
+    color: white;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+:root{
+    --black: #0A0A0A;
+    --gray: #ADADAD;
+    --dark-gray: #35343F;
+    --linear-gradient: linear-gradient(90deg, #A72C4B 0%, #F37655 100%);
+}
+

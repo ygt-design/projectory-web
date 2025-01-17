@@ -1,0 +1,53 @@
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px 50px
+}
+
+.navContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.navLinks li {
+    list-style: none;
+}
+
+.navLinks a {
+    font-size: 1rem;
+}
+
+.ctaButton {
+    padding: 8px 16px;
+    background: white;
+    color: black;
+    border-radius: 100px;
+}
+
+.ctaButton:hover {
+    background: var(--linear-gradient);
+    color: white;
+}
+
+.contactUsButton{
+    padding: 8px 16px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 100px;
+}
+
+.logo{
+    width: 150px;
+}
