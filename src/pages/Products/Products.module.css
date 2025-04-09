@@ -1,0 +1,136 @@
+.productsGrid {
+    gap: 20px;
+    justify-content: center;
+    padding: 100px 50px;
+    padding-top: 0;
+}
+
+.productPage h1 {
+    font-size: 80px !important;
+    font-weight: 100 !important;
+    font-family: 'FounderGrotesk_Regular' !important;
+    line-height: 1 !important;
+}
+
+.productGridWrapper {
+    position: relative;
+}
+
+.productsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.row {
+    display: grid;
+    gap: 20px;
+}
+
+.tagContent{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 100px 50px 50px 50px;
+}
+
+.tagBarHeading {
+    font-size: 40px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.tagBarSubheading {
+    font-size: 25px;
+}
+
+.tagBarWrapper{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 100px 0px 70px 0px;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 1) 50%, rgba(10,10,10,0.85) 75%,rgba(255, 255, 255, 0) 100%);
+}
+
+.tagBar {
+    width: calc(100% - 90px);
+    margin: auto;
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    border-radius: 100px;
+    justify-content: space-between;
+    background-color: #2C2C2D;
+    bottom: 20px;
+}
+
+.tagBar::-webkit-scrollbar {
+    display: none;
+}
+
+.tagButton {
+    display: inline;
+    white-space: nowrap;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    white-space: nowrap;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.activeTag {
+    border: 1px solid white;
+    background: white;
+    color: black;
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 900px) {
+    .productsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 91%;
+        padding: 20px;
+        margin: auto;
+    }
+
+    .productPage h1 {
+        font-size: 50px !important;
+    }
+
+    .row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .tagContent{
+        grid-template-columns: 1fr;
+        padding: 20px;
+        padding-bottom: 0;
+        width: 91%;
+        margin: auto;
+        z-index: 999;
+    }
+
+    .tagBarWrapper{
+        position: sticky;
+        top: 500;
+        z-index: 10;
+        padding: 80px 0px 70px 0px;
+        padding-top: 0;
+    }
+
+    .tagBar{
+        width: calc(100% - 50px);
+    }
+    
+}

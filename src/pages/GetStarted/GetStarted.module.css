@@ -1,0 +1,147 @@
+.getStartedWrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: #0A0A0A;
+    color: white;
+}
+
+.faqSection {
+    width: 100%;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 50px;
+}
+
+.faqSection h2 {
+    font-size: 80px;
+    font-family: 'FounderGrotesk_Regular';
+    margin-bottom: 15px;
+}
+
+.faqSection h2 {
+    font-size: 40px;
+    font-family: 'FounderGrotesk_Medium';
+    margin-top: 0;
+}
+
+.faqSection p {
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+.faqWrapper{
+    margin-bottom: 50px;
+}
+
+.getInTouch {
+    padding: 50px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+.getInTouch h2{
+    font-size: 50px;
+    text-align: center;
+}
+
+.gitWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.gitBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    padding: 50px;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.gitBlock a{
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 100px;
+    border: 1px solid black;
+    transition: all 0.1s ease; 
+    font-size: 18px;
+}
+
+.gitBlock a:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.gitBlock h3{
+    font-size: 34px;
+    margin-bottom: 15px;
+    font-family: 'FounderGrotesk_SemiBold';
+}
+
+.gitBlock p{
+    font-size: 24px;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .getInTouch {
+        grid-template-columns: 1fr;
+        margin: 100px 0;
+        padding: 0px 30px;
+    }
+
+    .gitWrapper{
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .getInTouch h2{
+        font-size: 35px;
+    }
+
+    .gitBlock{
+        padding: 50px 20px;
+    }
+
+    .gitBlock h3{
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    .gitBlock p{
+        font-size: 20px;
+    }
+
+    .faqWrapper{
+        padding: 0;
+    }
+
+    .faqSection {
+        grid-template-columns: 1fr;
+        margin-top: 0px;
+        width: 100%;
+        padding: 40px 30px;
+    }
+
+    .faqSection h2{
+        font-size: 30px;
+      }
+
+   .faqSection p {
+        font-size: 20px;
+    }
+
+   
+}

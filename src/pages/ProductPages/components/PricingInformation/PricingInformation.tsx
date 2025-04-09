@@ -1,0 +1,52 @@
+import styles from './PricingInformation.module.css';
+import checkCircle from '../../../../assets/images/CheckCircle.svg';
+import "../../../../styles/global.css"
+
+interface PricingCard {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  buttonText: string;
+}
+
+interface PricingInformationProps {
+  pricing: PricingCard[];
+}
+
+const PricingInformation = ({ pricing }: PricingInformationProps) => {
+  return (
+    <section className={styles.pricingWrapper}>
+      <h2>Pricing Information</h2>
+      <p>
+        We can’t give an exact quote without knowing a bit more about what you’re working on, 
+        but below is a general range with different levels of customization available for this experience. 
+        Ultimately, starting a conversation is the best way to know how we can work together.
+      </p>
+
+      {/* 🔹 Dynamic Pricing Cards */}
+      <div className={styles.pricingGrid}>
+        {pricing.map((plan, index) => (
+          <div key={index} className={`${styles.pricingCard} ${index === 1 ? styles.featured : ''}`}>
+            <div className={styles.titleSection}>
+                <h3>{plan.title}</h3>
+                <h4 className={styles.price}>${plan.price}</h4>
+                <h5 className={styles.description}>{plan.description}</h5>
+            </div>
+            <hr />
+            <ul>
+              {plan.features.map((feature, idx) => (
+                <li key={idx}> 
+                    <img src={checkCircle} alt="Checkmark" />
+                 {feature}</li>
+              ))}
+            </ul>
+            <button className={styles.ctaButton}>{plan.buttonText}</button>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default PricingInformation;

@@ -3,6 +3,26 @@
     src: url('../assets/fonts/FoundersGrotesk-Regular.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'FounderGrotesk_Medium';
+    src: url('../assets/fonts/FoundersGrotesk-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FounderGrotesk_SemiBold';
+    src: url('../assets/fonts/FoundersGrotesk-Semibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FoundersGrotesk_Bold';
+    src: url('../assets/fonts/FoundersGrotesk-Bold.otf') format('opentype');
+}
+
+@font-face{
+    font-family: 'GT-Alpina-Regular';
+    src: url('../assets/fonts/GT-Alpina-Standard-Light-Trial.otf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -15,15 +35,29 @@ body{
     color: white;
 }
 
-a{
-    text-decoration: none;
-    color: white;
-}
 
 :root{
     --black: #0A0A0A;
     --gray: #ADADAD;
     --dark-gray: #35343F;
+    --background-dark-gray: #1c1c1c;
     --linear-gradient: linear-gradient(90deg, #A72C4B 0%, #F37655 100%);
+    --lime: #BCCE2D;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    font-family: 'FounderGrotesk_SemiBold';
+    font-size: 80px;
+}
+
+h2{
+    font-family: 'FounderGrotesk_Regular';
+    font-size: 64px;
+    font-weight: normal;
 }
 

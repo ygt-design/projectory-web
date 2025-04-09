@@ -1,0 +1,169 @@
+.howWeBuiltWrapper {
+    background-color: #2C2A35;
+    color: white;
+    padding: 100px 50px;
+}
+
+.headingBlock {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.headingBlock h2 {
+    margin-bottom: 10px;
+    font-size: 60px;
+}
+
+.headingBlock p {
+    font-size: 30px;
+    width: 55%;
+    line-height: 1.4;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.buttonsRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.installationButton {
+    border: 1px solid var(--inst-color);
+    color: var(--inst-color);
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 1000px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.installationButton strong {
+    font-family: 'FoundersGrotesk_Bold';
+    color: inherit; 
+}
+
+.installationButton:hover {
+    background-color: var(--inst-color);
+    color: #35343F;
+}
+
+.activeButton {
+    background-color: var(--inst-color);
+    color: #35343F;
+
+}
+
+.installationContent {
+    max-width: 95%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 300px;
+}
+
+.contentInner {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.installationImage {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.installationTextWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.installationTextWrapper h3{
+    font-family: 'FounderGrotesk_Regular';
+}
+
+.installationTextWrapper h3 strong{
+    font-family: 'FoundersGrotesk_Bold';
+}
+
+.linkButton {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    width: fit-content;
+}
+
+.linkButton:hover {
+    background: white;
+    color: #35343F;
+}
+
+.installationContent {
+    min-height: 400px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .howWeBuiltWrapper {
+        padding: 50px 30px;
+    }
+
+    .headingBlock h2 {
+        font-size: 40px;
+    }
+
+    .headingBlock p {
+        font-size: 20px;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .buttonsRow {
+        gap: 5px;
+        margin-bottom: 40px;
+    }
+
+    .installationImage{
+        margin-bottom: 0px;
+    }
+
+    .installationButton{
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .headingBlock p {
+        width: 100%;
+    }
+
+    .contentInner {
+        grid-template-columns: 1fr;
+    }
+
+    .installationImage {
+        max-width: 100%;
+    }
+
+    .installationTextWrapper{
+        gap: 5px;
+    }
+
+    .installationTextWrapper h3{
+        font-size: 28px;
+    }
+
+    .installationTextWrapper p{
+        font-size: 20px;
+    }
+}

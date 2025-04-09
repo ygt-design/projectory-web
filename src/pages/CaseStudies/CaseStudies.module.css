@@ -1,0 +1,230 @@
+.container {
+  color: white;
+  width: 100%;
+  /* padding: 0 50px; */
+  box-sizing: border-box;
+}
+
+.landing,
+.faqSection {
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.landing h1,
+.faqSection h2 {
+  font-size: 80px;
+  font-family: 'FounderGrotesk_Regular';
+  margin: 0;
+  margin-top: -20px;
+}
+
+.faqSection h2{
+  font-size: 40px;
+  font-family: 'FounderGrotesk_Medium';
+  margin-top: 0;
+}
+
+.landingContent p,
+.faqSection p {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.exploreButton {
+  padding: 14px 24px;
+  border: 1.5px solid white;
+  color: black;
+  border-radius: 50px;
+  font-size: 18px;
+  transition: 0.3s;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.exploreButton:hover {
+  background-color: black;
+  color: white;
+}
+
+.scrollContainer {
+  position: relative;
+}
+
+.stickySection {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.progressContainer {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  width: 4px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.progressBar {
+  width: 100%;
+  height: 0%;
+  background: white;
+  transform-origin: top;
+}
+
+.caseStudyContent {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background: #000;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.7) 100%);
+}
+
+.overlay h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px 0;
+  width: 60%;
+}
+
+.overlay p {
+  font-size: 1.4rem;
+  color: #ccc;
+  margin: 0 0 20px 0;
+}
+
+.caseStudyButton {
+  display: inline-block;
+  padding: 14px 24px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: 0.3s ease;
+  border: 1px solid white;
+}
+
+.caseStudyButton:hover {
+  background-color: black;
+  color: #fff;
+  border: 1px solid white;
+}
+
+
+
+@media (max-width: 768px) {
+  .progressBar{
+    display: none;
+  }
+
+  .container{
+    /* padding: 0 30px; */
+  }
+
+  .scrollContainer{
+    margin-top: -80px;
+    padding: 0 30px;
+  }
+
+  .landing,
+  .faqSection {
+    grid-template-columns: 1fr;
+    margin-top: 100px;
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  .landing h1,
+  .faqSection h2 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  .faqSection h2{
+    font-size: 30px;
+  }
+
+  .landingContent p,
+  .faqSection p {
+    font-size: 20px;
+  }
+
+  .caseStudyContent {
+    height: 80dvh;
+  }
+
+  .imageWrapper {
+    height: 100%;
+    border-radius: 24px;
+  }
+
+
+  .overlay {
+    padding: 20px;
+    background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.9) 100%);
+  }
+
+  .overlay h2 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .overlay p {
+    font-size: 1.2rem;
+  }
+
+  .caseStudyButton {
+    padding: 12px 20px;
+    border-radius: 20px;
+  }
+
+  .custom-extra-content {
+    border: 1px solid red;
+  }
+}

@@ -1,0 +1,88 @@
+.ctaWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 80%;
+    margin: auto;
+    padding: 50px 0;
+}
+
+.ctaBoxDark, 
+.ctaBoxLight{
+    padding: 50px 70px;
+    border-radius: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctaBoxDark {
+    background: #34323D;
+    color: white;
+   
+}
+
+.ctaBoxLight {
+    background: white;
+    color: black;
+}
+
+h3 {
+    font-size: 35px;
+    font-family: 'FounderGrotesk_SemiBold';
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+p {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.backLink {
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.ctaButton {
+    background: black;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.ctaButton:hover {
+    background: #444;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+    .ctaWrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 91%;
+    }
+
+    .ctaWrapper p{
+        font-size: 20px;
+    }
+
+    .ctaWrapper h3{
+        font-size: 30px;
+    }
+
+    .ctaBoxDark, .ctaBoxLight {
+        padding: 30px;
+        width: 75vw;
+        margin: auto;
+    }
+}

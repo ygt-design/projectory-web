@@ -1,0 +1,106 @@
+
+
+import React, { useEffect, useState } from 'react';
+import { useLikedProducts } from '../../context/LikedProductsContext';
+import { products } from '../../pages/ProductPages/productsData';
+import { Link } from 'react-router-dom';
+import { FiX } from 'react-icons/fi';
+import styles from './SlideInMenu.module.css';
+
+interface SlideInMenuProps {
+  onClose: () => void;
+  isOpen: boolean;
+}
+
+const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
+  const { likedProducts, toggleLike } = useLikedProducts();
+  const likedItems = products.filter((p) => likedProducts.includes(p.id));
+
+  const productsCount = likedItems.length;
+  const headingText = `You have ${productsCount} product${
+    productsCount !== 1 ? 's' : ''
+  } selected. Continue to get an estimate for your selected products.`;
+
+  const [menuTransform, setMenuTransform] = useState(
+    isOpen ? 'translateX(0)' : 'translateX(100%)'
+  );
+
+  useEffect(() => {
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      setMenuTransform('translateX(0)');
+    } else {
+      setMenuTransform('translateX(100%)');
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    console.log('[SlideInMenu] menuTransform changed to:', menuTransform);
+  }, [menuTransform]);
+
+  return (
+    <div
+      className={styles.slideInMenu}
+      style={{
+        transform: menuTransform,
+        transition: 'transform 0.3s ease',
+      }}
+    >
+      <button onClick={onClose} className={styles.closeButton}>
+        <FiX />
+      </button>
+
+      <div className={styles.slideInMenuText}>
+        <h2 className={styles.selectionsTitle}>{headingText}</h2>
+        <button
+          className={styles.estimateButton}
+          onClick={() => {
+            console.log('Get an Estimate clicked!');
+          }}
+        >
+          Get an Estimate
+        </button>
+      </div>
+
+      {likedItems.map((prod) => (
+        <div key={prod.id} className={styles.likedItem}>
+          <div className={styles.itemWrapper}>
+            <div className={styles.itemImageWrapper}>
+              <Link to={`/products/${prod.id}`} onClick={onClose}>
+                <img src={prod.thumbnail} alt={prod.name} />
+              </Link>
+            </div>
+            <div className={styles.itemTextWrapper}>
+              <Link to={`/products/${prod.id}`} onClick={onClose}>
+                <h4
+                  className={styles.title}
+                  style={{ color: prod.categoryColor || '#ffffff' }}
+                >
+                  {prod.category} <strong>{prod.categoryHighlight}</strong>
+                </h4>
+                <p>{prod.tagline}</p>
+              </Link>
+              <button
+                className={styles.removeButton}
+                onClick={() => {
+                  console.log(`Removing product: ${prod.id}`);
+                  toggleLike(prod.id);
+                }}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {productsCount === 0 && (
+        <p className={styles.noItemsText}>No items selected</p>
+      )}
+    </div>
+  );
+};
+
+export default SlideInMenu;

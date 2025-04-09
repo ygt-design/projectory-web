@@ -1,0 +1,131 @@
+.flowWrapper{
+    width: 100vw;
+    overflow: hidden;
+    padding-bottom: 100px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.testimonialWrapper {
+    background-color: #35343F; /* Dark grayish background */
+    padding: 60px;
+    border-radius: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+/* 🔹 Branded SVG Graphics */
+.topLeftGraphic, .bottomRightGraphic {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.topLeftGraphic {
+    top: -160px;
+    left: -160px;
+    background-image: url('https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/69d0b5dcccd422e705a16f6f2ea098d412956b2b?fuid=1402761468168776003'); 
+}
+
+.bottomRightGraphic {
+    bottom: -160px;
+    right: -160px;
+    background-image: url('https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/eb6c58f4afa7dd3377a1bb238eeb4c10d0f8e7d6?fuid=1402761468168776003'); 
+}
+
+/* 🎥 Video Section */
+.videoContainer {
+    width: 100%;
+    max-width: 80%;
+    overflow: hidden;
+}
+
+.video {
+    width: 100%;
+    height: 60vh;
+    border-radius: 15px;
+}
+
+/* 📝 Quote Section */
+.quoteSection {
+    margin-top: 25px;
+    color: white;
+}
+
+.quote {
+    font-size: 35px;
+    line-height: 3rem;
+    font-family: 'GT-Alpina-Regular';
+    margin-bottom: 40px;
+    font-weight: lighter;
+}
+
+.author {
+    font-size: 24px;
+    color: #ddd;
+    font-style: italic;
+}
+
+.author strong {
+    font-size: 24px;
+    color: white;
+    display: block;
+    margin-bottom: 3px;
+    font-style: normal
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .flowWrapper{
+        padding-bottom: 50px;
+    }
+
+    .testimonialWrapper {
+        width: 91%;
+        padding: 50px 20px;
+    }
+
+    .videoContainer{
+        max-width: 100%;
+    }
+
+    .video {
+        height: 200px;
+    }
+
+    .quote {
+        font-size: 20px;
+        line-height: 1.7rem;
+    }
+
+    .author,
+    .author strong {
+        font-size: 16px;
+    }
+
+    .topLeftGraphic, .bottomRightGraphic {
+        width: 170px;
+        height: 170px;
+    }
+
+    .topLeftGraphic{
+        top: -85px;
+        left: -50px;
+    }
+
+    .bottomRightGraphic {
+        bottom: -95px;
+        right: -50px;
+    }
+}
