@@ -1,20 +1,22 @@
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
 import CaseStudies from './pages/CaseStudies/CaseStudies';
 import GetStarted from './pages/GetStarted/GetStarted';
-import ProductTestPage from './pages/ProductTestPage/ProductTestPage'; // Mock Page for testing
-import CaseStudyPage from './pages/CaseStudyPages/CaseStudyPage'; // Mock Page for testing
+import ProductTestPage from './pages/ProductTestPage/ProductTestPage';
+import CaseStudyPage from './pages/CaseStudyPages/CaseStudyPage';
 import Product from './pages/Products/Products';
 import ProductPage from './pages/ProductPages/ProductPage';
 import { LikedProductsProvider } from './context/LikedProductsContext';
 
+const basename = process.env.NODE_ENV === 'production' ? '/projectory' : '';
+
 const App = () => {
   return (
     <LikedProductsProvider>
-      <Router basename="/projectory">
+      <Router basename={basename}>
         <ScrollToTop />
         <Layout>
           <Routes>
@@ -25,7 +27,7 @@ const App = () => {
             <Route path="/case-study/:id" element={<CaseStudyPage />} />
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/get-started" element={<GetStarted />} />
-            <Route path="/product-test" element={<ProductTestPage />} /> 
+            <Route path="/product-test" element={<ProductTestPage />} />
           </Routes>
         </Layout>
       </Router>
