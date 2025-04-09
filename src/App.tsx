@@ -14,7 +14,7 @@ import { LikedProductsProvider } from './context/LikedProductsContext';
 const App = () => {
   return (
     <LikedProductsProvider>
-      <Router>
+      <Router basename="/projectory">
         <ScrollToTop />
         <Layout>
           <Routes>
