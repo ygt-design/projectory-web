@@ -1,3 +1,5 @@
+import testVideo from '../../assets/videos/testProjectory.mp4';
+
 export const products = [
   {
     id: 'floating-opinions',
@@ -6,7 +8,7 @@ export const products = [
     category: 'Floating',
     categoryHighlight: 'Opinions',
     categoryColor: '#BCCE2D',
-    heroVideo: '/videos/testProjectory.mp4',
+    heroVideo: {testVideo},
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
     thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
