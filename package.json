@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "build": "vite build --outDir docs",
-    "postbuild": "cp docs/index.html docs/404.html",
+  "postbuild": "cp docs/index.html docs/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs"
   },
