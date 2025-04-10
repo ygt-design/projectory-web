@@ -1,10 +1,9 @@
 // 📂 src/components/FeaturedCaseStudy/FeaturedCaseStudy.tsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCaseStudy.module.css';
-import { div } from 'framer-motion/client';
 
 const CASE_STUDIES = [
   {
@@ -26,101 +25,157 @@ const CASE_STUDIES = [
 ];
 
 const FeaturedCaseStudy = () => {
-  // Active index: 0 means first card is fully in view; 1 means second card is in view.
+  // Active index: 0 means first card is active; 1 means second card is active.
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // When toggling, we slide the container by 0% or -50%.
-  const containerVariants = {
-    animate: {
-      x: activeIndex === 0 ? '0%' : '-22.6%',
-      transition: { duration: 0.5, ease: 'easeInOut' },
-    },
-  };
+  // Track window width so that we can disable sliding on mobile.
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth < 768;
 
-  // Define active/inactive opacity values
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Define sliding animation variants only for desktop.
+  const containerVariants = isMobile
+    ? {} // On mobile, no sliding.
+    : {
+        animate: {
+          x: activeIndex === 0 ? '0%' : '-22.6%',
+          transition: { duration: 0.5, ease: 'easeInOut' },
+        },
+      };
+
+  // Define opacity for desktop only.
   const activeOpacity = 1;
   const inactiveOpacity = 0.5;
 
-  // Retrieve active and inactive items
-  const activeItem = CASE_STUDIES[activeIndex];
-  const inactiveItem = CASE_STUDIES[(activeIndex + 1) % CASE_STUDIES.length];
+  if (isMobile) {
+    // On mobile, render the cards as a stacked list (each full width).
+    return (
+      <div className={styles.featuredSectionWrapper}>
+        <section className={styles.featuredSection}>
+          {/* Header Row */}
+          <div className={styles.headerRow}>
+            <div className={styles.headerLeft}>
+              <h2>Featured Case Study</h2>
+            </div>
+            <div className={styles.headerRight}>
+              <p>
+                Explore how our projects redefine interactive experiences and create lasting impacts.
+              </p>
+              <Link to="/case-studies" className={styles.exploreButton}>
+                Explore All Case Studies →
+              </Link>
+            </div>
+          </div>
+          <div className={styles.stackedCards}>
+            {CASE_STUDIES.map((study) => (
+              <div key={study.id} className={styles.card}>
+                <div
+                  className={styles.cardBackground}
+                  style={{ backgroundImage: `url(${study.imageUrl})` }}
+                />
+                <div className={styles.cardOverlay}>
+                  <div className={styles.cardOverlayText}>
+                    <h3>{study.title}</h3>
+                    <p>{study.subtitle}</p>
+                    <Link to={study.link} className={styles.caseStudyButton}>
+                      View Full Case Study →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    );
+  }
 
+  // For desktop, render with sliding interaction.
   return (
     <div className={styles.featuredSectionWrapper}>
-    <section className={styles.featuredSection}>
-      {/* Header Row */}
-      <div className={styles.headerRow}>
-        <div className={styles.headerLeft}>
-          <h2>Featured Case Study</h2>
+      <section className={styles.featuredSection}>
+        {/* Header Row */}
+        <div className={styles.headerRow}>
+          <div className={styles.headerLeft}>
+            <h2>Featured Case Study</h2>
+          </div>
+          <div className={styles.headerRight}>
+            <p>
+              Explore how our projects redefine interactive experiences and create lasting impacts.
+            </p>
+            <Link to="/case-studies" className={styles.exploreButton}>
+              Explore All Case Studies →
+            </Link>
+          </div>
         </div>
-        <div className={styles.headerRight}>
-          <p>
-            Explore how our projects redefine interactive experiences and create lasting impacts.
-          </p>
-          <Link to="/case-studies" className={styles.exploreButton}>
-            Explore All Case Studies →
-          </Link>
-        </div>
-      </div>
 
-      {/* Sliding Container */}
-      <motion.div
-        className={styles.slidingContainer}
-        variants={containerVariants}
-        animate="animate"
-        initial={{ x: '0%' }}
-      >
-        {/* First Card */}
-        <div
-          className={`${styles.card} ${activeIndex === 0 ? styles.activeCard : styles.inactiveCard}`}
-          style={{ opacity: activeIndex === 0 ? activeOpacity : inactiveOpacity }}
-          onClick={() => {
-            if (activeIndex !== 0) setActiveIndex(0);
-          }}
+        {/* Sliding Container */}
+        <motion.div
+          className={styles.slidingContainer}
+          variants={containerVariants}
+          animate="animate"
+          initial={{ x: '0%' }}
         >
+          {/* First Card */}
           <div
-            className={styles.cardBackground}
-            style={{ backgroundImage: `url(${CASE_STUDIES[0].imageUrl})` }}
-          />
-          <div className={styles.cardOverlay}>
-            <div className={styles.cardOverlayText}>
+            className={`${styles.card} ${activeIndex === 0 ? styles.activeCard : styles.inactiveCard}`}
+            style={{
+              opacity: activeIndex === 0 ? activeOpacity : inactiveOpacity,
+            }}
+            onClick={() => {
+              if (activeIndex !== 0) setActiveIndex(0);
+            }}
+          >
+            <div
+              className={styles.cardBackground}
+              style={{ backgroundImage: `url(${CASE_STUDIES[0].imageUrl})` }}
+            />
+            <div className={styles.cardOverlay}>
+              <div className={styles.cardOverlayText}>
                 <h3>{CASE_STUDIES[0].title}</h3>
                 <p>{CASE_STUDIES[0].subtitle}</p>
                 {activeIndex === 0 && (
-                <Link to={CASE_STUDIES[0].link} className={styles.caseStudyButton}>
+                  <Link to={CASE_STUDIES[0].link} className={styles.caseStudyButton}>
                     View Full Case Study →
-                </Link>
+                  </Link>
                 )}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Second Card */}
-        <div
-          className={`${styles.card} ${activeIndex === 1 ? styles.activeCard : styles.inactiveCard}`}
-          style={{ opacity: activeIndex === 1 ? activeOpacity : inactiveOpacity }}
-          onClick={() => {
-            if (activeIndex !== 1) setActiveIndex(1);
-          }}
-        >
+          {/* Second Card */}
           <div
-            className={styles.cardBackground}
-            style={{ backgroundImage: `url(${CASE_STUDIES[1].imageUrl})` }}
-          />
-          <div className={styles.cardOverlay}>
-            <div className={styles.cardOverlayText}>
+            className={`${styles.card} ${activeIndex === 1 ? styles.activeCard : styles.inactiveCard}`}
+            style={{
+              opacity: activeIndex === 1 ? activeOpacity : inactiveOpacity,
+            }}
+            onClick={() => {
+              if (activeIndex !== 1) setActiveIndex(1);
+            }}
+          >
+            <div
+              className={styles.cardBackground}
+              style={{ backgroundImage: `url(${CASE_STUDIES[1].imageUrl})` }}
+            />
+            <div className={styles.cardOverlay}>
+              <div className={styles.cardOverlayText}>
                 <h3>{CASE_STUDIES[1].title}</h3>
                 <p>{CASE_STUDIES[1].subtitle}</p>
                 {activeIndex === 1 && (
-                <Link to={CASE_STUDIES[1].link} className={styles.caseStudyButton}>
+                  <Link to={CASE_STUDIES[1].link} className={styles.caseStudyButton}>
                     View Full Case Study →
-                </Link>
+                  </Link>
                 )}
+              </div>
             </div>
           </div>
-        </div>
-      </motion.div>
-    </section>
+        </motion.div>
+      </section>
     </div>
   );
 };

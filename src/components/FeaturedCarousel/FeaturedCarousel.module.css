@@ -75,7 +75,7 @@
     background: rgba(255, 255, 255, 0.2);
     position: absolute;
     right: 0px;
-    bottom: 72px;
+    bottom: 100px;
 }
 
 .timerBarFill {
@@ -100,23 +100,29 @@
 }
 
 .productImage {
-    max-width: 90%; 
-    height: 80%;
+    width: 100%;
+    max-width: 100%; 
+    margin: 0px 50px;
+    height: 70%;
+    max-height: 70%;
     border-radius: 24px;
     object-fit: cover;
 }
+
+
 
 @media (max-width: 1024px) {
     .carouselWrapper {
         grid-template-columns: 1fr;
         align-items: center;
-        justify-content: center;
         height: 100vh;
         max-height: 100vh;
+        gap: -100px;
     }
 
     .productImage {
         width: 100%;
+        margin: 0 30px;
     }
 
     .title {
@@ -125,6 +131,8 @@
 
     .leftColumn {
         padding: 30px;
+        padding-bottom: 0;
+        gap: 0;
         position: static;
     }
 
@@ -139,5 +147,16 @@
     .rightColumn {
         height: 50vh;
         margin-top: -100px;
+    }
+
+    .title{
+        font-size: 30px;
+    }
+    .categoryLine{
+        font-size: 20px;
+    }
+ 
+    .featuredText {
+        font-size: 14px;
     }
 }

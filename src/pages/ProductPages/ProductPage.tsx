@@ -23,7 +23,6 @@ const ProductPage = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
 
-  // 2) Access the liked products context
   const { likedProducts, toggleLike } = useLikedProducts();
 
   if (!product) {

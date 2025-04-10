@@ -94,7 +94,6 @@
 
 .cardOverlay h3 {
     font-family: 'FounderGrotesk_Regular';
-    font-weight: 600;
     font-size: 3rem;
     color: #fff;
     margin: 0 0 8px 0;
@@ -137,6 +136,22 @@
     transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
 }
 
+.stackedCards{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 120vh;
+}
+
+.stackedCards .cardOverlay h3 {
+    font-size: 1.5rem;
+    width: 90%; 
+}
+
+.stackedCards .cardOverlay p {
+    font-size: 1.2rem;
+}
+
 @media (max-width: 768px) {
 
     .slidingContainer {
@@ -158,6 +173,12 @@
         font-size: 50px;
     }
 
+    .headerLeft p{
+        font-size: 18px;
+    }
 
+    .featuredSection{
+        padding: 0px 30px;
+    }
 
 }

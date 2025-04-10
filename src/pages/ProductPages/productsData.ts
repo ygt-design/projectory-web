@@ -208,7 +208,7 @@ export const products = [
     categoryColor: '#2BDCB7',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/5e16/fb3e/90517abcf80cfafc19be6a87b713d5e3?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IS-2Ttx2Nepxampn6gXiMhuFXVpIupWh7xTDwVPw5q57nRxMuDtge3v~UCf2pRA~0yIjkZ89nyPQPXllnMGCEuny2pxVwxvz5GJSX92DPAPS-0necRiAwuTL37nTmthuEseq~Qq1o436MAusr81ME1ZYDGiRl5iVeKCAxM8mBYwFTBlNwC-uSoFNR1~QNpBrs~OUMjA3zrIUkCngA6zB7sqihTGoA4tw1mcykJABWc5ks~IK2c21rPsKKP8P1dfS7QuIPZmFnGllbG~el4sjTTBpzfUAMtXm05zdgWQlofBFkmQpLbM5rQuA8W0i05NW5AfRY0ACHMyN65JNegdCKA__',
+    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
     shortDescription: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative',
   
     sections: []
@@ -264,7 +264,7 @@ export const products = [
     categoryColor: '#EFDA1D',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize', 'Peer learning'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/5e16/fb3e/90517abcf80cfafc19be6a87b713d5e3?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IS-2Ttx2Nepxampn6gXiMhuFXVpIupWh7xTDwVPw5q57nRxMuDtge3v~UCf2pRA~0yIjkZ89nyPQPXllnMGCEuny2pxVwxvz5GJSX92DPAPS-0necRiAwuTL37nTmthuEseq~Qq1o436MAusr81ME1ZYDGiRl5iVeKCAxM8mBYwFTBlNwC-uSoFNR1~QNpBrs~OUMjA3zrIUkCngA6zB7sqihTGoA4tw1mcykJABWc5ks~IK2c21rPsKKP8P1dfS7QuIPZmFnGllbG~el4sjTTBpzfUAMtXm05zdgWQlofBFkmQpLbM5rQuA8W0i05NW5AfRY0ACHMyN65JNegdCKA__',
+    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
     shortDescription: 'A quick synthesis workshop for tackling high-value topics and connecting ideas to action',
   
     sections: []
@@ -334,7 +334,7 @@ export const products = [
     categoryColor: '#F37655',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/5e16/fb3e/90517abcf80cfafc19be6a87b713d5e3?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=IS-2Ttx2Nepxampn6gXiMhuFXVpIupWh7xTDwVPw5q57nRxMuDtge3v~UCf2pRA~0yIjkZ89nyPQPXllnMGCEuny2pxVwxvz5GJSX92DPAPS-0necRiAwuTL37nTmthuEseq~Qq1o436MAusr81ME1ZYDGiRl5iVeKCAxM8mBYwFTBlNwC-uSoFNR1~QNpBrs~OUMjA3zrIUkCngA6zB7sqihTGoA4tw1mcykJABWc5ks~IK2c21rPsKKP8P1dfS7QuIPZmFnGllbG~el4sjTTBpzfUAMtXm05zdgWQlofBFkmQpLbM5rQuA8W0i05NW5AfRY0ACHMyN65JNegdCKA__',
+    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     sections: []

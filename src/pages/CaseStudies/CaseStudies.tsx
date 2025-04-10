@@ -8,7 +8,7 @@ import {
   useMotionValue,
 } from 'framer-motion';
 import styles from './CaseStudies.module.css';
-import faqStyles from '../../components/FAQ/FAQ.module.css';  // ✅ Renamed to `faqStyles`
+import faqStyles from '../../components/FAQ/FAQ.module.css';  
 import ClientLogos from '../../components/ClientLogos/ClientLogos';
 import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
 import FAQ from '../../components/FAQ/FAQ';
@@ -17,7 +17,7 @@ import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
 import imageTwo from '../../assets/images/p-WhoWeAre/whoWeAreOne.avif';
 import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
 
-import { caseStudiesData } from '../CaseStudyPages/caseStudiesData'; // ✅ Use centralized data
+import { caseStudiesData } from '../CaseStudyPages/caseStudiesData'; 
 
 
 const extraElement = (
@@ -48,7 +48,6 @@ const extraElement = (
     </div>
   </div>
 );
-
 
 const caseStudiesFAQ = [
   {
