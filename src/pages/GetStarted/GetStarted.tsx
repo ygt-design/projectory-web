@@ -1,6 +1,6 @@
 import Intro from '../../components/Intro/Intro';
 import styles from './GetStarted.module.css';
-import faqStyles from '../../components/FAQ/FAQ.module.css';  // ✅ Renamed to `faqStyles`
+import faqStyles from '../../components/FAQ/FAQ.module.css';  
 import ContactForm from '../../components/ContactForm/ContactForm';
 import FAQ from '../../components/FAQ/FAQ';
 

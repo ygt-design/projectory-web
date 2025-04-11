@@ -1,9 +1,7 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import { products } from '../../pages/ProductPages/productsData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './SlideInMenu.module.css';
 
@@ -15,7 +13,6 @@ interface SlideInMenuProps {
 const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const likedItems = products.filter((p) => likedProducts.includes(p.id));
-
   const productsCount = likedItems.length;
   const headingText = `You have ${productsCount} product${
     productsCount !== 1 ? 's' : ''
@@ -25,8 +22,8 @@ const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
     isOpen ? 'translateX(0)' : 'translateX(100%)'
   );
 
-  useEffect(() => {
-  }, []);
+  // useNavigate to redirect to the estimate page.
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -42,7 +39,7 @@ const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
 
   return (
     <div
-      className={styles.slideInMenu}
+      className={`${styles.slideInMenu} ${isOpen ? styles.open : ''}`}
       style={{
         transform: menuTransform,
         transition: 'transform 0.3s ease',
@@ -57,7 +54,9 @@ const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
         <button
           className={styles.estimateButton}
           onClick={() => {
-            console.log('Get an Estimate clicked!');
+            // Navigate to the get an estimate page and close the slide-in menu.
+            navigate('/get-estimate');
+            onClose();
           }}
         >
           Get an Estimate
