@@ -14,7 +14,6 @@ const GetEstimatePage: React.FC = () => {
     email: '',
     eventDate: '',
     eventLocation: '',
-    eventTitle: '',
     message: '',
     selectedProducts: likedProducts.join(', '), 
   });
@@ -76,6 +75,7 @@ const GetEstimatePage: React.FC = () => {
       {/* Left Column: Display Liked Products */}
       <div className={styles.leftColumn}>
         <h2>Your Selected Products:</h2>
+        <div className={styles.likedItemsWrapper}>
         {likedItems.length === 0 ? (
           <p>No products selected</p>
         ) : (
@@ -108,103 +108,96 @@ const GetEstimatePage: React.FC = () => {
             </div>
           ))
         )}
+        </div>
       </div>
 
       {/* Right Column: Estimate Form */}
       <div className={styles.rightColumn}>
         <h2>Get An Estimate</h2>
+        
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit nulla adipisci 
           incidunt interdum tellus cu.
         </p>
 
-        <form onSubmit={handleSubmit} className={styles.estimateForm}>
-          {/* Hidden fields for Web3Forms */}
-          <input 
-            type="hidden" 
-            name="access_key" 
-            value={formData.access_key}
-            readOnly 
-          />
-          <input
-            type="hidden"
-            name="selectedProducts"
-            value={formData.selectedProducts}
-            readOnly
-          />
-
-          {/* Visible fields */}
-          <label>
-            Name
+        <div className={styles.formWrapper}>
+          <form onSubmit={handleSubmit} className={styles.estimateForm}>
+            {/* Hidden fields for Web3Forms */}
+            <input 
+              type="hidden" 
+              name="access_key" 
+              value={formData.access_key}
+              readOnly 
+            />
             <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
+              type="hidden"
+              name="selectedProducts"
+              value={formData.selectedProducts}
+              readOnly
             />
-          </label>
 
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              placeholder="example@email.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
+            {/* Visible fields */}
+            <label>
+              Name
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </label>
 
-          <label>
-            Event Date
-            <input
-              type="date"
-              name="eventDate"
-              value={formData.eventDate}
-              onChange={handleChange}
-            />
-          </label>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                placeholder="example@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
 
-          <label>
-            Event Location
-            <input
-              type="text"
-              name="eventLocation"
-              placeholder="Location"
-              value={formData.eventLocation}
-              onChange={handleChange}
-            />
-          </label>
+            <label>
+              Event Date
+              <input
+                type="date"
+                name="eventDate"
+                value={formData.eventDate}
+                onChange={handleChange}
+              />
+            </label>
 
-          <label>
-            Event Title
-            <input
-              type="text"
-              name="eventTitle"
-              placeholder="e.g., 2025 Leadership Summit"
-              value={formData.eventTitle}
-              onChange={handleChange}
-            />
-          </label>
+            <label>
+              Event Location
+              <input
+                type="text"
+                name="eventLocation"
+                placeholder="Location"
+                value={formData.eventLocation}
+                onChange={handleChange}
+              />
+            </label>
+            
+            <label>
+              Message
+              <textarea
+                name="message"
+                placeholder="Please type your message..."
+                value={formData.message}
+                onChange={handleChange}
+              />
+            </label>
 
-          <label>
-            Message
-            <textarea
-              name="message"
-              placeholder="Please type your message..."
-              value={formData.message}
-              onChange={handleChange}
-            />
-          </label>
-
-          <button type="submit" className={styles.submitButton}>
-            Get An Estimate
-          </button>
-          {status && <p className={styles.statusMessage}>{status}</p>}
-        </form>
+            <button type="submit" className={styles.submitButton}>
+              Get An Estimate
+            </button>
+            {status && <p className={styles.statusMessage}>{status}</p>}
+          </form>
+        </div>
       </div>
     </section>
   );

@@ -199,10 +199,10 @@
 
 
     .tagBarWrapper {
-        position: relative;
+        position: sticky;
         top: 10;
-        ;
         padding: 20px 0px;
+        padding-top: 75px;
         background: linear-gradient(to bottom, rgba(10, 10, 10, 1) 50%, rgba(10, 10, 10, 0.85) 75%, rgba(255, 255, 255, 0) 100%);
     }
 
