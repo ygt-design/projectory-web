@@ -42,6 +42,7 @@ body{
     --dark-gray: #35343F;
     --background-dark-gray: #1c1c1c;
     --linear-gradient: linear-gradient(90deg, #A72C4B 0%, #F37655 100%);
+    --second-gradient:  linear-gradient(90deg, #B34747, #D87A5A);
     --lime: #BCCE2D;
 }
 

@@ -105,7 +105,6 @@ const ProductPage = () => {
       {/* 🔹 Possibly add a final CTA or anything else */}
       <FinalCTA experienceText="Experiences" experienceLink="/experiences" />
 
-      {/* 4) Floating Like Button */}
       <div className={styles.floatingLikeButton}>
         <button
           onClick={() => toggleLike(product.id)}

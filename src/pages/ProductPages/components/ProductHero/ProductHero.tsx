@@ -9,6 +9,7 @@ interface Product {
   categoryHighlight: string;
   tagline: string;
   tags?: string[]; 
+  clientLogo?: string;
 }
 
 const ProductHero = ({ product }: { product: Product | null }) => {
@@ -35,18 +36,28 @@ const ProductHero = ({ product }: { product: Product | null }) => {
 
       {/* 🔹 Hero Content */}
       <div className={styles.productHeroContent}>
-        <p className={styles.category} style={{ color: product.categoryColor }}>
-          {product.category} <strong>{product.categoryHighlight}</strong>
-        </p>
-        <h1>{product.tagline}</h1>
 
-        {product.tags && product.tags.length > 0 && (
-          <div className={styles.tagContainer}>
-            {product.tags.map((tag: string, index: number) => (
-              <span key={index} className={styles.tag}>{tag}</span>
-            ))}
+        <div className={styles.productHeroContentLeft}>
+          <p className={styles.category} style={{ color: product.categoryColor }}>
+            {product.category}<strong>{product.categoryHighlight}</strong>
+          </p>
+          <h1>{product.tagline}</h1>
+
+          {product.tags && product.tags.length > 0 && (
+            <div className={styles.tagContainer}>
+              {product.tags.map((tag: string, index: number) => (
+                <span key={index} className={styles.tag}>{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className={styles.productHeroContentRight}>
+          <div className={styles.logoContainer}>
+            {product.clientLogo && (
+              <img src={product.clientLogo} alt="Client Logo" className={styles.clientLogo} />
+            )}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

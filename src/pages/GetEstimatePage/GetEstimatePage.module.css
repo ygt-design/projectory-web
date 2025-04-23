@@ -80,6 +80,9 @@
 
 .estimateForm input,
 .estimateForm textarea {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     margin-top: 5px;
     padding: 8px 10px;
     border-radius: 4px;
@@ -87,6 +90,11 @@
     border: none;
     background-color: #2C2A35;
     color: white;
+    resize: none;
+}
+
+.estimateForm textarea{
+    min-height: 100px;
 }
 
 .estimateForm input::placeholder,
@@ -236,32 +244,48 @@
     background: #ddd;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Responsive Layout */
 @media (max-width: 768px) {
     .getEstimateWrapper {
         grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 100px;
+        max-width: calc(100% - 30px);
     }
 
     .leftColumn,
     .rightColumn {
-        margin-bottom: 20px;
+        margin-bottom: 100px;
+        width: 100%;
+        padding: 0;
+        position: relative;
+        border-radius: 0;
+    }
+
+    .leftColumn {
+        order: 2;
+
+    }
+    .rightColumn {
+        order: 1;
+    }
+
+    .submitButton{
+        margin: auto;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

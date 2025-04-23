@@ -7,11 +7,28 @@ export const products = [
     tagline: 'A discussion and alignment workshop exploring big questions in a playful way',
     category: 'Floating',
     categoryHighlight: 'Opinions',
-    categoryColor: '#BCCE2D',
+    categoryColor: '#BCCE2C',
     heroVideo: testProjectory,
+    bgVideo: 'https://www.youtube.com/embed/e0yjbBHGAbI',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Explore strategic priorities and decisions",
+        "Build alignment and consensus",
+        "Visualize collective insights",
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
     
     sections: [
       { type: 'hero' },
@@ -26,7 +43,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__'
+          imageUrl: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a'
         }
       },
       { 
@@ -141,11 +158,28 @@ export const products = [
     tagline: 'A networking, discussion, and micro-tribe formation workshop',
     category: 'Flag',
     categoryHighlight: 'Finder',
-    categoryColor: '#F37655',
+    categoryColor: '#2BDCB7',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a', 
     shortDescription: 'A networking, discussion, and micro-tribe formation workshop',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Facilitate peer learning and dialogue",
+        "Visualize collective insights",
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
     
     sections: [
       { type: 'hero' },
@@ -198,18 +232,34 @@ export const products = [
       }
     ]
   },
-  // MORE PRODUCTS STARTING HERE
   {
     id: 'align-by-line',
     name: 'Align by Line',
     tagline: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative ',
     category: 'Align',
-    categoryHighlight: 'By Line',
-    categoryColor: '#2BDCB7',
+    categoryHighlight: 'ByLine',
+    categoryColor: '#A72C4B',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Build alignment and consensus",
+        "Promote reflection and synthesis",
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
   
     sections: []
   },
@@ -224,6 +274,23 @@ export const products = [
     tags: ['Networking', 'Inspire creativity'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A wild idea-generating, networking, and conversation mash-up',
+
+    filters: {
+      "type": [
+        "Facilitated session",
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Inspire forward thinking and creativity"
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
   
     sections: []
   },
@@ -233,25 +300,54 @@ export const products = [
     tagline: 'An installation that weaves a striking visualization of collective insights',
     category: 'Futures',
     categoryHighlight: 'Web',
-    categoryColor: '#BCCE2D',
+    categoryColor: '#178771',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that weaves a striking visualization of collective insights',
+
+    filters: {
+      "type": [
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Explore strategic priorities and decisions",
+        "Promote reflection and synthesis",
+        "Visualize collective insights",
+      ],
+      "seating": [
+      ]
+    },
   
     sections: []
   },
   {
     id: 'if-this-then-what',
-    name: 'If This... Then What?',
+    name: 'If This Then What?',
     tagline: 'An envisioning workshop exploring the implications of trends and strategic decisions',
-    category: 'If This...',
-    categoryHighlight: 'Then What?',
-    categoryColor: '#F37655',
+    category: 'IfThis',
+    categoryHighlight: 'ThenWhat?',
+    categoryColor: '#B292C4',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Inspire creativity', 'Explore priorities', 'Peer learning'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/b4377ae409b44295292106d9caf008afd4b3f8d9',
     shortDescription: 'An envisioning workshop exploring the implications of trends and strategic decisions',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Explore strategic priorities and decisions",
+        "Connect ideas to action",
+        "Inspire forward thinking and creativity"
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
   
     sections: []
   },
@@ -259,13 +355,29 @@ export const products = [
     id: 'learning-action-matrix',
     name: 'Learning Action Matrix',
     tagline: 'A quick synthesis workshop for tackling high-value topics and connecting ideas to action',
-    category: 'Learning Action',
+    category: 'LearningAction',
     categoryHighlight: 'Matrix',
-    categoryColor: '#EFDA1D',
+    categoryColor: '#EEDA2A',
     heroVideo: '/videos/testVideo_2.mp4',
+    bgVideo: 'https://www.youtube.com/embed/e0yjbBHGAbI',
     tags: ['Ideas to action', 'Reflect & synthesize', 'Peer learning'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A quick synthesis workshop for tackling high-value topics and connecting ideas to action',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Connect ideas to action",
+        "Promote reflection and synthesis"
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
   
     sections: []
   },
@@ -275,11 +387,26 @@ export const products = [
     tagline: 'A dynamic voting activity that creates a snapshot of group priorities or opinions',
     category: 'Ping',
     categoryHighlight: 'Poll',
-    categoryColor: '#2BDCB7',
+    categoryColor: '#F37655',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A dynamic voting activity that creates a snapshot of group priorities or opinions',
+
+    filters: {
+      "type": [
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Connect ideas to action",
+        "Promote reflection and synthesis"
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
   
     sections: []
   },
@@ -289,7 +416,7 @@ export const products = [
     tagline: 'An interactive installation that captures attendee sentiments on key issues and content',
     category: 'Priority',
     categoryHighlight: 'Pathways',
-    categoryColor: '#EFDA1D',
+    categoryColor: '#A72C4B',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
@@ -303,7 +430,7 @@ export const products = [
     tagline: 'A reflection activity that brings attendees into conversation',
     category: 'Reflection',
     categoryHighlight: 'Collection',
-    categoryColor: '#BCCE2D',
+    categoryColor: '#EEDA2A',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
@@ -317,7 +444,7 @@ export const products = [
     tagline: 'A closing synthesis session focused on commitments and accountability',
     category: 'Taking',
     categoryHighlight: 'Action',
-    categoryColor: '#2BDCB7',
+    categoryColor: '#F37655',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/b4377ae409b44295292106d9caf008afd4b3f8d9',
@@ -331,10 +458,52 @@ export const products = [
     tagline: 'An installation that lets you wander (and wonder) through future visions',
     category: 'Vision',
     categoryHighlight: 'Forest',
+    categoryColor: '#B8EFEC',
+    heroVideo: '/videos/testVideo_2.mp4',
+    tags: ['Ideas to action', 'Reflect & synthesize'],
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    shortDescription: 'An installation that lets you wander (and wonder) through future visions',
+  
+    sections: []
+  },
+  {
+    id: 'block-party',
+    name: 'Block Party',
+    tagline: 'An installation that lets you wander (and wonder) through future visions',
+    category: 'Block',
+    categoryHighlight: 'Party',
     categoryColor: '#F37655',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://s3-alpha-sig.figma.com/img/953a/9b09/2875a94f6e69c60506e96c0b2effcf0b?Expires=1744588800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nWVpIFukQkWQ6Glbs2qdT5Gcc71G7A-WU1SHWMb1i4JK346kZXoXM4R~Piy2dRNp1cCwuDbCMLPcYhP1y8x958JF~t0crNfMDcLSUHREHg2jasWIHUxMAsHUW-lHbAbUewwrEcvqzesMBV4sMmgqpYXvvWUglVBXBAZemDBdBCMEOFgOwGnMNN-IK8bq0u9BykDFnNb1cbMIJV2nYxHriIT0sgZAyZyL0ViLXzLW88NvNTuU1oeHA2KgVq7Y4CY1gBROOC42qb-0fwTBNXCJdCZuLS9gt-wMSB6Qi-q9kx1JPJi1eMEItgH48a92Jwr-mccb8gd1p~yT62EUqmaXxQ__',
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    shortDescription: 'An installation that lets you wander (and wonder) through future visions',
+  
+    sections: []
+  },
+  {
+    id: 'pointing-the-way',
+    name: 'Pointing the Way',
+    tagline: 'An installation that lets you wander (and wonder) through future visions',
+    category: 'PointingThe',
+    categoryHighlight: 'Way',
+    categoryColor: '#BCCE2C',
+    heroVideo: '/videos/testVideo_2.mp4',
+    tags: ['Ideas to action', 'Reflect & synthesize'],
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    shortDescription: 'An installation that lets you wander (and wonder) through future visions',
+  
+    sections: []
+  },
+  {
+    id: 'roll-play',
+    name: 'Roll Play',
+    tagline: 'An installation that lets you wander (and wonder) through future visions',
+    category: 'Roll',
+    categoryHighlight: 'Play',
+    categoryColor: '#178771',
+    heroVideo: '/videos/testVideo_2.mp4',
+    tags: ['Ideas to action', 'Reflect & synthesize'],
+    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     sections: []

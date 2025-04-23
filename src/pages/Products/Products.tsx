@@ -154,27 +154,37 @@ const Products = () => {
 
   return (
     <div className={styles.productPage}>
-      <section className={styles.landingMoment}>
-          <div className={styles.landingContent}>
-            <h1>Make Your Event Unmissable</h1>
-            <p>
-              Projectory turns any briefly-captivated audience into an engaged community of leaders who can’t wait to participate.
-            </p>
-          </div>
-          <div className={styles.shapesContainer}>
-            {selectedShapes.map((shape, index) => (
-              <motion.img
-                key={index}
-                src={shape}
-                alt={`Shape ${index + 1}`}
-                className={`${styles.shape} ${styles[`shape${index + 1}`]}`}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              />
-            ))}
-            </div>
-      </section>
+      
+    <section className={styles.landingMoment}>
+      <div className={styles.landingContent}>
+        <h1>Make Your Event Unmissable</h1>
+        <p>
+          Projectory turns any briefly-captivated audience into an engaged community of leaders who can’t wait to participate.
+        </p>
+      </div>
+      <motion.div
+        className={styles.shapesContainer}
+        initial={{ scale: 1 }}
+        animate={{ scale: [1, 1.06, 1] }}
+        transition={{
+          scale: {
+            duration: 4,
+            repeat: Infinity,
+            repeatType: 'loop',
+            ease: 'easeInOut',
+          },
+        }}
+      >
+        {selectedShapes.map((shape, index) => (
+          <img
+            key={index}
+            src={shape}
+            alt={`Shape ${index + 1}`}
+            className={`${styles.shape} ${styles[`shape${index + 1}`]}`}
+          />
+        ))}
+      </motion.div>
+    </section>
 
       <FeaturedCarousel />
 

@@ -12,7 +12,13 @@
     background-color: #0A0A0A;
 }
 
-/* 📌 Shapes */
+.shapesContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
 
 .shape {
     position: absolute;
@@ -23,25 +29,25 @@
 .shape1 {
     top: 25%;
     left: 4%;
-    transform: rotate(13deg) scale(0.8) !important;
+    transform: rotate(13deg)
 }
 
 .shape2 {
     top: 12%;
     right: 20%;
-    transform: rotate(20deg) !important;
+    transform: rotate(13deg) 
 }
 
 .shape3 {
     bottom: 16%;
     left: 14%;
-    transform: rotate(-18deg) scale(1.2) !important;
+    transform: rotate(-18deg) 
 }
 
 .shape4 {
     bottom: 10%;
     right: 5%;
-    transform: rotate(32deg) !important;
+    transform: rotate(32deg);
 }
 
 

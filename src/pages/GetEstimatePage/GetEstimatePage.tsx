@@ -93,7 +93,7 @@ const GetEstimatePage: React.FC = () => {
                       className={styles.title}
                       style={{ color: prod.categoryColor || '#ffffff' }}
                     >
-                      {prod.category} <strong>{prod.categoryHighlight}</strong>
+                      {prod.category}<strong>{prod.categoryHighlight}</strong>
                     </h4>
                     <p>{prod.tagline}</p>
                   </Link>

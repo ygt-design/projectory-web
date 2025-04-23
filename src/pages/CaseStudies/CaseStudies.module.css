@@ -38,17 +38,17 @@
 .exploreButton {
   padding: 14px 24px;
   border: 1.5px solid white;
-  color: black;
   border-radius: 50px;
   font-size: 18px;
   transition: 0.3s;
   display: inline-block;
   cursor: pointer;
+  color: white;
 }
 
 .exploreButton:hover {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .scrollContainer {

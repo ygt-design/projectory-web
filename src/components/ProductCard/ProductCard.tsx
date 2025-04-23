@@ -1,5 +1,3 @@
-// 📂 src/components/ProductCard/ProductCard.tsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.css';
@@ -15,9 +13,10 @@ interface Product {
   categoryColor?: string;
   thumbnail?: string;
   shortDescription?: string;
+  bgVideo?: string; 
 }
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const navigate = useNavigate();
   const { likedProducts, toggleLike } = useLikedProducts();
   const isLiked = likedProducts.includes(product.id);
@@ -26,18 +25,14 @@ const ProductCard = ({ product }: { product: Product }) => {
   const [descHeight, setDescHeight] = useState(0);
   const descRef = useRef<HTMLParagraphElement>(null);
 
+  // Measure description height for the expand/collapse
   useEffect(() => {
     if (descRef.current) {
       setDescHeight(descRef.current.scrollHeight);
     }
   }, [product.shortDescription]);
 
-  // Clicking on the card navigates to the product page
-  const handleCardClick = () => {
-    navigate(`/products/${product.id}`);
-  };
-
-  // Clicking the like button should not trigger navigation
+  const handleCardClick = () => navigate(`/products/${product.id}`);
   const handleLikeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     toggleLike(product.id);
@@ -46,58 +41,80 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div
       className={styles.productCard}
-      style={{ 
-        backgroundImage: `url(${product.thumbnail})`,
-        zIndex: isHovered ? 1 : 'auto'  
-      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleCardClick}
+      style={{ zIndex: isHovered ? 2 : 1 }}
     >
+      {/* background layer container */}
+      <div className={styles.bgLayer}>
+        {product.bgVideo && (
+          <div className={styles.bgVideoWrapper}>
+            <iframe
+              className={styles.bgVideo}
+              src={`${product.bgVideo}?autoplay=1&mute=1&controls=0&loop=1&playlist=${extractYouTubeID(
+                product.bgVideo
+              )}&modestbranding=1&showinfo=0&disablekb=1&iv_load_policy=3`}
+              frameBorder="0"
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title="Background Video"
+            />
+          </div>
+        )}
+        <div
+          className={styles.bgImage}
+          style={{ backgroundImage: `url(${product.thumbnail})` }}
+        />
+      </div>
+
+      {/* content */}
       <div className={styles.cardContent}>
         <div className={styles.productName}>
           <h3
             className={styles.title}
-            style={{ color: product.categoryColor || '#ffffff' }}
+            style={{ color: product.categoryColor || '#fff' }}
           >
-            {product.category} <strong>{product.categoryHighlight}</strong>
+            {product.category}
+            {product.categoryHighlight && <strong>{product.categoryHighlight}</strong>}
           </h3>
 
           <div
             className={styles.descWrapper}
             style={{
               height: isHovered ? descHeight : 0,
-              transition: 'height 0.3s ease',
-              overflow: 'hidden',
             }}
           >
             <p ref={descRef} className={styles.description}>
-              {product.shortDescription || 'No short description provided.'}
+              {product.shortDescription}
             </p>
           </div>
 
           <Link
             to={`/products/${product.id}`}
             className={styles.learnMoreButton}
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             Learn More
           </Link>
+
+          <button className={styles.likeButton} onClick={handleLikeClick}>
+          <img
+            className={styles.heartIcon}
+            src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
+            alt="Like"
+          />
+        </button>
         </div>
       </div>
-
-      <button
-        className={styles.likeButton}
-        onClick={handleLikeClick}
-      >
-        <img
-          className={styles.heartIcon}
-          src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
-          alt="Like Product"
-        />
-      </button>
     </div>
   );
+};
+
+// extract YouTube ID from embed URL
+const extractYouTubeID = (url: string): string => {
+  const parts = url.split('/embed/');
+  return parts[1]?.split('?')[0] ?? '';
 };
 
 export default ProductCard;

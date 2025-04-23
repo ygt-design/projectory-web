@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './ClientLogos.module.css';
 
@@ -12,10 +12,11 @@ import logo6 from '../../assets/images/logos/oracle.png';
 import logo7 from '../../assets/images/logos/pcma.png'
 import logo8 from '../../assets/images/logos/royalCanadianMint.svg'
 
+interface ClientLogosProps { background?: string; }
 
 const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
 
-const ClientLogos = () => {
+const ClientLogos: React.FC<ClientLogosProps> = ({ background = 'transparent' }) => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const [oneSetWidth, setOneSetWidth] = useState<number>(0);
 
@@ -50,7 +51,7 @@ const ClientLogos = () => {
   const duration = oneSetWidth ? oneSetWidth / speed : 5;
 
   return (
-    <section className={styles.clientLogosWrapper}>
+    <section style={{ background }} className={styles.clientLogosWrapper}>
       <h2>
         Our clients love us.<br /> You will too.
       </h2>

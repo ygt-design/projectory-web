@@ -1,3 +1,5 @@
+import testProjectory from '../../assets/videos/testProjectory.mp4';
+
 export const caseStudiesData = [
   {
     id: 'cibc-leadership',
@@ -6,8 +8,9 @@ export const caseStudiesData = [
     category: 'CIBC Executive Alignment',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: '/videos/testProjectory.mp4',
+    heroVideo: testProjectory,
     tags: null,
+    clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
       { type: 'hero' },
       {

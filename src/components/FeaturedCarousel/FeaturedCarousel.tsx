@@ -107,7 +107,7 @@ const FeaturedCarousel: React.FC = () => {
             className={styles.categoryLine}
             style={{ color: currentProduct.categoryColor }}
           >
-            {currentProduct.category}{' '}
+            {currentProduct.category}
             <strong>{currentProduct.categoryHighlight}</strong>
           </p>
           <Link

@@ -11,14 +11,19 @@ import styles from './CaseStudies.module.css';
 import faqStyles from '../../components/FAQ/FAQ.module.css';  
 import ClientLogos from '../../components/ClientLogos/ClientLogos';
 import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
+import TrustedBy from '../../components/TrustedBy/TrustedBy';
 import FAQ from '../../components/FAQ/FAQ';
 
 import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
 import imageTwo from '../../assets/images/p-WhoWeAre/whoWeAreOne.avif';
 import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
+import CventImage from '../../assets/images/logos/cvent.png'
+import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
+import PcmaLogo from '../../assets/images/logos/pcmaLogo.png';
+import RainFocusLogo from '../../assets/images/logos/rainFocusLogo.png';
+import CemaLogo from '../../assets/images/logos/cemaLogo.png';
 
 import { caseStudiesData } from '../CaseStudyPages/caseStudiesData'; 
-
 
 const extraElement = (
   <div className={faqStyles.extraContent}>
@@ -108,8 +113,6 @@ const caseStudies = [
 
 const CaseStudies: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Show/hide progress bar on scroll
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -128,7 +131,6 @@ const CaseStudies: React.FC = () => {
     };
   }, []);
 
-  // Overall scroll progress (0..1) for the container
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
@@ -140,7 +142,6 @@ const CaseStudies: React.FC = () => {
   const overallIndex = useTransform(scrollYProgress, [0, 1], [0, totalBlocks]);
   const [currentBlock, setCurrentBlock] = useState(0);
 
-  // Clamp currentBlock so it never exceeds the last block
   useEffect(() => {
     const unsubscribe = overallIndex.on('change', (value) => {
       let blockIndex = Math.floor(value);
@@ -160,25 +161,20 @@ const CaseStudies: React.FC = () => {
     [0, 1]
   );
 
-  // For normal blocks, fade out in the second half:
   const normalOpacity = useTransform(activeProgress, [0, 0.5, 1], [1, 0.8, 0]);
   const normalScale = useTransform(activeProgress, [0, 1], [1, 0.8]);
 
-  // For the last block, define MotionValues that are always 1 so it won't fade out.
   const fixedOpacity = useMotionValue(1);
   const fixedScale = useMotionValue(1);
 
-  // Choose which MotionValue to use
   const outgoingOpacity = isLastBlock ? fixedOpacity : normalOpacity;
   const outgoingScale = isLastBlock ? fixedScale : normalScale;
 
-  // If it's NOT the last block, track pointer events:
   const [outgoingOpacityValue, setOutgoingOpacityValue] = useState(1);
   useEffect(() => {
-    if (isLastBlock) return; // skip subscription if last block
+    if (isLastBlock) return; 
 
     const unsubscribe = outgoingOpacity.on('change', (latest) => {
-      // Only update if we cross 0.5 threshold
       if (latest < 0.5 && outgoingOpacityValue >= 0.5) {
         setOutgoingOpacityValue(latest);
       } else if (latest >= 0.5 && outgoingOpacityValue < 0.5) {
@@ -188,14 +184,9 @@ const CaseStudies: React.FC = () => {
     return () => unsubscribe();
   }, [outgoingOpacity, outgoingOpacityValue, isLastBlock]);
 
-  // If outgoing block is mostly invisible, disable pointer events
   const outgoingPointerEvents =
     !isLastBlock && outgoingOpacityValue < 0.5 ? 'none' : 'auto';
 
-  // =====================
-  // INCOMING BLOCK
-  // =====================
-  // Overlap so new block starts at 0.5
   const incomingProgress = useTransform(
     scrollYProgress,
     [(currentBlock + 0.5) / totalBlocks, (currentBlock + 1) / totalBlocks],
@@ -223,9 +214,6 @@ const CaseStudies: React.FC = () => {
   const incomingPointerEvents =
     !isLastBlock && incomingOpacityValue > 0.2 ? 'auto' : 'none';
 
-  // =====================
-  // PROGRESS BAR
-  // =====================
   const progressBarFill = useTransform(activeProgress, [0, 1], ['0%', '100%']);
   const isSectionInView = useInView(sectionRef, { margin: '-20% 0px -20% 0px' });
 
@@ -328,13 +316,25 @@ const CaseStudies: React.FC = () => {
 
       </div>
 
-      <ClientLogos />
+      <ClientLogos 
+        background=" var(--linear-gradient)"
+      />
       
       <TestimonialSizzle
         videoSrc="https://www.youtube.com/embed/YOUR_VIDEO_ID"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"
+      />
+
+      <TrustedBy
+        logos={[
+            CventImage,
+            EventMarketer,
+            PcmaLogo,
+            RainFocusLogo,
+            CemaLogo
+        ]}
       />
 
     <div className={styles.faqSection}>
