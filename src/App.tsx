@@ -10,6 +10,7 @@ import CaseStudyPage from './pages/CaseStudyPages/CaseStudyPage';
 import Product from './pages/Products/Products';
 import ProductPage from './pages/ProductPages/ProductPage';
 import GetEstimatePage from './pages/GetEstimatePage/GetEstimatePage';
+import GetStartedForm from './pages/GetStartedForm/GetStartedForm';
 import { LikedProductsProvider } from './context/LikedProductsContext';
 
 const basename = process.env.NODE_ENV === 'production' ? '/projectory' : '';
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/get-estimate" element={<GetEstimatePage />} />
             <Route path="/product-test" element={<ProductTestPage />} />
+            <Route path="/get-started-form" element={<GetStartedForm />} />
           </Routes>
         </Layout>
       </Router>

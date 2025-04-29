@@ -1,6 +1,6 @@
-// 📂 src/components/Navbar/Navbar.tsx
+// src/components/Navbar/Navbar.tsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import logo from '../../assets/images/logo.svg';
@@ -17,24 +17,33 @@ import { useLikedProducts } from '../../context/LikedProductsContext';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSlideInOpen, setIsSlideInOpen] = useState(false);
-
   const { likedProducts } = useLikedProducts();
   const hasLikedProducts = likedProducts.length > 0;
 
-  // Toggle the mobile menu open/close
+  // NEW: track scroll position
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY >= window.innerHeight);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // init on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(open => !open);
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navContent}>
         {/* Logo */}
         <Link to="/" className={styles.logo}>
           <img src={logo} alt="Projectory Logo" className={styles.logoImage} />
         </Link>
 
-        {/* 🖥 Desktop Menu */}
+        {/* Desktop Menu */}
         <ul className={styles.desktopNav}>
           <li><Link to="/who-we-are">Who We Are</Link></li>
           <li><Link to="/products">Products</Link></li>
@@ -44,24 +53,18 @@ const Navbar = () => {
               Get Started
             </Link>
           </li>
-          {/* Heart icon only if liked products exist */}
           <li>
             <button
               className={styles.slideInToggleBtn}
               onClick={() => setIsSlideInOpen(true)}
               style={{ display: hasLikedProducts ? 'block' : 'none' }}
             >
-              {/* 
-                🔹 Heart icon wrapper (relative) 
-                with a badge showing the count
-              */}
               <div className={styles.heartIconWrapper}>
                 <img
                   className={styles.heartIcon}
                   src={HeartIconSVG}
                   alt="Liked Products"
                 />
-                {/* If likedProducts > 0, show a badge */}
                 {hasLikedProducts && (
                   <span className={styles.heartBadge}>
                     {likedProducts.length}
@@ -72,7 +75,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* 🔹 Mobile toggles */}
+        {/* Mobile toggles */}
         <div className={styles.mobileMenuWrapper}>
           <button
             className={styles.slideInToggleBtnMobile}
@@ -102,7 +105,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 📱 Mobile Menu */}
+      {/* Mobile Menu */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}>
         <ul>
           <li>
@@ -157,13 +160,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 🔹 Slide-In Menu */}
+      {/* Slide-In Menu */}
       <SlideInMenu
         isOpen={isSlideInOpen}
         onClose={() => setIsSlideInOpen(false)}
       />
     </nav>
-  );
-};
+);
+}
 
 export default Navbar;

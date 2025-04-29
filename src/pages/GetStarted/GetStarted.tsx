@@ -73,7 +73,7 @@ const GetStarted = () => {
         title="Let’s remind people why it's so valuable to come together!"
         description="Respond the next few questions and we’ll highlight a few products that you might want to consider adding to your program."
         buttonText="Get Started"
-        buttonLink="/next-step" // Change link as needed
+        buttonLink="/get-started-form"
       />
       <ContactForm />
 

@@ -398,13 +398,11 @@ export const products = [
         "Interactive installation"
       ],
       "objectives": [
-        "Facilitate peer learning and dialogue",
-        "Connect ideas to action",
-        "Promote reflection and synthesis"
+        "Explore strategic priorities and decisions",
+        "Promote reflection and synthesis",
+        "Visualize collective insights"
       ],
       "seating": [
-        "Round tables",
-        "Not sure yet"
       ]
     },
   
@@ -422,6 +420,19 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An interactive installation that captures attendee sentiments on key issues and content',
   
+    filters: {
+      "type": [
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Explore strategic priorities and decisions",
+        "Build alignment and consensus",
+        "Visualize collective insights"
+      ],
+      "seating": [
+      ]
+    },
+
     sections: []
   },
   {
@@ -435,6 +446,18 @@ export const products = [
     tags: ['Visualize insights', 'Explore priorities'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'A reflection activity that brings attendees into conversation',
+
+    filters: {
+      "type": [
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Explore strategic priorities and decisions",
+        "Promote reflection and synthesis",
+      ],
+      "seating": [
+      ]
+    },
   
     sections: []
   },
@@ -450,6 +473,23 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/b4377ae409b44295292106d9caf008afd4b3f8d9',
     shortDescription: 'A closing synthesis session focused on commitments and accountability',
   
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Connect ideas to action",
+        "Build alignment and consensus",
+        "Promote reflection and synthesis",
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
+
     sections: []
   },
   {
@@ -464,6 +504,18 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
+    filters: {
+      "type": [
+        "Interactive installation"
+      ],
+      "objectives": [
+        "Promote reflection and synthesis",
+        "Visualize collective insights"
+      ],
+      "seating": [
+      ]
+    },
+
     sections: []
   },
   {
@@ -478,6 +530,22 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Facilitate peer learning and dialogue"
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
+
     sections: []
   },
   {
@@ -492,6 +560,21 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Explore strategic priorities and decisions",
+        "Build alignment and consensus",
+        "Inspire forward thinking and creativity"
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
+
     sections: []
   },
   {
@@ -506,6 +589,22 @@ export const products = [
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Inspire forward thinking and creativity"
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
+
     sections: []
   }
 ];
