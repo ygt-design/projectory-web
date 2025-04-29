@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     z-index: 1000;
-    padding: 15px 50px;
+    padding: 13px 50px;
     width: 100%;
     transition: background 0.3s ease;
     display: flex;
@@ -18,7 +18,7 @@
 }
 
 .logo {
-    width: 150px;
+    width: 135px;
 }
 
 .slideInToggleBtn,
@@ -47,7 +47,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-weight: bold;
     pointer-events: none;
 }
 
@@ -88,7 +87,6 @@
     background: white;
     color: black;
     border-radius: 100px;
-    font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -166,7 +164,7 @@
     background: white;
     color: black !important;
     border-radius: 100px;
-    font-weight: bold;
+    font-family: "FounderGrotesk_Medium";
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-block;

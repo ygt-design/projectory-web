@@ -41,10 +41,10 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
                  {feature}</li>
               ))}
             </ul>
-            <button className={styles.ctaButton}>{plan.buttonText}</button>
           </div>
         ))}
       </div>
+      <button className={styles.ctaButton}> Get Started </button>
     </section>
   );
 };

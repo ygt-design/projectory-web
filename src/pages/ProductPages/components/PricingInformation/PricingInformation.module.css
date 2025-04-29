@@ -37,7 +37,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 62vh;
+    height: 60vh;
+    overflow: scroll;
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -98,20 +99,20 @@ hr {
 }
 
 .ctaButton {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
+    width: fit-content;
+    padding: 15px 25px;
+    font-size: 20px;
+    margin-top: 25px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    background: black;
-    color: white;
-    transition: background 0.3s ease;
-    margin-top: auto;
+    background: var(--linear-gradient);
+    color: white
 }
 
 .ctaButton:hover {
-    background: gray;
+    color: black;
+    background: white;
 }
 
 /* 🔹 Featured Plan (Middle One) */

@@ -170,7 +170,10 @@ const GetStartedForm: React.FC = () => {
                 ))}
                 </div>
             <div className={styles.estimateWrapper}>
-              <button className={styles.estimateBtn}>
+              <button
+                className={styles.estimateBtn}
+                onClick={() => window.location.href = '/get-estimate'}
+              >
                 Get An Estimate →
               </button>
             </div>

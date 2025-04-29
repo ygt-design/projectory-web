@@ -18,6 +18,7 @@ import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
 
 import styles from './ProductPage.module.css';
+import { DiCelluloid } from 'react-icons/di';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -105,6 +106,7 @@ const ProductPage = () => {
       {/* 🔹 Possibly add a final CTA or anything else */}
       <FinalCTA experienceText="Experiences" experienceLink="/experiences" />
 
+
       <div className={styles.floatingLikeButton}>
         <button
           onClick={() => toggleLike(product.id)}
@@ -115,6 +117,11 @@ const ProductPage = () => {
             alt="Like/Unlike Product"
           />
         </button>
+
+      <div className={styles.floatingText}>
+        Like this product? <br />
+        Click the heart to save it for later!
+      </div>
       </div>
     </div>
   );

@@ -78,7 +78,8 @@
     background: white;
     color: black;
     text-decoration: none;
-    font-weight: bold;
+    font-family: "FounderGrotesk_Medium";
+
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;

@@ -41,12 +41,29 @@
 .likeButton img {
     width: 48px;
     height: 48px;
-    /* optional hover effect */
     transition: transform 0.2s ease;
 }
 
 .likeButton img:hover {
     transform: scale(1.1);
+}
+
+.floatingText{
+    position: fixed;
+    font-size: 17px;
+    bottom: 20px;
+    right: 80px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    z-index: 9999;
+    background-color: #3F3E48;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.likeButton:hover ~ .floatingText {
+    opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
