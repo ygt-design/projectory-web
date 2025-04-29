@@ -5,6 +5,7 @@ import styles from './GetStartedForm.module.css';
 import { products } from '../ProductPages/productsData';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useLikedProducts } from '../../context/LikedProductsContext';
+import { useNavigate } from 'react-router-dom';
 
 type Filters = { type: string[]; objectives: string[]; seating: string[] };
 
@@ -51,6 +52,7 @@ const GetStartedForm: React.FC = () => {
   });
   const { likedProducts, toggleLike } = useLikedProducts();
   const [recommended, setRecommended] = useState<typeof products[number][]>([]);
+  const navigate = useNavigate();
 
   const key = stepKeys[step];
 
@@ -172,7 +174,7 @@ const GetStartedForm: React.FC = () => {
             <div className={styles.estimateWrapper}>
               <button
                 className={styles.estimateBtn}
-                onClick={() => window.location.href = '/get-estimate'}
+                onClick={() => navigate('/get-estimate')}
               >
                 Get An Estimate →
               </button>
