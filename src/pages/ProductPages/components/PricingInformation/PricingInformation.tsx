@@ -24,6 +24,8 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
         Ultimately, starting a conversation is the best way to know how we can work together.
       </p>
 
+      <button className={styles.ctaButton}> Get Started </button>
+
       {/* 🔹 Dynamic Pricing Cards */}
       <div className={styles.pricingGrid}>
         {pricing.map((plan, index) => (
@@ -44,7 +46,6 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
           </div>
         ))}
       </div>
-      <button className={styles.ctaButton}> Get Started </button>
     </section>
   );
 };

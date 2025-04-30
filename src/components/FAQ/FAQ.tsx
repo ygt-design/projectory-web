@@ -38,7 +38,7 @@ const FAQ: React.FC<FAQProps> = ({ faqs }) => {
 
 export default FAQ;
 
-/** 
+/* 
  * Subcomponent that handles measuring and animating the answer's height
  */
 interface FAQItemProps {
@@ -54,7 +54,7 @@ const FAQItemComponent: React.FC<FAQItemProps> = ({ faq, isOpen, onToggle }) => 
   useEffect(() => {
     if (contentRef.current) {
       if (isOpen) {
-        setHeight(contentRef.current.scrollHeight);
+        setHeight(contentRef.current.scrollHeight + 40);
       } else {
         setHeight(0);
       }

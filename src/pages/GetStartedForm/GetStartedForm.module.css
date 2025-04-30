@@ -1,9 +1,11 @@
 /* src/pages/GetStartedForm/GetStartedForm.module.css */
 .container {
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .formWrap {
@@ -85,12 +87,14 @@
     cursor: not-allowed;
 }
 
-/* Results Section */
 .recommendedSection {
+    position: relative;
     width: 100vw;
     height: auto;
     background-color: var(--black);
     padding: 10vw;
+    max-width: 100vw;
+    overflow: hidden;
 }
 
 .recommendedTitle {
@@ -100,6 +104,7 @@
     font-size: 3rem;
     margin-bottom: 5rem;
     text-align: center;
+    z-index: 20;
 }
 
 .recommendedGrid {
@@ -109,6 +114,7 @@
     justify-content: center;
     gap: 2rem;
     margin-bottom: 2rem;
+    margin: auto;
 }
 
 .recommendedCard {
@@ -128,11 +134,18 @@
     color: #fff;
     cursor: pointer;
     transition: all 0.5s ease;
+    margin-top: 50px;
 }
 
 .estimateBtn:hover {
     background: white;
     color: var(--black);
+}
+
+@media screen and (min-width: 1500px) {
+    .recommendedGrid {
+        max-width: 95%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -165,5 +178,8 @@
         font-size: 1rem;
         padding: 10px 20px;
     }
-    
+
+    .shape {
+        display: none;
+    }
 }

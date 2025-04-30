@@ -1,5 +1,5 @@
 // src/pages/GetStartedForm/GetStartedForm.tsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './GetStartedForm.module.css';
 import { products } from '../ProductPages/productsData';
@@ -8,6 +8,17 @@ import { useLikedProducts } from '../../context/LikedProductsContext';
 import { useNavigate } from 'react-router-dom';
 
 type Filters = { type: string[]; objectives: string[]; seating: string[] };
+
+import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_1.png';
+import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+import shape3 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_3.png';
+import shape4 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_5.png';
+import shape5 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
+import shape6 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_9.png';
+import shape7 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
+
+const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
+
 
 const questionData = {
   type: {
@@ -38,9 +49,9 @@ type StepKey = typeof stepKeys[number];
 
 // one gradient per step
 const BG_GRADIENTS = [
-  'linear-gradient(180deg,#F37655 0%,#A92E4C 80%)', // warm coral → peach
-  'linear-gradient(180deg,#2FD4B2 0%,#158671 80%)', // teal → sea-green
-  'linear-gradient(180deg, #BCCE2D 0%, #838C0A 80%)', // lime → forest
+  'linear-gradient(180deg,#F37655 0%,#A92E4C 80%)',
+  'linear-gradient(180deg,#2FD4B2 0%,#158671 80%)',
+  'linear-gradient(180deg, #BCCE2D 0%, #838C0A 80%)',
 ];
 
 const GetStartedForm: React.FC = () => {
@@ -53,6 +64,44 @@ const GetStartedForm: React.FC = () => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const [recommended, setRecommended] = useState<typeof products[number][]>([]);
   const navigate = useNavigate();
+
+  const [shapeInstances, setShapeInstances] = useState<
+    { src: string; style: React.CSSProperties }[]
+  >([]);
+
+    useEffect(() => {
+      if (recommended.length > 0) {
+       
+        const selected = shapePool.slice(0, 4);
+
+        const edgePositions = [
+          { top: '2%', left: '25%' },  
+          { top: '20%', left: '100%' }, 
+          { top: '70%', left: '80%' }, 
+          { top: '35%', left: '10%' },  
+        ];
+
+        const instances = selected.map((src, i) => {
+          const { top, left } = edgePositions[i];
+          const size = Math.random() * 100 + 150;
+          const rotate = Math.random() * 90 - 45;
+          return {
+            src,
+            style: {
+              position: 'absolute',
+              top,
+              left,
+              width: `${size}px`,
+              transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
+              pointerEvents: 'none',
+              opacity: 1,
+            },
+          };
+        });
+
+        setShapeInstances(instances);
+      }
+    }, [recommended]);
 
   const key = stepKeys[step];
 
@@ -161,6 +210,9 @@ const GetStartedForm: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
+            {shapeInstances.map((shape, i) => (
+              <img key={i} src={shape.src} style={shape.style} className={styles.shape} />
+            ))}
             <h2 className={styles.recommendedTitle}>
               Thanks! Here are a few ideas to get the conversation started:
             </h2>
