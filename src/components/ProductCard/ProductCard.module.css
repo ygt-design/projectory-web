@@ -47,6 +47,11 @@ button {
   .productCard:hover .bgVideoWrapper {
     transform: scale(1.105);
   }
+
+  .productCard:hover .learnMoreButton{
+    background-color: white;
+    color: black;
+  }
   
   /* static image */
   .bgImage {
