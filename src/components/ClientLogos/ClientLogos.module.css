@@ -64,3 +64,14 @@
     margin-right: 60px;
   }
 }
+
+@media (min-width: 2000px) {
+  .clientLogosWrapper h2 {
+    font-size: 80px;
+  }
+
+  .logo {
+    height: 70px;
+    margin-right: 120px;
+  }
+}

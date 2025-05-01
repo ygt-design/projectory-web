@@ -1,6 +1,7 @@
 import styles from './PricingInformation.module.css';
 import checkCircle from '../../../../assets/images/CheckCircle.svg';
 import "../../../../styles/global.css"
+import { Link } from 'react-router-dom';
 
 interface PricingCard {
   title: string;
@@ -24,7 +25,10 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
         Ultimately, starting a conversation is the best way to know how we can work together.
       </p>
 
-      <button className={styles.ctaButton}> Get Started </button>
+      <Link to="/get-started" className={styles.ctaButton}>
+        Get Started
+      </Link>
+
 
       {/* 🔹 Dynamic Pricing Cards */}
       <div className={styles.pricingGrid}>

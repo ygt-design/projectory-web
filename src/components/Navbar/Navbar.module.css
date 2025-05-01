@@ -227,3 +227,22 @@
         display: flex;
     }
 }
+
+@media (min-width: 2000px) {
+    .navbar {
+        padding: 20px 50px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .desktopNav a {
+        font-size: 1.2rem;
+    }
+
+    .ctaButton {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
+}

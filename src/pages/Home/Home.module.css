@@ -138,9 +138,9 @@ iframe {
     line-height: 1;
     transition: color 0.3s ease;
     text-shadow: 0.1px 0.1px 0 var(--background-dark-gray),
-                 -0.1px 0.1px 0 var(--background-dark-gray),
-                 -0.1px -0.1px 0 var(--background-dark-gray),
-                 0.1px -0.1px 0 var(--background-dark-gray);
+        -0.1px 0.1px 0 var(--background-dark-gray),
+        -0.1px -0.1px 0 var(--background-dark-gray),
+        0.1px -0.1px 0 var(--background-dark-gray);
 }
 
 .gradientText {
@@ -166,7 +166,7 @@ iframe {
     height: 80%;
     border-radius: 25px;
     overflow: hidden;
-    background-color: rgb(40,40,40);
+    background-color: rgb(40, 40, 40);
     outline: none;
 }
 
@@ -178,7 +178,8 @@ iframe {
     background-color: var(--background-dark-gray);
     width: calc(100vw - 100px);
     border-radius: 25px;
-    margin: auto;;
+    margin: auto;
+    ;
 }
 
 .secondarySizzle {
@@ -215,7 +216,7 @@ iframe {
     cursor: pointer;
     background-color: white;
     padding: 15px 20px;
-    border-radius: 100px;  
+    border-radius: 100px;
     font-size: 20px;
     transition: all 0.3s ease;
     color: black;
@@ -227,12 +228,14 @@ iframe {
 }
 
 @media (max-width: 1024px) {
-    .homeSection h1{
+    .homeSection h1 {
         font-size: 80px;
     }
+
     .homeSection {
         height: 100vh;
     }
+
     .icon {
         display: none;
     }
@@ -242,7 +245,7 @@ iframe {
     }
 
     .wrapper {
-        height: auto; 
+        height: auto;
     }
 
     .homeSection {
@@ -253,17 +256,17 @@ iframe {
         position: relative;
     }
 
-    .videoSlides{
+    .videoSlides {
         width: 100vw;
         height: 100vh;
     }
 
-    .videoSlide{
+    .videoSlide {
         border-radius: 0;
     }
 
     .videoSlides :nth-child(1),
-    .videoSlides :nth-child(3){
+    .videoSlides :nth-child(3) {
         display: none;
     }
 
@@ -274,7 +277,7 @@ iframe {
         height: 100vh;
     }
 
-    .homeSection h1{
+    .homeSection h1 {
         font-size: 40px;
     }
 
@@ -312,7 +315,7 @@ iframe {
         height: 90vh;
     }
 
-    .homeSection h1{
+    .homeSection h1 {
         font-size: 35px;
         font-weight: 100;
     }
@@ -342,7 +345,7 @@ iframe {
         grid-template-columns: 1fr !important;
     }
 
-    .secondarySizzleWrapper{
+    .secondarySizzleWrapper {
         width: calc(100vw - 40px);
     }
 
@@ -356,5 +359,70 @@ iframe {
 
     .secondarySizzle h4 {
         font-size: 20px;
+    }
+}
+
+/* Large-screen enhancements */
+@media (min-width: 2000px) {
+    .homeSection {
+        padding: 0 100px;
+        height: 100vh;
+    }
+
+    .content {
+        bottom: 120px;
+        padding: 0 50px;
+    }
+
+    .text {
+        font-size: 72px;
+        line-height: 1.1;
+    }
+
+    .mainSizzleWrapper,
+    .secondarySizzleWrapper {
+        padding: 0 100px;
+        width: 100%;
+        max-width: 2100px;
+        margin: 0 auto;
+    }
+
+    .secondarySizzleTitle {
+        width: 50%;
+    }
+
+    .secondarySizzle h2 {
+        font-size: 80px;
+    }
+
+    .secondarySizzle h4 {
+        font-size: 30px;
+    }
+
+    .mainSizzle {
+        height: 80%;
+    }
+
+    .mainSizzleWrapper {
+        height: 80vh;
+    }
+
+
+    .productsGrid {
+        gap: 40px;
+        width: 80%;
+    }
+
+    .videoSlide {
+        margin: 0 40px;
+    }
+
+    .iconShapes .icon {
+        width: 210px;
+    }
+
+
+    iframe {
+        height: 100%;
     }
 }

@@ -456,6 +456,34 @@ export const products = [
         content: {
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
         }
+      },
+      { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'You Do',
+              price: '8,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do',
+              price: '11,000',
+              description: 'For teams who want us in the room to ensure everything flows.',
+              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do & More',
+              price: '13,000',
+              description: 'For teams looking to make the experience unmistakably their own.',
+              features: ['Custom branding', 'Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              buttonText: 'Get started'
+            }
+          ]
+        }
       }
     ]
   },
@@ -626,7 +654,7 @@ export const products = [
         content: {
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
         }
-      }
+      },
     ]
   },
   {
@@ -706,6 +734,34 @@ export const products = [
         type: 'image', 
         content: {
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+        }
+      },
+      { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'You Do',
+              price: '6,500',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do',
+              price: '8,500',
+              description: 'For teams who want us in the room to ensure everything flows.',
+              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do & More',
+              price: '10,000',
+              description: 'For teams looking to make the experience unmistakably their own.',
+              features: ['Custom branding', 'Main stage installation trends discussion', 'Interactive post event report'],
+              buttonText: 'Get started'
+            }
+          ]
         }
       }
     ]
@@ -868,6 +924,34 @@ export const products = [
         type: 'image', 
         content: {
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+        }
+      },
+      { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'You Do',
+              price: '8,500',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Slides and facilitation guide','Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do',
+              price: '11,500',
+              description: 'For teams who want us in the room to ensure everything flows.',
+              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do & More',
+              price: '13,000',
+              description: 'For teams looking to make the experience unmistakably their own.',
+              features: ['Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              buttonText: 'Get started'
+            }
+          ]
         }
       }
     ]
@@ -1033,6 +1117,27 @@ export const products = [
         type: 'image', 
         content: {
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+        }
+      },
+      { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'We Do',
+              price: '19,000',
+              description: 'For teams who want us in the room to ensure everything flows.',
+              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
+              buttonText: 'Get started'
+            },
+            {
+              title: 'We Do & More',
+              price: '23,000',
+              description: 'For teams looking to make the experience unmistakably their own.',
+              features: ['Custom branding', 'Bespoke experience design ','Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              buttonText: 'Get started'
+            }
+          ]
         }
       }
     ]
