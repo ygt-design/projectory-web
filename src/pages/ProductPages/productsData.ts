@@ -241,7 +241,7 @@ export const products = [
     categoryColor: '#A72C4B',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg',
     shortDescription: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative',
 
     filters: {

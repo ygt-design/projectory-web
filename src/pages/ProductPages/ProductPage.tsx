@@ -103,9 +103,7 @@ const ProductPage = () => {
         }
       })}
 
-      {/* 🔹 Possibly add a final CTA or anything else */}
       <FinalCTA experienceText="Experiences" experienceLink="/experiences" />
-
 
       <div className={styles.floatingLikeButton}>
         <button
