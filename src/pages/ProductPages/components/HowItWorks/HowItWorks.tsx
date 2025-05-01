@@ -13,7 +13,10 @@ const HowItWorks = ({ title, description, imageUrl }: HowItWorksProps) => {
       {/* 🔹 Text Section */}
       <div className={styles.textContent}>
         <h2>{title}</h2>
-        <p>{description}</p>
+        <p
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
 
       {/* 🔹 Image Section */}

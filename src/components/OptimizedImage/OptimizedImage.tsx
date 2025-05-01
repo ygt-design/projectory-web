@@ -6,16 +6,16 @@ import { fill } from '@cloudinary/url-gen/actions/resize';
 import type { CloudinaryImage } from '@cloudinary/url-gen';
 
 interface Props {
-  publicId: string;   // e.g. 'projectory-web/images/logo.svg'
+  publicId: string;   
   alt?: string;
 }
 
 export const OptimizedImage: React.FC<Props> = ({ publicId, alt = '' }) => {
   // 1) grab the image  
   const img: CloudinaryImage = cld.image(publicId)
-    .resize(fill().width(800).height(600))   // base dimensions
-    .format('auto')                          // webp, avif, etc
-    .quality('auto');                        // auto quality
+    .resize(fill().width(800).height(600))   
+    .format('auto')                         
+    .quality('auto');                        
   
   return (
     <AdvancedImage

@@ -31,8 +31,14 @@ const ProductDetails = ({ details, product }: DetailsProps) => {
     <section className={styles.detailsWrapper}>
       {/* 🔹 Left Text Section */}
       <div className={styles.textContent}>
-        <h2>{details.heading}</h2>
-        <p>{details.description}</p>
+      <h2
+          className={styles.heading}
+          dangerouslySetInnerHTML={{ __html: details.heading }}
+        />
+        <p
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: details.description }}
+        />
       </div>
 
       {/* 🔹 Right Features/Overview Section (Only If Features Exist) */}
