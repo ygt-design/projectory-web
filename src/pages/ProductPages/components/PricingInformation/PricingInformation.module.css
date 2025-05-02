@@ -36,8 +36,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 60vh;
-    overflow-y: auto;
+    height: 465px;
+    overflow-y: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -132,7 +132,7 @@ hr {
     color: black;
 } */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 960px) {
     .pricingWrapper{
         padding: 50px 30px;
     }
