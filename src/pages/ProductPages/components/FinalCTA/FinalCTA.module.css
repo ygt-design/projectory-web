@@ -86,3 +86,29 @@ p {
         margin: auto;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .ctaWrapper {
+        padding: 100px 0;
+    }
+
+    .ctaBoxDark, .ctaBoxLight {
+        padding: 70px;
+    }
+
+    h3 {
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 30px;
+    }
+
+    .ctaButton {
+        padding: 20px 40px;
+        font-size: 24px;
+    }
+    .backLink {
+        font-size: 28px;
+    }
+}

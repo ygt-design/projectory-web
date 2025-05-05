@@ -103,7 +103,7 @@ const ProductPage = () => {
         }
       })}
 
-      <FinalCTA experienceText="Experiences" experienceLink="/experiences" />
+      <FinalCTA experienceText="Products" experienceLink="/products" />
 
       <div className={styles.floatingLikeButton}>
         <button

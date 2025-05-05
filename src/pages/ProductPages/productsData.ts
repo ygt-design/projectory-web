@@ -1,5 +1,3 @@
-import testProjectory from '../../assets/videos/testProjectory.mp4';
-
 export const products = [
   {
     id: 'floating-opinions',
@@ -8,8 +6,8 @@ export const products = [
     category: 'Floating',
     categoryHighlight: 'Opinions',
     categoryColor: '#BCCE2C',
-    heroVideo: testProjectory,
-    bgVideo: 'https://www.youtube.com/embed/e0yjbBHGAbI',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216721/455278554_1037606311699335_4372730795563401026_n_qsohdh.jpg',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
@@ -61,7 +59,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: 'Event organizers select discussion questions in advance, each with multiple response options. After each question is introduced, table groups quickly discuss and align on their preferred response. Then, each table uses a special device to signal a response by raising or lowering a balloon, creating a striking visualization across the room as dozens of balloons lift in unison.<br /> <br />The facilitator then prompts participants from different tables to share their perspectives. Moving between table discussions and full-room shareouts creates a lively, layered conversation and an opportunity to explore multiple perspectives on key topics.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216726/454997083_1037606878365945_1689770071917176007_n_o3hjvk.jpg'
         }
       },
       { 
@@ -162,13 +160,7 @@ export const products = [
             }
           ]
         }
-      },
-      { 
-        type: 'image', 
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216721/455278554_1037606311699335_4372730795563401026_n_qsohdh.jpg'
-        }
-      },
+      }
     ]
   },
   {
@@ -178,9 +170,10 @@ export const products = [
     category: 'Flag',
     categoryHighlight: 'Finder',
     categoryColor: '#2BDCB7',
-    heroVideo: '/videos/testVideo_2.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a', 
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217332/P1013739_jt2q8y.jpg', 
     shortDescription: 'A networking, discussion, and micro-tribe formation workshop',
 
     filters: {
@@ -221,11 +214,17 @@ export const products = [
         }
       },
       { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217328/JLAR1846_f6yo4q.jpg'
+        }
+      },
+      { 
         type: 'how-it-works',
         content: {
           title: 'How it Works',
           description: "The session is organized around a set of multiple-choice sorting questions to be posed to the participants – one question per round. Each question will have four possible responses – color-coded to the four flags that participants choose from to signal their response each round. After they have chosen their response flag colors, participants move about the room and form small groups with same / different colors to set up distinct response matches.<br /><br />In their small groups, participants share & elaborate responses or address additional themes with their new connections.",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217318/Lifemark_b_381_wgh4mg.jpg'
         }
       },
       { 
@@ -233,7 +232,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/Lifemark_306_ij4g80.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217279/IMG_7292_gup9nw.jpg',
           objectives: [
             'Foster connection and networking',
             'Facilitate peer learning and dialogue',
@@ -244,7 +243,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217333/WMG1252_x1si2o.jpg'
         }
       },
       { 
@@ -298,7 +297,8 @@ export const products = [
     category: 'Align',
     categoryHighlight: 'ByLine',
     categoryColor: '#A72C4B',
-    heroVideo: '/videos/testVideo_2.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
     thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg',
     shortDescription: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative',
@@ -340,12 +340,18 @@ export const products = [
           ]
         }
       },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+        }
+      },
       { 
         type: 'how-it-works',
         content: {
           title: 'How it Works',
           description: "The session is built around a physical wall of text that is missing critical pieces – literal blank spaces to be filled with blocks of text determined by the participants. As the facilitator guides the room through the fill-in-the-blank text – which becomes the basis of a “shared narrative” about the event journey, key takeaways, next steps, etc. – table groups are prompted to nominate contributions to complete the story.<br /><br />For each blank, the facilitator leads a shareout, offering an opportunity for participants to exchange perspectives and engage in friendly debate about implementation and action until the narrative and synthesis are complete.",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217311/Lifemark_333_bmurrl.jpg'
         }
       },
       { 
@@ -364,7 +370,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217315/Screenshot_2024-12-03_at_21.23.30_ihc1ki.png'
         }
       },
       { 
@@ -410,6 +416,12 @@ export const products = [
             }
           ]
         }
+      },
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217335/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-0974_pnheyl.jpg'
+        }
       }
     ]
   },
@@ -420,9 +432,10 @@ export const products = [
     category: 'Combo',
     categoryHighlight: 'Convo',
     categoryColor: '#2BDCB7',
-    heroVideo: '/videos/testVideo_2.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Combo_Convo_Website_IP_V3_ijjncg.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Combo_Convo_Website_IP_V3_ijjncg.mp4',
     tags: ['Networking', 'Inspire creativity'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458037/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_hznvkz.jpg',
     shortDescription: 'A wild idea-generating, networking, and conversation mash-up',
 
     filters: {
@@ -462,12 +475,18 @@ export const products = [
           ]
         }
       },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458034/IMG_7571_enuccj.jpg'
+        }
+      },
       { 
         type: 'how-it-works',
         content: {
           title: 'How it Works',
           description: "Combo Convo is designed around an adaptable set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up with additional elements of competitive game play and networking or integrated with an installation or event app for capture and display of responses. ",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458035/43b67eba-3fab-4ac6-9987-776820974e30_wiq89j.jpg'
         }
       },
       { 
@@ -475,7 +494,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/Lifemark_306_ij4g80.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458036/3e83a8ca-3edb-4deb-8a3b-8c0a822ceb68_ppsgnp.jpg',
           objectives: [
             'Foster connection and networking',
             'Inspire forward thinking and creativity',
@@ -485,7 +504,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458037/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_hznvkz.jpg'
         }
       },
       { 
@@ -522,7 +541,8 @@ export const products = [
     category: 'Futures',
     categoryHighlight: 'Web',
     categoryColor: '#178771',
-    heroVideo: '/videos/testVideo_2.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
     thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
     shortDescription: 'An installation that weaves a striking visualization of collective insights',
@@ -560,12 +580,18 @@ export const products = [
           ]
         }
       },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217283/IMG_8935_l1evgf.jpg'
+        }
+      },
       { 
         type: 'how-it-works',
         content: {
           title: 'How it Works',
           description: "The installation is designed around a series of multiple choice questions aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. Each question is represented with a post featuring pegs that correspond to potential answer choices. Participants work from post to post threading a color-coded strand of yarn around the pegs that reflect their responses. <br /> <br />With every new interaction, the woven picture grows richer and more illuminating. Patterns and insights from the resulting web can be brought back to plenary sessions or digitized and reported out post event.",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217275/FM8A5399_rqfbgb.jpg'
         }
       },
       { 
@@ -573,7 +599,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/Lifemark_306_ij4g80.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746215921/FM8A4586-Enhanced-NR_obznu4.jpg',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -591,7 +617,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216737/DZ9_9385_c9356z.jpg'
         }
       },
       { 

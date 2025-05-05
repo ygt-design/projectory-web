@@ -50,15 +50,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <div className={styles.bgLayer}>
         {product.bgVideo && (
           <div className={styles.bgVideoWrapper}>
-            <iframe
+            <video
               className={styles.bgVideo}
-              src={`${product.bgVideo}?autoplay=1&mute=1&controls=0&loop=1&playlist=${extractYouTubeID(
-                product.bgVideo
-              )}&modestbranding=1&showinfo=0&disablekb=1&iv_load_policy=3`}
-              frameBorder="0"
-              allow="autoplay; encrypted-media; fullscreen"
-              allowFullScreen
-              title="Background Video"
+              src={product.bgVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
             />
           </div>
         )}
@@ -109,12 +107,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       </div>
     </div>
   );
-};
-
-// extract YouTube ID from embed URL
-const extractYouTubeID = (url: string): string => {
-  const parts = url.split('/embed/');
-  return parts[1]?.split('?')[0] ?? '';
 };
 
 export default ProductCard;

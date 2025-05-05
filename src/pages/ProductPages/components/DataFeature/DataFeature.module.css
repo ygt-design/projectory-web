@@ -56,3 +56,26 @@
         max-width: 100%;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .dataFeatureWrapper {
+    }
+
+    .gradientText {
+        font-size: 50px;
+    }
+
+    .textContent p {
+        font-size: 25px;
+    }
+    .imageContainer img {
+        width: 100%;
+    }
+    .textContent {
+        width: 90%;
+        margin: auto;
+    }
+    .textContent h2 {
+        font-size: 50px;
+    }
+}
