@@ -53,10 +53,17 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           style={{ backgroundImage: `url(${product.thumbnail})` }}
         />
         {product.bgVideo && (
-          <div className={styles.bgVideoWrapper}>
+          <div
+            className={styles.bgVideoWrapper}
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out',
+            }}
+          >
             <video
               className={styles.bgVideo}
               src={product.bgVideo}
+              poster={product.thumbnail}
               autoPlay
               muted
               loop
