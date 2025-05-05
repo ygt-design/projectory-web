@@ -3,9 +3,8 @@ import { Cloudinary } from '@cloudinary/url-gen';
 
 export const cld = new Cloudinary({
   cloud: {
-    cloudName: 'dduchyyhf',
+    cloudName: process.env.CLOUDINARY_CLOUD_NAME || 'defaultCloudName',
   },
   url: {
-    secure: true,
   },
 });

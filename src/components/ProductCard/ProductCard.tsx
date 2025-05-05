@@ -48,6 +48,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     >
       {/* background layer container */}
       <div className={styles.bgLayer}>
+        <div
+          className={styles.bgImage}
+          style={{ backgroundImage: `url(${product.thumbnail})` }}
+        />
         {product.bgVideo && (
           <div className={styles.bgVideoWrapper}>
             <video
@@ -56,14 +60,11 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
               autoPlay
               muted
               loop
+              preload="metadata"
               playsInline
             />
           </div>
         )}
-        <div
-          className={styles.bgImage}
-          style={{ backgroundImage: `url(${product.thumbnail})` }}
-        />
       </div>
 
       {/* content */}
