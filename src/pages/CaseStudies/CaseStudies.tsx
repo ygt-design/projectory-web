@@ -89,9 +89,9 @@ const caseStudiesFAQ = [
 const caseStudies = [
   {
     id: 1,
-    title: 'Building Commitment in a Two-Day Leadership Event',
-    subtitle: 'CIBC Executive Alignment',
-    link: '/case-study/cibc-leadership',
+    title: 'Facilitating strategic conversations for the most senior leaders of the bank',
+    subtitle: 'CIBC Global Leadership Summit',
+    link: '/case-study/cibc-global-leadership-summit',
     imageSrc: imageOne,
   },
   {
