@@ -150,3 +150,34 @@
         border-radius: 15px;
     }
 }
+
+@media (min-width: 2000px) {
+    .caseStudyWrapper {
+        padding: 50px 200px;
+    }
+
+    .textContent h2 {
+        font-size: 60px;
+    }
+
+    .textContent p {
+        font-size: 30px;
+    }
+
+    .ctaButton {
+        padding: 20px 40px;
+        font-size: 24px;
+    }
+
+    .caseStudyImageWrapper {
+        border-radius: 30px;
+    }
+
+    .overlayText h3 {
+        font-size: 50px;
+    }
+
+    .overlayText p {
+        font-size: 25px;
+    }
+}

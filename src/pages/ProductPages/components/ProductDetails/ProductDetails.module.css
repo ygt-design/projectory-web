@@ -7,7 +7,6 @@
     width: 85%;
     margin: auto;
     margin-top: 120px;
-    margin-bottom: 120px;
 }
 
 .textContent h2 {
@@ -64,4 +63,23 @@
         font-size: 16px;
     }
     
+}
+
+
+@media (min-width: 2000px) {
+    .textContent h2 {
+        font-size: 40px;
+    }
+
+    .textContent p {
+        font-size: 30px;
+    }
+
+    .features h3 {
+        font-size: 30px;
+    }
+
+    .features li {
+        font-size: 24px;
+    }
 }

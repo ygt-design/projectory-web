@@ -9,7 +9,7 @@ const GridCTA = () => {
       <p>
         We’ll work with you to create a custom product that aligns with your event’s needs. Get in touch to learn more.
       </p>
-      <a href="/contact" className={styles.ctaButton}>
+      <a href="/get-started#contactWrapper" className={styles.ctaButton}>
         Contact Us
       </a>
     </div>

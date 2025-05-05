@@ -30,7 +30,6 @@
     z-index: -1;
 }
 
-/* 🔹 Hero Content */
 .productHeroContent {
     position: relative;
     width: 100%;
@@ -134,4 +133,34 @@
         margin-bottom: 20px;
     }
     
+}
+
+@media (min-width: 2000px) {
+    .heroWrapper {
+        padding: 100px;
+        height: 100vh;
+    }
+
+    .productHeroContent h1 {
+        font-size: 80px;
+        margin-bottom: 40px;
+    }
+
+    .tag {
+        font-size: 20px;
+        padding: 12px 24px;
+    }
+
+    .category {
+        font-size: 40px;
+    }
+
+    .productHeroContentLeft{
+        max-width: 1250px;
+    }
+
+    .category{
+        margin-bottom: 20px;
+    }
+
 }

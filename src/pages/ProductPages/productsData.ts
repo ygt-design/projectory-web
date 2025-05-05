@@ -11,7 +11,7 @@ export const products = [
     heroVideo: testProjectory,
     bgVideo: 'https://www.youtube.com/embed/e0yjbBHGAbI',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216721/455278554_1037606311699335_4372730795563401026_n_qsohdh.jpg',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
 
     filters: {
@@ -48,6 +48,12 @@ export const products = [
             { text: 'Creates a uniquely spectacular visual moment at the event'},
             { text: 'Promotes conversation across silos and established groups' }
           ]
+        }
+      },
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217289/863CA96F-166A-4FB1-9382-E88B69CB11A0_mz86cq.jpg'
         }
       },
       { 
@@ -88,12 +94,6 @@ export const products = [
       //     imageUrl: '/public/images/Projectory_Website_PostEvent.png'
       //   }, 
       // },
-      { 
-        type: 'image', 
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/Screenshot_2024-12-03_at_21.23.30_q6yaqv.png'
-        }
-      },
       // {
       //   type: 'testimonialSizzle',
       //   content: {
@@ -114,6 +114,12 @@ export const products = [
       //     caseStudyImage: 'https://s3-alpha-sig.figma.com/img/f1bf/650c/01c0bb4294b3954a8be0e9b277d0a9e7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PuvmpHqMAlD6as~20PKlnGLsdi3Z~31onepRTbU4hWjSothUyRXCRO3qYRmJYE59C45OwsqApwK1FFOAOz4YPY5-lZXdzAHPKjRxHwrt2~0CCzXi0cebpjmQF5y3bScplCA2TeXG7N2wngWuriioq6FA-guzWctadsi4o23JkccexBE8SztdDTquCUPnFVNS6FNzPoqx2eS~B2jsptgPqT027KXHEcKrsXrnjgSXHP-~RBJfU-Y-02YyWBVXqc5xGThAcE2CDp92fBwKeH1SuNwJAXtT0N69HmXBw2w7sRlD~g-N1gEmFKCok~abWc8hasuINLYpMttjO0T7dzjDmw__'
       //   }
       // }
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216723/455094406_1037605398366093_156739667913828633_n_fnxkot.jpg'
+        }
+      },
       { 
         type: 'pricing',
         content: {
@@ -156,7 +162,13 @@ export const products = [
             }
           ]
         }
-      }
+      },
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216721/455278554_1037606311699335_4372730795563401026_n_qsohdh.jpg'
+        }
+      },
     ]
   },
   {

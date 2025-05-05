@@ -60,3 +60,19 @@
         font-size: 20px;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .howItWorksWrapper {
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+
+    .textContent h2 {
+        font-size: 60px;
+    }
+
+    .textContent p {
+        font-size: 30px;
+    }
+    
+}

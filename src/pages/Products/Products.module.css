@@ -271,3 +271,28 @@
     }
 
 }
+
+@media screen and (min-width: 2000px) {
+    .productPage h1 {
+        font-size: 100px !important;
+    }
+
+    .landingContent p{
+        font-size: 35px;
+    }
+
+    .tagBarHeading {
+        font-size: 40px;
+    }
+
+    .tagButton {
+        font-size: 25px;
+    }
+    .tagBarSubheading {
+        font-size: 30px;
+    }
+    .activeTag {
+        font-size: 25px;
+    }
+
+}

@@ -51,3 +51,20 @@
     }
     
 }
+
+@media screen and (min-width: 2000px) {
+    .gridCTA {
+        padding: 70px;
+    }
+
+    .gridCTA h2 {
+        font-size: 50px;
+    }
+    .ctaButton {
+        padding: 15px 30px;
+        font-size: 20px;
+    }
+    .gridCTA p {
+        font-size: 30px;
+    }
+}

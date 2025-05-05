@@ -1,6 +1,7 @@
 .pricingWrapper {
     text-align: center;
-    padding: 80px 50px;
+    padding: 150px 50px;
+    padding-top: 0;
 }
 
 .pricingWrapper h2 {
@@ -110,6 +111,7 @@ hr {
     color: white;
     text-decoration: none;
     text-align: center;
+    margin: 50px 0px;
 }
 
 .ctaButton:hover {
@@ -150,5 +152,38 @@ hr {
 
     .pricingCard{
         height: auto;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+
+
+    .pricingWrapper h2 {
+        font-size: 60px;
+    }
+
+    .pricingWrapper p {
+        font-size: 30px;
+    }
+
+    .pricingCard {
+        max-width: 400px;
+        height: 580px;
+    }
+
+    .pricingCard h3 {
+        font-size: 30px;
+    }
+
+    .pricingCard ul li {
+        font-size: 20px;
+    }
+
+    .price {
+        font-size: 60px;
+    }
+
+    .description {
+        font-size: 25px;
     }
 }

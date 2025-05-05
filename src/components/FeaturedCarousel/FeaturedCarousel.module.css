@@ -111,7 +111,7 @@
 
 
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .carouselWrapper {
         grid-template-columns: 1fr;
         align-items: center;
@@ -169,3 +169,32 @@
     }
 }
 
+@media screen and (min-width: 2000px) {
+    .carouselWrapper {
+        height: 90vh;
+        max-height: 100vh;
+    }
+
+    .productImage {
+        width: 80%;
+        margin: 0 50px;
+        border-radius: 24px;
+    }
+
+    .title {
+        font-size: 70px;
+    }
+
+    .categoryLine {
+        font-size: 30px;
+    }
+
+    .featuredText {
+        font-size: 20px;
+    }
+
+    .timerBarWrapper{
+        bottom: 170px;
+        left: 45vw;
+    }
+}

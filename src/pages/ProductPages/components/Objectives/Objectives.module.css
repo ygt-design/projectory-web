@@ -72,3 +72,19 @@
         font-size: 20px;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .objectivesWrapper {
+        margin-top: 200px;
+        margin-bottom: 200px;
+    }
+
+    .textContent h2 {
+        font-size: 60px;
+        height: 70px;
+    }
+
+    .textContent li {
+        font-size: 30px;
+    }
+}
