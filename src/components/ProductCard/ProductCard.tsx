@@ -11,9 +11,9 @@ interface Product {
   category: string;
   categoryHighlight?: string | null;
   categoryColor?: string;
-  thumbnail?: string;
+  thumbnail: string;
   shortDescription?: string;
-  bgVideo?: string; 
+  bgVideo?: string;
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
@@ -25,7 +25,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [descHeight, setDescHeight] = useState(0);
   const descRef = useRef<HTMLParagraphElement>(null);
 
-  // Measure description height for the expand/collapse
+  // Measure description height once
   useEffect(() => {
     if (descRef.current) {
       setDescHeight(descRef.current.scrollHeight);
@@ -48,26 +48,25 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     >
       {/* background layer container */}
       <div className={styles.bgLayer}>
-        <div
+        {/* 1) Lazy-load thumbnail */}
+        <img
           className={styles.bgImage}
-          style={{ backgroundImage: `url(${product.thumbnail})` }}
+          src={product.thumbnail}
+          alt={product.name}
+          loading="lazy"
         />
-        {product.bgVideo && (
-          <div
-            className={styles.bgVideoWrapper}
-            style={{
-              opacity: isHovered ? 1 : 0,
-              transition: 'opacity 0.3s ease-in-out',
-            }}
-          >
+
+        {/* 2) Inject video only on hover */}
+        {isHovered && product.bgVideo && (
+          <div className={styles.bgVideoWrapper}>
             <video
               className={styles.bgVideo}
               src={product.bgVideo}
               poster={product.thumbnail}
+              preload="none"
               autoPlay
               muted
               loop
-              preload="metadata"
               playsInline
             />
           </div>
@@ -82,14 +81,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             style={{ color: product.categoryColor || '#fff' }}
           >
             {product.category}
-            {product.categoryHighlight && <strong>{product.categoryHighlight}</strong>}
+            {product.categoryHighlight && (
+              <strong>{product.categoryHighlight}</strong>
+            )}
           </h3>
 
           <div
             className={styles.descWrapper}
-            style={{
-              height: isHovered ? descHeight : 0,
-            }}
+            style={{ height: isHovered ? descHeight : 0 }}
           >
             <p ref={descRef} className={styles.description}>
               {product.shortDescription}
@@ -105,12 +104,12 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           </Link>
 
           <button className={styles.likeButton} onClick={handleLikeClick}>
-          <img
-            className={styles.heartIcon}
-            src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
-            alt="Like"
-          />
-        </button>
+            <img
+              className={styles.heartIcon}
+              src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
+              alt="Like"
+            />
+          </button>
         </div>
       </div>
     </div>
