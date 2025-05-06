@@ -1,3 +1,6 @@
+import { AdvancedImage, lazyload, responsive, placeholder } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { cldImageFromUrl } from '../../utils/cloudinaryHelpers';
 import { useParams } from 'react-router-dom';
 import { products } from './productsData';
 
@@ -46,15 +49,27 @@ const ProductPage = () => {
                 details={section.content}
               />
             );
-          case 'image':
-            return (
-              <img
+          case 'image': {
+            const url = section.content.imageUrl;
+            const cloudImg = cldImageFromUrl(url);
+            return cloudImg ? (
+              <AdvancedImage
                 key={index}
-                src={section.content.imageUrl}
+                cldImg={cloudImg.resize(fill().width(800).height(600)).format('auto').quality('auto')}
+                plugins={[lazyload(), responsive(), placeholder({ mode: 'blur' })]}
                 alt=""
                 className={styles.fullPageImage}
               />
+            ) : (
+              <img
+                key={index}
+                src={url}
+                alt=""
+                className={styles.fullPageImage}
+                loading="lazy"
+              />
             );
+          }
           case 'grid':
             return <QuickFacts key={index} items={section.content.items} />;
           case 'objectives':
