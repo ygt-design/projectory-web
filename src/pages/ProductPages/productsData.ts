@@ -109,7 +109,7 @@ export const products = [
       //     buttonLink: '/case-study/floating-opinions',
       //     caseStudyTitle: 'Building Commitment in a Two-Day Leadership Event',
       //     caseStudySubtitle: 'CIBC Executive Alignment',
-      //     caseStudyImage: 'https://s3-alpha-sig.figma.com/img/f1bf/650c/01c0bb4294b3954a8be0e9b277d0a9e7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=PuvmpHqMAlD6as~20PKlnGLsdi3Z~31onepRTbU4hWjSothUyRXCRO3qYRmJYE59C45OwsqApwK1FFOAOz4YPY5-lZXdzAHPKjRxHwrt2~0CCzXi0cebpjmQF5y3bScplCA2TeXG7N2wngWuriioq6FA-guzWctadsi4o23JkccexBE8SztdDTquCUPnFVNS6FNzPoqx2eS~B2jsptgPqT027KXHEcKrsXrnjgSXHP-~RBJfU-Y-02YyWBVXqc5xGThAcE2CDp92fBwKeH1SuNwJAXtT0N69HmXBw2w7sRlD~g-N1gEmFKCok~abWc8hasuINLYpMttjO0T7dzjDmw__'
+      //     caseStudyImage: ''
       //   }
       // }
       { 
@@ -1541,7 +1541,7 @@ export const products = [
     categoryColor: '#BCCE2C',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    thumbnail: '',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     filters: {
@@ -1570,7 +1570,7 @@ export const products = [
     categoryColor: '#178771',
     heroVideo: '/videos/testVideo_2.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://www.figma.com/file/KDJNESzhWloPkxjuw9luf0/image/6dc172f23907292f34d16b8c86cc34921d38376a',
+    thumbnail: '',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     filters: {

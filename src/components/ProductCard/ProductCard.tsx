@@ -1,9 +1,15 @@
+// src/components/ProductCard/ProductCard.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
+
+import { AdvancedImage, lazyload, responsive, placeholder } from '@cloudinary/react';
+import { fill } from '@cloudinary/url-gen/actions/resize';
+import { cldImageFromUrl } from '../../utils/cloudinaryHelpers';
+import { AdvancedVideo, lazyload as videoLazyload } from '@cloudinary/react';
 
 interface Product {
   id: string;
@@ -12,8 +18,8 @@ interface Product {
   categoryHighlight?: string | null;
   categoryColor?: string;
   thumbnail: string;
-  shortDescription?: string;
   bgVideo?: string;
+  shortDescription?: string;
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
@@ -25,71 +31,87 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [descHeight, setDescHeight] = useState(0);
   const descRef = useRef<HTMLParagraphElement>(null);
 
-  // Measure description height once
   useEffect(() => {
-    if (descRef.current) {
-      setDescHeight(descRef.current.scrollHeight);
-    }
+    if (descRef.current) setDescHeight(descRef.current.scrollHeight);
   }, [product.shortDescription]);
 
-  const handleCardClick = () => navigate(`/products/${product.id}`);
-  const handleLikeClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    toggleLike(product.id);
-  };
+  // Determine if thumbnail is a Cloudinary URL and build transformed image
+  const isCloudUrl = !!product.thumbnail && product.thumbnail.includes('/upload/');
+  let cloudImg;
+  if (isCloudUrl) {
+    try {
+      cloudImg = cldImageFromUrl(product.thumbnail)
+        .resize(fill().width(1000).height(900))
+        .format('auto')
+        .quality('auto');
+    } catch (e) {
+      console.warn('Invalid Cloudinary URL, falling back to <img>', product.thumbnail);
+    }
+  }
+
+  // Set up Cloudinary video only if a publicId exists
+  const videoComponent =
+    isHovered &&
+    (product.bgVideoPublicId ? (
+      <AdvancedVideo
+        cldVid={cld.video(product.bgVideoPublicId).videoCodec('auto').format('auto').quality('auto')}
+        plugins={[videoLazyload({ rootMargin: '200px' })]}
+        controls={false}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={styles.bgVideo}
+      />
+    ) : product.bgVideo ? (
+      <video
+        className={styles.bgVideo}
+        src={product.bgVideo}
+        poster={product.thumbnail}
+        preload="none"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+    ) : null);
 
   return (
     <div
       className={styles.productCard}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleCardClick}
+      onClick={() => navigate(`/products/${product.id}`)}
       style={{ zIndex: isHovered ? 2 : 1 }}
     >
-      {/* background layer container */}
       <div className={styles.bgLayer}>
-        {/* 1) Lazy-load thumbnail */}
-        <img
-          className={styles.bgImage}
-          src={product.thumbnail}
-          alt={product.name}
-          loading="lazy"
-        />
-
-        {/* 2) Inject video only on hover */}
-        {isHovered && product.bgVideo && (
-          <div className={styles.bgVideoWrapper}>
-            <video
-              className={styles.bgVideo}
-              src={product.bgVideo}
-              poster={product.thumbnail}
-              preload="none"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          </div>
+        {cloudImg ? (
+          <AdvancedImage
+            cldImg={cloudImg}
+            plugins={[lazyload(), responsive(), placeholder({ mode: 'blur'})]}
+            className={styles.bgImage}
+            alt={product.name}
+          />
+        ) : (
+          <img
+            className={styles.bgImage}
+            src={product.thumbnail}
+            alt={product.name}
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         )}
+        {videoComponent && <div className={styles.bgVideoWrapper}>{videoComponent}</div>}
       </div>
 
-      {/* content */}
       <div className={styles.cardContent}>
         <div className={styles.productName}>
-          <h3
-            className={styles.title}
-            style={{ color: product.categoryColor || '#fff' }}
-          >
+          <h3 className={styles.title} style={{ color: product.categoryColor || '#fff' }}>
             {product.category}
-            {product.categoryHighlight && (
-              <strong>{product.categoryHighlight}</strong>
-            )}
+            {product.categoryHighlight && <strong>{product.categoryHighlight}</strong>}
           </h3>
 
-          <div
-            className={styles.descWrapper}
-            style={{ height: isHovered ? descHeight : 0 }}
-          >
+          <div className={styles.descWrapper} style={{ height: isHovered ? descHeight : 0 }}>
             <p ref={descRef} className={styles.description}>
               {product.shortDescription}
             </p>
@@ -103,7 +125,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             Learn More
           </Link>
 
-          <button className={styles.likeButton} onClick={handleLikeClick}>
+          <button className={styles.likeButton} onClick={e => { e.stopPropagation(); toggleLike(product.id); }}>
             <img
               className={styles.heartIcon}
               src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
