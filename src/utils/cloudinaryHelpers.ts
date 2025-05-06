@@ -1,5 +1,3 @@
-// src/utils/cloudinaryHelpers.ts
-
 import { cld } from './cloudinary';
 import type { CloudinaryImage } from '@cloudinary/url-gen';
 
@@ -27,11 +25,13 @@ export function cldImageFromUrl(url: string): CloudinaryImage | undefined {
   if (!url) return undefined;
   // Remove query parameters
   const cleanUrl = url.split('?')[0];
-  // Match the part after '/upload/' optionally skipping version 'v1234/'
+  // Extract the part after '/upload/', skipping version folder if present
   const match = cleanUrl.match(/\/upload\/(?:v\d+\/)?(.+)$/);
   if (!match || !match[1]) {
     return undefined;
   }
-  const publicId = match[1];
+  // Remove file extension to get the public ID (e.g. ".jpg", ".png")
+  const publicIdWithExt = match[1];
+  const publicId = publicIdWithExt.replace(/\.[^/.]+$/, '');
   return cld.image(publicId);
 }
