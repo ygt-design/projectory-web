@@ -9,7 +9,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216721/455278554_1037606311699335_4372730795563401026_n_qsohdh.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648933/455278554_1037606311699335_4372730795563401026_n_soow52.webp',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
 
     filters: {
@@ -51,7 +51,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217289/863CA96F-166A-4FB1-9382-E88B69CB11A0_mz86cq.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648958/FM8A5082-Enhanced-NR_obbr37.webp'
         }
       },
       { 
@@ -59,7 +59,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: 'Event organizers select discussion questions in advance, each with multiple response options. After each question is introduced, table groups quickly discuss and align on their preferred response. Then, each table uses a special device to signal a response by raising or lowering a balloon, creating a striking visualization across the room as dozens of balloons lift in unison.<br /> <br />The facilitator then prompts participants from different tables to share their perspectives. Moving between table discussions and full-room shareouts creates a lively, layered conversation and an opportunity to explore multiple perspectives on key topics.',
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216726/454997083_1037606878365945_1689770071917176007_n_o3hjvk.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648940/455094406_1037605398366093_156739667913828633_n_zywn0z.webp'
         }
       },
       { 
@@ -67,7 +67,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/Lifemark_306_ij4g80.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648937/FM8A5132-Enhanced-NR_j82lnq.webp',
           objectives: [
             'Facilitate peer learning and dialogue',
             'Build alignment and consensus',
@@ -115,7 +115,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216723/455094406_1037605398366093_156739667913828633_n_fnxkot.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648961/455326506_1037605838366049_220134298242251458_n_bnwkuo.webp'
         }
       },
       { 
@@ -173,7 +173,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4',
     tags: ['Networking', 'Peer learning', 'Visualize insights'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217332/P1013739_jt2q8y.jpg', 
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649300/P1013739_ebvd2m.webp', 
     shortDescription: 'A networking, discussion, and micro-tribe formation workshop',
 
     filters: {
@@ -216,7 +216,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217328/JLAR1846_f6yo4q.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649307/JLAR1846_mffgxr.webp'
         }
       },
       { 
@@ -224,7 +224,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The session is organized around a set of multiple-choice sorting questions to be posed to the participants – one question per round. Each question will have four possible responses – color-coded to the four flags that participants choose from to signal their response each round. After they have chosen their response flag colors, participants move about the room and form small groups with same / different colors to set up distinct response matches.<br /><br />In their small groups, participants share & elaborate responses or address additional themes with their new connections.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217318/Lifemark_b_381_wgh4mg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649297/P1013798-Enhanced-NR-Edit_i2wgkd.webp'
         }
       },
       { 
@@ -232,7 +232,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217279/IMG_7292_gup9nw.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649327/Lifemark_b_323_dejffh.webp',
           objectives: [
             'Foster connection and networking',
             'Facilitate peer learning and dialogue',
@@ -243,7 +243,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217333/WMG1252_x1si2o.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649350/WMG1252_comue2.webp'
         }
       },
       { 
@@ -435,7 +435,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Combo_Convo_Website_IP_V3_ijjncg.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Combo_Convo_Website_IP_V3_ijjncg.mp4',
     tags: ['Networking', 'Inspire creativity'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458037/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_hznvkz.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649932/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_ybgiyf.webp',
     shortDescription: 'A wild idea-generating, networking, and conversation mash-up',
 
     filters: {
@@ -478,7 +478,7 @@ export const products = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458034/IMG_7571_enuccj.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649923/IMG_7571_whdfmw.webp'
         }
       },
       { 
@@ -486,7 +486,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "Combo Convo is designed around an adaptable set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up with additional elements of competitive game play and networking or integrated with an installation or event app for capture and display of responses. ",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458035/43b67eba-3fab-4ac6-9987-776820974e30_wiq89j.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649929/15fd6b1c-07e8-4d24-aa0e-7fc510b095fe_llxx6k.webp'
         }
       },
       { 
@@ -494,7 +494,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458036/3e83a8ca-3edb-4deb-8a3b-8c0a822ceb68_ppsgnp.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649926/43b67eba-3fab-4ac6-9987-776820974e30_epwcdk.webp',
           objectives: [
             'Foster connection and networking',
             'Inspire forward thinking and creativity',
@@ -504,7 +504,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746458037/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_hznvkz.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649932/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_ybgiyf.webp'
         }
       },
       { 
@@ -544,7 +544,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217275/FM8A5399_rqfbgb.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648522/DZ9_9385_kgsqlo.webp',
     shortDescription: 'An installation that weaves a striking visualization of collective insights',
 
     filters: {
@@ -583,7 +583,7 @@ export const products = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217283/IMG_8935_l1evgf.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648537/cma_conference4942_copy_efeqlj.webp'
         }
       },
       { 
@@ -591,7 +591,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The installation is designed around a series of multiple choice questions aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. Each question is represented with a post featuring pegs that correspond to potential answer choices. Participants work from post to post threading a color-coded strand of yarn around the pegs that reflect their responses. <br /> <br />With every new interaction, the woven picture grows richer and more illuminating. Patterns and insights from the resulting web can be brought back to plenary sessions or digitized and reported out post event.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217275/FM8A5399_rqfbgb.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648527/FM8A4586-Enhanced-NR_qu1xf4.webp'
         }
       },
       { 
@@ -599,7 +599,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746215921/FM8A4586-Enhanced-NR_obznu4.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648534/IMG_8935_yund1a.webp',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -617,7 +617,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216737/DZ9_9385_c9356z.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648532/FM8A5399_o2ecms.webp'
         }
       },
       { 
@@ -657,7 +657,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/If_This_Then_What_Website_IP_V3_Final_Colour_Pass_u1vuvb.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/If_This_Then_What_Website_IP_V3_Final_Colour_Pass_u1vuvb.mp4',
     tags: ['Inspire creativity', 'Explore priorities', 'Peer learning'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217306/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_alejru.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648102/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_yujk0f.webp',
     shortDescription: 'An envisioning workshop exploring the implications of trends and strategic decisions',
 
     filters: {
@@ -699,7 +699,7 @@ export const products = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217306/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_alejru.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648102/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_yujk0f.webp'
         }
       },
       { 
@@ -707,7 +707,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The workshop begins with a simple canvas and a set of trends or developments of interest. These can be selected in advance or identified by participants as an initial step in the workshop. In conversation at their tables, participants explore the cascading implications of their chosen topic, mapping out ripple effects with a specific focus on identifying new opportunities and emerging risks. Then, the groups work backward – asking what specific actions could be taken today in light of the opportunities and risks they’ve surfaced. The session ends with a facilitated shareout.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217299/IMG_7345_bsxiwd.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648109/IMG_7345_fq5k9i.webp'
         }
       },
       { 
@@ -715,7 +715,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746460738/JGF_7547r_npfdow.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648107/FM8A5496_vpcrh2.webp',
           objectives: [
             'Inspire forward thinking and creativity',
             'Explore strategic priorities and decisions',
@@ -734,7 +734,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216725/FM8A5496_uyz4jc.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648104/JGF_7547r_rvg8wj.webp'
         }
       },
       { 
@@ -788,7 +788,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/Learning_Action_Matrix_Website_IP_V3_Final_Colour_Pass_nz91af.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/Learning_Action_Matrix_Website_IP_V3_Final_Colour_Pass_nz91af.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize', 'Peer learning'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746466325/JGF_7470r_flmxak.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647935/JGF_7470r_sjesc0.webp',
     shortDescription: 'A quick synthesis workshop for tackling high-value topics and connecting ideas to action',
 
     filters: {
@@ -829,7 +829,7 @@ export const products = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216722/1732132446269_ru71wn.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647935/JGF_7470r_sjesc0.webp'
         }
       },
       { 
@@ -837,7 +837,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The workshop leverages a simple framework built to consolidate learning through conversation and connect it to post-event action. After a quick intro to the LAM canvas, most of the session is devoted to small group work, followed by a round of facilitated share-outs. In their groups, participants work through four interrelated categories -- identifying key insights and questions and actions to be taken to implement new learnings or deepen understanding. The workshop results in a detailed set of learning-action plans and a rich set of outputs to drive the post-event agenda.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217313/Learning_Action_-_Lifemark_fr0o88.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647937/JGF_7489r_qx9xkl.webp'
         }
       },
       { 
@@ -845,7 +845,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746466325/JGF_7470r_flmxak.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647926/JGF_7446r_shsxiw.webp',
           objectives: [
             'Connect ideas to action',
             'Promote reflection and synthesis',
@@ -864,7 +864,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746466280/JGF_7446r_iohwtj.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647929/1732132446269_jevdgh.webp'
         }
       },
       { 
@@ -917,7 +917,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457020/Ping_Pong_Poll_Website_IP_V4_Final_Colour_Pass_firees.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457020/Ping_Pong_Poll_Website_IP_V4_Final_Colour_Pass_firees.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216734/DZ9_7612_xtsqlh.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647278/DZ9_7612_uqsjdg.webp',
     shortDescription: 'A dynamic voting activity that creates a snapshot of group priorities or opinions',
 
     filters: {
@@ -956,7 +956,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217291/32BB04E7-F947-4790-8384-6A81602305E0_fbp7fo.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647278/DZ9_7612_uqsjdg.webp'
         }
       },
       { 
@@ -964,7 +964,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The installation is designed around up to four related questions – anything that attendees can answer by voting among, ranking, or prioritizing response choices.  For each question, response choices are represented with tubes into which participants drop color-coded ping pong ball votes. As votes are cast, tubes corresponding to favored responses fill up, creating a visualization that can easily be digested at a glance. <br /><br />The simple design allows for a surprising number of configurations and yields quick data to be fed back into plenary sessions or synthesized for a post-event report.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217278/430022990_823463609811061_2831339669744667382_n_1_sesvi2.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647280/DZ9_7605_cuwbrc.webp'
         }
       },
       { 
@@ -972,7 +972,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217331/FM8A5407_ivxbhz.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647282/430022990_823463609811061_2831339669744667382_n_1_bfigk6.webp',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -990,7 +990,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216733/DZ9_7605_l3k7wu.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647280/DZ9_7605_cuwbrc.webp'
         }
       },
       { 
@@ -1030,7 +1030,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457025/Priority_Pathways_Website_IP_V3_Final_Colour_Pass_zo2izi.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457025/Priority_Pathways_Website_IP_V3_Final_Colour_Pass_zo2izi.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216732/Deloitte-June19th2024-0262_websize_pribvu.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633354/Deloitte-June19th2024-0262_websize_pfipae.webp',
     shortDescription: 'An interactive installation that captures attendee sentiments on key issues and content',
   
     filters: {
@@ -1069,7 +1069,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216732/Deloitte-June19th2024-0262_websize_pribvu.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633354/Deloitte-June19th2024-0262_websize_pfipae.webp'
         }
       },
       { 
@@ -1077,7 +1077,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The installation is designed around a series of questions or prompts that are aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. The questions are mapped onto 2x2 matrices and/or Likert or slider-type scales, and participants are invited to register votes and responses with color-coded dot voting. <br /> <br />With every new response, the picture grows richer and more illuminating as a visualization of participant input emerges in physical space. Patterns and insights from the resulting visualization can be brought back to plenary sessions or digitized and reported out post event.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216743/IMG_0537_ynnafx.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633355/IMG_0527_szhoc0.webp'
         }
       },
       { 
@@ -1085,7 +1085,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216739/IMG_0577_uvmcae.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633351/IMG_0537_msxfy3.webp',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -1103,7 +1103,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746215918/Deloitte-June19th2024-0261_websize_l89rmo.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633355/IMG_0527_szhoc0.webp'
         }
       }
     ]
@@ -1118,7 +1118,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
     tags: ['Visualize insights', 'Explore priorities'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217292/Lifemark_b_691_icezid.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632826/Lifemark_b_691_hpg3p6.webp',
     shortDescription: 'A reflection activity that brings attendees into conversation',
 
     filters: {
@@ -1156,7 +1156,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217292/Lifemark_b_691_icezid.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632826/Lifemark_b_691_hpg3p6.webp'
         }
       },
       { 
@@ -1164,7 +1164,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The installation is designed around a set of prompt cards featuring up to five pre-determined reflection prompts. Ideally, these are passed out in the main room or breakouts, creating a moment that can also be used for synthesis conversations and new connections.<br /><br />After participants take a moment to address the reflection prompts, they’re invited to visit the installation to see what their colleagues and peers have contributed. As the Collection fills in, it becomes an increasingly rich source of bold ideas, rich questions, and valuable insights that can be fed back into plenary sessions or synthesized for a post-event report.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217284/IMG_2826_ix13jb.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632821/Lifemark_b_52_fkeart.webp'
         }
       },
       { 
@@ -1172,7 +1172,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217290/IMG_8137_l9s9c1.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632824/IMG_2826_tgheds.webp',
           objectives: [
             'Promote reflection and synthesis',
             'Facilitate peer learning and dialogue',
@@ -1191,7 +1191,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217294/Lifemark_b_686_zh0ca5.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632828/1723554227767_mhebln.webp'
         }
       },
       { 
@@ -1231,7 +1231,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457038/Taking_Action_Website_IP_V3_ylvoua.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457038/Taking_Action_Website_IP_V3_ylvoua.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216735/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_otqtkc.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp',
     shortDescription: 'A closing synthesis session focused on commitments and accountability',
   
     filters: {
@@ -1274,7 +1274,7 @@ export const products = [
       { 
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216735/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_otqtkc.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
         }
       },
       { 
@@ -1282,7 +1282,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The Taking Action session (typically programmed at the end of an event) blends facilitated reflection, a card-based interaction, and a creative canvas to elicit and align individual commitments to post-event action with a set of high-value organizational or cohort-level objectives. <br /><br /> The workshop starts from a high-level collective prompt sourced from the client and asks participants to each identify a clear, critical collective commitment to be made. Those collective commitment ideas are then shuffled, assessed, and ranked, and the top 5 are shared aloud.<br /><br /> At that point, the participants are then asked to make personal commitments to concrete actions that they will take to support those high-priority collective commitments. These are captured in a creative canvas to be digitized and leveraged post-event to support accountability and real action toward organizational goals.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217326/FM8A5707-Enhanced-NR_fsf1y9.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
         }
       },
       { 
@@ -1290,7 +1290,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217326/FM8A5707-Enhanced-NR_fsf1y9.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
           objectives: [
             'Connect ideas to action',
             'Promote reflection and synthesis',
@@ -1308,7 +1308,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746216727/455243422_1037697441690222_414058858109471329_n_bmon9q.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
         }
       },
       { 
@@ -1362,7 +1362,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457032/Vision_Forest_Website_IP_V5_Final_Colour_Pass_qm3teo.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457032/Vision_Forest_Website_IP_V5_Final_Colour_Pass_qm3teo.mp4',
     tags: ['Ideas to action', 'Reflect & synthesize'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746467507/FM8A4417-Enhanced-NR_rvseij.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631571/FM8A4743-Enhanced-NR_1_swnkt5.webp',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     filters: {
@@ -1400,7 +1400,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746467507/FM8A4417-Enhanced-NR_rvseij.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631571/FM8A4743-Enhanced-NR_1_swnkt5.webp'
         }
       },
       { 
@@ -1408,7 +1408,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The installation is designed around a prompt (or several) chosen to align with key event content and themes — often at a high level that helps to frame the overall experience. Attendees can be invited to weigh in pre-program, at registration, following a main stage session, or during breaks, and as they share their visions, concise statements of purpose, hopes/fears, etc., those sentiments are captured and showcased in an installation that becomes a source of interest and inspiration in an informal space. <br /><br /> The 'forest' is highly photogenic and can also provide rich material that's easily woven back into main stage or breakout sessions.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746467668/FM8A5173-Enhanced-NR_1_Large_atanhv.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631568/FM8A4480_zba8sl.webp'
         }
       },
       { 
@@ -1416,7 +1416,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217288/IMG_8949_gw1bel.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631572/FM8A5173-Enhanced-NR_1_h64pkz.webp',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -1434,7 +1434,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746467593/FM8A4743-Enhanced-NR_1_u4fd8c.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631566/FM8A4417-Enhanced-NR_jqxd4i.webp'
         }
       },
       { 
