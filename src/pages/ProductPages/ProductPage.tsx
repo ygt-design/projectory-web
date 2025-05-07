@@ -1,6 +1,3 @@
-import { AdvancedImage, lazyload, responsive, placeholder } from '@cloudinary/react';
-import { fill } from '@cloudinary/url-gen/actions/resize';
-import { cldImageFromUrl } from '../../utils/cloudinaryHelpers';
 import { useParams } from 'react-router-dom';
 import { products } from './productsData';
 
@@ -8,7 +5,6 @@ import ProductHero from './components/ProductHero/ProductHero';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import QuickFacts from './components/QuickFacts/QuickFacts';
 import Objectives from './components/Objectives/Objectives';
-import DataFeature from './components/DataFeature/DataFeature';
 import VideoFeature from './components/VideoFeature/VideoFeature';
 import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
 import PricingInformation from './components/PricingInformation/PricingInformation';
@@ -21,7 +17,6 @@ import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
 
 import styles from './ProductPage.module.css';
-import { DiCelluloid } from 'react-icons/di';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -51,16 +46,7 @@ const ProductPage = () => {
             );
           case 'image': {
             const url = section.content.imageUrl;
-            const cloudImg = cldImageFromUrl(url);
-            return cloudImg ? (
-              <AdvancedImage
-                key={index}
-                cldImg={cloudImg.resize(fill().width(800).height(600)).format('auto').quality('auto')}
-                plugins={[lazyload(), responsive(), placeholder({ mode: 'blur' })]}
-                alt=""
-                className={styles.fullPageImage}
-              />
-            ) : (
+            return (
               <img
                 key={index}
                 src={url}
@@ -91,8 +77,6 @@ const ProductPage = () => {
                 description={section.content.description}
               />
             );
-          case 'dataFeature':
-            return <DataFeature key={index} {...section.content} />;
           case 'testimonialSizzle':
             return <TestimonialSizzle key={index} {...section.content} />;
           case 'pricing':

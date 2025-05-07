@@ -300,7 +300,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
-    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630383/1732132444884_tgvvql.webp',
     shortDescription: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative',
 
     filters: {
@@ -343,7 +343,7 @@ export const products = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/1732132444884_m9izvg.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630383/1732132444884_tgvvql.webp'
         }
       },
       { 
@@ -351,7 +351,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "The session is built around a physical wall of text that is missing critical pieces – literal blank spaces to be filled with blocks of text determined by the participants. As the facilitator guides the room through the fill-in-the-blank text – which becomes the basis of a “shared narrative” about the event journey, key takeaways, next steps, etc. – table groups are prompted to nominate contributions to complete the story.<br /><br />For each blank, the facilitator leads a shareout, offering an opportunity for participants to exchange perspectives and engage in friendly debate about implementation and action until the narrative and synthesis are complete.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217311/Lifemark_333_bmurrl.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630385/Lifemark_333_gzvroa.webp'
         }
       },
       { 
@@ -359,7 +359,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107983/Lifemark_306_ij4g80.jpg',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630380/Lifemark_306_pxsofj.webp',
           objectives: [
             'Foster connection and networking',
             'Facilitate peer learning and dialogue',
@@ -370,7 +370,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217315/Screenshot_2024-12-03_at_21.23.30_ihc1ki.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630383/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-0898_xjdz3z.webp'
         }
       },
       { 
@@ -420,7 +420,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217335/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-0974_pnheyl.jpg'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630385/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_lb2trf.webp'
         }
       }
     ]

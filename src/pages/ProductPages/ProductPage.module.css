@@ -12,12 +12,12 @@
 
 .fullPageImage {
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
     height: auto;
     object-fit: cover;
     display: block;
     margin-bottom: 130px;
-}
+  }
 
 .floatingLikeButton {
     position: fixed;

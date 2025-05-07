@@ -6,9 +6,6 @@ import { useLikedProducts } from '../../context/LikedProductsContext';
 import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
 
-import { AdvancedImage, lazyload, responsive, placeholder } from '@cloudinary/react';
-import { fill } from '@cloudinary/url-gen/actions/resize';
-import { cldImageFromUrl } from '../../utils/cloudinaryHelpers';
 import { AdvancedVideo, lazyload as videoLazyload } from '@cloudinary/react';
 
 interface Product {
@@ -34,20 +31,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   useEffect(() => {
     if (descRef.current) setDescHeight(descRef.current.scrollHeight);
   }, [product.shortDescription]);
-
-  // Determine if thumbnail is a Cloudinary URL and build transformed image
-  const isCloudUrl = !!product.thumbnail && product.thumbnail.includes('/upload/');
-  let cloudImg;
-  if (isCloudUrl) {
-    try {
-      cloudImg = cldImageFromUrl(product.thumbnail)
-        .resize(fill().width(1000).height(900))
-        .format('auto')
-        .quality('auto');
-    } catch (e) {
-      console.warn('Invalid Cloudinary URL, falling back to <img>', product.thumbnail);
-    }
-  }
 
   // Set up Cloudinary video only if a publicId exists
   const videoComponent =
@@ -85,22 +68,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       style={{ zIndex: isHovered ? 2 : 1 }}
     >
       <div className={styles.bgLayer}>
-        {cloudImg ? (
-          <AdvancedImage
-            cldImg={cloudImg}
-            plugins={[lazyload(), responsive(), placeholder({ mode: 'blur'})]}
-            className={styles.bgImage}
-            alt={product.name}
-          />
-        ) : (
-          <img
-            className={styles.bgImage}
-            src={product.thumbnail}
-            alt={product.name}
-            loading="lazy"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-        )}
+        <img
+          className={styles.bgImage}
+          src={product.thumbnail}
+          alt={product.name}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
         {videoComponent && <div className={styles.bgVideoWrapper}>{videoComponent}</div>}
       </div>
 

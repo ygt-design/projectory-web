@@ -1,13 +1,6 @@
 import { cld } from './cloudinary';
 import type { CloudinaryImage } from '@cloudinary/url-gen';
 
-/**
- * Injects a Cloudinary transformation string into a raw Cloudinary URL.
- *
- * @param original – the full URL (e.g. https://res.cloudinary.com/…/upload/v1234/…jpg)
- * @param transformations – e.g. 'f_auto,q_auto,w_400'
- * @returns the URL with `/upload/${transformations}/` inserted
- */
 export function optimizeCloudinaryUrl(
   original: string,
   transformations = 'f_auto,q_auto,w_auto'
