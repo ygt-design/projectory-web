@@ -61,10 +61,6 @@ const caseStudiesFAQ = [
     extraContent: extraElement, 
   },
   {
-    question: "Are there a la carte options?",
-    answer: "Sure! Pricing varies depending on shipping costs, audience size, event duration/location, and other variables, but generally speaking: Pricing for Facilitated Sessions starts at $8K USD; Interactive Installations usually start at $12K USD; and Event Extensions start at $3K USD.",
-  },
-  {
     question: "What if I want to mix different experiences?",
     answer: "Combining in-room Facilitated Sessions with interactive installations outside the room enables Projectory to create a unique and integrated experience for your audience. Multiple experiences generate more output, leading to more meaningful post-event activation. During our discovery process, we’ll be able to curate together the best set of experiences for your event within your budget.",
   },

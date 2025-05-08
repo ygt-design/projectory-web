@@ -25,6 +25,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   const [isHovered, setIsHovered] = useState(false);
   const [descHeight, setDescHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 900);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   const descRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -73,7 +81,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {videoComponent && (
+        {!isMobile && videoComponent && (
           <div
             className={styles.bgVideoWrapper}
             style={{

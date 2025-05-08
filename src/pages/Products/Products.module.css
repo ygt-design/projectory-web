@@ -42,8 +42,9 @@
 }
 
 .tagBarHeading {
-    font-size: 40px;
+    font-size: 60px;
     margin-bottom: 25px;
+    margin-top: -18px;
 }
 
 .tagBarSubheading {
@@ -84,6 +85,7 @@
     font-size: 18px;
     cursor: pointer;
     color: white;
+    border: 1px solid transparent;
     white-space: nowrap;
     transition: background 0.3s ease, color 0.3s ease;
 }

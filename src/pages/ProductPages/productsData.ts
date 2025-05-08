@@ -8,7 +8,7 @@ export const products = [
     categoryColor: '#BCCE2C',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
-    tags: ['Networking', 'Peer learning', 'Visualize insights'],
+    tags: ['Networking', 'Peer learning', 'Visualize insights', 'Build alignment'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648933/455278554_1037606311699335_4372730795563401026_n_soow52.webp',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
 

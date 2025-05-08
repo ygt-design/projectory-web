@@ -38,47 +38,47 @@ const TAG_INFO: Record<string, { heading: string; description: string }> = {
   'All Products': {
     heading: 'All Products',
     description:
-      'Explore our growing catalogue of products and filter by format, session duration, and more.',
+      'Explore everything or filter by objective to find products designed with your goals in mind.',
   },
   'Networking': {
     heading: 'Networking',
     description:
-      'Foster meaningful connections through interactive, innovative experiences.',
+      'Create meaningful opportunities for participants to build relationships, exchange ideas, and grow professional networks that extend beyond the event.',
   },
   'Peer learning': {
     heading: 'Peer Learning',
     description:
-      'Empower participants to share insights and grow collaboratively.',
+      'Encourage open, insightful conversations among peers to share experiences, deepen understanding, and elevate collective expertise.',
   },
   'Explore priorities': {
     heading: 'Explore Priorities',
     description:
-      'Focus on what truly matters by aligning stakeholders on key objectives.',
+      'Guide participants through focused discussions that surface key challenges, consider multiple perspectives, and clarify decision-making around strategic goals',
   },
   'Ideas to action': {
     heading: 'Ideas to Action',
     description:
-      'Turn brainstorming into tangible next steps and lasting impact.',
+      'Translate insights and inspiration into tangible next steps by helping participants co-create actionable plans they can implement immediately.',
   },
   'Reflect & synthesize': {
     heading: 'Reflect & Synthesize',
     description:
-      'Create moments of introspection that deepen understanding and engagement.',
+      'Encourage participants to pause, integrate insights, and identify key takeaways that reinforce learning and support overall program objectives.',
   },
   'Build alignment': {
     heading: 'Build Alignment',
     description:
-      'Unite teams around shared goals for a more cohesive, productive outcome.',
+      'Engage participants in collaborative processes that surface diverse viewpoints while building shared vision, commitment, and momentum.',
   },
   'Inspire creativity': {
     heading: 'Inspire Creativity',
     description:
-      'Spark innovation and fresh thinking with immersive experiences.',
+      'Spark new ideas and bold questions through engaging experiences that challenge assumptions and encourage innovative approaches to future challenges.',
   },
   'Visualize insights': {
     heading: 'Visualize Insights',
     description:
-      'Make data come alive with interactive, eye-catching displays.',
+      'Create collaborative, tactile data visualizations that capture participant contributions while crystallizing key themes and building shared understanding.',
   },
 };
 

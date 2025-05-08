@@ -11,6 +11,7 @@ import PricingInformation from './components/PricingInformation/PricingInformati
 import CaseStudyHighlight from './components/CaseStudyHighlight/CaseStudyHighlight';
 import FinalCTA from './components/FinalCTA/FinalCTA';
 import HowItWorks from './components/HowItWorks/HowItWorks';
+import DataFeature from './components/DataFeature/DataFeature';
 
 import { useLikedProducts } from '../../context/LikedProductsContext'; // <-- 1) import context
 import HeartIconSVG from '../../assets/images/heartIcon.svg';
@@ -88,6 +89,15 @@ const ProductPage = () => {
             );
           case 'case-study':
             return <CaseStudyHighlight key={index} {...section.content} />;
+          case 'dataFeature':
+            return (
+              <DataFeature
+                key={index}
+                title={section.content.title}
+                description={section.content.description}
+                imageUrl={section.content.imageUrl}
+              />
+            );
           case 'how-it-works':
             return (
               <HowItWorks

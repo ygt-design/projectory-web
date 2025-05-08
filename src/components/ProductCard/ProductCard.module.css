@@ -178,6 +178,17 @@ button {
   .productCard:hover .bgVideoWrapper {
     transform: none;
   }
+
+  /* no scaling on hover for mobile */
+  .productCard:hover {
+    transform: none;
+  }
+
+  /* Disable hover fade effects on mobile */
+  .bgImage {
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
 
 

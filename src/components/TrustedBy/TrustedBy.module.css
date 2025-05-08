@@ -22,19 +22,19 @@
 }
 
 .logoWrapper {
-    flex: 0 1 calc((100% - 2 * 24px) / 3);
+    /* flex: 0 1 calc((100% - 2 * 24px) / 3); */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0px 10px rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    box-shadow: 0 0px 15px rgba(255, 255, 255, 0.2);
     transition: box-shadow 0.7s ease 1s;
-    min-width: 150px;
+    /* min-width: 150px; */
 }
 
 .logoWrapper:hover{
-    box-shadow: 0 0px 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0px 15px rgba(255, 255, 255, 0.35);
     transition-delay: 0s; 
 }
 
