@@ -81,7 +81,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {!isMobile && videoComponent && (
+        {!isMobile && (
           <div
             className={styles.bgVideoWrapper}
             style={{
@@ -89,7 +89,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
               transition: 'opacity 0.3s ease-in-out',
             }}
           >
-            {videoComponent}
+            {isHovered && videoComponent}
           </div>
         )}
       </div>

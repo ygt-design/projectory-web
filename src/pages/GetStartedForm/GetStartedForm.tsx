@@ -1,4 +1,3 @@
-// src/pages/GetStartedForm/GetStartedForm.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './GetStartedForm.module.css';
@@ -117,29 +116,53 @@ const GetStartedForm: React.FC = () => {
 
   const next = () => {
     if (step < 2) setStep(s => s + 1);
-    else submit();
+    else handleSubmit();
   };
   const back = () => step > 0 && setStep(s => s - 1);
 
-  const submit = () => {
-    const scored = products
-      .map(p => {
-        let sc = 0;
-        sc += p.filters.type.filter(t => filters.type.includes(t)).length;
-        sc += p.filters.objectives.filter(o =>
-          filters.objectives.includes(o)
-        ).length;
-        sc += filters.seating.includes('Any')
-          ? 1
-          : p.filters.seating.filter(s => filters.seating.includes(s)).length;
-        return { p, sc };
-      })
-      .sort((a, b) => b.sc - a.sc)
-      .slice(0, 5)
-      .map(x => x.p);
+  const handleSubmit = () => {
+    // Score each product by matching filters
+    const scored = products.map(product => {
+      let score = 0;
+      score += product.filters.type.filter(t => filters.type.includes(t)).length;
+      score += product.filters.objectives.filter(o => filters.objectives.includes(o)).length;
+      if (filters.seating.includes('Any')) {
+        score += 1;
+      } else {
+        score += product.filters.seating.filter(s => filters.seating.includes(s)).length;
+      }
+      return { product, score };
+    });
 
-    scored.forEach(p => !likedProducts.includes(p.id) && toggleLike(p.id));
-    setRecommended(scored);
+    // Sort descending by score
+    scored.sort((a, b) => b.score - a.score);
+
+    // Take products with at least 4 points
+    const highMatches = scored.filter(item => item.score >= 4).map(item => item.product);
+
+    let recommendations: typeof products[number][];
+
+    if (highMatches.length >= 5) {
+      // 5 or more high matches: take top 5
+      recommendations = highMatches.slice(0, 5);
+    } else if (highMatches.length >= 3) {
+      // 3 or 4 high matches: take them all
+      recommendations = highMatches;
+    } else {
+      // fewer than 3 high matches: fill with next best to reach 3
+      const base = highMatches;
+      const others = scored.map(item => item.product).filter(p => !base.includes(p));
+      recommendations = [...base, ...others.slice(0, 3 - base.length)];
+    }
+
+    // Auto-like the recommendations
+    recommendations.forEach(p => {
+      if (!likedProducts.includes(p.id)) {
+        toggleLike(p.id);
+      }
+    });
+
+    setRecommended(recommendations);
   };
 
   return (

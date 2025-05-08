@@ -8,7 +8,7 @@ export const products = [
     categoryColor: '#BCCE2C',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
-    tags: ['Networking', 'Peer learning', 'Visualize insights', 'Build alignment'],
+    tags: ['Peer learning', 'Explore priorities', 'Ideas to action'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648933/455278554_1037606311699335_4372730795563401026_n_soow52.webp',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
 
@@ -296,7 +296,7 @@ export const products = [
     tagline: 'A collaborative reflection and synthesis session that builds alignment through a shared narrative ',
     category: 'Align',
     categoryHighlight: 'ByLine',
-    categoryColor: '#A72C4B',
+    categoryColor: '#FF4A78',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
     tags: ['Peer learning', 'Build alignment', 'Reflect & synthesize'],
@@ -540,10 +540,10 @@ export const products = [
     tagline: 'An installation that weaves a striking visualization of collective insights',
     category: 'Futures',
     categoryHighlight: 'Web',
-    categoryColor: '#178771',
+    categoryColor: '#ff7700',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Futures_Web_Website_IP_V3_Final_Colour_Pass_rznkhr.mp4',
-    tags: ['Visualize insights', 'Explore priorities'],
+    tags: ['Visualize insights', 'Explore priorities', 'Reflect & synthesize'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648522/DZ9_9385_kgsqlo.webp',
     shortDescription: 'An installation that weaves a striking visualization of collective insights',
 
@@ -656,7 +656,7 @@ export const products = [
     categoryColor: '#B292C4',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/If_This_Then_What_Website_IP_V3_Final_Colour_Pass_u1vuvb.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457033/If_This_Then_What_Website_IP_V3_Final_Colour_Pass_u1vuvb.mp4',
-    tags: ['Inspire creativity', 'Explore priorities', 'Peer learning'],
+    tags: ['Inspire creativity', 'Explore priorities', 'Peer learning', 'Ideas to action'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648102/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_yujk0f.webp',
     shortDescription: 'An envisioning workshop exploring the implications of trends and strategic decisions',
 
@@ -916,7 +916,7 @@ export const products = [
     categoryColor: '#F37655',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457020/Ping_Pong_Poll_Website_IP_V4_Final_Colour_Pass_firees.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457020/Ping_Pong_Poll_Website_IP_V4_Final_Colour_Pass_firees.mp4',
-    tags: ['Visualize insights', 'Explore priorities'],
+    tags: ['Visualize insights', 'Explore priorities', 'Reflect & synthesize'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647278/DZ9_7612_uqsjdg.webp',
     shortDescription: 'A dynamic voting activity that creates a snapshot of group priorities or opinions',
 
@@ -1026,10 +1026,10 @@ export const products = [
     tagline: 'An interactive installation that captures attendee sentiments on key issues and content',
     category: 'Priority',
     categoryHighlight: 'Pathways',
-    categoryColor: '#A72C4B',
+    categoryColor: '#FF4A78',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457025/Priority_Pathways_Website_IP_V3_Final_Colour_Pass_zo2izi.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457025/Priority_Pathways_Website_IP_V3_Final_Colour_Pass_zo2izi.mp4',
-    tags: ['Visualize insights', 'Explore priorities'],
+    tags: ['Visualize insights', 'Explore priorities', 'Build alignment'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633354/Deloitte-June19th2024-0262_websize_pfipae.webp',
     shortDescription: 'An interactive installation that captures attendee sentiments on key issues and content',
   
@@ -1117,7 +1117,7 @@ export const products = [
     categoryColor: '#EEDA2A',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
-    tags: ['Visualize insights', 'Explore priorities'],
+    tags: ['Explore priorities', 'Reflect & synthesize'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632826/Lifemark_b_691_hpg3p6.webp',
     shortDescription: 'A reflection activity that brings attendees into conversation',
 
@@ -1230,7 +1230,7 @@ export const products = [
     categoryColor: '#F37655',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457038/Taking_Action_Website_IP_V3_ylvoua.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457038/Taking_Action_Website_IP_V3_ylvoua.mp4',
-    tags: ['Ideas to action', 'Reflect & synthesize'],
+    tags: ['Ideas to action', 'Reflect & synthesize', 'Build alignment'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp',
     shortDescription: 'A closing synthesis session focused on commitments and accountability',
   
@@ -1361,7 +1361,7 @@ export const products = [
     categoryColor: '#B8EFEC',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457032/Vision_Forest_Website_IP_V5_Final_Colour_Pass_qm3teo.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457032/Vision_Forest_Website_IP_V5_Final_Colour_Pass_qm3teo.mp4',
-    tags: ['Ideas to action', 'Reflect & synthesize'],
+    tags: ['Reflect & synthesize', 'Visualize insights'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631571/FM8A4743-Enhanced-NR_1_swnkt5.webp',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
@@ -1467,7 +1467,7 @@ export const products = [
     categoryColor: '#F37655',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
-    tags: ['Ideas to action', 'Reflect & synthesize'],
+    tags: ['Networking', 'Peer learning'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217285/7FE7FADB-0D8F-4B73-B0E9-3EC033022A33_rncebi.jpg',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
@@ -1540,7 +1540,7 @@ export const products = [
     categoryHighlight: 'Way',
     categoryColor: '#BCCE2C',
     heroVideo: '/videos/testVideo_2.mp4',
-    tags: ['Ideas to action', 'Reflect & synthesize'],
+    tags: ['Explore priorities', 'Build alignment', 'Inspire creativity'],
     thumbnail: '',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
@@ -1567,9 +1567,9 @@ export const products = [
     tagline: 'An installation that lets you wander (and wonder) through future visions',
     category: 'Roll',
     categoryHighlight: 'Play',
-    categoryColor: '#178771',
+    categoryColor: '#ff7700',
     heroVideo: '/videos/testVideo_2.mp4',
-    tags: ['Ideas to action', 'Reflect & synthesize'],
+    tags: ['Networking', 'Inspire creativity'],
     thumbnail: '',
     shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
