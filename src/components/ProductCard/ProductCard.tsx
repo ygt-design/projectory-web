@@ -16,7 +16,6 @@ interface Product {
   categoryColor?: string;
   thumbnail: string;
   bgVideo?: string;
-  shortDescription?: string;
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
@@ -32,10 +31,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     if (descRef.current) setDescHeight(descRef.current.scrollHeight);
   }, [product.shortDescription]);
 
-  // Set up Cloudinary video only if a publicId exists
+  // Set up Cloudinary video or fallback unconditionally
   const videoComponent =
-    isHovered &&
-    (product.bgVideoPublicId ? (
+    product.bgVideoPublicId ? (
       <AdvancedVideo
         cldVid={cld.video(product.bgVideoPublicId).videoCodec('auto').format('auto').quality('auto')}
         plugins={[videoLazyload({ rootMargin: '200px' })]}
@@ -57,7 +55,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         loop
         playsInline
       />
-    ) : null);
+    ) : null;
 
   return (
     <div
@@ -75,7 +73,17 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {videoComponent && <div className={styles.bgVideoWrapper}>{videoComponent}</div>}
+        {videoComponent && (
+          <div
+            className={styles.bgVideoWrapper}
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transition: 'opacity 0.3s ease-in-out',
+            }}
+          >
+            {videoComponent}
+          </div>
+        )}
       </div>
 
       <div className={styles.cardContent}>
