@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 import { products } from '../../pages/ProductPages/productsData';
 import styles from './GetEstimatePage.module.css';
 
+import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_1.png';
+import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+
 const GetEstimatePage: React.FC = () => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const [formData, setFormData] = useState({
@@ -18,6 +21,7 @@ const GetEstimatePage: React.FC = () => {
     selectedProducts: likedProducts.join(', '), 
   });
   const [status, setStatus] = useState('');
+  const [showOverlay, setShowOverlay] = useState(false);
 
   // Update selectedProducts field whenever likedProducts changes
   useEffect(() => {
@@ -47,17 +51,8 @@ const GetEstimatePage: React.FC = () => {
       });
 
       if (response.ok) {
-        setStatus('Message sent successfully!');
-        // Reset only the visible fields (keeping access key and selectedProducts)
-        setFormData((prev) => ({
-          ...prev,
-          name: '',
-          email: '',
-          eventDate: '',
-          eventLocation: '',
-          eventTitle: '',
-          message: '',
-        }));
+        // Show the success overlay
+        setShowOverlay(true);
       } else {
         setStatus('Failed to send message. Please try again.');
       }
@@ -113,11 +108,10 @@ const GetEstimatePage: React.FC = () => {
 
       {/* Right Column: Estimate Form */}
       <div className={styles.rightColumn}>
-        <h2>Get An Estimate</h2>
+        <h2>So, What’s Next?</h2>
         
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit nulla adipisci 
-          incidunt interdum tellus cu.
+          We'd love to know a bit more about what you’re working on, but can confidently say we can add immediate experiential value at a wide range of budgets. That’s kind of our thing.
         </p>
 
         <div className={styles.formWrapper}>
@@ -199,6 +193,28 @@ const GetEstimatePage: React.FC = () => {
           </form>
         </div>
       </div>
+      {showOverlay && (
+        <div className={styles.overlay}>
+          <div className={styles.overlayContent}>
+            <h2>Thank you {formData.name}, your form has been submitted!</h2>
+            <p>We’ll be in touch soon with an estimate and a quick orientation on how to get started.</p>
+            <a
+              href="https://www.linkedin.com/company/projectory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.overlayButton}
+            >
+              Get Updates on LinkedIn
+            </a> <br />
+            <Link to="/" className={styles.overlayLink}>
+              Take Me Home
+            </Link>
+          </div>
+
+            <img src={shape1} alt="Shape 1" className={`${styles.shape} ${styles.shapeOne} `} />
+            <img src={shape2} alt="Shape 2" className={`${styles.shape} ${styles.shapeTwo} `} />          
+          </div>
+      )}
     </section>
   );
 };

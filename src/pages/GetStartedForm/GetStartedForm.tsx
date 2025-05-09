@@ -43,8 +43,8 @@ const questionData = {
   },
 } as const;
 
-const stepKeys = ['type', 'objectives', 'seating'] as const;
-type StepKey = typeof stepKeys[number];
+const allStepKeys = ['type', 'objectives', 'seating'] as const;
+type StepKey = typeof allStepKeys[number];
 
 // one gradient per step
 const BG_GRADIENTS = [
@@ -68,41 +68,45 @@ const GetStartedForm: React.FC = () => {
     { src: string; style: React.CSSProperties }[]
   >([]);
 
-    useEffect(() => {
-      if (recommended.length > 0) {
-       
-        const selected = shapePool.slice(0, 4);
+  useEffect(() => {
+    if (recommended.length > 0) {
+      const selected = shapePool.slice(0, 4);
+      const edgePositions = [
+        { top: '2%', left: '25%' },
+        { top: '20%', left: '100%' },
+        { top: '70%', left: '80%' },
+        { top: '35%', left: '10%' },
+      ];
+      const instances = selected.map((src, i) => {
+        const { top, left } = edgePositions[i];
+        const size = Math.random() * 100 + 150;
+        const rotate = Math.random() * 90 - 45;
+        return {
+          src,
+          style: {
+            position: 'absolute',
+            top,
+            left,
+            width: `${size}px`,
+            transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
+            pointerEvents: 'none',
+            opacity: 1,
+          },
+        };
+      });
+      setShapeInstances(instances);
+    }
+  }, [recommended]);
 
-        const edgePositions = [
-          { top: '2%', left: '25%' },  
-          { top: '20%', left: '100%' }, 
-          { top: '70%', left: '80%' }, 
-          { top: '35%', left: '10%' },  
-        ];
-
-        const instances = selected.map((src, i) => {
-          const { top, left } = edgePositions[i];
-          const size = Math.random() * 100 + 150;
-          const rotate = Math.random() * 90 - 45;
-          return {
-            src,
-            style: {
-              position: 'absolute',
-              top,
-              left,
-              width: `${size}px`,
-              transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
-              pointerEvents: 'none',
-              opacity: 1,
-            },
-          };
-        });
-
-        setShapeInstances(instances);
-      }
-    }, [recommended]);
-
-  const key = stepKeys[step];
+  // Determine if only one type is selected
+  const onlyFacilitated = filters.type.length === 1 && filters.type[0] === 'Facilitated session';
+  const onlyInteractive = filters.type.length === 1 && filters.type[0] === 'Interactive installation';
+  // Build dynamic steps: skip seating when only interactive installation is chosen
+  const stepsUsed = onlyInteractive
+    ? allStepKeys.slice(0, 2)  // ['type', 'objectives']
+    : allStepKeys;             // ['type','objectives','seating']
+  const stepCount = stepsUsed.length;
+  const stepKey = stepsUsed[step];
 
   const toggle = (k: StepKey, opt: string) => {
     setFilters(f => {
@@ -115,14 +119,22 @@ const GetStartedForm: React.FC = () => {
   };
 
   const next = () => {
-    if (step < 2) setStep(s => s + 1);
+    if (step < stepCount - 1) setStep(s => s + 1);
     else handleSubmit();
   };
   const back = () => step > 0 && setStep(s => s - 1);
 
   const handleSubmit = () => {
+    // First, discard products that don't match the single selected type (unless both are selected)
+    let filteredProducts = products;
+    if (filters.type.length === 1) {
+      const onlyType = filters.type[0];
+      filteredProducts = products.filter(p =>
+        p.filters.type.includes(onlyType)
+      );
+    }
     // Score each product by matching filters
-    const scored = products.map(product => {
+    const scored = filteredProducts.map(product => {
       let score = 0;
       score += product.filters.type.filter(t => filters.type.includes(t)).length;
       score += product.filters.objectives.filter(o => filters.objectives.includes(o)).length;
@@ -165,6 +177,12 @@ const GetStartedForm: React.FC = () => {
     setRecommended(recommendations);
   };
 
+  // Compute options for current step, filtering objectives if needed
+  const options =
+    stepKey === 'objectives' && onlyInteractive
+      ? questionData.objectives.options.filter(opt => opt !== 'Connect ideas to action')
+      : questionData[stepKey].options;
+
   return (
     <motion.div
       className={styles.container}
@@ -182,23 +200,23 @@ const GetStartedForm: React.FC = () => {
             transition={{ duration: 0.4 }}
           >
             <h1 className={styles.title}>
-              {questionData[key].label}
+              {questionData[stepKey].label}
             </h1>
             <p className={styles.subTitle}>
-              Step {step + 1} of {stepKeys.length}
+              Step {step + 1} of {stepCount}
             </p>
 
             <div className={styles.options}>
-              {questionData[key].options.map(opt => (
+              {options.map(opt => (
                 <button
                   key={opt}
                   type="button"
                   className={
-                    filters[key].includes(opt)
+                    filters[stepKey].includes(opt)
                       ? styles.chipSelected
                       : styles.chip
                   }
-                  onClick={() => toggle(key, opt)}
+                  onClick={() => toggle(stepKey, opt)}
                 >
                   {opt}
                 </button>
@@ -219,9 +237,9 @@ const GetStartedForm: React.FC = () => {
                 type="button"
                 className={styles.nextBtn}
                 onClick={next}
-                disabled={filters[key].length === 0}
+                disabled={filters[stepKey].length === 0}
               >
-                {step < 2 ? 'Next →' : 'Finish →'}
+                {step < stepCount - 1 ? 'Next →' : 'Finish →'}
               </button>
             </div>
           </motion.div>

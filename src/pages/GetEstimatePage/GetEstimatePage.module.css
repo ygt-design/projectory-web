@@ -244,6 +244,82 @@
     background: #ddd;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+/* Overlay content container */
+.overlayContent {
+  background: #1f1f1f;
+  padding: 3rem;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.overlayContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.overlayContent p {
+  font-size: 1.2rem;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
+
+.overlayButton {
+  display: inline-block;
+  background: linear-gradient(90deg, #2bdcb7 0%, #178771 100%);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: opacity 0.2s ease;
+}
+
+.overlayButton:hover {
+  opacity: 0.9;
+}
+
+/* "Take Me Home" link style */
+.overlayLink {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #ddd;
+  text-decoration: underline;
+  font-size: 0.9375rem;
+}
+
+.overlayLink:hover {
+  color: #fff;
+}
+
+
+.shape{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    background: linear-gradient(90deg, #F37655 0%, #A92E4C 80%);
+}
+
+.shape
+
 @media (max-width: 768px) {
     .getEstimateWrapper {
         grid-template-columns: 1fr;
@@ -273,7 +349,6 @@
         margin: auto;
     }
 }
-
 
 
 
