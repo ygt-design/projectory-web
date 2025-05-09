@@ -21,7 +21,7 @@ import CventImage from '../../assets/images/logos/cvent.png'
 import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
 import PcmaLogo from '../../assets/images/logos/pcmaLogo.png';
 import RainFocusLogo from '../../assets/images/logos/rainFocusLogo.png';
-import CemaLogo from '../../assets/images/logos/cemaLogo.png';
+import CemaLogo from '../../assets/images/logos/cema.png';
 
 import { caseStudiesData } from '../CaseStudyPages/caseStudiesData'; 
 

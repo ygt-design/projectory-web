@@ -8,7 +8,7 @@ interface TrustedByProps {
 const TrustedBy: React.FC<TrustedByProps> = ({ logos }) => {
   return (
     <section className={styles.trustedBySection}>
-      <h2 className={styles.heading}>Trusted by the leading Event brands</h2>
+      <h2 className={styles.heading}>Featured by the Event Industry’s Leading Conferences</h2>
       <div className={styles.logosGrid}>
         {logos.map((logoSrc, i) => (
           <div key={i} className={styles.logoWrapper}>
