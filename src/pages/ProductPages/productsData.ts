@@ -198,7 +198,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Flag Finder is a playfully energizing networking and discussion session that promotes purposeful mixing and re-mixing of participants while also creating real-time, color-coded visualizations of opinions, attitudes, and sentiments in the room.',
+          heading: 'FlagFinder is a playfully energizing networking and discussion session that promotes purposeful mixing and re-mixing of participants while also creating real-time, color-coded visualizations of opinions, attitudes, and sentiments in the room.',
 
           features: ['Facilitated session', '40 - 60 min', 'Main stage or breakout', '40 - 500+ participants', 'Works in any seating type']
         }
@@ -325,7 +325,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Align by Line is a reflection and synthesis session that takes the simple mechanism of a fill-in-the-blank game and turns it into the foundation of a highly entertaining, conversational workshop designed to build alignment and a shared story about the event journey and the road ahead.',
+          heading: 'AlignByLine is a reflection and synthesis session that takes the simple mechanism of a fill-in-the-blank game and turns it into the foundation of a highly entertaining, conversational workshop designed to build alignment and a shared story about the event journey and the road ahead.',
 
           features: ['Facilitated session', '50 - 70 min', 'Main stage or breakout', '40 - 500 participants', 'Best for table seating']
         }
@@ -460,7 +460,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Combo Convo is an energizer and creative juicer built around an adaptable set of prompt cards. The session can be run just as an energizer or as a game with elements of networking and competition that can be tailored to objectives, available time, etc.<br /><br />Each card-based interaction creates a unique prompt that will get participants thinking, chatting, collaborating, and laughing. Combo Convo can be played by small groups at tables or scaled up for large audiences by leveraging event apps etc',
+          heading: 'ComboConvo is an energizer and creative juicer built around an adaptable set of prompt cards. The session can be run just as a quick energizer or as a full game with elements of networking and competition that can be tailored to objectives, available time, etc.<br /><br />Each card-based interaction creates a unique prompt that will get participants thinking, chatting, collaborating, and laughing. ComboConvo can be played by small groups at tables or scaled up for large audiences by leveraging event apps etc',
 
           features: ['Facilitated session', '15 - 30 min', 'Main stage or breakout', '50 - 4000 participants', 'Works for any seating ']
         }
@@ -485,7 +485,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "Combo Convo is designed around an adaptable set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up with additional elements of competitive game play and networking or integrated with an installation or event app for capture and display of responses. ",
+          description: "ComboConvo is designed around an adaptable set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up with additional elements of competitive game play and networking or integrated with an event app or (in the Plus version) an interactive installation for capture and display of responses. ",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649929/15fd6b1c-07e8-4d24-aa0e-7fc510b095fe_llxx6k.webp'
         }
       },
@@ -565,7 +565,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Futures Web is an interactive installation that helps attendees engage with key content themes as participants while also learning about the perspectives and priorities of the cohort at large. Each new interaction adds another thread to an emerging picture of the group.',
+          heading: 'FuturesWeb is an interactive installation that helps attendees engage with key content and themes as participants while also learning about the perspectives and priorities of the cohort at large. Each new interaction adds another thread to an emerging picture of the group.',
 
           features: ['Interactive installation', 'Self-guided with instructions', 'Highly customizable', 'Adaptable to any floor plan', 'Available as a standalone rental']
         }
@@ -576,7 +576,7 @@ export const products = [
           items: [
             { text: 'Activates an informal space' },
             { text: 'Creates a striking physical data visualization'},
-            { text: 'Generates rich post-event output Encourages participants to experiment with a creative, futures-thinking lens to their work'}
+            { text: 'Generates rich post-event output'}
           ]
         }
       },
@@ -590,7 +590,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "The installation is designed around a series of multiple choice questions aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. Each question is represented with a post featuring pegs that correspond to potential answer choices. Participants work from post to post threading a color-coded strand of yarn around the pegs that reflect their responses. <br /> <br />With every new interaction, the woven picture grows richer and more illuminating. Patterns and insights from the resulting web can be brought back to plenary sessions or digitized and reported out post event.",
+          description: "The installation is designed around a series of multiple choice questions aligned with program content and chosen to allow participants to share perspectives, opinions, and priorities. Each question is represented with a post featuring pegs that correspond to potential answer choices. Participants work from post to post threading a color-coded strand of yarn around the pegs that reflect their responses. <br /> <br />With every new interaction, the woven picture grows richer and more illuminating. Patterns and insights from the resulting web can be brought back to plenary sessions or digitized and reported out post event.",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648527/FM8A4586-Enhanced-NR_qu1xf4.webp'
         }
       },
@@ -610,7 +610,7 @@ export const products = [
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
-          description: 'Futures Web functions as a thematically aligned, anonymized five-question survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
+          description: 'FuturesWeb functions as a thematically aligned, anonymized five-question survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
         }, 
       },
@@ -681,7 +681,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'If This…Then What? is Projectory’s adaptation of a classic strategic foresight tool called the Futures Wheel. The exercise is designed to explore the potential ripple effects of a specific trend, event, or decision. Working in groups, participants envision the cascading implications and knock-on effects to map out a range of possible futures full of opportunities, risks, and unintended consequences.',
+          heading: 'IfThis…ThenWhat? is Projectory’s adaptation of a classic strategic foresight tool called the Futures Wheel. The exercise is designed to explore the potential ripple effects of a specific trend, event, or decision. Working in groups, participants envision cascading implications and knock-on effects to map out a range of possible futures full of opportunities, risks, and unintended consequences.',
 
           features: ['Facilitated session', '45 - 70 min', 'Main stage or breakout', '40 - 400 participants', 'Requires table seating ']
         }
@@ -811,7 +811,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'The Learning-Action Matrix is a simple, intuitive framework designed to support more effective conversations following up, unpacking, and/or synthesizing information-dense sessions or keynotes. The true value of the session emerges as participants discover dynamic links between the insights gained and the related actions to be taken -- which will yield future insights through learning.',
+          heading: 'The LearningActionMatrix is a simple, intuitive framework designed to support more effective conversations following up, unpacking, and/or synthesizing information-dense sessions or keynotes. The value of the session emerges as participants discover dynamic links between the insights gained and the related actions to be taken - which, in turn, will yield future insights through further learning.',
 
           features: ['Facilitated session', '35 - 55 min', 'Main stage or breakout', '40 - 400 participants', 'Requires table seating ']
         }
@@ -836,7 +836,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "The workshop leverages a simple framework built to consolidate learning through conversation and connect it to post-event action. After a quick intro to the LAM canvas, most of the session is devoted to small group work, followed by a round of facilitated share-outs. In their groups, participants work through four interrelated categories -- identifying key insights and questions and actions to be taken to implement new learnings or deepen understanding. The workshop results in a detailed set of learning-action plans and a rich set of outputs to drive the post-event agenda.",
+          description: "The workshop leverages a simple framework built to consolidate learning through conversation and then connect it to post-event action. After a quick intro to the LAM canvas, most of the session is devoted to small group work, followed by a round of facilitated share-outs. In their groups, participants work through four interrelated categories - identifying key insights, questions, actions to be taken to implement new learnings or deepen understanding. The workshop results in a detailed set of learning-action plans and a rich set of outputs to drive the post-event agenda.",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647937/JGF_7489r_qx9xkl.webp'
         }
       },
@@ -938,7 +938,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Ping Poll is an interactive installation that lets your attendees weigh in on any content, theme, or question that can be voted or ranked. It provides an easy way to activate an informal space with a playful data visualization that creates a snapshot of group priorities and perspectives.',
+          heading: 'PingPoll is an interactive installation that invites event attendees to weigh in on any content, theme, or question that can be voted or ranked. It provides an easy way to activate an informal space with a playful data visualization that creates a snapshot of group priorities and perspectives.',
 
           features: ['Interactive installation', 'Self-guided with instructions', 'Highly customizable', 'Adaptable to any floor plan', 'Available as a standalone rental']
         }
@@ -983,7 +983,7 @@ export const products = [
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
-          description: 'Ping Poll works fantastically as an at-a-glance snapshot of attendee priorities and perspectives. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. Alternately, the full set of votes can be tabulated and analyzed after the event for inclusion in a follow-on report.',
+          description: 'PingPoll works fantastically as an at-a-glance snapshot of attendee priorities and perspectives. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. Alternately, the full set of votes can be tabulated and analyzed after the event for inclusion in a follow-on report.',
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
         }, 
       },
@@ -1051,7 +1051,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Priority Pathways is an interactive installation that supports attendee engagement with key content themes using dot voting across 2x2 matrices and Likert/slider-type scales to explore sentiments, priorities, etc. The design is highly adaptable, creates an attractive data visualization in physical space, and can work well as a self-guided interaction.',
+          heading: 'PriorityPathways is an interactive installation that supports attendee engagement with key content and themes using dot voting across 2x2 matrices and Likert/slider-type scales to explore sentiments, priorities, etc. The design is highly adaptable, creates an attractive data visualization in physical space, and works well as a self-guided interaction.',
 
           features: ['Interactive installation', 'Self-guided with instructions', 'Highly customizable', 'Adaptable to any floor plan', 'Available as a standalone rental']
         }
@@ -1076,7 +1076,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "The installation is designed around a series of questions or prompts that are aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. The questions are mapped onto 2x2 matrices and/or Likert or slider-type scales, and participants are invited to register votes and responses with color-coded dot voting. <br /> <br />With every new response, the picture grows richer and more illuminating as a visualization of participant input emerges in physical space. Patterns and insights from the resulting visualization can be brought back to plenary sessions or digitized and reported out post event.",
+          description: "The installation is designed around a series of questions or prompts that are aligned with program content and chosen to allow participants a chance to share perspectives, opinions, and priorities. The questions are mapped onto 2x2 matrices and/or Likert or slider-type scales, and participants are invited to register responses via color-coded dot voting. <br /> <br />With every new response, the picture grows richer and more illuminating as a visualization of participant input emerges in physical space. Patterns and insights from the resulting visualization can be brought back to plenary sessions or digitized and reported out post event.",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633355/IMG_0527_szhoc0.webp'
         }
       },
@@ -1096,7 +1096,7 @@ export const products = [
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
-          description: 'Priority Pathways functions as a thematically aligned, anonymized survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
+          description: 'PriorityPathways functions as a thematically aligned, anonymized survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
         }, 
       },
@@ -1111,7 +1111,7 @@ export const products = [
   {
     id: 'reflection-collection',
     name: 'Reflection Collection',
-    tagline: 'A reflection activity that brings attendees into conversation',
+    tagline: 'A reflection activity that brings attendees into the conversation',
     category: 'Reflection',
     categoryHighlight: 'Collection',
     categoryColor: '#EEDA2A',
@@ -1119,7 +1119,7 @@ export const products = [
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
     tags: ['Explore priorities', 'Reflect & synthesize'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632826/Lifemark_b_691_hpg3p6.webp',
-    shortDescription: 'A reflection activity that brings attendees into conversation',
+    shortDescription: 'A reflection activity that brings attendees into the conversation',
 
     filters: {
       "type": [
@@ -1138,7 +1138,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'The Reflection Collection is a card-based installation designed to encourage, capture, and showcase attendee contributions – turning your attendees into active participants in an ongoing exchange of perspectives on program themes and content. <br /> <br /> As the Collection grows, it becomes a powerful and accessible site for attendees to draw inspiration from peers and colleagues. It activates an informal space, and provides an easy engagement that can be brought into main stage sessions or breakouts.',
+          heading: 'The ReflectionCollection is a card-based installation designed to encourage, capture, and showcase attendee contributions – turning event attendees into active participants in an ongoing exchange of perspectives on program themes and content. <br /> <br /> As the Collection grows, it becomes a powerful and accessible site for attendees to draw inspiration from peers and colleagues. It also activates an informal space and provides an easy engagement or check-in that can be brought into main stage sessions or breakouts.',
 
           features: ['Interactive installation', 'Self-guided with instructions', 'Highly customizable', 'Adaptable to any floor plan', 'Available as a standalone rental']
         }
@@ -1163,7 +1163,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "The installation is designed around a set of prompt cards featuring up to five pre-determined reflection prompts. Ideally, these are passed out in the main room or breakouts, creating a moment that can also be used for synthesis conversations and new connections.<br /><br />After participants take a moment to address the reflection prompts, they’re invited to visit the installation to see what their colleagues and peers have contributed. As the Collection fills in, it becomes an increasingly rich source of bold ideas, rich questions, and valuable insights that can be fed back into plenary sessions or synthesized for a post-event report.",
+          description: "The installation is designed around a set of prompt cards featuring up to five pre-determined reflection prompts. Ideally, these are passed out in the main room or breakouts, creating a moment that can also be used for synthesis conversations and forming new connections.<br /><br />After participants briefly address the reflection prompts, they’re invited to visit the installation to see what their colleagues and peers have contributed. As the Collection fills in, it becomes an increasingly rich source of bold ideas, big questions, and valuable insights that can be fed back into plenary sessions or synthesized for a post-event report.",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632821/Lifemark_b_52_fkeart.webp'
         }
       },
@@ -1184,7 +1184,7 @@ export const products = [
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
-          description: 'Reflection Collection functions during the event as a physical site of inspiration and exchange. The installation is also supported with custom slides that can be integrated into a deck for a quick share-out in a plenary session. And when the event concludes, all cards can be digitized and analyzed for a follow-on synthesis report.',
+          description: 'ReflectionCollection functions during the event as a physical site of inspiration and exchange. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. And when the event concludes, all cards can be digitized and analyzed for a follow-on synthesis report.',
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
         }, 
       },
@@ -1256,7 +1256,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Taking Action is designed to build alignment on next steps and a shared sense of purpose, momentum, and clear accountability. Most events end on an energetic high note… and then fail to translate that energy into meaningful action. This session ensures that participants identify and own the next steps – and that they’ll move forward together.',
+          heading: 'TakingAction is designed to build alignment on next steps and a shared sense of purpose, momentum, and clear accountability. Most events end on an energetic high note… and then fail to translate that energy into meaningful action. This session ensures that participants identify and own the next steps – and that they’ll move forward together.',
 
           features: ['Facilitated session', '35 - 60 min', 'Main stage', '40 - 500 participants', 'Requires table seating ']
         }
@@ -1267,7 +1267,7 @@ export const products = [
           items: [
             { text: 'Ideal as a closing session with a focus on next steps and accountability' },
             { text: 'Generates rich post-event output'},
-            { text: 'Can simplified to adapt to shorter duration and/or theater seating ' }
+            { text: 'Can be simplified to adapt to shorter duration and/or theater seating ' }
           ]
         }
       },
@@ -1281,7 +1281,7 @@ export const products = [
         type: 'how-it-works',
         content: {
           title: 'How it Works',
-          description: "The Taking Action session (typically programmed at the end of an event) blends facilitated reflection, a card-based interaction, and a creative canvas to elicit and align individual commitments to post-event action with a set of high-value organizational or cohort-level objectives. <br /><br /> The workshop starts from a high-level collective prompt sourced from the client and asks participants to each identify a clear, critical collective commitment to be made. Those collective commitment ideas are then shuffled, assessed, and ranked, and the top 5 are shared aloud.<br /><br /> At that point, the participants are then asked to make personal commitments to concrete actions that they will take to support those high-priority collective commitments. These are captured in a creative canvas to be digitized and leveraged post-event to support accountability and real action toward organizational goals.",
+          description: "The TakingAction session (typically programmed at the end of an event) blends facilitated reflection, a card-based interaction, and a creative canvas to align individual commitments with a set of high-value organizational or cohort-level objectives. <br /><br /> The workshop starts with a high-level collective prompt sourced from the client and asks participants to each identify a clear, critical collective commitment to be made. Those collective commitment ideas are then shuffled, assessed, and ranked, with the top 5 to be shared aloud.<br /><br /> After these top collective commitments are identified, the participants are asked to make personal commitments to concrete actions that will support the group's high-priority collective commitments. These are captured in a creative canvas to be digitized and leveraged post-event to support accountability and real action toward organizational goals.",
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
         }
       },
@@ -1382,7 +1382,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Vision Forest is an interactive installation that brings attendees into the conversation at the level of inspiration -- inviting them to share future visions, hopes/fears, statements of mission/purpose, or other sentiments that align with program themes. The collected contributions are showcased spatially in a dense "forest" of hanging ribbons that attendees can explore throughout the program.',
+          heading: 'VisionForest is an interactive installation that brings attendees into the conversation at the level of inspiration - inviting them to share future visions, hopes/fears, statements of mission/purpose, or other sentiments that align with program themes. The collected contributions are showcased spatially in a dense "forest" of hanging ribbons that attendees can explore throughout the program.',
 
           features: ['Interactive installation', 'Self-guided with instructions', 'Highly customizable', 'Adaptable to any floor plan', 'Available as a standalone rental']
         }
@@ -1427,7 +1427,7 @@ export const products = [
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
-          description: 'Vision Forest allows event organizers to pose one big question to attendees for anonymous response and display in the installation. All responses can be digitized, analyzed, and shared in post-event reports.',
+          description: 'VisionForest allows event organizers to pose one big question to attendees for anonymous response and display in the installation. All responses can be digitized, analyzed, and shared in post-event reports.',
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
         }, 
       },
