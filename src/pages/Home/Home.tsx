@@ -140,9 +140,46 @@ const Home = () => {
           </motion.div>
 
           <motion.div className={styles.videoSlides} style={{ scale: slidesScale }}>
-            <div className={styles.videoSlide} style={{ backgroundColor: 'rgb(40,40,40)' }}></div>
-            <div className={styles.videoSlide} style={{ backgroundColor: 'rgb(100,100,100)' }}></div>
-            <div className={styles.videoSlide} style={{ backgroundColor: 'rgb(160,160,160)' }}></div>
+            {!isMobile && (
+              <div className={styles.videoSlide}>
+                <video
+                  className={styles.videoBackground}
+                  src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  webkit-playsinline="true"
+                />
+              </div>
+            )}
+            <div className={styles.videoSlide}>
+              <video
+                className={styles.videoBackground}
+                src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                webkit-playsinline="true"
+              />
+            </div>
+            {!isMobile && (
+              <div className={styles.videoSlide}>
+                <video
+                  className={styles.videoBackground}
+                  src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  webkit-playsinline="true"
+                />
+              </div>
+            )}
           </motion.div>
 
           <motion.div className={styles.iconShapes} style={{ scale: iconScale }}>

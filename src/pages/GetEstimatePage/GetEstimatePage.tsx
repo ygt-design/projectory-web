@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { products } from '../../pages/ProductPages/productsData';
 import styles from './GetEstimatePage.module.css';
 
-import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_1.png';
+import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
 import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
 
 const GetEstimatePage: React.FC = () => {
@@ -208,11 +208,12 @@ const GetEstimatePage: React.FC = () => {
             </a> <br />
             <Link to="/" className={styles.overlayLink}>
               Take Me Home
-            </Link>
-          </div>
-
-            <img src={shape1} alt="Shape 1" className={`${styles.shape} ${styles.shapeOne} `} />
-            <img src={shape2} alt="Shape 2" className={`${styles.shape} ${styles.shapeTwo} `} />          
+            </Link>  
+          </div>   
+            <div className={styles.overlayShapes}>
+              <img src={shape1} alt="Shape 1" className={`${styles.shape} ${styles.shapeOne} `} />
+              <img src={shape2} alt="Shape 2" className={`${styles.shape} ${styles.shapeTwo} `} />     
+            </div>
           </div>
       )}
     </section>

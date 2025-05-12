@@ -70,7 +70,7 @@ const caseStudiesFAQ = [
   },
   {
     question: "Can I do it myself?",
-    answer: "Some of our Interactive Installations are easy to ship and build, allowing your team and volunteers to manage them without Projectory staff on-site. We also license some of our Facilitated Session frameworks, so skilled facilitators can run a Projectory session with our tools and canvases after a brief training. Self-service pricing is more economical but requires more involvement from your team. Contact us for pricing details on self-serve options.",
+    answer: "Some of our products are easy to ship and build, allowing your team and volunteers to manage them without Projectory Staff on-site. We also license some of our frameworks so skilled facilitators can run a Projectory session with our tools and canvases after a brief training. Self-Service pricing (“You Do”) is more economical but requires some involvement from your team.",
   },
   {
     question: "What discounts can you provide?",

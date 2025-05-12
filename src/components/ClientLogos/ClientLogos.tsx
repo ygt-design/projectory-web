@@ -53,7 +53,7 @@ const ClientLogos: React.FC<ClientLogosProps> = ({ background = 'transparent' })
   return (
     <section style={{ background }} className={styles.clientLogosWrapper}>
       <h2>
-        Our clients love us.<br /> You will too.
+        Brands we’ve built <br /> experiences with
       </h2>
       <div className={styles.marquee}>
         <motion.div

@@ -14,15 +14,19 @@ const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const likedItems = products.filter((p) => likedProducts.includes(p.id));
   const productsCount = likedItems.length;
-  const headingText = `You have ${productsCount} product${
-    productsCount !== 1 ? 's' : ''
-  } selected. Continue to get an estimate for your selected products.`;
+  let headingText: string;
+  if (productsCount === 1) {
+    headingText = "You’ve selected 1 experience. Bundling multiple experiences may reduce the overall cost.";
+  } else if (productsCount > 1) {
+    headingText = `Great! You’ve selected ${productsCount} experiences. Next, let’s take this to your inbox`;
+  } else {
+    headingText = `You have ${productsCount} product${productsCount !== 1 ? 's' : ''} selected. Continue to get an estimate for your selected products.`;
+  }
 
   const [menuTransform, setMenuTransform] = useState(
     isOpen ? 'translateX(0)' : 'translateX(100%)'
   );
 
-  // useNavigate to redirect to the estimate page.
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -16,15 +16,23 @@
 
 .title {
     font-family: "FounderGrotesk_Regular";
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #fff;
     margin-bottom: 0.5rem;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+  margin: 1.5rem auto 1.5rem;
+  max-width: 750px;
 }
 
 .subTitle {
     color: rgba(255, 255, 255, 0.85);
     margin-bottom: 2rem;
     font-size: 1rem;
+    text-align: center;
 }
 
 .options {

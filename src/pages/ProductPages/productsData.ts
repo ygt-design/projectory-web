@@ -33,7 +33,7 @@ export const products = [
       { 
         type: 'details', 
         content: {
-          heading: 'Floating Opinions is an inclusive discussion and alignment session that playfully smuggles in elements of surprise and delight. Participants explore a series of big questions connected to event themes and content with their table groups and then signal their positions to the rest of the room by raising and lowering balloons – creating a stunning visual to accompany a facilitated shareout of different perspectives.',
+          heading: 'FloatingOpinions is an inclusive discussion and alignment session that playfully smuggles in elements of surprise and delight. Participants explore a series of big questions connected to event themes and content with their table groups and then signal their positions to the rest of the room by raising and lowering balloons – creating a stunning visual to accompany a facilitated shareout of different perspectives.',
 
           features: ['Facilitated session', '40 – 60 min', 'Main stage or breakout', '40 - 500+ participants', 'Requires table seating']
         }
@@ -186,7 +186,7 @@ export const products = [
         "Visualize collective insights",
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"
@@ -313,7 +313,7 @@ export const products = [
         "Promote reflection and synthesis",
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"
@@ -448,7 +448,7 @@ export const products = [
         "Inspire forward thinking and creativity"
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"
@@ -1244,7 +1244,7 @@ export const products = [
         "Promote reflection and synthesis",
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"
@@ -1480,7 +1480,7 @@ export const products = [
         "Facilitate peer learning and dialogue"
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"
@@ -1582,7 +1582,7 @@ export const products = [
         "Inspire forward thinking and creativity"
       ],
       "seating": [
-        "Any",
+        "Mixed/Other",
         "Round tables",
         "Theatre",
         "Not sure yet"

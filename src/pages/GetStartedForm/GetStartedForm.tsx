@@ -21,11 +21,13 @@ const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
 
 const questionData = {
   type: {
-    label: 'Type of product',
+    label: 'What kind of experience are you looking for?',
+    description: 'Sessions are facilitated group activities that can be added into the agenda. Installations are self-guided activities for guests to explore during breaks.',
     options: ['Facilitated session', 'Interactive installation'],
   },
   objectives: {
-    label: 'Objectives',
+    label: 'What outcomes are most important to you?',
+    description: 'Select the objectives you’d like this experience to support.',
     options: [
       'Foster connection and networking',
       'Facilitate peer learning and dialogue',
@@ -38,8 +40,9 @@ const questionData = {
     ],
   },
   seating: {
-    label: 'Seating Type',
-    options: ['Any', 'Round Tables', 'Theatre', 'Not Sure Yet'],
+    label: 'What type of seating will you have?',
+    description: 'This helps us recommend formats that fit your space.',
+    options: ['Mixed/Other', 'Round Tables', 'Theatre', 'Not Sure Yet'],
   },
 } as const;
 
@@ -138,7 +141,7 @@ const GetStartedForm: React.FC = () => {
       let score = 0;
       score += product.filters.type.filter(t => filters.type.includes(t)).length;
       score += product.filters.objectives.filter(o => filters.objectives.includes(o)).length;
-      if (filters.seating.includes('Any')) {
+      if (filters.seating.includes('Mixed/Other')) {
         score += 1;
       } else {
         score += product.filters.seating.filter(s => filters.seating.includes(s)).length;
@@ -202,6 +205,9 @@ const GetStartedForm: React.FC = () => {
             <h1 className={styles.title}>
               {questionData[stepKey].label}
             </h1>
+            {questionData[stepKey].description && (
+              <p className={styles.description}>{questionData[stepKey].description}</p>
+            )}
             <p className={styles.subTitle}>
               Step {step + 1} of {stepCount}
             </p>
