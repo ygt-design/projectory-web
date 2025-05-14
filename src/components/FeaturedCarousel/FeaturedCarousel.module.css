@@ -142,6 +142,7 @@
         gap: 0;
         position: static;
         order: 2;
+        margin-bottom: -70px;
     }
 
     .timerBarWrapper {
