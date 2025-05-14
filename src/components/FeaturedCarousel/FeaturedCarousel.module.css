@@ -141,6 +141,7 @@
         padding-bottom: 0;
         gap: 0;
         position: static;
+        order: 2;
     }
 
     .timerBarWrapper {
@@ -153,7 +154,8 @@
 
     .rightColumn {
         height: 50vh;
-        margin-top: -100px;
+        margin-top: 15px;
+        margin-bottom: -90px;
     }
 
     .title{

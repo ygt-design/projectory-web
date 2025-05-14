@@ -159,7 +159,7 @@ const Products = () => {
       <div className={styles.landingContent}>
         <h1>Make Your Event Unmissable</h1>
         <p>
-          Projectory turns any briefly-captivated audience into an engaged community of leaders who can’t wait to participate.
+          Projectory transforms half-listening event attendees into an engaged cohort of active, connected participants.
         </p>
       </div>
       <motion.div

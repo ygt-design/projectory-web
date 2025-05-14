@@ -1,6 +1,5 @@
-// 📂 src/components/GridCTA/GridCTA.tsx
-
 import styles from './GridCTA.module.css';
+import { Link } from 'react-router-dom';
 
 const GridCTA = () => {
   return (
@@ -9,9 +8,9 @@ const GridCTA = () => {
       <p>
         We’ll work with you to create a custom product that aligns with your event’s needs. Get in touch to learn more.
       </p>
-      <a href="/get-started#contactWrapper" className={styles.ctaButton}>
+      <Link to="/get-started#contact-form" className={styles.ctaButton}>
         Contact Us
-      </a>
+      </Link>
     </div>
   );
 };
