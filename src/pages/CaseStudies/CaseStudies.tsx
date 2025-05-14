@@ -57,7 +57,7 @@ const extraElement = (
 const caseStudiesFAQ = [
   {
     question: "What will this cost?",
-    answer: "Well, we can’t give an exact quote without knowing a bit more about what you’re working on, but we can confidently say we can add immediate experiential value at a wide range of budgets. That’s kind of our thing.Ultimately, starting a conversation is the best way to know how we can work together. But if it’s helpful, here are a few examples of big and small projects we've recently delivered.",
+    answer: "Well, we can’t give an exact quote without knowing a bit more about what you’re working on, but we can confidently say we can add immediate experiential value at a wide range of budgets. That’s kind of our thing. Ultimately, starting a conversation is the best way to know how we can work together. But if it’s helpful, here are a few examples of big and small projects we've recently delivered.",
     extraContent: extraElement, 
   },
   {

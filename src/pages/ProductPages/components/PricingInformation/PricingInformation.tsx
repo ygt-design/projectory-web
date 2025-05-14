@@ -50,6 +50,9 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
           </div>
         ))}
       </div>
+      <div className={styles.disclaimer}>
+        Pricing does not include shipping or travel and accommodation costs for any onsite team members.
+      </div>
     </section>
   );
 };

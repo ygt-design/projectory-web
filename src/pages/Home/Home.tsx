@@ -28,7 +28,7 @@ const Home = () => {
     window.addEventListener('resize', checkScreenSize);
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
-
+  
   // Scroll animations (disabled on mobile)
   const { scrollYProgress } = useScroll();
   const contentOpacity = useTransform(
