@@ -33,17 +33,17 @@ const Home = () => {
   const { scrollYProgress } = useScroll();
   const contentOpacity = useTransform(
     scrollYProgress,
-    [0, 0.35],
+    [0, 0.25],
     isMobile ? [1, 1] : [1, 0]
   );
   const slidesScale = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.2],
     isMobile ? [1, 1] : [1.2, 0.4]
   );
   const iconScale = useTransform(
     scrollYProgress,
-    [0, 0.3],
+    [0, 0.2],
     isMobile ? [1, 1] : [5, 1]
   );
 
@@ -134,7 +134,7 @@ const Home = () => {
         <motion.div className={styles.homeSection}>
           <motion.div className={styles.content} style={{ opacity: contentOpacity }}>
             <h1>
-              Less Talking Heads, <br /> More Heads Talking
+              Less Talking Heads, <br /> More Heads Talking.
             </h1>
             <ContactButton />
           </motion.div>
@@ -195,25 +195,25 @@ const Home = () => {
       <div ref={secondSectionRef} className={styles.secondWrapper}>
         <motion.div className={styles.secondSection}>
           <motion.p className={styles.text} style={{ color: textColor1 }}>
-            Most corporate events just blast information.
+            Event attendees don’t want to just sit and listen.
           </motion.p>
           <motion.p className={styles.text} style={{ color: textColor2 }}>
-            Then, everyone returns to their day-to-day
+            Forget stretch breaks and unstructured happy hours.
           </motion.p>
           <motion.p className={styles.text} style={{ color: textColor3 }}>
-            usually without clear next steps.
+            Attendees want more meaningful interactions,
           </motion.p>
           <motion.p className={styles.text} style={{ color: textColor4 }}>
-            What if events sparked real action and dialogue
+            deeper connections, and better conversations.
           </motion.p>
           <motion.p className={styles.text} style={{ color: textColor5 }}>
-            — even after they ended?
+            They want real engagement – and more of it.
           </motion.p>
           <motion.p className={styles.text} style={{ color: textColor6 }}>
-            We know exactly why this isn’t the norm.
+            The future of events is clearly experiential.
           </motion.p>
           <motion.p className={`${styles.text} ${styles.gradientText}`} style={{ color: textColor7, textShadow: textShadow7 }}>
-            And we’re here to change that.
+            We’re here to create it with you. Now.
           </motion.p>
         </motion.div>
       </div>
@@ -246,13 +246,7 @@ const Home = () => {
               helping organizers extend the value of their programs and make info-dense events, well,
               less boring. Find some of our featured products below, or explore all of them in depth.
             </h4>
-            <button
-              type="button"
-              className={styles.btnOutlinePrimary}
-              onClick={() => window.location.href = '/products'}
-            >
-              See All Products
-            </button>
+
           </div>
 
           {/* Modular Product Grid using dynamic pattern (3,3,2) */}
@@ -269,6 +263,13 @@ const Home = () => {
               </div>
             ))}
           </div>
+           <button
+              type="button"
+              className={styles.btnOutlinePrimary}
+              onClick={() => window.location.href = '/products'}
+            >
+              See All Products
+            </button>
         </div>
       </div>
 

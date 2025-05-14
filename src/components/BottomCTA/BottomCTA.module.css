@@ -4,12 +4,12 @@
     display: flex;
     background: var(--linear-gradient);
     justify-content: center;
-    margin-top: -1000px;
     z-index: -1;
     align-items: center;
     position: relative;
-    height: 1700px;
-    margin-bottom: -200px;
+    margin-top: -1200px;
+    height: 2100px;
+    margin-bottom: -400px;
 }
 
 .inner {
@@ -18,7 +18,7 @@
     padding: 40px;
     border-radius: 12px;
     position: absolute;
-    bottom: 260px;
+    bottom: 460px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -55,13 +55,13 @@
 /* Responsive */
 @media (max-width: 768px) {
     .bottomCta {
-        height: 2000px;
+        height: 2750px;
         padding: 0;
-        margin-bottom: -550px;
+        margin-bottom: -1000px;
     }
 
     .inner {
-        bottom: 530px;
+        bottom: 1000px;
     }
 
     .title {

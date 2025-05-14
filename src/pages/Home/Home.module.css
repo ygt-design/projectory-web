@@ -1,6 +1,7 @@
 h1 {
     margin: 30px;
     font-weight: 100;
+    line-height: 1;
 }
 
 h2 {
@@ -29,7 +30,9 @@ iframe {
 
 .wrapper {
     position: relative;
-    height: 500vh;
+    height: 350vh;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
 }
 
 .homeSection {
@@ -50,8 +53,7 @@ iframe {
     position: absolute;
     bottom: 80px;
     text-align: center;
-    z-index: 2;
-}
+    z-index: 2;}
 
 .videoSlides {
     display: flex;
@@ -220,11 +222,12 @@ iframe {
     font-size: 20px;
     transition: all 0.3s ease;
     color: black;
+    margin-top: 50px;
 }
 
 .btnOutlinePrimary:hover {
     background-color: var(--lime);
-    color: white;
+    color: white;;
 }
 
 @media (max-width: 1024px) {
