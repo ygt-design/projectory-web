@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Intro from '../../components/Intro/Intro';
 import styles from './GetStarted.module.css';
 import faqStyles from '../../components/FAQ/FAQ.module.css';  
@@ -63,6 +65,17 @@ const caseStudiesFAQ = [
 ];
 
 const GetStarted = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#contact-form') {
+      const el = document.getElementById('contact-form');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <div className={styles.getStartedWrapper}>
       <Intro
@@ -71,7 +84,9 @@ const GetStarted = () => {
         buttonText="Get Started"
         buttonLink="/get-started-form"
       />
-      <ContactForm />
+      <div id="contact-form">
+        <ContactForm />
+      </div>
 
       <div className={styles.getInTouch}>
       <h2> Other Ways to Get In Touch </h2>
