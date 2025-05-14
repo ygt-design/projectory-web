@@ -112,12 +112,12 @@ const WhoWeAre = () => {
       </section>
 
       <div className={styles.ctaSection}>
-        <TealCTASection
-          title="Don’t know where to start?" 
-          description="Find experiences tailored to your event by using our Program Builder."
-          buttonText="Build Your Program"
-          buttonLink="/build-your-program"
-        />
+          <TealCTASection
+            title="Don’t know where to start?"
+            description="Use this simple tool to quickly match your event with the best mix of of experiences."
+            buttonText="Product Finder"
+            buttonLink="/get-started-form"
+          />
       </div>
     </div>
   );
