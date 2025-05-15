@@ -1,5 +1,4 @@
 .howWeBuiltWrapper {
-    background-color: #2C2A35;
     color: white;
     padding: 100px 50px;
 }
@@ -10,14 +9,13 @@
 }
 
 .headingBlock h2 {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: 60px;
 }
 
 .headingBlock p {
-    font-size: 30px;
+    font-size: 25px;
     width: 55%;
-    line-height: 1.4;
     margin: auto;
     margin-bottom: 50px;
 }

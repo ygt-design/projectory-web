@@ -1,5 +1,6 @@
 // HowWeBuilt.tsx
 import { useState } from 'react';
+import { products as allProducts } from '../../../ProductPages/productsData';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './HowWeBuilt.module.css';
 
@@ -15,43 +16,62 @@ interface HowWeBuiltProps {
   installations: Installation[];
 }
 
-function highlightLastWord(name: string): JSX.Element {
-    const words = name.trim().split(' ');
-    // If there's only one word, just return it
-    if (words.length <= 1) {
-      return <>{name}</>;
-    }
-    const lastWord = words.pop(); // e.g. "Web"
-    const firstWords = words.join(' '); // e.g. "Futures"
-    return (
-      <>
-        {firstWords} <strong>{lastWord}</strong>
-      </>
-    );
+function formatName(name: string): JSX.Element {
+  // Remove all spaces, then highlight the last word
+  const words = name.trim().split(' ');
+  const noSpace = name.replace(/\s+/g, '');
+  // If single word, just return it
+  if (words.length <= 1) {
+    return <>{noSpace}</>;
   }
+  // Find the start index of the last word in the nospace string
+  const lastWord = words[words.length - 1];
+  const prefix = noSpace.slice(0, noSpace.length - lastWord.length);
+  return (
+    <>
+      {prefix}
+      <strong>{lastWord}</strong>
+    </>
+  );
+}
 
 const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selectedInstallation = installations[selectedIndex];
 
+  // Derive thumbnail from productsData based on the link URL
+  const productId = selectedInstallation.link.split('/').pop() || '';
+  const matchedProduct = allProducts.find(p => p.id === productId);
+  const thumbnailSrc = matchedProduct?.thumbnail || selectedInstallation.image;
+  // Determine the assigned color from productsData or fallback
+  const assignedColor = matchedProduct?.categoryColor || selectedInstallation.color;
+
+  // Pull the product's details heading from productsData
+  const detailsSection = matchedProduct?.sections.find(sec => sec.type === 'details');
+  const detailsHeading = detailsSection?.content.heading || selectedInstallation.description;
+
   return (
     <section className={styles.howWeBuiltWrapper}>
       <div className={styles.headingBlock}>
-        <h2>How We Built This Program</h2>
-        <p> Short intro to how we selected each of the following products detailed below lorem ipsum dolor. </p>
+        <h2> Featured Products </h2>
+        <p> A quick look at the interactions Projectory used to drive engagement at this event. Click to explore each in more detail. </p>
       </div>
 
       <div className={styles.buttonsRow}>
         {installations.map((inst, index) => {
           const isActive = index === selectedIndex;
+          // Determine button color from productsData or fallback
+          const btnId = inst.link.split('/').pop() || '';
+          const btnProduct = allProducts.find(p => p.id === btnId);
+          const btnColor = btnProduct?.categoryColor || inst.color;
           return (
             <button
               key={inst.name}
               className={`${styles.installationButton} ${isActive ? styles.activeButton : ''}`}
-              style={{ '--inst-color': inst.color } as React.CSSProperties}
+              style={{ '--inst-color': btnColor } as React.CSSProperties}
               onClick={() => setSelectedIndex(index)}
             >
-              {highlightLastWord(inst.name)}
+              {formatName(inst.name)}
             </button>
           );
         })}
@@ -66,10 +86,14 @@ const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <img src={selectedInstallation.image} alt={selectedInstallation.name} className={styles.installationImage} />
+            <img src={thumbnailSrc} alt={selectedInstallation.name} className={styles.installationImage} />
             <div className={styles.installationTextWrapper}>
-                <h3 style={{ color: selectedInstallation.color }}>{highlightLastWord(selectedInstallation.name)}</h3>
-                <p>{selectedInstallation.description}</p>
+                <h3 style={{ color: assignedColor }}>{formatName(selectedInstallation.name)}</h3>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: detailsHeading.replace(/\n/g, '<br />')
+                  }}
+                />
                 <a href={selectedInstallation.link} className={styles.linkButton}>
                 See More {selectedInstallation.name} →
                 </a>
