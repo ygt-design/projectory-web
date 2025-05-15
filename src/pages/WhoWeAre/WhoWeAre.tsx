@@ -8,9 +8,9 @@ import imageTwo from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
 import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
 import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
 
-import personOne from '../../assets/images/p-WhoWeAre/orenImage.avif';
-import personTwo from '../../assets/images/p-WhoWeAre/jeffImage.avif';
-import personThree from '../../assets/images/p-WhoWeAre/paddyImage.avif';
+import personOne from '../../assets/images/oren.webp';
+import personTwo from '../../assets/images/jeff.webp';
+import personThree from '../../assets/images/paddy.webp';
 
 
 const WhoWeAre = () => {

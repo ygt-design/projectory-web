@@ -152,7 +152,7 @@
     width: 180px;
     height: 180px;
     aspect-ratio: 1;
-    border-radius: 200px;
+    border-radius: 15px;
     object-fit: cover;
 }
 
@@ -364,8 +364,46 @@
 }
 
 @media screen and  (min-width: 1519px) {
- .gallery{
-    width: 50vw;
-    height: 140vh;
- }
+    .gallery{
+        width: 50vw;    
+        height: 100vh;
+    }
+
+    .textSection{
+        font-size: 30px;
+        max-width: 1200px;
+    }
+    .textSection p{
+        font-size: 30px;
+    }
+    .textSection h2{
+        font-size: 50px;
+    }
+
+    .peopleSection{
+        padding: 0 50px;
+        gap: 80px;
+        max-width: 1200px;
+        margin: auto;
+        margin-top: 100px;
+    }
+
+    .person{
+        gap: 100px;
+        max-width: 1200px;
+    }
+
+    .personImage{
+        width: 250px;
+        height: 250px;
+    }
+
+    .personInfo h3{
+        font-size: 35px;
+        margin-bottom: 25px;
+    }
+    .personInfo p{
+        font-size: 25px;
+    }
 }
+

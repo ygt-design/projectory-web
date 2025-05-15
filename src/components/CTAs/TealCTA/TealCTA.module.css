@@ -140,3 +140,24 @@
         right: 0px;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .ctaContent h2 {
+        font-size: 80px;
+    }
+
+    .ctaContent p {
+        font-size: 30px;
+    }
+
+    .ctaButton {
+        font-size: 22px;
+    }
+
+    .imageTwo{
+        width: 350px;
+        bottom: -92px;
+        right: 0px;
+    }
+
+}

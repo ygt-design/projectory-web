@@ -297,3 +297,28 @@
     }
 
 }
+
+@media screen and (min-width: 2000px) {
+    .shape1 {
+        width: 8vw;
+    }
+
+    .shape2 {
+        width: 8vw;
+    }
+
+    .shape3 {
+        width: 8vw;
+    }
+
+    .shape4 {
+        width: 8vw;
+    }
+
+    .tagBarHeading {
+        font-size: 80px;
+    }
+    .tagBarSubheading {
+        font-size: 40px;
+    }
+}

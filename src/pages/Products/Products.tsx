@@ -1,7 +1,7 @@
 // 📂 src/pages/Products/Products.tsx
 
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { products as allProducts } from '../ProductPages/productsData';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
@@ -117,9 +117,12 @@ const groupItems = (items: any[]) => {
 const Products = () => {
   const [filteredProducts] = useState(allProducts);
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialTag = searchParams.get('tag') || 'All Products';
-  const isValidTag = TAGS.includes(initialTag) ? initialTag : 'All Products';
-  const [selectedTag, setSelectedTag] = useState(isValidTag);
+  const paramTag = searchParams.get('tag') || 'All Products';
+  // Case-insensitive match against TAGS
+  const matchedTag = TAGS.find(t => t.toLowerCase() === paramTag.toLowerCase());
+  const initialTag = matchedTag || 'All Products';
+  const [selectedTag, setSelectedTag] = useState(initialTag);
+  const location = useLocation();
 
   // Ref for the tag content container
   const tagContentRef = useRef<HTMLDivElement>(null);
@@ -132,6 +135,12 @@ const Products = () => {
       setSearchParams({ tag: selectedTag }, { replace: true });
     }
   }, [selectedTag, searchParams, setSearchParams]);
+
+  useEffect(() => {
+    if (location.hash === '#tagContent') {
+      tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
 
   const displayedProducts =
     selectedTag === 'All Products'
@@ -189,7 +198,7 @@ const Products = () => {
       <FeaturedCarousel />
 
       <div className={styles.productGridWrapper}>
-        <div ref={tagContentRef} className={styles.tagContent}>
+        <div id="tagContent" ref={tagContentRef} className={styles.tagContent}>
           <h2 className={styles.tagBarHeading}>
             {TAG_INFO[selectedTag]?.heading || 'All Products'}
           </h2>

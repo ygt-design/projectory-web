@@ -75,7 +75,7 @@
     background: rgba(255, 255, 255, 0.2);
     position: absolute;
     left: 0px;
-    bottom: 0px;
+    bottom: 5px;
 }
 
 .timerBarFill {
@@ -105,7 +105,6 @@
 
 .productImage {
     border-radius: 24px;
-    width: 100%;
     height: 100%;
 }
 
@@ -184,30 +183,28 @@
 
 @media screen and (min-width: 2000px) {
     .carouselWrapper {
-        height: 90vh;
-        max-height: 100vh;
+        height: 70vh;
+        max-height: 70vh;
+    }
+
+    .leftColumn {
+        padding: 80px;
+        padding-right: 0;
     }
 
     .productImage {
-        width: 80%;
-        margin: 0 50px;
-        border-radius: 24px;
+        width: auto;
+        height: 100%;
+        margin: 0;
+        border-radius: 12px;
+        object-fit: cover;
     }
 
-    .title {
-        font-size: 70px;
-    }
-
-    .categoryLine {
-        font-size: 30px;
-    }
-
-    .featuredText {
-        font-size: 20px;
-    }
-
-    .timerBarWrapper{
-        bottom: 170px;
-        left: 45vw;
+    .imageWrapper {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border-radius: 12px;
+        overflow: hidden;
     }
 }

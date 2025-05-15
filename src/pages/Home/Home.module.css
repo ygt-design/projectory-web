@@ -53,18 +53,22 @@ iframe {
     position: absolute;
     bottom: 80px;
     text-align: center;
-    z-index: 2;}
+    z-index: 2;
+}
 
 .videoSlides {
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     justify-content: center;
     align-items: center;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;}
+    z-index: 1;
+}
+
+    
 
 .videoSlide {
     width: 100%;
@@ -74,6 +78,13 @@ iframe {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     overflow: hidden;
+}
+
+.videoSlide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
 }
 
 .iconShapes {
@@ -367,31 +378,24 @@ iframe {
 
 /* Large-screen enhancements */
 @media (min-width: 2000px) {
-    .homeSection {
-        padding: 0 100px;
-        height: 100vh;
-    }
-
-    .content {
-        bottom: 120px;
-        padding: 0 50px;
+    .homeSection h1 {
+        font-size: 120px;
     }
 
     .text {
-        font-size: 72px;
-        line-height: 1.1;
+        font-size: 80px;
     }
 
-    .mainSizzleWrapper,
+    .mainSizzleWrapper {
+        height: 90vh;
+    }
+
+    .mainSizzle {
+        height: 80%;
+    }
+
     .secondarySizzleWrapper {
-        padding: 0 100px;
-        width: 100%;
-        max-width: 2100px;
-        margin: 0 auto;
-    }
-
-    .secondarySizzleTitle {
-        width: 50%;
+        width: calc(100vw - 200px);
     }
 
     .secondarySizzle h2 {
@@ -400,31 +404,5 @@ iframe {
 
     .secondarySizzle h4 {
         font-size: 30px;
-    }
-
-    .mainSizzle {
-        height: 80%;
-    }
-
-    .mainSizzleWrapper {
-        height: 80vh;
-    }
-
-
-    .productsGrid {
-        gap: 40px;
-        width: 80%;
-    }
-
-    .videoSlide {
-        margin: 0 40px;
-    }
-
-    .iconShapes .icon {
-        width: 210px;
-    }
-
-    iframe {
-        height: 100%;
     }
 }

@@ -11,16 +11,16 @@ const FinalCTA = ({ experienceText, experienceLink }: FinalCTAProps) => {
     <section className={styles.ctaWrapper}>
       {/* Left Block - Dynamic Content */}
       <div className={styles.ctaBoxDark}>
-        <h3>Back to {experienceText}</h3>
+        <h3> Explore More {experienceText}</h3>
         <p>See more experiences that enhance your existing event objectives</p>
-        <Link to={experienceLink} className={styles.backLink}>←</Link>
+        <Link to={experienceLink} className={styles.backLink}> See More </Link>
       </div>
 
       {/* Right Block - Static Content */}
       <div className={styles.ctaBoxLight}>
-        <h3>Break free from boring.</h3>
-        <p>Discover how Projectory experiences can elevate your events and get more out of your time together.</p>
-        <Link to="/get-started" className={styles.ctaButton}>Get Started</Link>
+        <h3>Break Free From Boring </h3>
+        <p>Discover how Projectory experiences can elevate your events </p>
+        <Link to="/get-started" className={styles.ctaButtonBottom}>Get Started</Link>
       </div>
     </section>
   );
