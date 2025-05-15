@@ -117,9 +117,11 @@ const FeaturedCarousel: React.FC = () => {
             Learn More
           </Link>
         </div>
+      </div>
 
-        {/* Vertical Timer Bar */}
-        <div
+      {/* Right Column (Image) */}
+      <div className={styles.rightColumn}>
+            <div
           className={`${styles.timerBarWrapper} ${
             fadeState === 'fadeIn' ? styles.fadeIn : styles.fadeOut
           }`}
@@ -132,10 +134,7 @@ const FeaturedCarousel: React.FC = () => {
             }}
           />
         </div>
-      </div>
 
-      {/* Right Column (Image) */}
-      <div className={styles.rightColumn}>
         <div
           className={`${styles.imageWrapper} ${
             fadeState === 'fadeIn' ? styles.fadeIn : styles.fadeOut
