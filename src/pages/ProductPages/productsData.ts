@@ -123,40 +123,40 @@ export const products = [
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '9,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '9,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]              
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '13,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Bring us in',
+              price: '13,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
                 '24/7 dedicated account manager'
-              ]                               
+              ]               
             },
             {
               title: 'We Do & More',
-              price: '14,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Custom branding',
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                      
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1458,283 +1458,283 @@ export const products = [
       }
     ]
   },
-  {
-    id: 'block-party',
-    name: 'Block Party',
-    tagline: 'A collaborative quiz game with towering stakes',
-    category: 'Block',
-    categoryHighlight: 'Party',
-    categoryColor: '#F37655',
-    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
-    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
-    tags: ['Networking', 'Peer learning'],
-    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217285/7FE7FADB-0D8F-4B73-B0E9-3EC033022A33_rncebi.jpg',
-    shortDescription: 'A collaborative quiz game with towering stakes',
+  // {
+  //   id: 'block-party',
+  //   name: 'Block Party',
+  //   tagline: 'A collaborative quiz game with towering stakes',
+  //   category: 'Block',
+  //   categoryHighlight: 'Party',
+  //   categoryColor: '#F37655',
+  //   heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
+  //   bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
+  //   tags: ['Networking', 'Peer learning'],
+  //   thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746217285/7FE7FADB-0D8F-4B73-B0E9-3EC033022A33_rncebi.jpg',
+  //   shortDescription: 'A collaborative quiz game with towering stakes',
   
-    filters: {
-      "type": [
-        "Facilitated session"
-      ],
-      "objectives": [
-        "Foster connection and networking",
-        "Facilitate peer learning and dialogue"
-      ],
-      "seating": [
-        "Mixed/Other",
-        "Round tables",
-        "Theatre",
-        "Not sure yet"
-      ]
-    },
+  //   filters: {
+  //     "type": [
+  //       "Facilitated session"
+  //     ],
+  //     "objectives": [
+  //       "Foster connection and networking",
+  //       "Facilitate peer learning and dialogue"
+  //     ],
+  //     "seating": [
+  //       "Mixed/Other",
+  //       "Round tables",
+  //       "Theatre",
+  //       "Not sure yet"
+  //     ]
+  //   },
 
-    sections: [
-      { type: 'hero' },
-      { 
-        type: 'details', 
-        content: {
-          heading: 'BlockParty is a high energy, collaborative quiz game with a block-stacking twist. Participants work in teams to answer trivia questions drawing on event themes and content. For each correct answer, a team gets to add a block to their tower, but as the game continues and the towers grow taller, the blocks get larger – and the stakes, higher. Towers topple, leads vanish, and the game often comes down to the very last round or even a wild tiebreaking challenge.',
+  //   sections: [
+  //     { type: 'hero' },
+  //     { 
+  //       type: 'details', 
+  //       content: {
+  //         heading: 'BlockParty is a high energy, collaborative quiz game with a block-stacking twist. Participants work in teams to answer trivia questions drawing on event themes and content. For each correct answer, a team gets to add a block to their tower, but as the game continues and the towers grow taller, the blocks get larger – and the stakes, higher. Towers topple, leads vanish, and the game often comes down to the very last round or even a wild tiebreaking challenge.',
 
-          features: ['Facilitated session', '45 - 75 min', 'Main stage', '50 - 500 participants', 'Reauites table seating']
-        }
-      },
-      { 
-        type: 'grid',
-        content: {
-          items: [
-            { text: 'Ideal for receptions and networking time' },
-            { text: 'Highly customizable to event themes and content'},
-            { text: 'Energizes a room with movement'}
-          ]
-        }
-      },
-      { 
-        type: 'image',
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
-        }
-      },
-      { 
-        type: 'how-it-works',
-        content: {
-          title: 'How it Works',
-          description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
-        }
-      },
-      { 
-        type: 'objectives',
-        content: {
-          title: 'Objectives',
-          titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
-          objectives: [
-            'Foster connection and networking',
-            'Inspire forward thinking and creativity',
-          ]
-        }
-      },
-      { 
-        type: 'image', 
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
-        }
-      },
-      { 
-        type: 'pricing',
-        content: {
-          plans: [
-            {
-              title: 'You Do',
-              price: '7,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                             
-            },
-            {
-              title: 'We Do',
-              price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
-                '24/7 dedicated account manager'
-              ]                                                                                    
-            },
-            {
-              title: 'We Do & More',
-              price: '12,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: [
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                                                                             
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    id: 'pointing-the-way',
-    name: 'Pointing the Way',
-    tagline: 'A collaborative quiz game with towering stakes',
-    category: 'PointingThe',
-    categoryHighlight: 'Way',
-    categoryColor: '#BCCE2C',
-    heroVideo: '/videos/testVideo_2.mp4',
-    tags: ['Explore priorities', 'Build alignment', 'Inspire creativity'],
-    thumbnail: '',
-    shortDescription: 'A collaborative quiz game with towering stakes',
+  //         features: ['Facilitated session', '45 - 75 min', 'Main stage', '50 - 500 participants', 'Reauites table seating']
+  //       }
+  //     },
+  //     { 
+  //       type: 'grid',
+  //       content: {
+  //         items: [
+  //           { text: 'Ideal for receptions and networking time' },
+  //           { text: 'Highly customizable to event themes and content'},
+  //           { text: 'Energizes a room with movement'}
+  //         ]
+  //       }
+  //     },
+  //     { 
+  //       type: 'image',
+  //       content: {
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'how-it-works',
+  //       content: {
+  //         title: 'How it Works',
+  //         description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'objectives',
+  //       content: {
+  //         title: 'Objectives',
+  //         titleColor: '#BCCE2D, #148771', 
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
+  //         objectives: [
+  //           'Foster connection and networking',
+  //           'Inspire forward thinking and creativity',
+  //         ]
+  //       }
+  //     },
+  //     { 
+  //       type: 'image', 
+  //       content: {
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'pricing',
+  //       content: {
+  //         plans: [
+  //           {
+  //             title: 'You Do',
+  //             price: '7,500',
+  //             description: 'For teams who want us in the room to ensure everything flows.',
+  //             features: [
+  //               'Rent-and-run toolkit',
+  //               'Explainer videos & setup guide',
+  //               'Remote support',
+  //               'Slides and facilitation guide',
+  //               'Remote and day-of support',
+  //               'Onboarding call',
+  //               'Shipment coordination'
+  //             ]                                             
+  //           },
+  //           {
+  //             title: 'We Do',
+  //             price: '10,000',
+  //             description: 'For teams looking to make the experience unmistakably their own.',
+  //             features: [
+  //               'Event theme and content integration',
+  //               'On-site Projectory Facilitator',
+  //               'Projectory on-site support',
+  //               'White-glove logistics',
+  //               '24/7 dedicated account manager'
+  //             ]                                                                                    
+  //           },
+  //           {
+  //             title: 'We Do & More',
+  //             price: '12,000',
+  //             description: 'For teams looking to make the experience unmistakably their own.',
+  //             features: [
+  //               'Bespoke experience design',
+  //               'Additional on-site staff'
+  //             ]                                                                                             
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   id: 'pointing-the-way',
+  //   name: 'Pointing the Way',
+  //   tagline: 'A collaborative quiz game with towering stakes',
+  //   category: 'PointingThe',
+  //   categoryHighlight: 'Way',
+  //   categoryColor: '#BCCE2C',
+  //   heroVideo: '/videos/testVideo_2.mp4',
+  //   tags: ['Explore priorities', 'Build alignment', 'Inspire creativity'],
+  //   thumbnail: '',
+  //   shortDescription: 'A collaborative quiz game with towering stakes',
   
-    filters: {
-      "type": [
-        "Facilitated session"
-      ],
-      "objectives": [
-        "Explore strategic priorities and decisions",
-        "Build alignment and consensus",
-        "Inspire forward thinking and creativity"
-      ],
-      "seating": [
-        "Round tables",
-        "Not sure yet"
-      ]
-    },
+  //   filters: {
+  //     "type": [
+  //       "Facilitated session"
+  //     ],
+  //     "objectives": [
+  //       "Explore strategic priorities and decisions",
+  //       "Build alignment and consensus",
+  //       "Inspire forward thinking and creativity"
+  //     ],
+  //     "seating": [
+  //       "Round tables",
+  //       "Not sure yet"
+  //     ]
+  //   },
 
-    sections: []
-  },
-  {
-    id: 'combo-convo-plus',
-    name: 'Combo Convo +',
-    tagline: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
-    category: 'Combo',
-    categoryHighlight: 'Convo+',
-    categoryColor: '#ff7700',
-    heroVideo: '/videos/testVideo_2.mp4',
-    tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
-    thumbnail: '',
-    shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
+  //   sections: []
+  // },
+  // {
+  //   id: 'combo-convo-plus',
+  //   name: 'Combo Convo +',
+  //   tagline: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
+  //   category: 'Combo',
+  //   categoryHighlight: 'Convo+',
+  //   categoryColor: '#ff7700',
+  //   heroVideo: '/videos/testVideo_2.mp4',
+  //   tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
+  //   thumbnail: '',
+  //   shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
   
-    filters: {
-      "type": [
-        "Facilitated session"
-      ],
-      "objectives": [
-        "Foster connection and networking",
-        "Inspire forward thinking and creativity",
-        "Visualize collective insights"
-      ],
-      "seating": [
-        "Mixed/Other",
-        "Round tables",
-        "Theatre",
-        "Not sure yet"
-      ]
-    },
+  //   filters: {
+  //     "type": [
+  //       "Facilitated session"
+  //     ],
+  //     "objectives": [
+  //       "Foster connection and networking",
+  //       "Inspire forward thinking and creativity",
+  //       "Visualize collective insights"
+  //     ],
+  //     "seating": [
+  //       "Mixed/Other",
+  //       "Round tables",
+  //       "Theatre",
+  //       "Not sure yet"
+  //     ]
+  //   },
 
-    sections: [
-      { type: 'hero' },
-      { 
-        type: 'details', 
-        content: {
-          heading: 'BlockParty is a high energy, collaborative quiz game with a block-stacking twist. Participants work in teams to answer trivia questions drawing on event themes and content. For each correct answer, a team gets to add a block to their tower, but as the game continues and the towers grow taller, the blocks get larger – and the stakes, higher. Towers topple, leads vanish, and the game often comes down to the very last round or even a wild tiebreaking challenge.',
+  //   sections: [
+  //     { type: 'hero' },
+  //     { 
+  //       type: 'details', 
+  //       content: {
+  //         heading: 'BlockParty is a high energy, collaborative quiz game with a block-stacking twist. Participants work in teams to answer trivia questions drawing on event themes and content. For each correct answer, a team gets to add a block to their tower, but as the game continues and the towers grow taller, the blocks get larger – and the stakes, higher. Towers topple, leads vanish, and the game often comes down to the very last round or even a wild tiebreaking challenge.',
 
-          features: ['Facilitated session', '45 - 75 min', 'Main stage', '50 - 500 participants', 'Reauites table seating']
-        }
-      },
-      { 
-        type: 'grid',
-        content: {
-          items: [
-            { text: 'Ideal for receptions and networking time' },
-            { text: 'Highly customizable to event themes and content'},
-            { text: 'Energizes a room with movement'}
-          ]
-        }
-      },
-      { 
-        type: 'image',
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
-        }
-      },
-      { 
-        type: 'how-it-works',
-        content: {
-          title: 'How it Works',
-          description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
-        }
-      },
-      { 
-        type: 'objectives',
-        content: {
-          title: 'Objectives',
-          titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
-          objectives: [
-            'Foster connection and networking',
-            'Inspire forward thinking and creativity',
-          ]
-        }
-      },
-      { 
-        type: 'image', 
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
-        }
-      },
-      { 
-        type: 'pricing',
-        content: {
-          plans: [
-            {
-              title: 'You Do',
-              price: '7,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                             
-            },
-            {
-              title: 'We Do',
-              price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
-                '24/7 dedicated account manager'
-              ]                                                                                    
-            },
-            {
-              title: 'We Do & More',
-              price: '12,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: [
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                                                                             
-            }
-          ]
-        }
-      }
-    ]
-  }
+  //         features: ['Facilitated session', '45 - 75 min', 'Main stage', '50 - 500 participants', 'Reauites table seating']
+  //       }
+  //     },
+  //     { 
+  //       type: 'grid',
+  //       content: {
+  //         items: [
+  //           { text: 'Ideal for receptions and networking time' },
+  //           { text: 'Highly customizable to event themes and content'},
+  //           { text: 'Energizes a room with movement'}
+  //         ]
+  //       }
+  //     },
+  //     { 
+  //       type: 'image',
+  //       content: {
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'how-it-works',
+  //       content: {
+  //         title: 'How it Works',
+  //         description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'objectives',
+  //       content: {
+  //         title: 'Objectives',
+  //         titleColor: '#BCCE2D, #148771', 
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
+  //         objectives: [
+  //           'Foster connection and networking',
+  //           'Inspire forward thinking and creativity',
+  //         ]
+  //       }
+  //     },
+  //     { 
+  //       type: 'image', 
+  //       content: {
+  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
+  //       }
+  //     },
+  //     { 
+  //       type: 'pricing',
+  //       content: {
+  //         plans: [
+  //           {
+  //             title: 'You Do',
+  //             price: '7,500',
+  //             description: 'For teams who want us in the room to ensure everything flows.',
+  //             features: [
+  //               'Rent-and-run toolkit',
+  //               'Explainer videos & setup guide',
+  //               'Remote support',
+  //               'Slides and facilitation guide',
+  //               'Remote and day-of support',
+  //               'Onboarding call',
+  //               'Shipment coordination'
+  //             ]                                             
+  //           },
+  //           {
+  //             title: 'We Do',
+  //             price: '10,000',
+  //             description: 'For teams looking to make the experience unmistakably their own.',
+  //             features: [
+  //               'Event theme and content integration',
+  //               'On-site Projectory Facilitator',
+  //               'Projectory on-site support',
+  //               'White-glove logistics',
+  //               '24/7 dedicated account manager'
+  //             ]                                                                                    
+  //           },
+  //           {
+  //             title: 'We Do & More',
+  //             price: '12,000',
+  //             description: 'For teams looking to make the experience unmistakably their own.',
+  //             features: [
+  //               'Bespoke experience design',
+  //               'Additional on-site staff'
+  //             ]                                                                                             
+  //           }
+  //         ]
+  //       }
+  //     }
+  //   ]
+  // }
 ];

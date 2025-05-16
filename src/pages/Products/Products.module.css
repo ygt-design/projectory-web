@@ -121,6 +121,11 @@
     width: 45%;
 }
 
+.landingContent p {
+    font-size: 25px;
+    margin-top: 20px;
+}
+
 .shape {
     position: absolute;
     width: 120px;

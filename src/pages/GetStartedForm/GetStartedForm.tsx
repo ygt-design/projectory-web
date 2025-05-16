@@ -22,7 +22,7 @@ const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
 const questionData = {
   type: {
     label: 'What kind of experience are you looking for?',
-    description: 'Sessions are facilitated group activities that can be added into the agenda. Installations are self-guided activities for guests to explore during breaks.',
+    description: 'Sessions are facilitated group activities that can be added into the agenda. Installations are self-guided activities for guests to explore during breaks. <br /> <br /> You can choose both options',
     options: ['Facilitated session', 'Interactive installation'],
   },
   objectives: {
@@ -206,7 +206,10 @@ const GetStartedForm: React.FC = () => {
               {questionData[stepKey].label}
             </h1>
             {questionData[stepKey].description && (
-              <p className={styles.description}>{questionData[stepKey].description}</p>
+              <p
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: questionData[stepKey].description }}
+              />
             )}
             <p className={styles.subTitle}>
               Step {step + 1} of {stepCount}

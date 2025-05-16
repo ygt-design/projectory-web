@@ -36,7 +36,11 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
           <div key={index} className={`${styles.pricingCard} ${index === 1 ? styles.featured : ''}`}>
             <div className={styles.titleSection}>
                 <h3>{plan.title}</h3>
-                <h4 className={styles.price}>${plan.price}</h4>
+                {index === 2 ? (
+                  <h4 className={styles.price}>{plan.price}</h4>
+                ) : (
+                  <h4 className={styles.price}>${plan.price}</h4>
+                )}
                 <h5 className={styles.description}>{plan.description}</h5>
             </div>
             <hr />

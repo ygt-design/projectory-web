@@ -1,6 +1,6 @@
 .howWeBuiltWrapper {
     color: white;
-    padding: 100px 50px;
+    padding: 0px 50px;
 }
 
 .headingBlock {
@@ -87,6 +87,11 @@
 
 .installationTextWrapper h3 strong{
     font-family: 'FoundersGrotesk_Bold';
+}
+
+.installationTextWrapper p{
+    font-size: 20px;
+    line-height: 1.3    ;
 }
 
 .linkButton {

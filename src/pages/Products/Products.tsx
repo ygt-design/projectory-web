@@ -1,7 +1,7 @@
 // 📂 src/pages/Products/Products.tsx
 
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { products as allProducts } from '../ProductPages/productsData';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
@@ -122,7 +122,11 @@ const Products = () => {
   const matchedTag = TAGS.find(t => t.toLowerCase() === paramTag.toLowerCase());
   const initialTag = matchedTag || 'All Products';
   const [selectedTag, setSelectedTag] = useState(initialTag);
-  const location = useLocation();
+
+  useEffect(() => {
+    // When the query param changes via Link navigation, update selectedTag
+    setSelectedTag(initialTag);
+  }, [initialTag]);
 
   // Ref for the tag content container
   const tagContentRef = useRef<HTMLDivElement>(null);
@@ -136,11 +140,10 @@ const Products = () => {
     }
   }, [selectedTag, searchParams, setSearchParams]);
 
+
   useEffect(() => {
-    if (location.hash === '#tagContent') {
-      tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [location]);
+    tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [selectedTag]);
 
   const displayedProducts =
     selectedTag === 'All Products'
