@@ -15,7 +15,7 @@ import TrustedBy from '../../components/TrustedBy/TrustedBy';
 import FAQ from '../../components/FAQ/FAQ';
 
 import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
-import imageTwo from '../../assets/images/p-WhoWeAre/whoWeAreOne.avif';
+import imageTwo from 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428010/Program_Feature1_o2kgpw.webp';
 import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
 import CventImage from '../../assets/images/logos/cvent.png'
 import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
@@ -92,16 +92,23 @@ const caseStudies = [
   },
   {
     id: 2,
-    title: 'Turning Condensed Research into a Playful Keynote Experience ',
-    subtitle: 'London Drugs',
-    link: '/case-study-2',
-    imageSrc: imageTwo,
+    title: 'Highlighting the value of audience engagement for event industry professionals',
+    subtitle: 'PCMA 2024 CEMA Summit ',
+    link: '/pcma-2024-cema-summit',
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428010/Program_Feature1_o2kgpw.webp',
   },
   {
     id: 3,
-    title: 'Building Commitment in a Two-Day Leadership Event',
-    subtitle: 'CIBC Executive Alignment',
-    link: '/case-study-3',
+    title: 'Turning an SKO into an action-packed and collaborative experience',
+    subtitle: "Surescript's Sales Kickoff",
+    link: '/surescripts-sales-kickoff',
+    imageSrc: imageThree,
+  },
+  {
+    id: 4,
+    title: 'Bringing ecosystem partners together for a day of connection and inspiration',
+    subtitle: "Deloitte Connect 2024",
+    link: '/deloitte-connect-2024',
     imageSrc: imageThree,
   },
   

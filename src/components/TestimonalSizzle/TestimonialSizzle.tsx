@@ -19,14 +19,26 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
         <div className={styles.topLeftGraphic}></div>
         <div className={styles.videoContainer}>
           {videoSrc && (
-            <iframe
-              className={styles.video}
-              src={videoSrc}
-              title="Testimonial Video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            videoSrc.toLowerCase().endsWith('.mp4') ? (
+              <video
+                className={styles.video}
+                src={videoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+              />
+            ) : (
+              <iframe
+                className={styles.video}
+                src={`${videoSrc}${videoSrc.includes('?') ? '&' : '?'}autoplay=1&mute=1&loop=1&playlist=${videoSrc.split('/').pop()}`}
+                title="Testimonial Video"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+              />
+            )
           )}
 
           {(quote || author || role) && (
