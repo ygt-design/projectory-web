@@ -1,5 +1,6 @@
 // 📂 src/pages/Home/Home.tsx
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ContactButton from '../../components/Buttons/ContactButton/ContactButton';
@@ -265,13 +266,9 @@ const Home = () => {
               </div>
             ))}
           </div>
-           <button
-              type="button"
-              className={styles.btnOutlinePrimary}
-              onClick={() => window.location.href = '/products'}
-            >
-              See All Products
-            </button>
+           <Link to="/products" className={styles.btnOutlinePrimary}>
+             See All Products
+           </Link>
         </div>
       </div>
 

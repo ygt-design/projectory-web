@@ -34,7 +34,6 @@ const ProductHero = ({ product }: { product: Product | null }) => {
       </video>
       <div className={styles.overlay}></div>
 
-      {/* 🔹 Hero Content */}
       <div className={styles.productHeroContent}>
 
         <div className={styles.productHeroContentLeft}>

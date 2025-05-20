@@ -20,9 +20,9 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
     <section className={styles.pricingWrapper}>
       <h2>Pricing Information</h2>
       <p>
-        We can’t give an exact quote without knowing a bit more about what you’re working on, 
-        but below is a general range with different levels of customization available for this experience. 
-        Ultimately, starting a conversation is the best way to know how we can work together.
+        We can’t give an exact quote without knowing more about your event, but we’re confident we can add immediate experiential value across a wide range of budgets — that’s kind of our thing.
+        <br /><br />
+        Bundling multiple products usually lowers the cost per product and allows us to create a more integrated, high-impact experience.
       </p>
 
       <Link to="/get-started" className={styles.ctaButton}>

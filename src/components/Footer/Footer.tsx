@@ -25,11 +25,11 @@ const Footer = () => {
           </div>
 
           <div className={styles.footerColumn}>
-            <h4>Use cases</h4>
-            <Link to="/use-cases/leadership-summit">Leadership Summit</Link>
-            <Link to="/use-cases/sales-kick-off">Sales Kick-Off</Link>
-            <Link to="/use-cases/industry-event">Industry event</Link>
-            <Link to="/use-cases/user-conference">User conference</Link>
+            <h4>Case Studies</h4>
+            <Link to="/case-study/cibc-global-leadership-summit">Leadership Summit</Link>
+            <Link to="/case-study/surescripts-sales-kickoff">Sales Kick-Off</Link>
+            <Link to="/case-study/pcma-2024-cema-summit"> Industry Event </Link>
+            <Link to="/case-study/deloitte-connect-2024">User conference</Link>
           </div>
 
           <div className={styles.footerColumn}>
@@ -40,9 +40,9 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h4>Get Started</h4>
             <Link to="/get-started">Product finder</Link>
-            <Link to="/faq">FAQ</Link>
+            <Link to="/get-started">FAQ</Link>
             <Link to="/get-started#contact-form">Contact us</Link>
-            <Link to="/schedule-demo">Schedule a demo</Link>
+            <Link to="https://calendly.com/oren-/projectory?month=2025-05">Schedule a demo</Link>
           </div>
 
         </div>

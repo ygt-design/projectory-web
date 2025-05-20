@@ -111,7 +111,7 @@ const GetEstimatePage: React.FC = () => {
         <h2>So, What’s Next?</h2>
         
         <p>
-          We'd love to know a bit more about what you’re working on, but can confidently say we can add immediate experiential value at a wide range of budgets. That’s kind of our thing.
+          You’ve made some great picks! Tell us a bit more about your event, and we’ll follow up with more details on how we can work together. 
         </p>
 
         <div className={styles.formWrapper}>

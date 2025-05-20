@@ -16,9 +16,9 @@ const SlideInMenu: React.FC<SlideInMenuProps> = ({ onClose, isOpen }) => {
   const productsCount = likedItems.length;
   let headingText: string;
   if (productsCount === 1) {
-    headingText = "You’ve selected 1 experience. Bundling multiple experiences may reduce the overall cost.";
+    headingText = "You’ve selected 1 product. Bundling multiple products may reduce the overall cost.";
   } else if (productsCount > 1) {
-    headingText = `Great! You’ve selected ${productsCount} experiences. Next, let’s take this to your inbox`;
+    headingText = `Great! You’ve selected ${productsCount} products. Next, let’s take this to your inbox`;
   } else {
     headingText = `You have ${productsCount} product${productsCount !== 1 ? 's' : ''} selected. Continue to get an estimate for your selected products.`;
   }

@@ -1,3 +1,5 @@
+import cemaLogo from "../../assets/images/logos/cema.png"
+
 export const caseStudiesData = [
   {
     id: 'cibc-global-leadership-summit', 
@@ -116,7 +118,7 @@ export const caseStudiesData = [
     titleColor: '#BCCE2D',
     heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747428012/CEMA_Sizzle_Web_IP_V1_qyrayp.mp4',
     tags: null,
-    clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
+    clientLogo: cemaLogo,
     sections: [
       { type: 'hero' },
       {
@@ -203,7 +205,7 @@ export const caseStudiesData = [
     titleColor: '#BCCE2D',
     heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747753858/Surescripts_Website_Headline_s9wolc.mp4',
     tags: null,
-    clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
+    clientLogo: 'https://surescripts.com/themes/surescripts/templates/landing-pages/assets/images/logo--white.svg',
     sections: [
       { type: 'hero' },
       {
@@ -275,7 +277,7 @@ export const caseStudiesData = [
     titleColor: '#BCCE2D',
     heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754194/Deloitte_2024_Website_Headline_quazat.mp4',
     tags: null,
-    clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
+    clientLogo: 'https://www.deloitte.com/content/dam/assets-shared/logos/svg/a-d/deloitte.svg',
     sections: [
       { type: 'hero' },
       {
