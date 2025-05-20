@@ -63,7 +63,7 @@ const CaseStudyPage = () => {
 
         return null;
       })}
-      <FinalCTA experienceText="Experiences" experienceLink="/experiences" />
+      <FinalCTA experienceText="Case Studies" experienceLink="/case-studies" />
     </div>
 
   );
