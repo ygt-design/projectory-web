@@ -157,7 +157,7 @@ const Home = () => {
             <div className={styles.videoSlide}>
               <video
                 className={styles.videoBackground}
-                src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4"
+                src="https://res.cloudinary.com/dduchyyhf/video/upload/v1747768306/Website_Testimonials_Dec_2024_V4_jsyqfo.mp4"
                 autoPlay
                 muted
                 loop
@@ -221,15 +221,17 @@ const Home = () => {
       {/* ------------------ Main Video Section ------------------ */}
       <div className={styles.mainSizzleWrapper}>
         <div className={styles.mainSizzle}>
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/bboIrd3BMWM?autoplay=1&mute=1&loop=1&playlist=bboIrd3BMWM"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+            <video
+            className={styles.mainSizzleVideo}
+            src="https://res.cloudinary.com/dduchyyhf/video/upload/v1747768254/New_Main_Sizzle_IP_Socials_V4_pb23lo.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="auto"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
         </div>
       </div>
 
