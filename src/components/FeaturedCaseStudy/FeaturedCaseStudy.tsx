@@ -4,23 +4,24 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCaseStudy.module.css';
+import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
+
 
 const CASE_STUDIES = [
   {
     id: 'cibc-leadership',
-    title: 'Building Commitment in a Two-Day Leadership Event',
-    subtitle: 'CIBC Executive Alignment',
-    imageUrl:
-      'https://s3-alpha-sig.figma.com/img/f1bf/650c/01c0bb4294b3954a8be0e9b277d0a9e7?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=GPEKskoFbudkHb0X8r0R22FfEM9giwmWXWRR6KffnFk3VvjSEeDGUdrQQj4Wen0ULm8az6fMjx~MyKWt4s5I02f1UcAvGpZr~yWAIOen6ZnSr0~e-SRwr3lYqYxxytznHhAuN4N30cH~NiMOfTgKR90oFf4YJM0lmmWaitviCcbUpHv8sFqW9ImP4JaoQJbVnpDH4hZhy-5kHzA4FMNw7Uq467bZ8yMyZk~v-TUsg0WwU1own-pgyDTzfYdrfzo0MWrRNpIQcfTtyYIcBUTv5xPLx1uV84Ju0Tgo0pmKoFkfJlh2v8UmfAdt5Wa4TCU78LAuqCGTZEF92uRQUxIinQ__',
-    link: '/case-study/cibc-leadership',
+    title: 'Facilitating strategic conversations for the most senior leaders of the bank',
+    subtitle: 'CIBC Global Leadership Summit',
+    imageUrl: imageOne,
+    link: '/case-study/cibc-global-leadership-summit',
   },
   {
     id: 'london-drugs-keynote',
-    title: 'Turning Condensed Research into a Playful Keynote Experience',
-    subtitle: 'London Drugs',
+    title: 'Highlighting the value of audience engagement for event industry professionals',
+    subtitle: 'PCMA 2024 CEMA Summit',
     imageUrl:
-      'https://s3-alpha-sig.figma.com/img/63e7/6afe/619603351473690deba1aaada9ffcc33?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Ew9a-69jSVlTLKcVJPn~zmR0HMMusB4DxgXThHRXZeOE7FASOKyASpnS30ljdRazvXEWSYPYw~o8oiyq8sM0mS-cRNN3tKduWREoedbq3Zyxt4BNC2kMuoDi3w29IpBiZLzi~B6nzHDQIZB9DKQQsXbw0T1iIl9VPz~i2MmBePrvlChm-cX3jiknKjzidAvHhAED7SsDXYGo8FFCPU9GEbGvNmiE2V5f7Evr0c59O5IOnSKHBEv4KuIJK2wm0uSl2LfJvA8sB33m9mgITH0RfwDRwNJHxuSN7a10Uyy-iz9gS6xE5ux64F3eEBK0WfWoFAhyvDqSOpbr8PMx785hNQ__',
-    link: '/case-study/london-drugs-keynote',
+      'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428014/Program_Feature4_t9vw5u.webp',
+    link: '/case-study/pcma-2024-cema-summit',
   },
 ];
 

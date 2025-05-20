@@ -251,39 +251,40 @@ export const products = [
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '7,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '7,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
+              title: 'Bring us in',
               price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
                 '24/7 dedicated account manager'
-              ]                                                            
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '12,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                                                       
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -373,54 +374,47 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630383/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-0898_xjdz3z.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '8,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '8,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '12,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Bring us in',
+              price: '12,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
-                '24/7 dedicated account manager',
-                'Custom printing assets'
-              ]                         
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '14,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Custom branding',
-                'Interactive post event report',
-                'Additional on-site staff'
-              ]                          
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
-        }
-      },
-      { 
-        type: 'image', 
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630385/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_lb2trf.webp'
         }
       }
     ]
@@ -507,27 +501,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746649932/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_ybgiyf.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '4,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: ['Rent-and-run toolkit', 'Slides and facilitation guide', 'Remote and day-of support', 'Onboarding call', 'Shipment coordination'],
+              title: 'Do it yourself',
+              price: '4,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '7,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Event theme and content integration', 'On-site Projectory Facilitator','Custom printing assets'],
-            },
-            {
-              title: 'We Do & More',
+              title: 'Bring us in',
               price: '9,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Custom branding', 'Bespoke experience design'],
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -620,27 +632,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648532/FM8A5399_o2ecms.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
+              title: 'Do it yourself',
               price: '8,000',
               description: 'For teams that want to run it themselves, but still feel supported.',
-              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '11,000',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
-            },
-            {
-              title: 'We Do & More',
+              title: 'Bring us in',
               price: '13,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Custom branding', 'Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -737,41 +767,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648104/JGF_7547r_rvg8wj.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '5,300',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '4,500',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                          
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '9,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Bring us in',
+              price: '8,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator'
-              ]                                                   
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '11,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Custom branding',
-                'Bespoke experience design',
-                'Interactive post event report'
-              ]                                                           
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -867,40 +901,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647929/1732132446269_jevdgh.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
+              title: 'Do it yourself',
               price: '4,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                          
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '8,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Bring us in',
+              price: '8,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'On-site Projectory Facilitator',
-              ]                                                            
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '11,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Custom branding',
-                'Bespoke experience design',
-                'Interactive post event report'
-              ]                                                                                 
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -998,22 +1037,40 @@ export const products = [
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '6,500',
+              title: 'Do it yourself',
+              price: '7,000',
               description: 'For teams that want to run it themselves, but still feel supported.',
-              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '8,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
-            },
-            {
-              title: 'We Do & More',
+              title: 'Bring us in',
               price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Custom branding', 'Main stage installation trends discussion', 'Interactive post event report'],
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1105,6 +1162,49 @@ export const products = [
         content: {
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633355/IMG_0527_szhoc0.webp'
         }
+      },
+       { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'Do it yourself',
+              price: '7,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
+            },
+            {
+              title: 'Bring us in',
+              price: '9,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
+            }
+          ]
+        }
       }
     ]
   },
@@ -1194,27 +1294,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632828/1723554227767_mhebln.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '8,500',
+              title: 'Do it yourself',
+              price: '9,000',
               description: 'For teams that want to run it themselves, but still feel supported.',
-              features: ['Rent-and-run toolkit', 'Explainer videos & setup guide', 'Remote support', 'Slides and facilitation guide','Remote and day-of support', 'Onboarding call', 'Shipment coordination '],
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '11,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
-            },
-            {
-              title: 'We Do & More',
+              title: 'Bring us in',
               price: '13,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1311,41 +1429,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
+              title: 'Do it yourself',
               price: '4,000',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                          
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '8,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Bring us in',
+              price: '8,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator'
-              ]                                                                         
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '11,500',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Custom branding',
-                'Bespoke experience design',
-                'Interactive post event report'
-              ]                                                                                 
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1437,21 +1559,33 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631566/FM8A4417-Enhanced-NR_jqxd4i.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'We Do',
-              price: '19,000',
-              description: 'For teams who want us in the room to ensure everything flows.',
-              features: ['Event theme and content integration', 'Projectory on-site support', 'White-glove logistics', '24/7 dedicated account manager', 'Custom printing assets'],
+              title: 'Bring us in',
+              price: '13,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '23,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: ['Custom branding', 'Bespoke experience design ','Main stage installation trends discussion', 'Interactive post event report', 'Additional on-site staff'],
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1539,44 +1673,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty1_zix2dw.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '7,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '7,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                             
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
+              title: 'Bring us in',
               price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
                 '24/7 dedicated account manager'
-              ]                                                                                    
+              ]               
             },
             {
-              title: 'We Do & More',
-              price: '12,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                                                                             
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
@@ -1590,7 +1725,8 @@ export const products = [
     category: 'PointingThe',
     categoryHighlight: 'Way',
     categoryColor: '#BCCE2C',
-    heroVideo: '/videos/testVideo_2.mp4',
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747764986/Pointing_the_Way_Web_IP_V2_zylilh.mp4',
+    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747764986/Pointing_the_Way_Web_IP_V2_zylilh.mp4',
     tags: ['Explore priorities', 'Peer learning', 'Build alignment'],
     thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420797/PointingtheWay1_r4foy4.webp',
     shortDescription: 'A playfully strategic decision-making & prioritization workshop',
@@ -1663,44 +1799,45 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty1_zix2dw.webp'
         }
       },
-      { 
+       { 
         type: 'pricing',
         content: {
           plans: [
             {
-              title: 'You Do',
-              price: '7,500',
-              description: 'For teams who want us in the room to ensure everything flows.',
+              title: 'Do it yourself',
+              price: '8,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
               features: [
-                'Rent-and-run toolkit',
-                'Explainer videos & setup guide',
-                'Remote support',
-                'Slides and facilitation guide',
-                'Remote and day-of support',
-                'Onboarding call',
-                'Shipment coordination'
-              ]                                             
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
             },
             {
-              title: 'We Do',
-              price: '10,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
-              features: [
-                'Event theme and content integration',
-                'On-site Projectory Facilitator',
-                'Projectory on-site support',
-                'White-glove logistics',
-                '24/7 dedicated account manager'
-              ]                                                                                    
-            },
-            {
-              title: 'We Do & More',
+              title: 'Bring us in',
               price: '12,000',
-              description: 'For teams looking to make the experience unmistakably their own.',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
-                'Bespoke experience design',
-                'Additional on-site staff'
-              ]                                                                                             
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
             }
           ]
         }
