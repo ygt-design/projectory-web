@@ -24,60 +24,60 @@ const WhoWeAre = () => {
       </section>
 
       <section className={styles.gallery}>
-            <motion.div
-                className={styles.imagePlaceholder}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}  
-                transition={{ duration: 0.3 }}
-            >
-                <img src={imageOne} alt="" />
-            </motion.div>
+        <motion.div
+              className={styles.imagePlaceholder}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}  
+              transition={{ duration: 0.3 }}
+          >
+              <img src={imageOne} alt="" />
+          </motion.div>
 
-            <motion.div
-                className={styles.imagePlaceholder}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-            >
-                <img src={imageTwo} alt="" />
-            </motion.div>
-
-
-            <motion.div
-                className={`${styles.svgPlaceholder} ${styles.svgOne}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-            > 
-                <img src={svgIconOne} alt="" />
-            </motion.div>
-
-            <motion.div
-                className={styles.imagePlaceholder}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-            >
-                <img src={imageThree} alt="" />
-            </motion.div>
+          <motion.div
+              className={styles.imagePlaceholder}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+          >
+              <img src={imageTwo} alt="" />
+          </motion.div>
 
 
-            <motion.div
-                className={`${styles.svgPlaceholder} ${styles.svgTwo}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-            >
-                <img src={svgIconTwo} alt="" />
-            </motion.div>
-        </section>
+          <motion.div
+              className={`${styles.svgPlaceholder} ${styles.svgOne}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+          > 
+              <img src={svgIconOne} alt="" />
+          </motion.div>
 
-      {/* Third Section - Three Paragraphs */}
+          <motion.div
+              className={styles.imagePlaceholder}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+          >
+              <img src={imageThree} alt="" />
+          </motion.div>
+
+
+          <motion.div
+              className={`${styles.svgPlaceholder} ${styles.svgTwo}`}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+          >
+              <img src={svgIconTwo} alt="" />
+          </motion.div>
+          
+      </section>
+
       <section className={styles.textSection}>
         <p>Our closets are full of event badges and lanyards. Yes, we know that there are better uses for the space, but some of us are sentimental. We’ve been to some great events.</p>
         <p>We’ve also been to some not-so-great events. Like you, we know the ones that just blast information don’t actually work – and if we’re being honest, they’re a drag to sit through.</p>

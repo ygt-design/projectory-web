@@ -42,7 +42,7 @@
     position: relative;
     width: 65vw;
     max-width: 1200px;
-    height: 165vh;
+    height: 1250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -366,7 +366,7 @@
 @media screen and  (min-width: 1519px) {
     .gallery{
         width: 50vw;    
-        height: 100vh;
+        height: 1250px;
     }
 
     .textSection{
