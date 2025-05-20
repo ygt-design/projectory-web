@@ -28,6 +28,7 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
                 loop
                 playsInline
                 preload="auto"
+                controls={true}
               />
             ) : (
               <iframe

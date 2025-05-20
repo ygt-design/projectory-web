@@ -1,5 +1,3 @@
-import testProjectory from '../../assets/videos/testProjectory.mp4';
-
 export const caseStudiesData = [
   {
     id: 'cibc-global-leadership-summit', 
@@ -8,7 +6,7 @@ export const caseStudiesData = [
     category: 'CIBC Executive Alignment',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: testProjectory,
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
     tags: null,
     clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
@@ -27,6 +25,17 @@ export const caseStudiesData = [
           headingType: 'overview',
         },
       },
+
+         {
+        type: 'testimonialSizzle',
+        content: {
+          videoSrc:'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
+          quote: '"Projectory did an amazing job. getting us moving, talking, and having fun, while focused on business results. Loved it!"',
+          author: 'Sandy Sharman',
+          role: 'Group Head, People Culture & Brand, CIBC'
+        }
+      },
+
       {
         type: 'image',
         content: {
@@ -38,15 +47,6 @@ export const caseStudiesData = [
       //   content:{
       //     imageLeft: 'https://s3-alpha-sig.figma.com/img/1f24/2aac/522d06b917265ce8211d79ef1bc242ee?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Xs2RIziDMkTjhyIg-wjX1wWxT1f9HATC0D4n7z9P5I8ORd7qgGx3KkxKv~DDGeLmctlDb2xmHmxfyDIWiEkTTRXjRBNqh3Aw5Yn4KeGYN2qxLvAGQDZTxpVg0M1zltbjLzJ~w8b56nBmw15OXlmaJfz7S4chblnpXErFBouOh1QyVESJPAsUnJckadkZbvvEjFQ0sxknbzG4rq4wP7J0~tVzQzmTq6RUBrCvPPL0qYDKQREZDsMn1w6LrEDFViFQIhNUsqlcKxtvj8xpDuHy-YNqrYRKLih0895pxnqHim6uFL0YzYENMht9tng8b0UcFyjeB~EfLeq2mToaLco5ug__',
       //     imageRight: 'https://s3-alpha-sig.figma.com/img/453a/3898/af43444f1b2a9759440c58b59176b404?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nEhAzuRj9GJ8NuNBwFamX2XnvFPfp3ZW4fXRQtwQXnSNuy76K-jdfLUKHhDrlnsyS9ogDRdXA1KCqZxh7Fua8eF~cq7jFiogcI7mkdhthlA~5FguCBmhY55Tb3jh~Nd2piEUyfQACXsPNHdo0yEDwvvUsA5wdVl-otV2hsdyY3B7V52t2ZYluXq9rrG5XmntRs8EApmn8RwZizuWrGQGKDMNm7XJX87Jf2DMmO2wD4-kiUl0Lqe3l-UTYCfCH7fYZgnzmcoG4I-AUHFpqDyPJsijaVzVNgLPX5BmEF5eQ0EU5jKA1j9Rp2ipcgTPaSOxTHun7hGvPul2~PY7D6uKyQ__',
-      //   }
-      // },
-      // {
-      //   type: 'testimonialSizzle',
-      //   content: {
-      //     videoSrc: 'https://www.youtube.com/embed/9nlyM-aAfrc?si=jAg4LeooyFUvvB88', 
-      //     quote: '"Projectory did an amazing job. getting us moving, talking, and having fun, while focused on business results. Loved it!"',
-      //     author: 'Sandy Sharman',
-      //     role: 'Group Head, People Culture & Brand, CIBC'
       //   }
       // },
       // {
@@ -101,12 +101,6 @@ export const caseStudiesData = [
           description: 'Capturing data at this leadership event went way beyond notes or sharing video recordings. We turned hundreds of data points into an engaging, visual, and interactive website, giving CIBC teams bank-wide a dynamic snapshot of what was accomplished—accessible, actionable, and actually interesting for everyone, bringing the event impact to life.',
           imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczOGE0sXNiwGdZ_KxiNwewukU2H-kMIOZv7OdRYLWgzBnZct_U8jZSgLI-gqrTYRTs7QH0t37nN9QDHHgLcAsFy68alYAyiPJwz5h76A2FC958P-UI1e0Quc8Vuch06vlcT_D7HJBDNAl8bZwvfaYvkP=w2496-h1664-s-no-gm?authuser=0'
         }, 
-      },
-       {
-        type: 'image',
-        content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747427589/CIBC_Align_by_line_sgztib.webp'
-        }
       },
       {
         type: 'tealCTA',
@@ -207,7 +201,7 @@ export const caseStudiesData = [
     category: 'Surescript Sales Kickoff',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: testProjectory,
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747753858/Surescripts_Website_Headline_s9wolc.mp4',
     tags: null,
     clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
@@ -225,6 +219,12 @@ export const caseStudiesData = [
           ],                   
           headingType: 'overview',
         },
+      },
+       {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753848/Taking_Action_bpxwvn.webp'
+        }
       },
       {
         type: 'how-we-built',
@@ -250,6 +250,13 @@ export const caseStudiesData = [
         }
       },
       {
+        type: 'imageGrid',
+        content:{
+          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753849/ComboConvo_ecwi3v.webp',
+          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753852/Flagfinder_udmunk.webp'
+        },
+      },
+      {
         type: 'dataFeature',
         content: {
           title: 'Data Gathering',
@@ -259,14 +266,14 @@ export const caseStudiesData = [
       }
     ],
   },
-   {
+  {
     id: 'deloitte-connect-2024', // <-- Unique ID
     name: "Deloitte Connect 2024",
     tagline: 'Bringing ecosystem partners together for a day of connection and inspiration',
     category: 'Deloitte Connect 2024',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: testProjectory,
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754194/Deloitte_2024_Website_Headline_quazat.mp4',
     tags: null,
     clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
@@ -286,13 +293,26 @@ export const caseStudiesData = [
         },
       },
       {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754187/PriorityPathways_reudz6.webp'
+        }
+      },
+      {
         type: 'testimonialSizzle',
         content: {
-          videoSrc: 'https://www.youtube.com/embed/9nlyM-aAfrc?si=jAg4LeooyFUvvB88', 
+          videoSrc: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754203/Deloitte_2024_Client_Testimonials_c7n2c3.mp4', 
           quote: '"Projectory added a different dimension that broke down the usual and gave people an opportunity to stop and think"',
           author: 'Dehan Slokar',
           role: 'Managing Partner, National Ecosystems & Alliances @ Deloitte inc.'
        }
+      },
+      {
+        type: 'imageGrid',
+        content:{
+          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754186/FuturesWeb_trzej7.webp',
+          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754186/PingPoll_1_d8rjc7.webp'
+        },
       },
       {
         type: 'how-we-built',
@@ -312,7 +332,7 @@ export const caseStudiesData = [
             }
           ]
         }
-      },
+      },  
     ],
   },
 ];

@@ -15,7 +15,6 @@ import TrustedBy from '../../components/TrustedBy/TrustedBy';
 import FAQ from '../../components/FAQ/FAQ';
 
 import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
-import imageTwo from 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428010/Program_Feature1_o2kgpw.webp';
 import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
 import CventImage from '../../assets/images/logos/cvent.png'
 import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
@@ -95,21 +94,21 @@ const caseStudies = [
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit ',
     link: '/pcma-2024-cema-summit',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428010/Program_Feature1_o2kgpw.webp',
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428014/Program_Feature4_t9vw5u.webp',
   },
   {
     id: 3,
     title: 'Turning an SKO into an action-packed and collaborative experience',
     subtitle: "Surescript's Sales Kickoff",
     link: '/surescripts-sales-kickoff',
-    imageSrc: imageThree,
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753852/Flagfinder_udmunk.webp',
   },
   {
     id: 4,
     title: 'Bringing ecosystem partners together for a day of connection and inspiration',
     subtitle: "Deloitte Connect 2024",
     link: '/deloitte-connect-2024',
-    imageSrc: imageThree,
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754187/PriorityPathways_reudz6.webp',
   },
   
 ];
@@ -324,7 +323,7 @@ const CaseStudies: React.FC = () => {
       />
       
       <TestimonialSizzle
-        videoSrc="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+        videoSrc="https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"
