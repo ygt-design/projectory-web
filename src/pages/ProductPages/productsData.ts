@@ -623,7 +623,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'FuturesWeb functions as a thematically aligned, anonymized five-question survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771328/Projectory_FuturesMap_RoboAdvisors_WealthManagement_fuehda.png'
         }, 
       },
       { 
@@ -758,7 +758,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event analysis and shareback in an easily digetible report format highlighting patterns among the opportunities and risks identified and the suggested actions to be taken today to better prepare for tomorrow.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy.png'
         }, 
       },
       { 
@@ -892,7 +892,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event analysis and shareback in an easily digetible report format highlighting patterns among the insights and questions generated and the actions to be prioritized.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_DigitalAssistants_diavvo.png'
         }, 
       },
       { 
@@ -1023,7 +1023,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'PingPoll works fantastically as an at-a-glance snapshot of attendee priorities and perspectives. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. Alternately, the full set of votes can be tabulated and analyzed after the event for inclusion in a follow-on report.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png'
         }, 
       },
       { 
@@ -1154,7 +1154,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'PriorityPathways functions as a thematically aligned, anonymized survey of attendee opinions and priorities. All responses can be digitized, analyzed, and shared in post-event reports.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771328/Projectory_FuturesMap_RoboAdvisors_WealthManagement_fuehda.png'
         }, 
       },
       { 
@@ -1285,7 +1285,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'ReflectionCollection functions during the event as a physical site of inspiration and exchange. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. And when the event concludes, all cards can be digitized and analyzed for a follow-on synthesis report.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy.png'
         }, 
       },
       { 
@@ -1420,7 +1420,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event usage and shareback in an easily digetible report format. Individual commitments and accountable owners are associated in a spreadsheet that can be used in follow-on communication, personalized reminder emails, etc. to maintain momentum and drive action.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_DigitalAssistants_diavvo.png'
         }, 
       },
       { 
@@ -1550,7 +1550,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'VisionForest allows event organizers to pose one big question to attendees for anonymous response and display in the installation. All responses can be digitized, analyzed, and shared in post-event reports.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1746107986/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-1054_psduh0.jpg'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png'
         }, 
       },
       { 
