@@ -121,6 +121,21 @@ const Products = () => {
   const initialTag = matchedTag || 'All Products';
   const [selectedTag, setSelectedTag] = useState(initialTag);
 
+  // Refs for tag bar centering on mobile
+  const tagBarRef = useRef<HTMLDivElement>(null);
+  const tagRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+
+  const handleTagClick = (tag: string, idx: number) => {
+    setSelectedTag(tag);
+    // Center the clicked tab in the scrollable bar on mobile
+    const container = tagBarRef.current;
+    const btn = tagRefs.current[idx];
+    if (container && btn) {
+      const offset = btn.offsetLeft - container.clientWidth / 2 + btn.clientWidth / 2;
+      container.scrollTo({ left: offset, behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     // When the query param changes via Link navigation, update selectedTag
     setSelectedTag(initialTag);
@@ -217,8 +232,8 @@ const Products = () => {
         </div>
 
         <div className={styles.tagBarWrapper}>
-          <div className={styles.tagBar}>
-            {TAGS.map((tag) => {
+          <div className={styles.tagBar} ref={tagBarRef}>
+            {TAGS.map((tag, idx) => {
               const href =
                 tag === 'All Products'
                   ? '/products#tagContent'
@@ -227,6 +242,8 @@ const Products = () => {
                 <Link
                   key={tag}
                   to={href}
+                  ref={el => (tagRefs.current[idx] = el)}
+                  onClick={() => handleTagClick(tag, idx)}
                   className={tag === selectedTag ? styles.activeTag : styles.tagButton}
                 >
                   {tag}
