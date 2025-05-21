@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { products as allProducts } from '../../../ProductPages/productsData';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import styles from './HowWeBuilt.module.css';
 
 interface Installation {
@@ -94,9 +95,9 @@ const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
                     __html: detailsHeading.replace(/\n/g, '<br />')
                   }}
                 />
-                <a href={selectedInstallation.link} className={styles.linkButton}>
-                See More {selectedInstallation.name} →
-                </a>
+              <Link to={selectedInstallation.link} className={styles.linkButton}>
+                Learn More 
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

@@ -1029,7 +1029,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647280/DZ9_7605_cuwbrc.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647298/32BB04E7-F947-4790-8384-6A81602305E0_qobqd6.webp'
         }
       },
       { 
@@ -1160,7 +1160,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633355/IMG_0527_szhoc0.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746633352/Deloitte-June19th2024-0261_websize_xiiy7k.webp'
         }
       },
        { 
@@ -1272,7 +1272,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632824/IMG_2826_tgheds.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632822/IMG_6028_k4xvqx.webp',
           objectives: [
             'Promote reflection and synthesis',
             'Facilitate peer learning and dialogue',
@@ -1538,7 +1538,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631572/FM8A5173-Enhanced-NR_1_h64pkz.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631566/FM8A4417-Enhanced-NR_jqxd4i.webp',
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
@@ -1556,7 +1556,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631566/FM8A4417-Enhanced-NR_jqxd4i.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631572/FM8A5173-Enhanced-NR_1_h64pkz.webp'
         }
       },
        { 
@@ -1796,7 +1796,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty1_zix2dw.webp'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420796/PointingtheWay3_utibyr.webp'
         }
       },
        { 
@@ -1850,7 +1850,7 @@ export const products = [
     tagline: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
     category: 'Combo',
     categoryHighlight: 'Convo+',
-    categoryColor: '#BCCE2C',
+    categoryColor: '#2BDCB7',
     heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
     bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
     tags: ['Networking', 'Inspire creativity', 'Visualize insights'],

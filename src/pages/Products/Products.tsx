@@ -1,7 +1,5 @@
-// 📂 src/pages/Products/Products.tsx
-
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { products as allProducts } from '../ProductPages/productsData';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
@@ -130,20 +128,28 @@ const Products = () => {
 
   // Ref for the tag content container
   const tagContentRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+
 
   useEffect(() => {
-    if (selectedTag === 'All Products') {
-      searchParams.delete('tag');
-      setSearchParams(searchParams, { replace: true });
-    } else {
-      setSearchParams({ tag: selectedTag }, { replace: true });
+    if (selectedTag !== 'All Products') {
+      tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [selectedTag, searchParams, setSearchParams]);
+  }, [selectedTag]);
 
+  // On initial mount, if arriving with a non-default tag, scroll down
+  useEffect(() => {
+    if (initialTag !== 'All Products') {
+      tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []); 
 
   useEffect(() => {
-    tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [selectedTag]);
+    if (location.hash === '#tagContent') {
+      tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
 
   const displayedProducts =
     selectedTag === 'All Products'
@@ -212,18 +218,21 @@ const Products = () => {
 
         <div className={styles.tagBarWrapper}>
           <div className={styles.tagBar}>
-            {TAGS.map((tag) => (
-              <button
-                key={tag}
-                className={tag === selectedTag ? styles.activeTag : styles.tagButton}
-                onClick={() => {
-                  setSelectedTag(tag);
-                  tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                {tag}
-              </button>
-            ))}
+            {TAGS.map((tag) => {
+              const href =
+                tag === 'All Products'
+                  ? '/products#tagContent'
+                  : `/products?tag=${encodeURIComponent(tag)}#tagContent`;
+              return (
+                <Link
+                  key={tag}
+                  to={href}
+                  className={tag === selectedTag ? styles.activeTag : styles.tagButton}
+                >
+                  {tag}
+                </Link>
+              );
+            })}
           </div>
         </div>
 

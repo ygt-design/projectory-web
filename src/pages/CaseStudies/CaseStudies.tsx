@@ -14,8 +14,6 @@ import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizz
 import TrustedBy from '../../components/TrustedBy/TrustedBy';
 import FAQ from '../../components/FAQ/FAQ';
 
-import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
-import imageThree from '../../assets/images/p-WhoWeAre/whoWeAreTwo.avif';
 import CventImage from '../../assets/images/logos/cvent.png'
 import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
 import PcmaLogo from '../../assets/images/logos/pcmaLogo.png';
@@ -87,14 +85,14 @@ const caseStudies = [
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
     link: '/case-study/cibc-global-leadership-summit',
-    imageSrc: imageOne,
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747841297/FM8A5043-Enhanced-NR_qywkjc.webp',
   },
   {
     id: 2,
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit ',
     link: '/pcma-2024-cema-summit',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428014/Program_Feature4_t9vw5u.webp',
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747839217/Screenshot_2025-05-20_at_19.18.46_gfnyht.webp',
   },
   {
     id: 3,
@@ -108,7 +106,7 @@ const caseStudies = [
     title: 'Bringing ecosystem partners together for a day of connection and inspiration',
     subtitle: "Deloitte Connect 2024",
     link: '/deloitte-connect-2024',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754187/PriorityPathways_reudz6.webp',
+    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747840726/Deloitte-June19th2024-0125_websize_hgkwds.webp',
   },
   
 ];
@@ -163,7 +161,7 @@ const CaseStudies: React.FC = () => {
     [0, 1]
   );
 
-  const normalOpacity = useTransform(activeProgress, [0, 0.5, 1], [1, 0.8, 0]);
+  const normalOpacity = useTransform(activeProgress, [0, 0.8, 1], [1, 0.8, 0]);
   const normalScale = useTransform(activeProgress, [0, 1], [1, 0.8]);
 
   const fixedOpacity = useMotionValue(1);
@@ -244,7 +242,7 @@ const CaseStudies: React.FC = () => {
       <div
         className={styles.scrollContainer}
         ref={sectionRef}
-        style={{ height: `${totalBlocks * 300}vh` }}
+        style={{ height: `${totalBlocks * 200}vh` }}
       >
         <div className={styles.stickySection}>
           {/* Progress Bar */}
@@ -323,7 +321,7 @@ const CaseStudies: React.FC = () => {
       />
       
       <TestimonialSizzle
-        videoSrc="https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4"
+        videoSrc="https://res.cloudinary.com/dduchyyhf/video/upload/v1747768306/Website_Testimonials_Dec_2024_V4_jsyqfo.mp4"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"

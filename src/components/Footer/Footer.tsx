@@ -13,15 +13,15 @@ const Footer = () => {
 
           <div className={styles.footerColumn}>
             <h4>Products</h4>
-            <Link to="/products">All products</Link>
-            <Link to="/products?tag=Networking#tagContent">Networking</Link>
-            <Link to="/products?tag=Peer%20Learning#tagContent">Peer Learning</Link>
-            <Link to="/products?tag=Explore%20Priorities#tagContent">Explore Priorities</Link>
-            <Link to="/products?tag=Ideas%20to%20Action#tagContent">Ideas to Action</Link>
-            <Link to="/products?tag=Reflect%20%26%20Synthesize#tagContent">Reflect &amp; Synthesize</Link>
-            <Link to="/products?tag=Build%20Alignment#tagContent">Build Alignment</Link>
-            <Link to="/products?tag=Inspire%20Creativity#tagContent">Inspire Creativity</Link>
-            <Link to="/products?tag=Visualize%20Insights#tagContent">Visualize Insights</Link>
+            <Link to="/products#tagContent">All products</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Networking')}#tagContent`}>Networking</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Peer learning')}#tagContent`}>Peer Learning</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Explore priorities')}#tagContent`}>Explore Priorities</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Ideas to action')}#tagContent`}>Ideas to Action</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Reflect & synthesize')}#tagContent`}>Reflect &amp; Synthesize</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Build alignment')}#tagContent`}>Build Alignment</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Inspire creativity')}#tagContent`}>Inspire Creativity</Link>
+            <Link to={`/products?tag=${encodeURIComponent('Visualize insights')}#tagContent`}>Visualize Insights</Link>
           </div>
 
           <div className={styles.footerColumn}>
@@ -40,7 +40,7 @@ const Footer = () => {
           <div className={styles.footerColumn}>
             <h4>Get Started</h4>
             <Link to="/get-started">Product finder</Link>
-            <Link to="/get-started">FAQ</Link>
+            <Link to="/faq">FAQ</Link>
             <Link to="/get-started#contact-form">Contact us</Link>
             <Link to="https://calendly.com/oren-/projectory?month=2025-05">Schedule a demo</Link>
           </div>

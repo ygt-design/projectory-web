@@ -8,7 +8,7 @@ export const caseStudiesData = [
     category: 'CIBC Global Leadership Summit',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427597/CIBC_2024_Website_IP_V4_hgmsle.mp4',
     tags: null,
     clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
@@ -16,7 +16,7 @@ export const caseStudiesData = [
       {
         type: 'details',
         content: {
-          heading: 'In 2024, CIBC invited Projectory back for a second year running to reimagine their global leadership summit, moving away from endless slides and dense data downloads toward energizing, interactive sessions. Leaders didn’t just sit—they connected, ideated, prioritized, and genuinely engaged, transforming essential business content into dynamic conversations and collaborative experiences. <br><br>The Global Leadership team left feeling aligned, inspired, and equipped with actionable tools to rally tens of thousands of employees around their new strategy. Feedback was overwhelmingly positive, with participants loving the fresh, playful approach—proving year two wasn’t just a repeat, but an even bigger, bolder success.',
+          heading: 'In 2024, CIBC invited Projectory back for a second year to co-design their global leadership summit – the bank’s most important leadership forum of the year. <br><br>To help shape an experience that would align, engage, and energize their top 500 leaders around the bank’s forward strategy, we partnered closely with HR, content leads, and the events team. Together, we designed and embedded six interactive experiences throughout the two-day agenda — transforming strategic updates into moments of ideation, priority mapping, futures thinking, and real-time alignment that set the tone for action across the organization.',
           features: [
             '2 day event',
             'Toronto, Canada',
@@ -33,7 +33,7 @@ export const caseStudiesData = [
         content: {
           videoSrc:'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
           quote: '"Projectory did an amazing job. getting us moving, talking, and having fun, while focused on business results. Loved it!"',
-          author: 'Sandy Sharman',
+          author: 'Sandra Rondzik',
           role: 'Group Head, People Culture & Brand, CIBC'
         }
       },
@@ -191,7 +191,7 @@ export const caseStudiesData = [
         content: {
           title: 'Data Gathering',
           description: 'Projectory turned hundreds of reflection and commitment cards into a vibrant digital report filled with sentiment analysis, identified patterns, and revealing insights. PCMA used this engaging content in newsletters and summaries to catalyze and sustain fun, interconnected conversations long after the event wrapped.',
-          imageUrl: 'https://lh3.googleusercontent.com/pw/AP1GczOGE0sXNiwGdZ_KxiNwewukU2H-kMIOZv7OdRYLWgzBnZct_U8jZSgLI-gqrTYRTs7QH0t37nN9QDHHgLcAsFy68alYAyiPJwz5h76A2FC958P-UI1e0Quc8Vuch06vlcT_D7HJBDNAl8bZwvfaYvkP=w2496-h1664-s-no-gm?authuser=0'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747838749/Screenshot_2025-05-20_at_19.23.04_a84zjv.webp'
         }, 
       }
     ],
@@ -297,7 +297,7 @@ export const caseStudiesData = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754187/PriorityPathways_reudz6.webp'
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747840666/Deloitte-June19th2024-0442_websize_racaii.webp'
         }
       },
       {
@@ -305,7 +305,7 @@ export const caseStudiesData = [
         content: {
           videoSrc: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754203/Deloitte_2024_Client_Testimonials_c7n2c3.mp4', 
           quote: '"Projectory added a different dimension that broke down the usual and gave people an opportunity to stop and think"',
-          author: 'Dehan Slokar',
+          author: 'Dejan Slokar',
           role: 'Managing Partner, National Ecosystems & Alliances @ Deloitte inc.'
        }
       },

@@ -199,7 +199,7 @@ const GetEstimatePage: React.FC = () => {
             <h2>Thank you {formData.name}, your form has been submitted!</h2>
             <p>We’ll be in touch soon with an estimate and a quick orientation on how to get started.</p>
             <a
-              href="https://www.linkedin.com/company/projectory"
+              href="https://ca.linkedin.com/company/theprojectory"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.overlayButton}
