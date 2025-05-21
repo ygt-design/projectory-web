@@ -1220,7 +1220,7 @@ export const products = [
     categoryColor: '#EEDA2A',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457031/Reflection_Collection_IP_Website_V4_Final_Colour_Pass_lkyxp8.mp4',
-    tags: ['Explore priorities', 'Reflect & synthesize'],
+    tags: ['Reflect & synthesize', 'Peer learning', 'Networking'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632826/Lifemark_b_691_hpg3p6.webp',
     shortDescription: 'A reflection activity that brings attendees into the conversation',
 
