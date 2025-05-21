@@ -42,7 +42,7 @@ export const products = [
         type: 'grid',
         content: {
           items: [
-            { text: 'Ideal as an opening session' },
+            { text: 'Ideas as an opening or closing session'},
             { text: 'Creates a uniquely spectacular visual moment at the event'},
             { text: 'Promotes conversation across silos and established groups' }
           ]
@@ -131,6 +131,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -143,6 +144,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -151,7 +153,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -259,6 +260,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -271,6 +273,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -279,7 +282,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -387,6 +389,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -399,6 +402,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -407,7 +411,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -514,6 +517,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -526,6 +530,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -534,7 +539,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -611,7 +615,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648534/IMG_8935_yund1a.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648532/FM8A5399_o2ecms.webp',
           objectives: [
             'Visualize collective insights',
             'Promote reflection and synthesis',
@@ -630,7 +634,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648532/FM8A5399_o2ecms.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648522/DZ9_9385_kgsqlo.webp'
         }
       },
        { 
@@ -646,6 +650,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -658,6 +663,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -666,7 +672,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -781,6 +786,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -793,6 +799,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -801,7 +808,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -848,7 +854,7 @@ export const products = [
         content: {
           heading: 'The LearningActionMatrix is a simple, intuitive framework designed to support more effective conversations following up, unpacking, and/or synthesizing information-dense sessions or keynotes. The value of the session emerges as participants discover dynamic links between the insights gained and the related actions to be taken - which, in turn, will yield future insights through further learning.',
 
-          features: ['Facilitated session', '35 - 55 min', 'Main stage or breakout', '40 - 400 participants', 'Requires table seating ']
+          features: ['Facilitated session', '20 - 45 min', 'Main stage or breakout', '40 - 600 participants', 'Requires table seating ']
         }
       },
       { 
@@ -915,6 +921,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -927,6 +934,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -935,7 +943,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1047,6 +1054,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1059,6 +1067,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1067,7 +1076,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1179,6 +1187,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1191,6 +1200,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1199,7 +1209,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1310,6 +1319,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1322,6 +1332,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1330,7 +1341,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1446,6 +1456,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1458,6 +1469,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1466,7 +1478,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1576,6 +1587,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1584,7 +1596,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1690,6 +1701,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1702,6 +1714,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1710,7 +1723,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1816,6 +1828,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1828,6 +1841,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1836,7 +1850,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',
@@ -1953,6 +1966,7 @@ export const products = [
                   'Explainer videos & setup guide',
                   'Remote support',
                   'Slides and facilitation guide',
+                  'Theming and content integration',
                   'Shipment coordination'
                 ] 
             },
@@ -1965,6 +1979,7 @@ export const products = [
                 'Onsite facilitator and support',
                 'Live collaboration with your team',
                 'White-glove logistics management',
+                'Theming and content integration',
                 '24/7 dedicated account manager'
               ]               
             },
@@ -1973,7 +1988,6 @@ export const products = [
               price: 'Add-ons',
               description: 'More ways to personalize your high-impact Projectory experience',
               features: [
-                'Theming and content integration',
                 'Run-of-show engagement design',
                 'Custom content and branding',
                 'Interactive post-event report',

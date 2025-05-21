@@ -69,11 +69,11 @@ const Intro: React.FC<IntroProps> = ({
         {buttonText &&
           (buttonLink ? (
             <Link to={buttonLink} className={styles.ctaButton}>
-              {buttonText} <span className={styles.arrow}>→</span>
+              {buttonText}
             </Link>
           ) : (
             <button className={styles.ctaButton} onClick={scrollToNext}>
-              {buttonText} <span className={styles.arrow}>→</span>
+              {buttonText}
             </button>
           ))}
       </div>

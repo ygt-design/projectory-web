@@ -19,7 +19,7 @@ const WhoWeAre = () => {
       <section className={styles.intro}>
         <h2>Who Are We, Anyway?</h2>
         <p className={styles.introText}>
-          We’re a team of facilitators, designers, and producers who joined forces to turn in-person meetings into engaging, memorable, and momentum-building experiences.
+          We’re a team of facilitators, designers, and producers who joined forces to turn in-person meetings and conferences into engaging, memorable, and momentum-building experiences.
         </p>
       </section>
 

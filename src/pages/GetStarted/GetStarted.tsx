@@ -81,7 +81,7 @@ const GetStarted = () => {
       <Intro
         title="Let’s remind people why it's so valuable to come together!"
         description="Respond the next few questions and we’ll highlight a few products that you might want to consider adding to your program."
-        buttonText="Get Started"
+        buttonText="Product Finder"
         buttonLink="/get-started-form"
       />
       <div id="contact-form">
