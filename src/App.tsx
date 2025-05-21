@@ -5,7 +5,6 @@ import Home from './pages/Home/Home';
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
 import CaseStudies from './pages/CaseStudies/CaseStudies';
 import GetStarted from './pages/GetStarted/GetStarted';
-import ProductTestPage from './pages/ProductTestPage/ProductTestPage';
 import CaseStudyPage from './pages/CaseStudyPages/CaseStudyPage';
 import Product from './pages/Products/Products';
 import ProductPage from './pages/ProductPages/ProductPage';
@@ -30,7 +29,6 @@ const App = () => {
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/get-estimate" element={<GetEstimatePage />} />
-            <Route path="/product-test" element={<ProductTestPage />} />
             <Route path="/get-started-form" element={<GetStartedForm />} />
           </Routes>
         </Layout>

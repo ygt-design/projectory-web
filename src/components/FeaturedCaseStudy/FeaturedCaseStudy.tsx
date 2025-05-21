@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCaseStudy.module.css';
-import imageOne from '../../assets/images/p-WhoWeAre/whoWeAreThree.avif';
 
 
 const CASE_STUDIES = [
@@ -12,7 +11,7 @@ const CASE_STUDIES = [
     id: 'cibc-leadership',
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
-    imageUrl: imageOne,
+    imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747841297/FM8A5043-Enhanced-NR_qywkjc.webp',
     link: '/case-study/cibc-global-leadership-summit',
   },
   {
@@ -20,7 +19,7 @@ const CASE_STUDIES = [
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit',
     imageUrl:
-      'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428014/Program_Feature4_t9vw5u.webp',
+      'https://res.cloudinary.com/dduchyyhf/image/upload/v1747839217/Screenshot_2025-05-20_at_19.18.46_gfnyht.webp',
     link: '/case-study/pcma-2024-cema-summit',
   },
 ];
@@ -41,7 +40,7 @@ const FeaturedCaseStudy = () => {
 
   // Define sliding animation variants only for desktop.
   const containerVariants = isMobile
-    ? {} // On mobile, no sliding.
+    ? undefined // On mobile, no sliding.
     : {
         animate: {
           x: activeIndex === 0 ? '0%' : '-22.6%',
