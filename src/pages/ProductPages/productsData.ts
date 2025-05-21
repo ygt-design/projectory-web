@@ -8,7 +8,7 @@ export const products = [
     categoryColor: '#BCCE2C',
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457018/Floating_Opinions_IP_Website_V3_Final_Colour_Pass_m0tvdr.mp4',
-    tags: ['Peer learning', 'Build alignment', 'Explore priorities'],
+    tags: ['Peer learning', 'Explore priorities', 'Ideas to action'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648933/455278554_1037606311699335_4372730795563401026_n_soow52.webp',
     shortDescription: 'A discussion and alignment workshop exploring big questions in a playful way',
 
@@ -362,9 +362,9 @@ export const products = [
           titleColor: '#BCCE2D, #148771', 
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746630380/Lifemark_306_pxsofj.webp',
           objectives: [
-            'Foster connection and networking',
+            'Build alignment and consensus',
             'Facilitate peer learning and dialogue',
-            'Visualize collective insights',
+            'Promote reflection and synthesis',
           ]
         }
       },
@@ -614,6 +614,7 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746648534/IMG_8935_yund1a.webp',
           objectives: [
             'Visualize collective insights',
+            'Promote reflection and synthesis',
             'Explore strategic priorities and decisions',
           ]
         }
@@ -1014,6 +1015,7 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746647282/430022990_823463609811061_2831339669744667382_n_1_bfigk6.webp',
           objectives: [
             'Visualize collective insights',
+            'Promote reflection and synthesis',
             'Explore strategic priorities and decisions',
           ]
         }
@@ -1146,6 +1148,7 @@ export const products = [
           objectives: [
             'Visualize collective insights',
             'Explore strategic priorities and decisions',
+            'Build alignment and consensus',
           ]
         }
       },
@@ -1411,6 +1414,7 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
           objectives: [
             'Connect ideas to action',
+            'Build alignment and consensus',
             'Promote reflection and synthesis',
           ]
         }
@@ -1541,7 +1545,7 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631566/FM8A4417-Enhanced-NR_jqxd4i.webp',
           objectives: [
             'Visualize collective insights',
-            'Explore strategic priorities and decisions',
+            'Promote reflection and synthesis',
           ]
         }
       },
@@ -1663,7 +1667,7 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty3_myndnf.webp',
           objectives: [
             'Foster connection and networking',
-            'Inspire forward thinking and creativity',
+            'Facilitate peer learning and dialogue',
           ]
         }
       },
@@ -1851,8 +1855,8 @@ export const products = [
     category: 'Combo',
     categoryHighlight: 'Convo+',
     categoryColor: '#2BDCB7',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747849736/comboConvo_compressed_v2_sfknrb.mp4',
-    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747849736/comboConvo_compressed_v2_sfknrb.mp4',
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
+    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
     tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
     thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/c1172d47-149f-4e08-a47e-f697753f3d08_dezcf2.webp',
     shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
