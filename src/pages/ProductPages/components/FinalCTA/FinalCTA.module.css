@@ -74,6 +74,9 @@ p {
 @media screen and (max-width: 900px) {
     .ctaWrapper {
         grid-template-columns: 1fr;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
         gap: 20px;
         width: 91%;
     }

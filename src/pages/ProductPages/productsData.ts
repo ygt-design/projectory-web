@@ -1477,7 +1477,7 @@ export const products = [
   {
     id: 'vision-forest',
     name: 'Vision Forest',
-    tagline: 'A collaborative quiz game with towering stakes',
+    tagline: 'An installation that lets you wander (and wonder) through future visions',
     category: 'Vision',
     categoryHighlight: 'Forest',
     categoryColor: '#B8EFEC',
@@ -1485,7 +1485,7 @@ export const products = [
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457032/Vision_Forest_Website_IP_V5_Final_Colour_Pass_qm3teo.mp4',
     tags: ['Reflect & synthesize', 'Visualize insights'],
     thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746631571/FM8A4743-Enhanced-NR_1_swnkt5.webp',
-    shortDescription: 'A collaborative quiz game with towering stakes',
+    shortDescription: 'An installation that lets you wander (and wonder) through future visions',
   
     filters: {
       "type": [
@@ -1565,7 +1565,7 @@ export const products = [
           plans: [
             {
               title: 'Bring us in',
-              price: '13,000',
+              price: '23,000',
               description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
               features: [
                 'End-to-end production and delivery',
@@ -1844,129 +1844,141 @@ export const products = [
       }
     ]
   },
-  // {
-  //   id: 'combo-convo-plus',
-  //   name: 'Combo Convo +',
-  //   tagline: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
-  //   category: 'Combo',
-  //   categoryHighlight: 'Convo+',
-  //   categoryColor: '#ff7700',
-  //   heroVideo: '/videos/testVideo_2.mp4',
-  //   tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
-  //   thumbnail: '',
-  //   shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
+  {
+    id: 'combo-convo-plus',
+    name: 'Combo Convo +',
+    tagline: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
+    category: 'Combo',
+    categoryHighlight: 'Convo+',
+    categoryColor: '#BCCE2C',
+    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
+    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747835988/comboConvo_compressed_jwsrmg.mp4',
+    tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
+    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/c1172d47-149f-4e08-a47e-f697753f3d08_dezcf2.webp',
+    shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
   
-  //   filters: {
-  //     "type": [
-  //       "Facilitated session"
-  //     ],
-  //     "objectives": [
-  //       "Foster connection and networking",
-  //       "Inspire forward thinking and creativity",
-  //       "Visualize collective insights"
-  //     ],
-  //     "seating": [
-  //       "Mixed/Other",
-  //       "Round tables",
-  //       "Theatre",
-  //       "Not sure yet"
-  //     ]
-  //   },
+    filters: {
+      "type": [
+        "Facilitated session",
+        "Interactive installation",
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Inspire forward thinking and creativity",
+        "Visualize collective insights"
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
 
-  //   sections: [
-  //     { type: 'hero' },
-  //     { 
-  //       type: 'details', 
-  //       content: {
-  //         heading: 'BlockParty is a high energy, collaborative quiz game with a block-stacking twist. Participants work in teams to answer trivia questions drawing on event themes and content. For each correct answer, a team gets to add a block to their tower, but as the game continues and the towers grow taller, the blocks get larger – and the stakes, higher. Towers topple, leads vanish, and the game often comes down to the very last round or even a wild tiebreaking challenge.',
+    sections: [
+      { type: 'hero' },
+      { 
+        type: 'details', 
+        content: {
+          heading: 'The networking and conversation game our clients know and love PLUS an eye-catching interactive installation... <br><br> ComboConvo is an energizer and creative juicer built around an adaptable set of prompt cards. The interaction can be run just as a quick energizer or as a game with elements of networking and competition that can be tailored to objectives, available time, etc.<br><br> Each card-based interaction creates a unique prompt that will get participants thinking, chatting, collaborating, and laughing. ComboConvo can be played by small groups at tables or scaled up for large audiences by leveraging event apps, etc. The Plus version adds an interactive installation to keep the game going and the ideas flowing into breaks and beyond.',
 
-  //         features: ['Facilitated session', '45 - 75 min', 'Main stage', '50 - 500 participants', 'Reauites table seating']
-  //       }
-  //     },
-  //     { 
-  //       type: 'grid',
-  //       content: {
-  //         items: [
-  //           { text: 'Ideal for receptions and networking time' },
-  //           { text: 'Highly customizable to event themes and content'},
-  //           { text: 'Energizes a room with movement'}
-  //         ]
-  //       }
-  //     },
-  //     { 
-  //       type: 'image',
-  //       content: {
-  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632158/exported_7823F1B9-022A-4F37-9732-CAC3D7ED090F_goygfn.webp'
-  //       }
-  //     },
-  //     { 
-  //       type: 'how-it-works',
-  //       content: {
-  //         title: 'How it Works',
-  //         description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
-  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632171/FM8A5707-Enhanced-NR_c5yjd3.webp'
-  //       }
-  //     },
-  //     { 
-  //       type: 'objectives',
-  //       content: {
-  //         title: 'Objectives',
-  //         titleColor: '#BCCE2D, #148771', 
-  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632160/455243422_1037697441690222_414058858109471329_n_bpzvx6.webp',
-  //         objectives: [
-  //           'Foster connection and networking',
-  //           'Inspire forward thinking and creativity',
-  //         ]
-  //       }
-  //     },
-  //     { 
-  //       type: 'image', 
-  //       content: {
-  //         imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1746632159/FM8A5679_ty8vik.webp'
-  //       }
-  //     },
-  //     { 
-  //       type: 'pricing',
-  //       content: {
-  //         plans: [
-  //           {
-  //             title: 'You Do',
-  //             price: '7,500',
-  //             description: 'For teams who want us in the room to ensure everything flows.',
-  //             features: [
-  //               'Rent-and-run toolkit',
-  //               'Explainer videos & setup guide',
-  //               'Remote support',
-  //               'Slides and facilitation guide',
-  //               'Remote and day-of support',
-  //               'Onboarding call',
-  //               'Shipment coordination'
-  //             ]                                             
-  //           },
-  //           {
-  //             title: 'We Do',
-  //             price: '10,000',
-  //             description: 'For teams looking to make the experience unmistakably their own.',
-  //             features: [
-  //               'Event theme and content integration',
-  //               'On-site Projectory Facilitator',
-  //               'Projectory on-site support',
-  //               'White-glove logistics',
-  //               '24/7 dedicated account manager'
-  //             ]                                                                                    
-  //           },
-  //           {
-  //             title: 'We Do & More',
-  //             price: '12,000',
-  //             description: 'For teams looking to make the experience unmistakably their own.',
-  //             features: [
-  //               'Bespoke experience design',
-  //               'Additional on-site staff'
-  //             ]                                                                                             
-  //           }
-  //         ]
-  //       }
-  //     }
-  //   ]
-  // }
+          features: ['Facilitated session + Interactive installation', '15 - 30 min', 'Main stage or breakout', '50 - 4000 participants', 'Works for any seating']
+        }
+      },
+      { 
+        type: 'grid',
+        content: {
+          items: [
+            { text: 'Ideal as an icebreaker or networking game'},
+            { text: 'Can feed into an event app'},
+            { text: 'Highly customizable to event themes and content '}
+          ]
+        }
+      },
+      { 
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/54a1d7e1-5ca5-4eec-af66-7d3b26449d9e_fgs5lq.webp'
+        }
+      },
+      { 
+        type: 'how-it-works',
+        content: {
+          title: 'How it Works',
+          description: "ComboConvo is designed around a set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up as a full session with additional elements of competitive game play and networking. In the Plus version, participant responses are displayed on an eye-catching installation that can be visited and reviewed during breaks, receptions, etc. Attendees can get inspired and vote for their favorite (or funniest / most creative / most clever) responses with overall winners to be announced later in the event. ",
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8966_c95gd0.webp'
+        }
+      },
+      { 
+        type: 'objectives',
+        content: {
+          title: 'Objectives',
+          titleColor: '#BCCE2D, #148771', 
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8954_sxhg8k.webp',
+          objectives: [
+            'Foster connection and networking',
+            'Inspire forward thinking and creativity',
+            'Visualize collective Insights',
+          ]
+        }
+      },
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8971_utnz4r.webp'
+        }
+      },
+      {
+        type: 'dataFeature',
+        content: {
+          title: 'Data Gathering',
+          description: 'ComboConvo responses are collected in a Projectory webform before they are displayed on the installation. After the event, organizers can access a spreadsheet with hundreds of wild ideas from their attendees to inspire more creative riffing, potential experiments, and follow-on communications.',
+          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png' 
+        },
+      },
+       { 
+        type: 'pricing',
+        content: {
+          plans: [
+            {
+              title: 'Do it yourself',
+              price: '8,000',
+              description: 'For teams that want to run it themselves, but still feel supported.',
+              features: [
+                  'Rent-and-run toolkit',
+                  'Explainer videos & setup guide',
+                  'Remote support',
+                  'Slides and facilitation guide',
+                  'Shipment coordination'
+                ] 
+            },
+            {
+              title: 'Bring us in',
+              price: '12,000',
+              description: 'For teams who want a turnkey experience, delivered seamlessly by our team.',
+              features: [
+                'End-to-end production and delivery',
+                'Onsite facilitator and support',
+                'Live collaboration with your team',
+                'White-glove logistics management',
+                '24/7 dedicated account manager'
+              ]               
+            },
+            {
+              title: 'Ask us about',
+              price: 'Add-ons',
+              description: 'More ways to personalize your high-impact Projectory experience',
+              features: [
+                'Theming and content integration',
+                'Run-of-show engagement design',
+                'Custom content and branding',
+                'Interactive post-event report',
+                'Projectory as your event host'
+              ]                    
+            }
+          ]
+        }
+      }
+    ]
+  }
 ];

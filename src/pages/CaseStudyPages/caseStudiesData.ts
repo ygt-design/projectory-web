@@ -5,7 +5,7 @@ export const caseStudiesData = [
     id: 'cibc-global-leadership-summit', 
     name: 'CIBC Global Leadership Summit',
     tagline: 'Facilitating strategic conversations for the most senior leaders of the bank',
-    category: 'CIBC Executive Alignment',
+    category: 'CIBC Global Leadership Summit',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
     heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
