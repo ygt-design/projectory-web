@@ -12,12 +12,10 @@ import GetEstimatePage from './pages/GetEstimatePage/GetEstimatePage';
 import GetStartedForm from './pages/GetStartedForm/GetStartedForm';
 import { LikedProductsProvider } from './context/LikedProductsContext';
 
-const basename = process.env.NODE_ENV === 'production' ? '/projectory' : '';
-
 const App = () => {
   return (
     <LikedProductsProvider>
-      <Router basename={basename}>
+      <Router>
         <ScrollToTop />
         <Layout>
           <Routes>
