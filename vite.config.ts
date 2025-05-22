@@ -1,12 +1,11 @@
-// vite.config.ts
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/',
+  base: '/',             // root-relative asset paths
   plugins: [react()],
   build: {
-    outDir: 'dist',
-    emptyOutDir: true     // wipes any prior build artifacts
+    outDir: 'docs',
+    emptyOutDir: true    // clear docs/ each build
   }
 })
