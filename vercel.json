@@ -6,9 +6,5 @@
       "use": "@vercel/static-build",
       "config": { "distDir": "docs" }
     }
-  ],
-  "routes": [
-    { "src": "/assets/(.*)", "dest": "/docs/assets/$1" },
-    { "src": "/(.*)",          "dest": "/docs/index.html" }
   ]
 }
