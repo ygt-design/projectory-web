@@ -8,9 +8,7 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "build": "vite build",
-    "postbuild": "cp docs/index.html docs/404.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs"
+    "postbuild": "cp dist/index.html dist/404.html"
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.1",
