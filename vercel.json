@@ -2,19 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "docs" }
+      "src": "docs/**/*",
+      "use": "@vercel/static"
     }
   ],
-  "rewrites": [
-    {
-      "source": "/assets/:path*",
-      "destination": "/assets/:path*"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "src": "/assets/(.*)", "dest": "/docs/assets/$1" },
+    { "src": "/(.*)",        "dest": "/docs/index.html" }
   ]
 }
