@@ -158,7 +158,7 @@ const Home = () => {
             <div className={styles.videoSlide}>
               <video
                 className={styles.videoBackground}
-                src="https://res.cloudinary.com/dduchyyhf/video/upload/v1747768254/New_Main_Sizzle_IP_Socials_V4_pb23lo.mp4"
+                src="https://res.cloudinary.com/dduchyyhf/video/upload/v1748026168/TopOfThePage_compressed_pgo0a0.mp4"
                 autoPlay
                 muted
                 loop
