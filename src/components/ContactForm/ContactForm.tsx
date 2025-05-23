@@ -29,12 +29,13 @@ const ContactForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
+      const result = await response.json();
+      console.log('Web3Forms response:', result);
       if (response.ok) {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '', access_key: formData.access_key });
       } else {
-        setStatus('Failed to send message. Please try again.');
+        setStatus(`Error: ${result.message || 'Bad Request'}`);
       }
     } catch (error) {
       console.error('Error sending message:', error);
