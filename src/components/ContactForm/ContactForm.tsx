@@ -24,18 +24,25 @@ const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://formsubmit.co/ajax/ytoprak@frontier.is', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }),
       });
       const result = await response.json();
-      console.log('Web3Forms response:', result);
+      console.log('FormSubmit response:', result);
       if (response.ok) {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '', access_key: formData.access_key });
       } else {
-        setStatus(`Error: ${result.message || 'Bad Request'}`);
+        setStatus('Failed to send message. Please try again.');
       }
     } catch (error) {
       console.error('Error sending message:', error);

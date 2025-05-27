@@ -1,5 +1,3 @@
-// 📂 src/pages/GetEstimatePage/GetEstimatePage.tsx
-
 import React, { useState, useEffect } from 'react';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import { Link } from 'react-router-dom';
@@ -38,20 +36,30 @@ const GetEstimatePage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit the form data using Web3Forms
+  // Submit the form data using FormSubmit.co AJAX
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://formsubmit.co/ajax/ytoprak@frontier.is', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          eventDate: formData.eventDate,
+          eventLocation: formData.eventLocation,
+          message: formData.message,
+          selectedProducts: formData.selectedProducts
+        }),
       });
-
-      if (response.ok) {
-        // Show the success overlay
+      const result = await response.json();
+      console.log('FormSubmit response:', result);
+      if (response.ok && result.success !== false) {
         setShowOverlay(true);
       } else {
         setStatus('Failed to send message. Please try again.');
@@ -117,12 +125,7 @@ const GetEstimatePage: React.FC = () => {
         <div className={styles.formWrapper}>
           <form onSubmit={handleSubmit} className={styles.estimateForm}>
             {/* Hidden fields for Web3Forms */}
-            <input 
-              type="hidden" 
-              name="access_key" 
-              value={formData.access_key}
-              readOnly 
-            />
+            
             <input
               type="hidden"
               name="selectedProducts"
