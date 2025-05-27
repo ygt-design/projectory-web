@@ -24,7 +24,7 @@ const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/ytoprak@frontier.is', {
+      const response = await fetch('https://formsubmit.co/ajax/oren@projectory.live', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
