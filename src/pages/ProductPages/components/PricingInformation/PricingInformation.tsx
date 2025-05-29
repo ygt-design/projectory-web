@@ -39,7 +39,7 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
                 {plan.price === 'Add-ons' ? (
                   <h4 className={styles.price}>{plan.price}</h4>
                 ) : (
-                  <h4 className={styles.price}>${plan.price}</h4>
+                  <h4 className={styles.price}>${plan.price} <span className={styles.currency}>USD</span></h4>
                 )}
                 <h5 className={styles.description}>{plan.description}</h5>
             </div>
