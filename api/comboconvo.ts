@@ -1,7 +1,7 @@
 // /api/comboconvo.ts (Node.js serverless)
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuYeetQ5x3Iqs4LYYQu869YC-pA2RAKEarl1va5fVbNvkvDpwKw-bdrjOevQNl7_BpkA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkRIM-9HS6bAtntSb-0tUHE2PGqdJTRVBSRINmKd3CEqHvPx4LF-Vd-FyNvvuuypPrKg/exec';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'OPTIONS') {
