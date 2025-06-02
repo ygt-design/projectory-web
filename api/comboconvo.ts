@@ -34,14 +34,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'POST') {
     // Detect x-www-form-urlencoded vs JSON
-    let payloadObj: Record<string, any> = {};
+    let payloadObj: Record<string, unknown> = {};
     const contentType = (req.headers['content-type'] || '').toString();
 
     if (contentType.includes('application/x-www-form-urlencoded')) {
       // parse form-encoded POST bodies
       payloadObj = parse(req.body as string);
     } else if (contentType.includes('application/json')) {
-      payloadObj = (req.body as any) || {};
+      payloadObj = (req.body as Record<string, unknown>) || {};
     } else {
       return res.status(415).json({ error: 'Unsupported content type' });
     }

@@ -6,7 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-const WEB_APP_URL = '/api/comboconvo'; 
+const WEB_APP_URL = '/api/comboconvo';  // same in dev and prod
 
 interface FormState {
   orangeCard: string;
@@ -17,7 +17,6 @@ interface FormState {
 }
 
 const MultiStepForm: React.FC = () => {
-
   const [step, setStep] = useState<number>(1);
   const [form, setForm] = useState<FormState>({
     orangeCard: '',
@@ -36,11 +35,11 @@ const MultiStepForm: React.FC = () => {
 
   // Fetch dropdown options once on component mount
   useEffect(() => {
-    fetch(WEB_APP_URL)       // GET → proxies to echo?user_content_key=… 
-       .then(res => res.json())
-       .then(({ whatIsA, thatCould }) => {
-         setOptionsA(whatIsA);
-         setOptionsB(thatCould);
+    fetch(WEB_APP_URL)
+      .then(r => r.json())
+      .then(({ whatIsA, thatCould }) => {
+        setOptionsA(whatIsA);
+        setOptionsB(thatCould);
       })
       .catch(err => console.error('Lookup fetch failed:', err));
   }, []);
@@ -84,20 +83,21 @@ const MultiStepForm: React.FC = () => {
   const handleSubmit = () => {
     setLoading(true);
     setError('');
-    fetch(WEB_APP_URL, {      // POST → proxies to real /exec
-       method: 'POST',
-       headers: { 'Content-Type': 'application/json' },
-       body: JSON.stringify(form),
-     })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
+    fetch(WEB_APP_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    })
+      .then(r => r.json())
+      .then(res => {
+        if (res.success) {
           setSubmitted(true);
         } else {
           setError('Submission failed. Please try again.');
         }
       })
-      .catch(() => {
+      .catch(err => {
+        console.error('Submit failed:', err);
         setError('Submission failed. Please try again.');
       })
       .finally(() => {
@@ -122,7 +122,6 @@ const MultiStepForm: React.FC = () => {
       exit={{ opacity: 0 }}
       ref={formRef}
     >
-
       {/* Progress bar with step markers */}
       <div className={styles['progress-container']}>
         <div
@@ -238,7 +237,11 @@ const MultiStepForm: React.FC = () => {
             Next →
           </button>
         ) : (
-          <button type="button" onClick={() => setShowModal(true)} disabled={!isValidStep() || loading}>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            disabled={!isValidStep() || loading}
+          >
             {loading ? 'Submitting...' : 'Submit'}
           </button>
         )}
