@@ -8,7 +8,8 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-const WEB_APP_URL = '/api/comboconvo';
+const WEB_APP_URL =
+  'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLilc4c1ho2STgzQjdfuHV0WN25ZORffdC_DnTyTceRqqTwkGPKB5toXf6hl0J3JRMgxbQNTRqEmmEP0LhIlYMwzLTYsV3OlVcv8LXYFTkwgj9AGo8V1s6gTlO7IAm1gtnGMmnqSp5hREA3yrX1AI_5bMpJcOOusQzRtNZ7d8lCv5afSKZz7mUtgKbTX9jDITfzZImVLg9FiQDF544qha0IPCuMh4tFen1XwUo4eIyJlAgr0n6c9u5yOoU-vKFHepceHPrBIja-xhlu-2YQZTYTVvClNrNheyyzSv6RJ&lib=MW3M9wDoA0QM9R0Fi0Ne2k42rhhqwptNs';
 
 interface FormState {
   orangeCard: string;
