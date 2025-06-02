@@ -1,5 +1,3 @@
-// src/pages/ComboConvo/components/multiStepForm.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TextInput from './TextInput';
@@ -34,8 +32,8 @@ const MultiStepForm: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<HTMLDivElement>(null);
+  const htmlFormRef = useRef<HTMLFormElement>(null);
 
   // Fetch dropdown options once on component mount
   useEffect(() => {
@@ -84,25 +82,13 @@ const MultiStepForm: React.FC = () => {
     setForm(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(WEB_APP_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const json = await res.json();
-      if (json.success) {
-        setSubmitted(true);
-      } else {
-        setError('Submission failed. Please try again.');
-      }
-    } catch (e) {
+  const handleSubmit = () => {
+    // Submit the hidden HTML form into the iframe to avoid CORS
+    if (htmlFormRef.current) {
+      htmlFormRef.current.submit();
+      setSubmitted(true);
+    } else {
       setError('Submission failed. Please try again.');
-      console.error(e);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -122,6 +108,22 @@ const MultiStepForm: React.FC = () => {
       exit={{ opacity: 0 }}
       ref={formRef}
     >
+      {/* Hidden HTML form for POST (targeting hidden iframe) */}
+      <form
+        ref={htmlFormRef}
+        action={WEB_APP_URL}
+        method="POST"
+        target="hidden_iframe"
+        style={{ display: 'none' }}
+      >
+        <input type="hidden" name="orangeCard" value={form.orangeCard} />
+        <input type="hidden" name="blueCard" value={form.blueCard} />
+        <input type="hidden" name="whatIsA" value={form.whatIsA} />
+        <input type="hidden" name="thatCould" value={form.thatCould} />
+        <input type="hidden" name="freeText" value={form.freeText} />
+      </form>
+      <iframe name="hidden_iframe" style={{ display: 'none' }} />
+
       {/* Progress bar with step markers */}
       <div className={styles['progress-container']}>
         <div
@@ -243,13 +245,12 @@ const MultiStepForm: React.FC = () => {
         )}
       </div>
 
-      {/* Confirmation Modal (includes spinner when loading) */}
+      {/* Confirmation Modal */}
       {showModal && (
         <ConfirmationModal
           message="Are you sure you are done? Once submitted, you cannot go back."
           onConfirm={handleSubmit}
-          onCancel={() => !loading && setShowModal(false)}
-          loading={loading}
+          onCancel={() => setShowModal(false)}
         />
       )}
 

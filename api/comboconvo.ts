@@ -1,9 +1,9 @@
 // /api/comboconvo.ts (Node.js serverless)
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-// Deployed Apps Script “exec” URL:
+// Deployed Apps Script CORS-bypassing URL:
 const SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbwkRIM-9HS6bAtntSb-0tUHE2PGqdJTRVBSRINmKd3CEqHvPx4LF-Vd-FyNvvuuypPrKg/exec';
+  'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLilc4c1ho2STgzQjdfuHV0WN25ZORffdC_DnTyTceRqqTwkGPKB5toXf6hl0J3JRMgxbQNTRqEmmEP0LhIlYMwzLTYsV3OlVcv8LXYFTkwgj9AGo8V1s6gTlO7IAm1gtnGMmnqSp5hREA3yrX1AI_5bMpJcOOusQzRtNZ7d8lCv5afSKZz7mUtgKbTX9jDITfzZImVLg9FiQDF544qha0IPCuMh4tFen1XwUo4eIyJlAgr0n6c9u5yOoU-vKFHepceHPrBIja-xhlu-2YQZTYTVvClNrNheyyzSv6RJ&lib=MW3M9wDoA0QM9R0Fi0Ne2k42rhhqwptNs';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Always allow CORS from any origin
