@@ -6,7 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-const WEB_APP_URL = '/api/comboconvo';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec';
 
 interface FormState {
   orangeCard: string;
