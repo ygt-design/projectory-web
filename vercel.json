@@ -6,7 +6,9 @@
       "config": { "distDir": "docs" }
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/docs/$1" },
+    { "src": "/(.*)", "dest": "/docs/index.html" }
   ]
 }
