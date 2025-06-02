@@ -6,8 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-const WEB_APP_URL =
-  'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLilc4c1ho2STgzQjdfuHV0WN25ZORffdC_DnTyTceRqqTwkGPKB5toXf6hl0J3JRMgxbQNTRqEmmEP0LhIlYMwzLTYsV3OlVcv8LXYFTkwgj9AGo8V1s6gTlO7IAm1gtnGMmnqSp5hREA3yrX1AI_5bMpJcOOusQzRtNZ7d8lCv5afSKZz7mUtgKbTX9jDITfzZImVLg9FiQDF544qha0IPCuMh4tFen1XwUo4eIyJlAgr0n6c9u5yOoU-vKFHepceHPrBIja-xhlu-2YQZTYTVvClNrNheyyzSv6RJ&lib=MW3M9wDoA0QM9R0Fi0Ne2k42rhhqwptNs';
+const WEB_APP_URL = '/api/comboconvo'; 
 
 interface FormState {
   orangeCard: string;
@@ -32,16 +31,16 @@ const MultiStepForm: React.FC = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<HTMLDivElement>(null);
-  const htmlFormRef = useRef<HTMLFormElement>(null);
 
   // Fetch dropdown options once on component mount
   useEffect(() => {
-    fetch(WEB_APP_URL)
-      .then(res => res.json())
-      .then(({ whatIsA, thatCould }) => {
-        setOptionsA(whatIsA);
-        setOptionsB(thatCould);
+    fetch(WEB_APP_URL)       // GET → proxies to echo?user_content_key=… 
+       .then(res => res.json())
+       .then(({ whatIsA, thatCould }) => {
+         setOptionsA(whatIsA);
+         setOptionsB(thatCould);
       })
       .catch(err => console.error('Lookup fetch failed:', err));
   }, []);
@@ -83,13 +82,28 @@ const MultiStepForm: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    // Submit the hidden HTML form into the iframe to avoid CORS
-    if (htmlFormRef.current) {
-      htmlFormRef.current.submit();
-      setSubmitted(true);
-    } else {
-      setError('Submission failed. Please try again.');
-    }
+    setLoading(true);
+    setError('');
+    fetch(WEB_APP_URL, {      // POST → proxies to real /exec
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(form),
+     })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          setSubmitted(true);
+        } else {
+          setError('Submission failed. Please try again.');
+        }
+      })
+      .catch(() => {
+        setError('Submission failed. Please try again.');
+      })
+      .finally(() => {
+        setLoading(false);
+        setShowModal(false);
+      });
   };
 
   if (submitted) {
@@ -108,21 +122,6 @@ const MultiStepForm: React.FC = () => {
       exit={{ opacity: 0 }}
       ref={formRef}
     >
-      {/* Hidden HTML form for POST (targeting hidden iframe) */}
-      <form
-        ref={htmlFormRef}
-        action={WEB_APP_URL}
-        method="POST"
-        target="hidden_iframe"
-        style={{ display: 'none' }}
-      >
-        <input type="hidden" name="orangeCard" value={form.orangeCard} />
-        <input type="hidden" name="blueCard" value={form.blueCard} />
-        <input type="hidden" name="whatIsA" value={form.whatIsA} />
-        <input type="hidden" name="thatCould" value={form.thatCould} />
-        <input type="hidden" name="freeText" value={form.freeText} />
-      </form>
-      <iframe name="hidden_iframe" style={{ display: 'none' }} />
 
       {/* Progress bar with step markers */}
       <div className={styles['progress-container']}>
@@ -230,17 +229,17 @@ const MultiStepForm: React.FC = () => {
       {/* Navigation buttons */}
       <div className={styles['form-buttons']}>
         {step > 1 && (
-          <button type="button" onClick={handleBack}>
+          <button type="button" onClick={handleBack} disabled={loading}>
             ← Back
           </button>
         )}
         {step < 5 ? (
-          <button type="button" onClick={handleNext} disabled={!isValidStep()}>
+          <button type="button" onClick={handleNext} disabled={!isValidStep() || loading}>
             Next →
           </button>
         ) : (
-          <button type="button" onClick={() => setShowModal(true)} disabled={!isValidStep()}>
-            Submit
+          <button type="button" onClick={() => setShowModal(true)} disabled={!isValidStep() || loading}>
+            {loading ? 'Submitting...' : 'Submit'}
           </button>
         )}
       </div>
