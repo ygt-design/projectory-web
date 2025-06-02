@@ -2,6 +2,37 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { parse } from 'qs';
 
+/**
+ * Performs a fetch with exponential backoff, retrying up to maxRetries times.
+ */
+async function fetchJsonWithBackoff(
+  url: string,
+  options: RequestInit = {},
+  maxRetries: number = 3,
+  initialDelay: number = 500
+): Promise<any> {
+  let attempt = 0;
+  let delay = initialDelay;
+
+  while (true) {
+    attempt++;
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      return await response.json();
+    } catch (err) {
+      if (attempt >= maxRetries) {
+        throw err;
+      }
+      // Wait for the delay period
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      delay *= 2;
+    }
+  }
+}
+
 const LOOKUP_URL =
   'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec';
 const SUBMIT_URL =
@@ -19,8 +50,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'GET') {
     try {
-      const scriptRes = await fetch(LOOKUP_URL);
-      const json = await scriptRes.json();
+      const json = await fetchJsonWithBackoff(LOOKUP_URL);
       return res.status(200).json(json);
     } catch (err) {
       console.error('Lookup proxy error:', err);
@@ -41,12 +71,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     try {
-      const scriptRes = await fetch(SUBMIT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payloadObj),
-      });
-      const json = await scriptRes.json();
+      const json = await fetchJsonWithBackoff(
+        SUBMIT_URL,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payloadObj),
+        }
+      );
       return res.status(200).json(json);
     } catch (err) {
       console.error('Submit proxy error:', err);
