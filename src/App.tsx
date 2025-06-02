@@ -11,6 +11,7 @@ import ProductPage from './pages/ProductPages/ProductPage';
 import GetEstimatePage from './pages/GetEstimatePage/GetEstimatePage';
 import GetStartedForm from './pages/GetStartedForm/GetStartedForm';
 import { LikedProductsProvider } from './context/LikedProductsContext';
+import ComboConvoForm from './pages/ComboConvo/ComboConvoForm';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/get-estimate" element={<GetEstimatePage />} />
             <Route path="/get-started-form" element={<GetStartedForm />} />
+            <Route path="/combo-convo-form" element={<ComboConvoForm />} />
           </Routes>
         </Layout>
       </Router>

@@ -29,8 +29,6 @@ const PricingInformation = ({ pricing }: PricingInformationProps) => {
         Get Started
       </Link>
 
-
-      {/* 🔹 Dynamic Pricing Cards */}
       <div className={styles.pricingGrid}>
         {pricing.map((plan, index) => (
           <div key={index} className={`${styles.pricingCard} ${index === 1 ? styles.featured : ''}`}>
