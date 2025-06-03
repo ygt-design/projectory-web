@@ -1,14 +1,13 @@
-// vite.config.ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/',             // or '/'—either works if everything is served from docs/
   plugins: [react()],
   server: {
     proxy: {
       '/api/combo-convo-form': {
-        target: 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec',
+        target:
+          'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/combo-convo-form/, '')
       }
@@ -16,6 +15,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'docs',
-    emptyOutDir: true,    // ← THIS clears out `docs/` on each build
+    emptyOutDir: true
   }
-})
+});

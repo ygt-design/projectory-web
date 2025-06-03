@@ -7,7 +7,9 @@ import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
 // Always use the proxy path for the web app URL.
-const WEB_APP_URL = '/api/combo-convo-form';
+const WEB_APP_URL = import.meta.env.PROD
+  ? 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec'
+  : '/api/combo-convo-form';
 
 interface FormState {
   orangeCard: string;
@@ -37,12 +39,12 @@ const MultiStepForm: React.FC = () => {
   // Fetch dropdown options once on component mount
   useEffect(() => {
     fetch(WEB_APP_URL)
-      .then(r => r.json())
+      .then((r) => r.json())
       .then(({ whatIsA, thatCould }) => {
         setOptionsA(whatIsA);
         setOptionsB(thatCould);
       })
-      .catch(err => console.error('Lookup fetch failed:', err));
+      .catch((err) => console.error('Lookup fetch failed:', err));
   }, []);
 
   // Scroll into view when step changes
