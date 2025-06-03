@@ -6,8 +6,6 @@ const LOOKUP_URL =
 const SUBMIT_URL =
   "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
 
-// test
-
 async function fetchJsonWithBackoff(
   url,
   options = {},
