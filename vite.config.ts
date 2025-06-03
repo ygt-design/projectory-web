@@ -10,7 +10,7 @@ export default defineConfig({
       '/api/combo-convo-form': {
         target: 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/comboconvo/, '')
+        rewrite: (path) => path.replace(/^\/api\/combo-convo-form/, '')
       }
     }
   },
