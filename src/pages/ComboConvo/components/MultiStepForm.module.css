@@ -123,26 +123,27 @@
 
 /* Confirmation modal box */
 .msf-modal {
-  background: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 90%;
   max-width: 400px;
   box-sizing: border-box;
 }
 
-/* Modal message */
 .msf-modal-message {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: #333;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.2rem;
 }
 
 /* Modal buttons */
 .msf-modal-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -163,8 +164,8 @@
 
 /* Secondary action button */
 .msf-btn-secondary {
-  background: #ddd;
-  color: #333;
+  background: #e1e1e1;
+  color: #272727;
 }
 
 /* Loading spinner */
@@ -185,8 +186,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-size: 1.8rem;
-  width: 25%;
+  font-size: 1.5rem;
+  width: 300px;
   height: 100vh;
   margin: auto;
   text-align: center;
@@ -201,7 +202,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(300deg, #2FD4B2, #158671);
   z-index: -1;
   border-radius: 25px;
 }

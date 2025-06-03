@@ -107,21 +107,24 @@ const MultiStepForm: React.FC = () => {
         const text = await err.response?.text().catch(() => '(no response text)');
         console.error('Submit failed, non-JSON response:', text, err);
         setError('Submission failed. Please try again.');
+        setShowModal(false);
       })
       .then((res) => {
         if (res && res.success) {
           setSubmitted(true);
+          setShowModal(false);
         } else if (res) {
           setError('Submission failed. Please try again.');
+          setShowModal(false);
         }
       })
       .catch((err) => {
         console.error('Submit failed:', err);
         setError('Submission failed. Please try again.');
+        setShowModal(false);
       })
       .finally(() => {
         setLoading(false);
-        setShowModal(false);
       });
   };
 
@@ -249,7 +252,7 @@ const MultiStepForm: React.FC = () => {
             onClick={() => setShowModal(true)}
             disabled={!isValidStep() || loading}
           >
-            {loading ? 'Submitting...' : 'Submit'}
+            Submit
           </button>
         )}
       </div>
@@ -260,6 +263,7 @@ const MultiStepForm: React.FC = () => {
           message="Are you sure you are done? Once submitted, you cannot go back."
           onConfirm={handleSubmit}
           onCancel={() => setShowModal(false)}
+          loading={loading}
         />
       )}
 
