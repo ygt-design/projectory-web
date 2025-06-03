@@ -6,11 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-// In development, proxy via Vite to Google Apps Script.
-// In production, call the script URL directly.
-const WEB_APP_URL = import.meta.env.PROD
-  ? 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec'
-  : '/api/combo-convo-form';
+const WEB_APP_URL = '/api/combo-convo-form';
 
 interface FormState {
   orangeCard: string;
@@ -85,10 +81,8 @@ const MultiStepForm: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Submitting to:', WEB_APP_URL, 'payload:', form);
     setLoading(true);
     setError('');
-
     fetch(WEB_APP_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -239,11 +233,7 @@ const MultiStepForm: React.FC = () => {
           </button>
         )}
         {step < 5 ? (
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={!isValidStep() || loading}
-          >
+          <button type="button" onClick={handleNext} disabled={!isValidStep() || loading}>
             Next →
           </button>
         ) : (
