@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/combo-convo-form': {
-        target: 'https://script.google.com/macros/s/AKfycbwkRIM-9HS6bAtntSb-0tUHE2PGqdJTRVBSRINmKd3CEqHvPx4LF-Vd-FyNvvuuypPrKg/exec',
+        target: 'https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/combo-convo-form/, ''),
       },
