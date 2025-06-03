@@ -1,5 +1,6 @@
 // projectory-web/projectory/api/combo-convo-form.ts
 import { parse } from 'qs'
+import fetch from 'node-fetch';
 
 const LOOKUP_URL =
   'https://script.google.com/macros/s/AKfycbwkRIM-…/exec'
