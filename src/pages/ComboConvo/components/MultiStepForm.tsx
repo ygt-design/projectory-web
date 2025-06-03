@@ -1,5 +1,3 @@
-// src/pages/ComboConvo/components/MultiStepForm.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import TextInput from './TextInput';
@@ -8,10 +6,6 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-// ​───────────────────────────────────────────────────────────────────────────────
-// 🔒 ALWAYS use the Vercel proxy path, NEVER the raw Apps Script URL here.
-//    This prevents CORS, because the browser never calls script.google.com directly.
-// ────────────────────────────────────────────────────────────────────────────────
 const WEB_APP_URL = '/api/combo-convo-form';
 
 interface FormState {
@@ -39,12 +33,8 @@ const MultiStepForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<HTMLDivElement>(null);
 
-  // ──────────────────────────────────────────────────────────────────────────────
-  // Fetch dropdown options ONCE when the component mounts.
-  // Because WEB_APP_URL = '/api/combo-convo-form', this GET goes to Vercel.
-  // Vercel (server‐side) will then fetch the Apps Script URL, which is public.
-  // ──────────────────────────────────────────────────────────────────────────────
   useEffect(() => {
+    console.log('Fetching lookup from:', WEB_APP_URL);
     fetch(WEB_APP_URL)
       .then((r) => {
         if (!r.ok) {
@@ -57,12 +47,11 @@ const MultiStepForm: React.FC = () => {
         setOptionsB(thatCould);
       })
       .catch((err) => {
-        console.error('Lookup fetch failed:', err);
+        console.error('Lookup fetch failed:', err, 'Response text:', err.message);
         setError('Unable to load dropdown options. Please try again later.');
       });
   }, []);
 
-  // Scroll into view when step changes
   useEffect(() => {
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -114,10 +103,15 @@ const MultiStepForm: React.FC = () => {
         }
         return r.json();
       })
+      .catch(async (err) => {
+        const text = await err.response?.text().catch(() => '(no response text)');
+        console.error('Submit failed, non-JSON response:', text, err);
+        setError('Submission failed. Please try again.');
+      })
       .then((res) => {
-        if (res.success) {
+        if (res && res.success) {
           setSubmitted(true);
-        } else {
+        } else if (res) {
           setError('Submission failed. Please try again.');
         }
       })
