@@ -23,10 +23,14 @@ async function fetchJsonWithBackoff(
     try {
       const response = await fetch(url, options)
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`)
+        const errorText = await response.text();
+        console.error(`fetchJsonWithBackoff: received HTTP ${response.status} for URL ${url}, response: ${errorText}`);
+        throw new Error(`HTTP ${response.status}`);
       }
-      return await response.json()
+      const result = await response.json();
+      return result;
     } catch (err) {
+      console.error(`fetchJsonWithBackoff attempt ${attempt} failed for URL ${url}:`, err);
       if (attempt >= maxRetries) {
         throw err
       }
@@ -54,8 +58,8 @@ export default async function handler(
       const json = await fetchJsonWithBackoff(LOOKUP_URL)
       return res.status(200).json(json)
     } catch (err) {
-      console.error('Lookup proxy error:', err)
-      return res.status(500).json({ error: 'Lookup failed' })
+      console.error(`Lookup proxy error calling ${LOOKUP_URL}:`, err);
+      return res.status(500).json({ error: `Lookup failed: ${err.message}` });
     }
   }
 
@@ -71,6 +75,8 @@ export default async function handler(
       return res.status(415).json({ error: 'Unsupported content type' })
     }
 
+    console.log('POST payload:', payloadObj);
+
     try {
       const json = await fetchJsonWithBackoff(
         SUBMIT_URL,
@@ -82,8 +88,8 @@ export default async function handler(
       )
       return res.status(200).json(json)
     } catch (err) {
-      console.error('Submit proxy error:', err)
-      return res.status(500).json({ error: 'Submission failed' })
+      console.error(`Submit proxy error calling ${SUBMIT_URL} with payload ${JSON.stringify(payloadObj)}:`, err);
+      return res.status(500).json({ error: `Submission failed: ${err.message}` });
     }
   }
 
