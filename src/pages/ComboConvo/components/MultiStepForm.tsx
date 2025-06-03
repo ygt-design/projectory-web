@@ -6,6 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
+// Always use the proxy path for the web app URL.
 const WEB_APP_URL = '/api/combo-convo-form';
 
 interface FormState {
@@ -81,8 +82,10 @@ const MultiStepForm: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    console.log('Submitting to:', WEB_APP_URL, 'payload:', form);
     setLoading(true);
     setError('');
+
     fetch(WEB_APP_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -233,7 +236,11 @@ const MultiStepForm: React.FC = () => {
           </button>
         )}
         {step < 5 ? (
-          <button type="button" onClick={handleNext} disabled={!isValidStep() || loading}>
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={!isValidStep() || loading}
+          >
             Next →
           </button>
         ) : (

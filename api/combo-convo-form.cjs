@@ -1,13 +1,14 @@
 const { parse } = require("qs");
 const fetch = require("node-fetch");
 
+// Both LOOKUP_URL and SUBMIT_URL now point directly to your Apps Script “exec” endpoint.
+// (The <user__selection> tags have been removed.)
 const LOOKUP_URL =
   "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
 const SUBMIT_URL =
   "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
 
-// test
-
+// A helper that retries on failure, with exponential backoff.
 async function fetchJsonWithBackoff(
   url,
   options = {},
@@ -46,7 +47,8 @@ async function fetchJsonWithBackoff(
 
 module.exports = async function handler(req, res) {
   console.log(`Handler called, method=${req.method}`);
-  // Allow CORS
+
+  // Allow CORS so the browser can call this endpoint directly.
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -57,6 +59,7 @@ module.exports = async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
+      // Proxy the GET to your Apps Script doGet()
       const json = await fetchJsonWithBackoff(LOOKUP_URL);
       return res.status(200).json(json);
     } catch (err) {
@@ -70,8 +73,10 @@ module.exports = async function handler(req, res) {
     const contentType = (req.headers["content-type"] || "").toString();
 
     if (contentType.includes("application/x-www-form-urlencoded")) {
+      // If a form-encoded POST came in, parse it
       payloadObj = parse(req.body);
     } else if (contentType.includes("application/json")) {
+      // If JSON, use req.body directly
       payloadObj = req.body || {};
     } else {
       return res.status(415).json({ error: "Unsupported content type" });
@@ -80,6 +85,7 @@ module.exports = async function handler(req, res) {
     console.log("POST payload:", payloadObj);
 
     try {
+      // Forward the POST payload to your Apps Script doPost()
       const json = await fetchJsonWithBackoff(SUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
