@@ -1,14 +1,14 @@
+// api/combo-convo-form.cjs
+
 const { parse } = require("qs");
 const fetch = require("node-fetch");
 
-// Both LOOKUP_URL and SUBMIT_URL now point directly to your Apps Script “exec” endpoint.
-// (The <user__selection> tags have been removed.)
+// Both LOOKUP_URL and SUBMIT_URL must match the /exec URL you copied above.
 const LOOKUP_URL =
   "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
-const SUBMIT_URL =
-  "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
+const SUBMIT_URL = LOOKUP_URL;
 
-// A helper that retries on failure, with exponential backoff.
+// Helper for retrying JSON fetch. If Google returns HTML, we throw a clear error.
 async function fetchJsonWithBackoff(
   url,
   options = {},
@@ -22,23 +22,22 @@ async function fetchJsonWithBackoff(
     attempt++;
     try {
       const response = await fetch(url, options);
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error(
-          `fetchJsonWithBackoff: HTTP ${response.status} from ${url}, response: ${errorText}`
-        );
-        throw new Error(`HTTP ${response.status}`);
+      const rawText = await response.text();
+
+      // If the first non-whitespace character is '<', assume it’s HTML (login/consent page).
+      const firstNonWhitespace = rawText.trimLeft().charAt(0);
+      if (firstNonWhitespace === "<") {
+        throw new Error(`Received HTML from ${url} (not JSON)`);
       }
-      const result = await response.json();
-      return result;
+
+      // Otherwise parse JSON
+      return JSON.parse(rawText);
     } catch (err) {
       console.error(
         `fetchJsonWithBackoff attempt ${attempt} failed for ${url}:`,
         err
       );
-      if (attempt >= maxRetries) {
-        throw err;
-      }
+      if (attempt >= maxRetries) throw err;
       await new Promise((resolve) => setTimeout(resolve, delay));
       delay *= 2;
     }
@@ -48,7 +47,7 @@ async function fetchJsonWithBackoff(
 module.exports = async function handler(req, res) {
   console.log(`Handler called, method=${req.method}`);
 
-  // Allow CORS so the browser can call this endpoint directly.
+  // CORS headers so the browser can call this endpoint
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -59,7 +58,7 @@ module.exports = async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      // Proxy the GET to your Apps Script doGet()
+      // Proxy GET to your Apps Script doGet()
       const json = await fetchJsonWithBackoff(LOOKUP_URL);
       return res.status(200).json(json);
     } catch (err) {
@@ -73,10 +72,8 @@ module.exports = async function handler(req, res) {
     const contentType = (req.headers["content-type"] || "").toString();
 
     if (contentType.includes("application/x-www-form-urlencoded")) {
-      // If a form-encoded POST came in, parse it
       payloadObj = parse(req.body);
     } else if (contentType.includes("application/json")) {
-      // If JSON, use req.body directly
       payloadObj = req.body || {};
     } else {
       return res.status(415).json({ error: "Unsupported content type" });
@@ -85,7 +82,7 @@ module.exports = async function handler(req, res) {
     console.log("POST payload:", payloadObj);
 
     try {
-      // Forward the POST payload to your Apps Script doPost()
+      // Proxy POST to your Apps Script doPost()
       const json = await fetchJsonWithBackoff(SUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
