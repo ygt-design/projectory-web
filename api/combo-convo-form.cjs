@@ -1,5 +1,4 @@
 const { parse } = require("qs");
-const fetch = require("node-fetch");
 
 const LOOKUP_URL =
   "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
@@ -45,7 +44,7 @@ async function fetchJsonWithBackoff(
     }
   }
 }
-fo;
+
 module.exports = async function handler(req, res) {
   console.log(`Handler called, method=${req.method}`);
 
