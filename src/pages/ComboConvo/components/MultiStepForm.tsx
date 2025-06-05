@@ -173,7 +173,11 @@ const MultiStepForm: React.FC = () => {
     >
       {/* Progress bar omitted for brevity */}
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" onExitComplete={() => {
+        if (formRef.current) {
+          formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }}>
         {step === 1 && (
           <motion.div
             key="step1"
@@ -184,9 +188,27 @@ const MultiStepForm: React.FC = () => {
           >
             <div className={styles.colorRect}></div>
             <TextInput
-              label="Who has the orange card?"
+              label={
+                <>
+                  Who has the{' '}
+                  <span className={styles.msfStrong} style={{ color: '#F37655' }}>
+                    orange
+                  </span>
+                  {' '}card?
+                </>
+              }
               value={form.orangeCard}
               onChange={(val) => handleChange('orangeCard', val)}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             />
           </motion.div>
         )}
@@ -201,9 +223,27 @@ const MultiStepForm: React.FC = () => {
           >
             <div className={`${styles.colorRect} ${styles.blueRect}`}></div>
             <TextInput
-              label="Who has the blue card?"
+             label={
+                <>
+                  Who has the{' '}
+                  <span className={styles.msfStrong} style={{ color: '#2FD4B2' }}>
+                    blue
+                  </span>
+                  {' '}card?
+                </>
+              }
               value={form.blueCard}
               onChange={(val) => handleChange('blueCard', val)}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             />
           </motion.div>
         )}
@@ -225,6 +265,16 @@ const MultiStepForm: React.FC = () => {
               options={optionsA}
               value={form.whatIsA}
               onChange={(val) => handleChange('whatIsA', val)}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             />
           </motion.div>
         )}
@@ -246,6 +296,16 @@ const MultiStepForm: React.FC = () => {
               options={optionsB}
               value={form.thatCould}
               onChange={(val) => handleChange('thatCould', val)}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             />
           </motion.div>
         )}
@@ -259,10 +319,20 @@ const MultiStepForm: React.FC = () => {
             transition={{ duration: 0.4 }}
           >
             <TextArea
-              label="Your response"
+              label="Enter your clever response here"
               value={form.freeText}
               onChange={(val) => handleChange('freeText', val)}
               maxLength={75}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             />
           </motion.div>
         )}

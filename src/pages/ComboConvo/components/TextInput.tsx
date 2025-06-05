@@ -10,6 +10,7 @@ interface TextInputProps {
 const TextInput: React.FC<TextInputProps> = ({ label, value, onChange }) => (
   <div className={style.msfField}>
     <label className={style.msfLabel}>{label}</label>
+    <div className={style.msfName}> Add your name here </div>
     <input
       type="text"
       className={style.msfInput}

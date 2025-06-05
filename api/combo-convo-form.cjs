@@ -1,7 +1,7 @@
 const { parse } = require("qs");
 
 const LOOKUP_URL =
-  "https://script.google.com/macros/s/AKfycbyv6a7cBS4N2iLAYPWlK0TVOtQhRacJ2vE4FdIvErmDHz0o-NtrwIxzSwWeC143ujlFnA/exec";
+  "https://script.google.com/macros/s/AKfycbyZUYi2C60jwxA1sb2T7lUbvXe1WQDiyg_fHFNfse4CGDSGcdFYBZBb6q7T36ERR-dN/exec";
 const SUBMIT_URL = LOOKUP_URL;
 
 async function fetchJsonWithBackoff(
