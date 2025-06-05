@@ -130,7 +130,34 @@ const MultiStepForm: React.FC = () => {
 
   if (submitted) {
     return (
+    
       <div className={styles.finalResponse}>
+        <span
+          style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '1.2rem',
+          }}
+        >
+          <svg
+        width="40"
+        height="40"
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+          >
+        <circle cx="24" cy="24" r="24" fill="#2FD4B2" />
+        <path
+          d="M34 18L21.5 30.5L14 23"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+          </svg>
+        </span>
         Thank you! Your responses have been recorded.
       </div>
     );
@@ -155,6 +182,7 @@ const MultiStepForm: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
+            <div className={styles.colorRect}></div>
             <TextInput
               label="Who has the orange card?"
               value={form.orangeCard}
@@ -171,6 +199,7 @@ const MultiStepForm: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
+            <div className={`${styles.colorRect} ${styles.blueRect}`}></div>
             <TextInput
               label="Who has the blue card?"
               value={form.blueCard}
