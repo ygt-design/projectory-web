@@ -16,7 +16,7 @@ const SelectInput: React.FC<SelectInputProps> = ({ label, options = [], value, o
       value={value}
       onChange={e => onChange(e.target.value)}
     >
-      <option value="">— please choose —</option>
+      <option value="">Choose the prompt on your card...</option>
       {options.map(opt => (
         <option key={opt} value={opt}>
           {opt}

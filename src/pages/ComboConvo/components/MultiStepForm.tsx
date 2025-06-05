@@ -217,7 +217,11 @@ const MultiStepForm: React.FC = () => {
             transition={{ duration: 0.4 }}
           >
             <SelectInput
-              label="What is a (an)"
+              label={
+          <span style={{ color: '#F37655' }}>
+            What is a (an) ...
+          </span>
+              }
               options={optionsA}
               value={form.whatIsA}
               onChange={(val) => handleChange('whatIsA', val)}
@@ -234,7 +238,11 @@ const MultiStepForm: React.FC = () => {
             transition={{ duration: 0.4 }}
           >
             <SelectInput
-              label="That could…?"
+              label={
+          <span style={{ color: '#2FD4B2' }}>
+            That could…?
+          </span>
+              }
               options={optionsB}
               value={form.thatCould}
               onChange={(val) => handleChange('thatCould', val)}
