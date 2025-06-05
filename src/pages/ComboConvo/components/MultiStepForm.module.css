@@ -219,7 +219,7 @@
   margin: 0 auto;
   border-radius: 4px;
   margin-bottom: 0.9rem;
-  background: linear-gradient(300deg, #A72C4B, #F37655);
+  background: linear-gradient(300deg, #F37655, #A72C4B);
 }
 
 .blueRect{
