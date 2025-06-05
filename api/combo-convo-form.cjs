@@ -17,9 +17,7 @@ async function fetchJsonWithBackoff(
     attempt++;
     try {
       const response = await fetch(url, options);
-
       const rawText = await response.text();
-
       const firstNonWhitespace = rawText.trimLeft().charAt(0);
       if (firstNonWhitespace === "<") {
         throw new Error(

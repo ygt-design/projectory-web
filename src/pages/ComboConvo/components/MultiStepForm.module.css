@@ -51,7 +51,7 @@
 .msfInput::placeholder,
 .msfSelect::placeholder,
 .msfTextarea::placeholder {
-  color: white;
+  color: rgb(60, 60, 60);
 }
 
 .msfSelect {
