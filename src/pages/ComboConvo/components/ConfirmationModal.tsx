@@ -26,7 +26,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         
         {/* Email input */}
         <div className={styles['msf-email-wrapper']}>
-           <p className={styles.msfEmailP}>If you'd like, add your email to get a printable card deck and everyone's responses</p>
+           <p className={styles.msfEmailP}>If you'd like, enter your email to get a printable card deck and everyone's responses</p>
 
           <input
             type="email"
