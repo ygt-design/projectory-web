@@ -61,14 +61,10 @@ const MultiStepForm: React.FC = () => {
   const isValidStep = () => {
     switch (step) {
       case 1:
-        return form.orangeCard.trim().length > 0;
+        return form.orangeCard.trim().length > 0 && form.whatIsA !== '';
       case 2:
-        return form.blueCard.trim().length > 0;
+        return form.blueCard.trim().length > 0 && form.thatCould !== '';
       case 3:
-        return form.whatIsA !== '';
-      case 4:
-        return form.thatCould !== '';
-      case 5:
         return form.freeText.trim().length > 0 && form.freeText.length <= 75;
       default:
         return false;
@@ -210,57 +206,11 @@ const MultiStepForm: React.FC = () => {
                 }
               }}
             />
-          </motion.div>
-        )}
-
-        {step === 2 && (
-          <motion.div
-            key="step2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className={`${styles.colorRect} ${styles.blueRect}`}></div>
-            <TextInput
-             label={
-                <>
-                  Who has the{' '}
-                  <span className={styles.msfStrong} style={{ color: '#2FD4B2' }}>
-                    blue
-                  </span>
-                  {' '}card?
-                </>
-              }
-              value={form.blueCard}
-              onChange={(val) => handleChange('blueCard', val)}
-              onFocus={() => {
-                if (formRef.current) {
-                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-              onBlur={() => {
-                if (formRef.current) {
-                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            />
-          </motion.div>
-        )}
-
-        {step === 3 && (
-          <motion.div
-            key="step3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-          >
             <SelectInput
               label={
-          <span style={{ color: '#F37655' }}>
-            What is a (an) ...
-          </span>
+                <span style={{ color: '#F37655' }}>
+                  What is a (an) ...
+                </span>
               }
               options={optionsA}
               value={form.whatIsA}
@@ -279,19 +229,43 @@ const MultiStepForm: React.FC = () => {
           </motion.div>
         )}
 
-        {step === 4 && (
+        {step === 2 && (
           <motion.div
-            key="step4"
+            key="step2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
+            <div className={`${styles.colorRect} ${styles.blueRect}`}></div>
+            <TextInput
+              label={
+                <>
+                  Who has the{' '}
+                  <span className={styles.msfStrong} style={{ color: '#2FD4B2' }}>
+                    teal
+                  </span>
+                  {' '}card?
+                </>
+              }
+              value={form.blueCard}
+              onChange={(val) => handleChange('blueCard', val)}
+              onFocus={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              onBlur={() => {
+                if (formRef.current) {
+                  formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            />
             <SelectInput
               label={
-          <span style={{ color: '#2FD4B2' }}>
-            That could…?
-          </span>
+                <span style={{ color: '#2FD4B2' }}>
+                  That could…?
+                </span>
               }
               options={optionsB}
               value={form.thatCould}
@@ -310,9 +284,9 @@ const MultiStepForm: React.FC = () => {
           </motion.div>
         )}
 
-        {step === 5 && (
+        {step === 3 && (
           <motion.div
-            key="step5"
+            key="step3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -345,7 +319,7 @@ const MultiStepForm: React.FC = () => {
             ← Back
           </button>
         )}
-        {step < 5 ? (
+        {step < 3 ? (
           <button
             type="button"
             onClick={handleNext}
