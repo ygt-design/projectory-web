@@ -53,7 +53,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             <button
               className={`${styles['msf-btn']} ${styles['msf-btn-primary']}`}
               onClick={onConfirm}
-              disabled={email.trim() === ''}
             >
               Yes, Submit
             </button>
