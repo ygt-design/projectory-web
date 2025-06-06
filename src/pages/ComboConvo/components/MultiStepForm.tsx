@@ -27,6 +27,7 @@ const MultiStepForm: React.FC = () => {
   });
   const [optionsA, setOptionsA] = useState<string[]>([]);
   const [optionsB, setOptionsB] = useState<string[]>([]);
+  const [optionsLoading, setOptionsLoading] = useState<boolean>(true);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -35,6 +36,7 @@ const MultiStepForm: React.FC = () => {
 
   useEffect(() => {
     console.log('Fetching lookup from:', WEB_APP_URL);
+    setOptionsLoading(true);
     fetch(WEB_APP_URL)
       .then((r) => {
         if (!r.ok) {
@@ -45,10 +47,12 @@ const MultiStepForm: React.FC = () => {
       .then(({ whatIsA, thatCould }) => {
         setOptionsA(whatIsA);
         setOptionsB(thatCould);
+        setOptionsLoading(false);
       })
       .catch((err) => {
         console.error('Lookup fetch failed:', err, 'Response text:', err.message);
         setError('Unable to load dropdown options. Please try again later.');
+        setOptionsLoading(false);
       });
   }, []);
 
@@ -155,6 +159,14 @@ const MultiStepForm: React.FC = () => {
           </svg>
         </span>
         Thank you! Your responses have been recorded.
+      </div>
+    );
+  }
+
+  if (optionsLoading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <div className={styles['msf-spinner-orange']} />
       </div>
     );
   }

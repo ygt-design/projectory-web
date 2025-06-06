@@ -176,7 +176,8 @@
 }
 
 /* Loading spinner */
-.msf-spinner {
+.msf-spinner,
+.msf-spinner-orange {
   width: 48px;
   height: 48px;
   border: 4px solid #ccc;
@@ -186,6 +187,11 @@
   margin: 0 auto;
   display: block;
   box-sizing: border-box;
+}
+
+.msf-spinner-orange{
+  border: 4px solid #333;
+  border-top: 4px solid #F37655;
 }
 
 .finalResponse{
