@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/get-estimate" element={<GetEstimatePage />} />
             <Route path="/get-started-form" element={<GetStartedForm />} />
-            <Route path="/combo-convo-form" element={<ComboConvoForm />} />
+            <Route path="/comboconvo" element={<ComboConvoForm />} />
           </Routes>
         </Layout>
       </Router>
