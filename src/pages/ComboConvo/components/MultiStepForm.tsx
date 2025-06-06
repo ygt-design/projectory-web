@@ -382,7 +382,7 @@ const MultiStepForm: React.FC = () => {
       {/* Confirmation Modal (unchanged) */}
       {showModal && (
         <ConfirmationModal
-          message="Are you sure you are done? You can’t change your answers later."
+          message="Click submit to send your awesome response"
           email={form.email}
           onEmailChange={(newEmail) => handleChange('email', newEmail)}
           onConfirm={handleConfirm}
