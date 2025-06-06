@@ -4,6 +4,8 @@ import styles from './MultiStepForm.module.css';
 
 interface ConfirmationModalProps {
   message: string;
+  email: string;
+  onEmailChange: (newEmail: string) => void;
   onConfirm: () => void;
   onCancel: () => void;
   loading?: boolean;
@@ -11,6 +13,8 @@ interface ConfirmationModalProps {
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   message,
+  email,
+  onEmailChange,
   onConfirm,
   onCancel,
   loading = false
@@ -20,6 +24,21 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       <div className={styles['msf-modal']}>
         <p className={styles['msf-modal-message']}>{message}</p>
         
+        {/* Email input */}
+        <div className={styles['msf-email-wrapper']}>
+           <p className={styles.msfEmailP}>Get a printable card deck and everyone’s responses</p>
+
+          <input
+            type="email"
+            placeholder="Enter your email here…"
+            value={email}
+            onChange={(e) => onEmailChange(e.target.value)}
+            className={styles['msf-input-email']}
+          />
+        </div>
+
+       
+
         {/* Spinner shown while loading */}
         {loading ? (
           <div className={styles['msf-spinner']} />
@@ -34,6 +53,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
             <button
               className={`${styles['msf-btn']} ${styles['msf-btn-primary']}`}
               onClick={onConfirm}
+              disabled={email.trim() === ''}
             >
               Yes, Submit
             </button>

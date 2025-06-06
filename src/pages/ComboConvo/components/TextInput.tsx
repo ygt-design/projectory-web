@@ -5,17 +5,33 @@ interface TextInputProps {
   label: string;
   value: string;
   onChange: (v: string) => void;
+  placeholder?: string;
+  className?: string;
+  labelClassName?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ label, value, onChange }) => (
+const TextInput: React.FC<TextInputProps> = ({
+  label,
+  value,
+  onChange,
+  placeholder,
+  className,
+  labelClassName,
+  onFocus,
+  onBlur,
+}) => (
   <div className={style.msfField}>
-    <label className={style.msfLabel}>{label}</label>
+    <label className={labelClassName || style.msfLabel}>{label}</label>
     <input
       type="text"
-      className={style.msfInput}
+      className={className || style.msfInput}
       value={value}
       onChange={e => onChange(e.target.value)}
-      placeholder="Add your name here"
+      placeholder={placeholder || ''}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   </div>
 );
