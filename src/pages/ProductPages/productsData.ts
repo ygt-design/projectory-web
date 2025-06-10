@@ -764,7 +764,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event analysis and shareback in an easily digetible report format highlighting patterns among the opportunities and risks identified and the suggested actions to be taken today to better prepare for tomorrow.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521155/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy_eqsyfx.png'
         }, 
       },
       { 
@@ -899,7 +899,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event analysis and shareback in an easily digetible report format highlighting patterns among the insights and questions generated and the actions to be prioritized.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_DigitalAssistants_diavvo.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521158/Projectory_FuturesMap_AI_DigitalAssistants_diavvo_eyrxf0.png'
         }, 
       },
       { 
@@ -1032,7 +1032,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'PingPoll works fantastically as an at-a-glance snapshot of attendee priorities and perspectives. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. Alternately, the full set of votes can be tabulated and analyzed after the event for inclusion in a follow-on report.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521156/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi_qpydpr.png'
         }, 
       },
       { 
@@ -1297,7 +1297,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'ReflectionCollection functions during the event as a physical site of inspiration and exchange. The installation is also supported with custom slides that can be integrated into a deck for a quick shareout in a plenary session. And when the event concludes, all cards can be digitized and analyzed for a follow-on synthesis report.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521155/Projectory_FuturesMap_AI_SupportCompliance_zfd9hy_eqsyfx.png'
         }, 
       },
       { 
@@ -1434,7 +1434,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'At the end of the session, all of the creative canvases are digitized for post-event usage and shareback in an easily digetible report format. Individual commitments and accountable owners are associated in a spreadsheet that can be used in follow-on communication, personalized reminder emails, etc. to maintain momentum and drive action.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771327/Projectory_FuturesMap_AI_DigitalAssistants_diavvo.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521158/Projectory_FuturesMap_AI_DigitalAssistants_diavvo_eyrxf0.png'
         }, 
       },
       { 
@@ -1565,7 +1565,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'VisionForest allows event organizers to pose one big question to attendees for anonymous response and display in the installation. All responses can be digitized, analyzed, and shared in post-event reports.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521156/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi_qpydpr.png'
         }, 
       },
       { 
@@ -1617,7 +1617,7 @@ export const products = [
     heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
     bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1746457037/Block_Party_Website_IP_V4_Final_Colour_Pass_rynhdv.mp4',
     tags: ['Networking', 'Peer learning'],
-    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty3_myndnf.webp',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749475445/BlockParty3_xlbixw.webp',
     shortDescription: 'A collaborative quiz game with towering stakes',
   
     filters: {
@@ -1659,7 +1659,7 @@ export const products = [
       { 
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty2_pkebn7.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749475446/BlockParty2_xugnrk.webp'
         }
       },
       { 
@@ -1667,7 +1667,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "BlockParty is Projectory's spin on a quiz game session. That means it's not *just* trivia. There are additional elements of physical play and collaboration to heighten the drama and the fun. <br /><br />Participants compete in teams to answer trivia questions designed with event organizers to test knowledge and highlight key content and themes. For each correct answer, a team adds a new block to their tower, and at the end of each round, teams with taller block towers are awarded more points. The twist? The taller the tower, the easier to topple. Commanding leads can vanish in an instant. This keeps the energy high, and the game close. Ties are broken with wild challenges using the blocks in unexpected – and humorous – ways.",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420078/BlockParty4_jhevzk.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749475446/BlockParty4_oxrvms.webp'
         }
       },
       { 
@@ -1675,7 +1675,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty3_myndnf.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749475445/BlockParty3_xlbixw.webp',
           objectives: [
             'Foster connection and networking',
             'Facilitate peer learning and dialogue',
@@ -1685,7 +1685,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420077/BlockParty1_zix2dw.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749475446/BlockParty1_zgw2nj.webp'
         }
       },
        { 
@@ -1741,10 +1741,10 @@ export const products = [
     category: 'PointingThe',
     categoryHighlight: 'Way',
     categoryColor: '#BCCE2C',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747764986/Pointing_the_Way_Web_IP_V2_zylilh.mp4',
-    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747764986/Pointing_the_Way_Web_IP_V2_zylilh.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749518078/Pointing_the_Way_Web_IP_V2_zylilh_kjaate.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749518078/Pointing_the_Way_Web_IP_V2_zylilh_kjaate.mp4',
     tags: ['Explore priorities', 'Peer learning', 'Build alignment'],
-    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420797/PointingtheWay1_r4foy4.webp',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749517942/PointingtheWay1_ikkcsc.webp',
     shortDescription: 'A playfully strategic decision-making & prioritization workshop',
   
     filters: {
@@ -1785,7 +1785,7 @@ export const products = [
       { 
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420796/PointingtheWay2_gk3vfq.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749517942/PointingtheWay2_dilnez.webp'
         }
       },
       { 
@@ -1793,7 +1793,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "PointingTheWay is a strategic decisions and prioritization workshop built with a pre-determined scenario and set of roles selected to help participants explore a series of relevant questions in a Choose Your Own Adventure-type format. Once the context is established, table groups are assigned stakeholder roles and presented with a series of choices to make.<br /> <br />Each choice, made with weighting that might favor particular stakeholders, moves the session and story forward. Participant groups rotate through roles in the scenario to inhabit multiple stakeholder perspectives as they navigate the scenario and discuss, debate, and ultimately decide which path to take.",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420797/PointingtheWay1_r4foy4.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749517942/PointingtheWay1_ikkcsc.webp'
         }
       },
       { 
@@ -1801,7 +1801,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420796/PointingtheWay4_ddi9a8.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749517942/PointingtheWay4_azgknl.webp',
           objectives: [
             'Explore strategic priorities and decisions',
             'Facilitate peer learning and dialogue',
@@ -1812,7 +1812,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747420796/PointingtheWay3_utibyr.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749517942/PointingtheWay3_hlzjgg.webp'
         }
       },
        { 
@@ -1868,10 +1868,10 @@ export const products = [
     category: 'Combo',
     categoryHighlight: 'Convo+',
     categoryColor: '#2BDCB7',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747849736/comboConvo_compressed_v2_sfknrb.mp4',
-    bgVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747849736/comboConvo_compressed_v2_sfknrb.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749476249/comboConvo_compressed_spilsn.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749476249/comboConvo_compressed_spilsn.mp4',
     tags: ['Networking', 'Inspire creativity', 'Visualize insights'],
-    thumbnail: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/c1172d47-149f-4e08-a47e-f697753f3d08_dezcf2.webp',
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749476247/c1172d47-149f-4e08-a47e-f697753f3d08_vjetx9.webp',
     shortDescription: 'A wild idea-generating, networking, and conversation mash-up PLUS an interactive installation',
   
     filters: {
@@ -1915,7 +1915,7 @@ export const products = [
       { 
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/54a1d7e1-5ca5-4eec-af66-7d3b26449d9e_fgs5lq.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749476247/54a1d7e1-5ca5-4eec-af66-7d3b26449d9e_taootl.webp'
         }
       },
       { 
@@ -1923,7 +1923,7 @@ export const products = [
         content: {
           title: 'How it Works',
           description: "ComboConvo is designed around a set of combination prompt cards that can be tailored to event content and themes. The basic interaction involves participants matching pairs of cards to create unique prompt questions and then riffing on creative responses. <br /><br />The game works wonderfully as a quick energizer to warm a crowd, but it can also be built up as a full session with additional elements of competitive game play and networking. In the Plus version, participant responses are displayed on an eye-catching installation that can be visited and reviewed during breaks, receptions, etc. Attendees can get inspired and vote for their favorite (or funniest / most creative / most clever) responses with overall winners to be announced later in the event. ",
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8966_c95gd0.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749476248/IMG_8966_fgjmsc.webp'
         }
       },
       { 
@@ -1931,7 +1931,7 @@ export const products = [
         content: {
           title: 'Objectives',
           titleColor: '#BCCE2D, #148771', 
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8954_sxhg8k.webp',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749476247/IMG_8954_zrl91p.webp',
           objectives: [
             'Foster connection and networking',
             'Inspire forward thinking and creativity',
@@ -1942,7 +1942,7 @@ export const products = [
       { 
         type: 'image', 
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747835987/IMG_8971_utnz4r.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749476248/IMG_8971_jni2q8.webp'
         }
       },
       {
@@ -1950,7 +1950,7 @@ export const products = [
         content: {
           title: 'Data Gathering',
           description: 'ComboConvo responses are collected in a Projectory webform before they are displayed on the installation. After the event, organizers can access a spreadsheet with hundreds of wild ideas from their attendees to inspire more creative riffing, potential experiments, and follow-on communications.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747771326/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi.png' 
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749521156/Projectory_FuturesMap_AI_ChatbotsCustomerService_V2_uhijpi_qpydpr.png' 
         },
       },
        { 

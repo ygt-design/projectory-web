@@ -85,28 +85,28 @@ const caseStudies = [
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
     link: '/case-study/cibc-global-leadership-summit',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747841297/FM8A5043-Enhanced-NR_qywkjc.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
   },
   {
     id: 2,
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit ',
     link: '/pcma-2024-cema-summit',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747839217/Screenshot_2025-05-20_at_19.18.46_gfnyht.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519212/Screenshot_2025-05-20_at_19.18.46_gfnyht_ssydvf.webp',
   },
   {
     id: 3,
     title: 'Turning an SKO into an action-packed and collaborative experience',
     subtitle: "Surescript's Sales Kickoff",
     link: '/surescripts-sales-kickoff',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753852/Flagfinder_udmunk.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519968/Flagfinder_udmunk_fil12l.webp',
   },
   {
     id: 4,
     title: 'Bringing ecosystem partners together for a day of connection and inspiration',
     subtitle: "Deloitte Connect 2024",
     link: '/deloitte-connect-2024',
-    imageSrc: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747840726/Deloitte-June19th2024-0125_websize_hgkwds.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749520803/Deloitte-June19th2024-0125_websize_hgkwds_cbli1w.webp',
   },
   
 ];

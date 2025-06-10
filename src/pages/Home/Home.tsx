@@ -158,7 +158,7 @@ const Home = () => {
             <div className={styles.videoSlide}>
               <video
                 className={styles.videoBackground}
-                src="https://res.cloudinary.com/dduchyyhf/video/upload/v1748026168/TopOfThePage_compressed_pgo0a0.mp4"
+                src="https://res.cloudinary.com/dazzkestf/video/upload/v1749521690/TopOfThePage_compressed_pgo0a0_lwkirk.mp4"
                 autoPlay
                 muted
                 loop
@@ -224,7 +224,7 @@ const Home = () => {
         <div className={styles.mainSizzle}>
             <video
             className={styles.mainSizzleVideo}
-            src="https://res.cloudinary.com/dduchyyhf/video/upload/v1747768306/Website_Testimonials_Dec_2024_V4_jsyqfo.mp4"
+            src="https://res.cloudinary.com/dazzkestf/video/upload/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
             autoPlay
             muted
             loop

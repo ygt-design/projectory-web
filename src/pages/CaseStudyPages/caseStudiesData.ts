@@ -8,7 +8,7 @@ export const caseStudiesData = [
     category: 'CIBC Global Leadership Summit',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427597/CIBC_2024_Website_IP_V4_hgmsle.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749518981/CIBC_2024_Website_IP_V4_hgmsle_orwwsp.mp4',
     tags: null,
     clientLogo: 'https://companieslogo.com/img/orig/CM_BIG.D-c6b915e4.png?t=1720244491',
     sections: [
@@ -31,7 +31,7 @@ export const caseStudiesData = [
          {
         type: 'testimonialSizzle',
         content: {
-          videoSrc:'https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4',
+          videoSrc:'https://res.cloudinary.com/dazzkestf/video/upload/v1749518979/CIBC_2024_Testimonial_IP_Website_V2_xomytk_vjqsrz.mp4',
           quote: '"Projectory did an amazing job. getting us moving, talking, and having fun, while focused on business results. Loved it!"',
           author: 'Sandra Rondzik',
           role: 'Group Head, People Culture & Brand, CIBC'
@@ -41,7 +41,7 @@ export const caseStudiesData = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747427589/CIBC_Align_by_line_sgztib.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518973/CIBC_Align_by_line_sgztib_wibmdm.webp'
         }
       },
       // {
@@ -92,8 +92,8 @@ export const caseStudiesData = [
       {
         type: 'imageGrid',
         content:{
-          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747427590/CIBC_FlagFinder_njrp1x.webp',
-          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747427591/CIBC_pingpoll_lsqi1p.webp'
+          imageLeft: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518972/CIBC_FlagFinder_njrp1x_lllxoa.webp',
+          imageRight: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518973/CIBC_pingpoll_lsqi1p_be5r3u.webp'
         },
       },
       { 
@@ -116,7 +116,7 @@ export const caseStudiesData = [
     category: 'PCMA 2024 CEMA Summit',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747428012/CEMA_Sizzle_Web_IP_V1_qyrayp.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749519218/CEMA_Sizzle_Web_IP_V1_qyrayp_wiganu.mp4',
     tags: null,
     clientLogo: cemaLogo,
     sections: [
@@ -138,13 +138,13 @@ export const caseStudiesData = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428014/Program_Feature4_t9vw5u.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519213/Program_Feature4_t9vw5u_eca4gd.webp'
         }
       },
       {
         type: 'testimonialSizzle',
         content: {
-          videoSrc: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747428018/CEMA_Multiple_Client_Testimonial_IP_Website_WITH_AUDIO_V4_aqvrpm.mp4', 
+          videoSrc: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749519222/CEMA_Multiple_Client_Testimonial_IP_Website_WITH_AUDIO_V4_aqvrpm_f37cn7.mp4', 
           quote: '"CEMA was able to partner with Projectory to allow our audience to actually do peer to peer learning and networking."',
           author: 'Traci DePuy',
           role: ' Chief Marketing Officer at PCMA'
@@ -153,8 +153,8 @@ export const caseStudiesData = [
         {
         type: 'imageGrid',
         content:{
-          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428012/Program_Feature3_k030t6.webp',
-          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428011/Program_Feature2_fcpp8c.webp'
+          imageLeft: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519210/Program_Feature3_k030t6_reqkox.webp',
+          imageRight: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519212/Program_Feature2_fcpp8c_hrs6ho.webp'
         },
       },
       {
@@ -183,7 +183,7 @@ export const caseStudiesData = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747428010/Program_Feature1_o2kgpw.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519214/Program_Feature1_o2kgpw_r7wxiw.webp'
         }
       },
       {
@@ -191,7 +191,7 @@ export const caseStudiesData = [
         content: {
           title: 'Data Gathering',
           description: 'Projectory turned hundreds of reflection and commitment cards into a vibrant digital report filled with sentiment analysis, identified patterns, and revealing insights. PCMA used this engaging content in newsletters and summaries to catalyze and sustain fun, interconnected conversations long after the event wrapped.',
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747838749/Screenshot_2025-05-20_at_19.23.04_a84zjv.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519210/Screenshot_2025-05-20_at_19.23.04_a84zjv_nfpjjv.webp'
         }, 
       }
     ],
@@ -203,7 +203,7 @@ export const caseStudiesData = [
     category: 'Surescript Sales Kickoff',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747753858/Surescripts_Website_Headline_s9wolc.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749519977/Surescripts_Website_Headline_s9wolc_ituzke.mp4',
     tags: null,
     clientLogo: 'https://surescripts.com/themes/surescripts/templates/landing-pages/assets/images/logo--white.svg',
     sections: [
@@ -225,7 +225,7 @@ export const caseStudiesData = [
        {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753848/Taking_Action_bpxwvn.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519969/Taking_Action_bpxwvn_oi6u7t.webp'
         }
       },
       {
@@ -254,8 +254,8 @@ export const caseStudiesData = [
       {
         type: 'imageGrid',
         content:{
-          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753849/ComboConvo_ecwi3v.webp',
-          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747753852/Flagfinder_udmunk.webp'
+          imageLeft: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519970/ComboConvo_ecwi3v_qxyk0s.webp',
+          imageRight: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519968/Flagfinder_udmunk_fil12l.webp'
         },
       },
       {
@@ -275,7 +275,7 @@ export const caseStudiesData = [
     category: 'Deloitte Connect 2024',
     categoryHighlight: null,
     titleColor: '#BCCE2D',
-    heroVideo: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754194/Deloitte_2024_Website_Headline_quazat.mp4',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749520815/Deloitte_2024_Website_Headline_quazat_otwrgz.mp4',
     tags: null,
     clientLogo: 'https://www.deloitte.com/content/dam/assets-shared/logos/svg/a-d/deloitte.svg',
     sections: [
@@ -297,13 +297,13 @@ export const caseStudiesData = [
       {
         type: 'image',
         content: {
-          imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747840666/Deloitte-June19th2024-0442_websize_racaii.webp'
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749520808/Deloitte-June19th2024-0442_websize_racaii_sbtepn.webp'
         }
       },
       {
         type: 'testimonialSizzle',
         content: {
-          videoSrc: 'https://res.cloudinary.com/dduchyyhf/video/upload/v1747754203/Deloitte_2024_Client_Testimonials_c7n2c3.mp4', 
+          videoSrc: 'https://res.cloudinary.com/dazzkestf/video/upload/v1749520819/Deloitte_2024_Client_Testimonials_c7n2c3_u7ol2s.mp4', 
           quote: '"Projectory added a different dimension that broke down the usual and gave people an opportunity to stop and think"',
           author: 'Dejan Slokar',
           role: 'Managing Partner, National Ecosystems & Alliances @ Deloitte inc.'
@@ -312,8 +312,8 @@ export const caseStudiesData = [
       {
         type: 'imageGrid',
         content:{
-          imageLeft: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754186/FuturesWeb_trzej7.webp',
-          imageRight: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747754186/PingPoll_1_d8rjc7.webp'
+          imageLeft: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749520805/FuturesWeb_trzej7_ztbnmn.webp',
+          imageRight: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749520804/PingPoll_1_d8rjc7_nsiwgv.webp'
         },
       },
       {
