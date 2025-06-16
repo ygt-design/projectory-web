@@ -2,7 +2,7 @@ import React from 'react';
 import style from './MultiStepForm.module.css';
 
 interface TextInputProps {
-  label: string;
+  label: React.ReactNode;
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;

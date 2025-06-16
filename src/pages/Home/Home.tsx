@@ -280,7 +280,7 @@ const Home = () => {
       </div>
 
       <TestimonialSizzle 
-        videoSrc="https://res.cloudinary.com/dduchyyhf/video/upload/v1747427595/CIBC_2024_Testimonial_IP_Website_V2_xomytk.mp4"
+        videoSrc="https://res.cloudinary.com/dazzkestf/video/upload/v1746457043/Deloitte_2024_Client_Testimonials_IP_Website_WITH_AUDIO_V4_gcvsrf.mp4"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './MultiStepForm.module.css';
 
 interface SelectInputProps {
-  label: string;
+  label: React.ReactNode;
   options?: string[];
   value: string;
   onChange: (v: string) => void;
