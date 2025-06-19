@@ -10,7 +10,7 @@ const ContactForm = () => {
     name: '',
     email: '',
     message: '',
-    access_key: 'e32f4742-9c7d-4b80-9d0c-06e08c2e903e'
+    access_key: '1c3fa95b-e42f-4bc0-b339-025a18bc51eb'
   });
 
   const [status, setStatus] = useState('');
@@ -24,13 +24,14 @@ const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/oren@projectory.live', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         },
         body: JSON.stringify({
+          access_key: formData.access_key,
           name: formData.name,
           email: formData.email,
           message: formData.message
