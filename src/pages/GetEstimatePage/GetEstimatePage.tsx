@@ -10,7 +10,7 @@ import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbo
 const GetEstimatePage: React.FC = () => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const [formData, setFormData] = useState({
-    access_key: '44ef0aff-fcad-4d61-9fc1-d8ec09a96543', // Provided access key
+    access_key: '44ef0aff-fcad-4d61-9fc1-d8ec09a96543', // Replace with actual key
     name: '',
     email: '',
     eventDate: '',
@@ -36,19 +36,22 @@ const GetEstimatePage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit the form data using FormSubmit.co AJAX
+  // Submit the form data using Web3Forms AJAX
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/oren@projectory.live', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         },
         body: JSON.stringify({
+          access_key: formData.access_key,
+          subject: "Estimate Request from Projectory",
+          from_name: formData.name,
           name: formData.name,
           email: formData.email,
           eventDate: formData.eventDate,
@@ -58,9 +61,10 @@ const GetEstimatePage: React.FC = () => {
         }),
       });
       const result = await response.json();
-      console.log('FormSubmit response:', result);
+      console.log('Web3Forms response:', result);
       if (response.ok && result.success !== false) {
         setShowOverlay(true);
+        setStatus('');
       } else {
         setStatus('Failed to send message. Please try again.');
       }

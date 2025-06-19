@@ -272,7 +272,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ------------------ Client Logos Section ------------------ */}
       <div className={styles.clientLogosWrapper}>
           <ClientLogos
             background="transparent"
