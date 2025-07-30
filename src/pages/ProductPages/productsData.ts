@@ -1998,5 +1998,89 @@ export const products = [
         }
       }
     ]
+  },
+  {
+    id: 'roll-play',
+    name: 'Roll Play',
+    tagline: 'A Reimagined Panel Discussion Where Anyone Can Play a Role',
+    category: 'Roll',
+    categoryHighlight: 'Play',
+    categoryColor: '#ff4a78',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1753886318/Role_Play_Website_IP_V2_jduaqb.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1753886318/Role_Play_Website_IP_V2_jduaqb.mp4',
+    tags: ['Peer learning', 'Explore priorities'],
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886313/Roll_Play_Socials_IP_V3.01_00_26_22.Still009_wvwjwt.webp',
+    shortDescription: 'A Reimagined Panel Discussion Where Anyone Can Play a Role',
+  
+    filters: {
+      "type": [
+        "Interactive installation",
+      ],
+      "objectives": [
+        "Foster connection and networking",
+        "Inspire forward thinking and creativity",
+        "Visualize collective insights"
+      ],
+      "seating": [
+        "Any",
+        "Round tables",
+        "Theatre",
+        "Not sure yet"
+      ]
+    },
+
+    sections: [
+      { type: 'hero' },
+      { 
+        type: 'details', 
+        content: {
+          heading: "What's the same about almost every panel at almost every event? Almost everything. The structure, the repetition, the scripted feel, the fact that only a few people are actually participating while everyone else just sits back and passively watches. <br /><br /> RollPlay shakes all that up — injecting a little serendipity, a little chance, and a new energy into the proceedings.",
+
+          features: ['Facilitated session (panel)', '45 - 75 min', 'Main stage or breakout', 'Any number of participants', 'Works for any seating']
+        }
+      },
+      { 
+        type: 'grid',
+        content: {
+          items: [
+            { text: 'Specifically designed to energize panel discussions'},
+            { text: 'Works with any event themes and content'},
+            { text: 'Easily incorporated as a DIY rental'}
+          ]
+        }
+      },
+      { 
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886312/Roll_Play_Socials_IP_V3.01_00_00_16.Still001_mbzjsy.webp'
+        }
+      },
+      { 
+        type: 'how-it-works',
+        content: {
+          title: 'How it Works',
+          description: "RollPlay is Projectory's answer to predictable panel discussions and reimagines the conventional facilitated panel session by using a giant set of custom-face dice to determine who asks the next question, who answers, and what format the answer has to take. The dice can be used one at a time or in combination and are designed to be adaptable to virtually any panel structure and event content.",
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886312/Roll_Play_Socials_IP_V3.01_00_03_03.Still002_jcwiu8.webp'
+        }
+      },
+      { 
+        type: 'objectives',
+        content: {
+          title: 'Objectives',
+          titleColor: '#BCCE2D, #148771', 
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886312/Roll_Play_Socials_IP_V3.01_00_13_04.Still003_hjwwjf.webp',
+          objectives: [
+            'Facilitate peer learning and dialogue',
+            'Explore strategic priorities and decisions',
+          ]
+        }
+      },
+      { 
+        type: 'image', 
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886313/Roll_Play_Socials_IP_V3.01_00_26_22.Still009_wvwjwt.webp'
+        }
+      }
+    ]
   }
 ];
