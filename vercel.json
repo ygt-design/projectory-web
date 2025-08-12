@@ -12,6 +12,10 @@
   ],
   "routes": [
     {
+      "src": "/api/laser-focus-form",
+      "dest": "/api/laser-focus-form.cjs"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1.cjs"
     },
