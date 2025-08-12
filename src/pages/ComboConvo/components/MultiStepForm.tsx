@@ -6,8 +6,7 @@ import TextArea from './TextArea';
 import ConfirmationModal from './ConfirmationModal';
 import styles from './MultiStepForm.module.css';
 
-// Replace this with your deployed Apps Script URL
-const WEB_APP_URL = '/api/combo-convo-form'; // e.g. '/api/combo-convo-form'
+const WEB_APP_URL = '/api/combo-convo-form'; 
 
 interface FormState {
   orangeCard: string;
@@ -37,7 +36,6 @@ const MultiStepForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<HTMLDivElement>(null);
 
-  // 1) Fetch “whatIsA” / “thatCould” lookup data on mount
   useEffect(() => {
     setOptionsLoading(true);
     fetch(WEB_APP_URL)
@@ -353,7 +351,6 @@ const MultiStepForm: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Navigation buttons */}
       <div className={styles['form-buttons']}>
         {step > 1 && (
           <button type="button" onClick={handleBack} disabled={loading}>
@@ -379,7 +376,6 @@ const MultiStepForm: React.FC = () => {
         )}
       </div>
 
-      {/* Confirmation Modal (unchanged) */}
       {showModal && (
         <ConfirmationModal
           message="Click submit to send your awesome response"

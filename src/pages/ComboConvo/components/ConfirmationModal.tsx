@@ -4,8 +4,9 @@ import styles from './MultiStepForm.module.css';
 
 interface ConfirmationModalProps {
   message: string;
-  email: string;
-  onEmailChange: (newEmail: string) => void;
+  email?: string;
+  onEmailChange?: (newEmail: string) => void;
+  showEmailInput?: boolean;
   onConfirm: () => void;
   onCancel: () => void;
   loading?: boolean;
@@ -15,6 +16,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   message,
   email,
   onEmailChange,
+  showEmailInput = false,
   onConfirm,
   onCancel,
   loading = false
@@ -24,18 +26,20 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
       <div className={styles['msf-modal']}>
         <p className={styles['msf-modal-message']}>{message}</p>
         
-        {/* Email input */}
-        <div className={styles['msf-email-wrapper']}>
-           <p className={styles.msfEmailP}>If you'd like, enter your email to get a printable card deck and everyone's responses</p>
-
-          <input
-            type="email"
-            placeholder="Enter your email here…"
-            value={email}
-            onChange={(e) => onEmailChange(e.target.value)}
-            className={styles['msf-input-email']}
-          />
-        </div>
+        {showEmailInput && (
+          <div className={styles['msf-email-wrapper']}>
+            <p className={styles.msfEmailP}>
+              If you'd like, enter your email to get a printable card deck and everyone's responses
+            </p>
+            <input
+              type="email"
+              placeholder="Enter your email here…"
+              value={email || ''}
+              onChange={e => onEmailChange && onEmailChange(e.target.value)}
+              className={styles['msf-input-email']}
+            />
+          </div>
+        )}
 
        
 

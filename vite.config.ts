@@ -12,7 +12,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) =>
           path.replace(/^\/api\/combo-convo-form/, '')
-      }
+      },
+      '/api/laser-focus-form': {
+        target: 'https://script.google.com/macros/s/AKfycbybMopcIjh1FIlGF7FarKew6nta_eLIJ5oUvJvoWUe-yTKFt4Mc7uMlkonViN1tYKWP/exec',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/laser-focus-form/, '')
+      },
     }
   }
 });

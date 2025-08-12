@@ -12,6 +12,8 @@ import GetEstimatePage from './pages/GetEstimatePage/GetEstimatePage';
 import GetStartedForm from './pages/GetStartedForm/GetStartedForm';
 import { LikedProductsProvider } from './context/LikedProductsContext';
 import ComboConvoForm from './pages/ComboConvo/ComboConvoForm';
+import LaserFocusForm from './pages/LaserFocus/LaserFocusForm';
+import ScatterPlot from './pages/LaserFocus/ScatterPlot/ScatterPlot';
 
 const App = () => {
   return (
@@ -30,6 +32,8 @@ const App = () => {
             <Route path="/get-estimate" element={<GetEstimatePage />} />
             <Route path="/get-started-form" element={<GetStartedForm />} />
             <Route path="/comboconvo" element={<ComboConvoForm />} />
+            <Route path="/laserfocus" element={<LaserFocusForm />} />
+            <Route path="/laserfocus/scatterplot" element={<ScatterPlot />} />
           </Routes>
         </Layout>
       </Router>
