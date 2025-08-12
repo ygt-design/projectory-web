@@ -369,7 +369,7 @@ const ScatterPlot: React.FC = () => {
   
   const initialLoad = async () => {
     try {
-      const res = await fetch(`${PROXY_PATH}?key=${API_KEY}&limit=500&format=obj&_t=${Date.now()}`, { cache: 'no-store' });
+      const res = await fetch(`${PROXY_PATH}?limit=500&format=obj&_t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
       const body = (await res.json()) as unknown;
 
@@ -438,7 +438,7 @@ const ScatterPlot: React.FC = () => {
 
     // Helper: best‑effort full fetch fallback (used when meta endpoint fails)
     const fallbackFullFetch = async (ac: AbortController) => {
-      const fullRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&format=obj&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
+      const fullRes = await fetch(`${PROXY_PATH}?format=obj&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!fullRes.ok) throw new Error(`Full fetch error: ${fullRes.status}`);
       const payload = (await fullRes.json()) as unknown;
       // Accept either a plain array or an object with a 'rows' array
@@ -473,7 +473,7 @@ const ScatterPlot: React.FC = () => {
       }
 
       // try lightweight meta probe first
-      const metaRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&meta=1&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
+      const metaRes = await fetch(`${PROXY_PATH}?meta=1&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!metaRes.ok) {
         // Meta endpoint is unhappy (e.g., 500) — switch into force full-fetch mode
         forceFullFetchRef.current = true;
@@ -518,7 +518,7 @@ const ScatterPlot: React.FC = () => {
       }
 
       const sinceRow = lastRowRef.current + 1;
-      const incRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&sinceRow=${sinceRow}&limit=500&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
+      const incRes = await fetch(`${PROXY_PATH}?sinceRow=${sinceRow}&limit=500&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!incRes.ok) throw new Error(`Inc fetch error: ${incRes.status}`);
       const payload = (await incRes.json()) as unknown;
       const rawRows: unknown[] = Array.isArray((payload as { rows?: unknown[] })?.rows)
