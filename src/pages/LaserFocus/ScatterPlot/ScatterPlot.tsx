@@ -440,10 +440,19 @@ const ScatterPlot: React.FC = () => {
     const fallbackFullFetch = async (ac: AbortController) => {
       const fullRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!fullRes.ok) throw new Error(`Full fetch error: ${fullRes.status}`);
-      const full = (await fullRes.json()) as unknown[];
-      console.log('[FallbackFullFetch] Full fetch returned rows:', full.length);
-      if (!Array.isArray(full)) throw new Error('Full fetch returned non-array.');
-      processFullArray(full);
+      const payload = (await fullRes.json()) as unknown;
+      // Accept either a plain array or an object with a 'rows' array
+      let rows: unknown[] | null = null;
+      if (Array.isArray(payload)) {
+        rows = payload as unknown[];
+      } else if (payload && typeof payload === 'object' && Array.isArray((payload as { rows?: unknown[] }).rows)) {
+        rows = (payload as { rows?: unknown[] }).rows || null;
+      }
+      if (!rows) {
+        throw new Error('Full fetch returned non-array.');
+      }
+      console.log('[FallbackFullFetch] Full fetch accepted rows:', rows.length);
+      processFullArray(rows);
     };
 
     try {
@@ -511,9 +520,11 @@ const ScatterPlot: React.FC = () => {
       const sinceRow = lastRowRef.current + 1;
       const incRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&sinceRow=${sinceRow}&limit=500&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!incRes.ok) throw new Error(`Inc fetch error: ${incRes.status}`);
-      const body = (await incRes.json()) as unknown;
-      const rawRows: unknown[] = Array.isArray((body as Record<string, unknown>).rows)
-        ? ((body as Record<string, unknown>).rows as unknown[])
+      const payload = (await incRes.json()) as unknown;
+      const rawRows: unknown[] = Array.isArray((payload as { rows?: unknown[] })?.rows)
+        ? (((payload as { rows?: unknown[] }).rows as unknown[]) || [])
+        : Array.isArray(payload)
+        ? ((payload as unknown[]) || [])
         : [];
 
       const newPoints: DataPoint[] = rawRows
@@ -523,7 +534,7 @@ const ScatterPlot: React.FC = () => {
       console.log('[FetchIncremental] Incremental new points:', newPoints.length, newPoints);
       if (newPoints.length) setData(prev => [...prev, ...newPoints]);
       if (newPoints.length) setLiveStatus({ lastUpdated: Date.now(), rowCount: arrayLenRef.current + newPoints.length });
-      lastRowRef.current = Number((body as Record<string, unknown>).lastRow) || serverLastRow;
+      lastRowRef.current = Number((payload as { lastRow?: unknown })?.lastRow) || serverLastRow;
       arrayLenRef.current += newPoints.length;
       consecutiveErrorsRef.current = 0;
     } catch (err) {
