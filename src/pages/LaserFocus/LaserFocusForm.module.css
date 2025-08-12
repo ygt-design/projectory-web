@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1100px; /* widen form so sliders can be wider */
   height: 100vh;
   margin: auto;
   padding: 2rem;
@@ -18,7 +18,7 @@
   display: block;
   text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 10px; /* extra space above slider */
   color: #fff;
 }
 
@@ -38,67 +38,130 @@
 
 /* Custom range slider styling */
 .step input[type="range"] {
+  /* ensure the custom slider input remains interactive */
+  display: block;
+}
+
+/* Custom filling box range slider */
+.sliderBox {
+  position: relative;
+  height: 44px; /* larger touch target */
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(19, 21, 25, 0.92);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  touch-action: none; /* let JS handle drag precisely */
+}
+
+/* Allow the slider to span near-full viewport width, centered to the viewport
+   even if its parent container is narrower */
+.sliderBoxFull {
+  width: min(92vw, 500px);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 640px) {
+  .sliderBoxFull {
+    width: min(92vw, 300px);
+  }
+}
+.sliderFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #2FD4B2, #158671);
+  transition: width 160ms ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.sliderGlow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:
+    radial-gradient(120px 60px at var(--glow-x, 0%) 50%, rgba(95,255,227,0.18), transparent 70%);
+  z-index: 0;
+}
+.sliderInput {
   appearance: none;
   -webkit-appearance: none;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 6px;
-  background: none; /* let inline gradient show */
-  border-radius: 3px;
-  margin-top: 1rem;
-  padding: 0;
-  accent-color: #2FD4B2;
-}
-.step input[type="range"]::-webkit-slider-runnable-track {
-  height: 6px;
+  height: 100%;
   background: transparent;
-  border-radius: 3px;
+  outline: none;
+  margin: 0;
+  z-index: 2; /* above visuals */
+  cursor: pointer;
+  color: transparent; /* avoid any text color rendering quirks */
+  opacity: 0.01; /* keep iOS interaction stable while invisible */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  /* default for desktop: allow pointer interaction */
 }
-.step input[type="range"]::-webkit-slider-thumb {
+
+/* On touch devices, disable pointer events on the native input so our touch handlers on the box handle drag */
+@media (pointer: coarse) {
+  .sliderInput {
+    pointer-events: none;
+  }
+}
+/* Keep an invisible (but sizable) thumb so mobile drag works */
+.sliderInput::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #2FD4B2;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -5px; /* center thumb on track */
-  transition: transform 0.2s ease;
-}
-.step input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
-/* Firefox */
-.step input[type="range"]::-moz-range-track {
-  height: 6px;
+  width: 36px;
+  height: 36px;
+  opacity: 0; /* invisible */
   background: transparent;
-  border-radius: 3px;
+  border: 0;
+  box-shadow: none;
 }
-.step input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #2FD4B2;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-  transition: transform 0.2s ease;
-}
-.step input[type="range"]::-moz-range-thumb:hover {
-  transform: scale(1.2);
-}
-/* Firefox: filled portion color */
-.step input[type="range"]::-moz-range-progress {
-  background-color: transparent;
-  height: 6px;
-  border-radius: 3px;
-}
-/* IE/Edge: filled and remaining track colors */
-.step input[type="range"]::-ms-fill-lower {
+.sliderInput::-moz-range-thumb {
+  width: 36px;
+  height: 36px;
+  opacity: 0; /* invisible */
   background: transparent;
-  border-radius: 3px;
+  border: 0;
+  box-shadow: none;
 }
-.step input[type="range"]::-ms-fill-upper {
+/* Hide native tracks */
+.sliderInput::-webkit-slider-runnable-track {
+  height: 100%;
   background: transparent;
-  border-radius: 3px;
+  border: 0;
 }
+.sliderInput::-moz-range-track {
+  height: 100%;
+  background: transparent;
+  border: 0;
+}
+.sliderInput::-moz-range-progress {
+  height: 0;
+  background: transparent;
+  border: 0;
+}
+
+.sliderScale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #CFEDEA;
+  margin-top: 6px;
+}
+
+/* Decorative knob removed per design (no visible thumb) */
 
 .step input[type="number"]::placeholder,
 .step textarea::placeholder {

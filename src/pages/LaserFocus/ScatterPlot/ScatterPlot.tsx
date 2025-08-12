@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
+import { useCallback } from 'react';
+import styles from './ScatterPlot.module.css';
 
 
 const PROXY_PATH = '/api/laser-focus-form';
@@ -12,6 +14,18 @@ interface DataPoint {
   impact: number;
   effort: number;
 }
+
+const parseRowToDataPoint = (row: unknown): DataPoint | null => {
+  if (!row || typeof row !== 'object') return null;
+  const r = row as Record<string, unknown>;
+  const timestamp = String(r.timestamp ?? '');
+  const table = Number(r.table);
+  const idea = String(r.idea ?? '');
+  const impact = Number(r.impact);
+  const effort = Number(r.effort);
+  if (Number.isNaN(table) || Number.isNaN(impact) || Number.isNaN(effort)) return null;
+  return { timestamp, table, idea, impact, effort };
+};
 
 const ScatterPlot: React.FC = () => {
   const [data, setData] = useState<DataPoint[]>([]);
@@ -54,6 +68,9 @@ const ScatterPlot: React.FC = () => {
 
   
   const [initialAnimating, setInitialAnimating] = useState(true);
+  const [showStats, setShowStats] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchedTable, setSearchedTable] = useState<number | null>(null);
 
   // Simple live status for debugging and visibility-triggered refetches
   const [liveStatus, setLiveStatus] = useState<{ lastUpdated: number; rowCount: number }>({
@@ -63,6 +80,28 @@ const ScatterPlot: React.FC = () => {
 
   
   const initialAnimAppliedRef = useRef(false);
+
+  // Stats snapshot (highest/lowest effort/impact)
+  const stats = useMemo(() => {
+    if (!data.length) {
+      return [
+        { key: 'Highest Effort', value: undefined as number | undefined, items: [] as DataPoint[] },
+        { key: 'Highest Impact', value: undefined as number | undefined, items: [] as DataPoint[] },
+        { key: 'Lowest Effort', value: undefined as number | undefined, items: [] as DataPoint[] },
+        { key: 'Lowest Impact', value: undefined as number | undefined, items: [] as DataPoint[] },
+      ];
+    }
+    const maxEffort = d3.max(data, d => d.effort);
+    const maxImpact = d3.max(data, d => d.impact);
+    const minEffort = d3.min(data, d => d.effort);
+    const minImpact = d3.min(data, d => d.impact);
+    return [
+      { key: 'Highest Effort', value: maxEffort, items: data.filter(d => d.effort === maxEffort) },
+      { key: 'Highest Impact', value: maxImpact, items: data.filter(d => d.impact === maxImpact) },
+      { key: 'Lowest Effort', value: minEffort, items: data.filter(d => d.effort === minEffort) },
+      { key: 'Lowest Impact', value: minImpact, items: data.filter(d => d.impact === minImpact) },
+    ];
+  }, [data]);
 
   
   useEffect(() => {
@@ -91,18 +130,22 @@ const ScatterPlot: React.FC = () => {
       axesGRef.current = root.append('g').attr('class', 'axes-layer').node() as SVGGElement;
       
       pointsGRef.current = root.append('g').attr('class', 'points-layer').node() as SVGGElement;
+      root.append('g').attr('class', 'interaction-layer');
     } else {
       
       axesGRef.current = root.select<SVGGElement>('g.axes-layer').node();
       pointsGRef.current = root.select<SVGGElement>('g.points-layer').node();
+      if (root.select('g.interaction-layer').empty()) {
+        root.append('g').attr('class', 'interaction-layer');
+      }
     }
 
     
-    let defs = root.select('defs');
-    if (defs.empty()) {
-      defs = root.append('defs');
+    const defsSel = root.select('defs');
+    if (defsSel.empty()) {
+      const defsNew = root.append('defs');
       
-      const grad = defs
+      const grad = defsNew
         .append('radialGradient')
         .attr('id', 'pointGradient')
         .attr('cx', '50%')
@@ -111,7 +154,7 @@ const ScatterPlot: React.FC = () => {
       grad.append('stop').attr('offset', '100%').attr('stop-color', '#0E7B69').attr('stop-opacity', 1);
 
       
-      const glow = defs.append('filter').attr('id', 'softGlow').attr('filterUnits', 'userSpaceOnUse');
+      const glow = defsNew.append('filter').attr('id', 'softGlow').attr('filterUnits', 'userSpaceOnUse');
       glow.append('feGaussianBlur').attr('stdDeviation', 6).attr('result', 'coloredBlur');
       const feMerge = glow.append('feMerge');
       feMerge.append('feMergeNode').attr('in', 'coloredBlur');
@@ -122,10 +165,106 @@ const ScatterPlot: React.FC = () => {
   }, []);
 
   
-  const margin = useMemo(() => ({ top: 20, right: 20, bottom: 60, left: 80 }), []);
+  // Shared node sizing and extra padding so circles don't bleed out of the plot
+  const NODE_RADIUS = 18;
+  const NODE_HOVER_RADIUS = 22;
+  const NODE_EDGE_PADDING = NODE_HOVER_RADIUS + 6; // a bit extra beyond hover size
+
+  const margin = useMemo(
+    () => ({
+      top: 20 + NODE_EDGE_PADDING,
+      right: 20 + NODE_EDGE_PADDING,
+      bottom: 60 + NODE_EDGE_PADDING,
+      left: 80 + NODE_EDGE_PADDING,
+    }),
+    [NODE_EDGE_PADDING]
+  );
   const { width, height } = dimensions;
   const x = useMemo(() => d3.scaleLinear().domain([0, 10]).range([margin.left, width - margin.right]), [width, margin]);
   const y = useMemo(() => d3.scaleLinear().domain([0, 10]).range([height - margin.bottom, margin.top]), [height, margin]);
+
+  // Deterministic micro-jitter to reduce visual overlap without changing values
+  const jitterRadiusPx = 10;
+  const keyForPoint = (d: DataPoint) => `${d.timestamp}|${d.table}|${d.impact}|${d.effort}`;
+  const hash32 = (str: string) => {
+    let h = 2166136261 >>> 0; // FNV-1a base
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  };
+  const jitterOffset = useCallback((d: DataPoint): [number, number] => {
+    const h = hash32(keyForPoint(d));
+    const hx = (h & 0xffff) / 0xffff; // 0..1
+    const hy = ((h >>> 16) & 0xffff) / 0xffff; // 0..1
+    const angle = hx * Math.PI * 2;
+    const radius = (0.2 + 0.8 * hy) * jitterRadiusPx; // avoid piling all at center
+    return [Math.cos(angle) * radius, Math.sin(angle) * radius];
+  }, []);
+
+  // Apply visual highlight to searched table number
+  useEffect(() => {
+    if (!pointsGRef.current) return;
+    const gPoints = d3.select(pointsGRef.current);
+    const nodesSel = gPoints.selectAll<SVGGElement, DataPoint>('g.node');
+    // If search cleared, fully reset styles for all nodes
+    if (searchedTable == null) {
+      nodesSel.select('circle.highlight-ring').remove();
+      nodesSel.select('circle')
+        .transition()
+        .duration(150)
+        .attr('r', NODE_RADIUS)
+        .attr('stroke', '#E6F2EF')
+        .attr('stroke-width', 1)
+        .attr('stroke-opacity', 0.25);
+      nodesSel.select('text').transition().duration(150).style('font-size', '18px');
+      return;
+    }
+    nodesSel.each(function (d) {
+      const node = d3.select(this);
+      const circle = node.select('circle');
+      const isMatch = searchedTable != null && d.table === searchedTable;
+      if (isMatch) {
+        node.raise();
+        circle
+          .transition()
+          .duration(150)
+          .attr('r', NODE_HOVER_RADIUS + 4)
+          .attr('stroke', '#5FFFE3')
+          .attr('stroke-width', 3)
+          .attr('stroke-opacity', 1);
+
+        // Add or update a static highlight ring for extra vivid focus
+        let ring = node.select<SVGCircleElement>('circle.highlight-ring');
+        if (ring.empty()) {
+          // Insert before the main circle so text remains on top
+          ring = node.insert('circle', 'circle')
+            .attr('class', 'highlight-ring')
+            .attr('fill', 'none');
+        }
+        ring
+          .attr('r', NODE_HOVER_RADIUS + 10)
+          .attr('stroke', '#5FFFE3')
+          .attr('stroke-width', 2)
+          .attr('stroke-opacity', 0.75)
+          .attr('filter', 'url(#softGlow)');
+
+        // Emphasize label
+        node.select('text').transition().duration(150).style('font-size', '22px');
+      } else {
+        circle
+          .transition()
+          .duration(150)
+          .attr('r', NODE_RADIUS)
+          .attr('stroke', '#E6F2EF')
+          .attr('stroke-width', 1)
+          .attr('stroke-opacity', 0.25);
+        node.select('circle.highlight-ring').remove();
+        node.select('text').transition().duration(150).style('font-size', '18px');
+      }
+    });
+  }, [searchedTable, data]);
 
   
   useEffect(() => {
@@ -139,6 +278,19 @@ const ScatterPlot: React.FC = () => {
     
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
+
+    // Plot background panel (theme polish)
+    axes
+      .append('rect')
+      .attr('class', 'plot-bg')
+      .attr('x', margin.left)
+      .attr('y', margin.top)
+      .attr('width', innerWidth)
+      .attr('height', innerHeight)
+      .attr('fill', 'rgba(255,255,255,0.03)')
+      .attr('stroke', 'rgba(255,255,255,0.08)')
+      .attr('rx', 8)
+      .attr('ry', 8);
 
     axes
       .append('g')
@@ -219,20 +371,20 @@ const ScatterPlot: React.FC = () => {
     try {
       const res = await fetch(`${PROXY_PATH}?key=${API_KEY}&limit=500&_t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
-      const body = await res.json();
+      const body = (await res.json()) as unknown;
 
-      const rawRows: any[] = Array.isArray(body) ? body : Array.isArray(body.rows) ? body.rows : [];
-      const serverCount = Array.isArray(body) ? rawRows.length : Number(body.lastRow) || rawRows.length;
+      const rawRows: unknown[] = Array.isArray(body)
+        ? (body as unknown[])
+        : Array.isArray((body as Record<string, unknown>).rows)
+        ? ((body as Record<string, unknown>).rows as unknown[])
+        : [];
+      const serverCount = Array.isArray(body)
+        ? rawRows.length
+        : Number((body as Record<string, unknown>).lastRow) || rawRows.length;
 
       const points: DataPoint[] = rawRows
-        .map((row: any) => ({
-          timestamp: String(row.timestamp),
-          table: Number(row.table),
-          idea: String(row.idea ?? ''),
-          impact: Number(row.impact),
-          effort: Number(row.effort),
-        }))
-        .filter((d: DataPoint) => !isNaN(d.table) && !isNaN(d.impact) && !isNaN(d.effort));
+        .map(parseRowToDataPoint)
+        .filter((d): d is DataPoint => d !== null);
 
       // Track sheet row index (header included)
       lastRowRef.current = serverCount + 1;
@@ -253,18 +405,12 @@ const ScatterPlot: React.FC = () => {
     // allow fetching even during initial animation; rendering guards prevent clobbering
     console.log('[FetchIncremental] tick, initialAnimating=', initialAnimating, 'arrayLen=', arrayLenRef.current, 'lastRow=', lastRowRef.current);
     // Helper: process a full array payload
-    const processFullArray = (full: any[]) => {
+    const processFullArray = (full: unknown[]) => {
       const serverCount = full.length;
       // Map all rows once
       const fullPoints: DataPoint[] = full
-        .map((row: any) => ({
-          timestamp: String(row.timestamp),
-          table: Number(row.table),
-          idea: String(row.idea ?? ''),
-          impact: Number(row.impact),
-          effort: Number(row.effort),
-        }))
-        .filter((d: DataPoint) => !isNaN(d.table) && !isNaN(d.impact) && !isNaN(d.effort));
+        .map(parseRowToDataPoint)
+        .filter((d): d is DataPoint => d !== null);
 
       // Build stable keys for existing & incoming data (match D3 join)
       const key = (d: DataPoint) => `${d.timestamp}-${d.table}-${d.impact}-${d.effort}`;
@@ -286,14 +432,15 @@ const ScatterPlot: React.FC = () => {
       // Track sheet last row index (header included)
       lastRowRef.current = serverCount + 1;
     };
-    // Keep lastChecksumRef on the function
-    (processFullArray as any).lastChecksumRef = (processFullArray as any).lastChecksumRef || { current: 0 };
+    // Keep lastChecksumRef on the function (optional, not used elsewhere)
+    (processFullArray as unknown as { lastChecksumRef?: { current: number } }).lastChecksumRef =
+      (processFullArray as unknown as { lastChecksumRef?: { current: number } }).lastChecksumRef || { current: 0 };
 
     // Helper: best‑effort full fetch fallback (used when meta endpoint fails)
     const fallbackFullFetch = async (ac: AbortController) => {
       const fullRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!fullRes.ok) throw new Error(`Full fetch error: ${fullRes.status}`);
-      const full = await fullRes.json();
+      const full = (await fullRes.json()) as unknown[];
       console.log('[FallbackFullFetch] Full fetch returned rows:', full.length);
       if (!Array.isArray(full)) throw new Error('Full fetch returned non-array.');
       processFullArray(full);
@@ -326,10 +473,10 @@ const ScatterPlot: React.FC = () => {
         consecutiveErrorsRef.current = 0;
         return;
       }
-      const metaBody = await metaRes.json();
+      const metaBody = (await metaRes.json()) as unknown;
 
       // If meta probe returns OK but the body isn’t an array and doesn’t contain a numeric lastRow, fall back to a full fetch
-      if (!Array.isArray(metaBody) && (typeof metaBody.lastRow !== 'number' || isNaN(Number(metaBody.lastRow)))) {
+      if (!Array.isArray(metaBody) && (typeof (metaBody as Record<string, unknown>).lastRow !== 'number' || isNaN(Number((metaBody as Record<string, unknown>).lastRow)))) {
         await fallbackFullFetch(ac);
         consecutiveErrorsRef.current = 0;
         return;
@@ -348,7 +495,7 @@ const ScatterPlot: React.FC = () => {
       }
 
       // Incremental path using lastRow
-      const serverLastRow = Number(metaBody.lastRow) || 0;
+      const serverLastRow = Number((metaBody as Record<string, unknown>).lastRow) || 0;
       console.log('[Incremental] serverLastRow=', serverLastRow, 'local lastRowRef=', lastRowRef.current);
       if (forceFullFetchRef.current) {
         console.log('[FetchIncremental] Meta healthy again, turning force full-fetch mode OFF.');
@@ -364,28 +511,24 @@ const ScatterPlot: React.FC = () => {
       const sinceRow = lastRowRef.current + 1;
       const incRes = await fetch(`${PROXY_PATH}?key=${API_KEY}&sinceRow=${sinceRow}&limit=500&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!incRes.ok) throw new Error(`Inc fetch error: ${incRes.status}`);
-      const body = await incRes.json();
-      const rawRows: any[] = Array.isArray(body.rows) ? body.rows : [];
+      const body = (await incRes.json()) as unknown;
+      const rawRows: unknown[] = Array.isArray((body as Record<string, unknown>).rows)
+        ? ((body as Record<string, unknown>).rows as unknown[])
+        : [];
 
       const newPoints: DataPoint[] = rawRows
-        .map((row: any) => ({
-          timestamp: String(row.timestamp),
-          table: Number(row.table),
-          idea: String(row.idea ?? ''),
-          impact: Number(row.impact),
-          effort: Number(row.effort),
-        }))
-        .filter((d: DataPoint) => !isNaN(d.table) && !isNaN(d.impact) && !isNaN(d.effort));
+        .map(parseRowToDataPoint)
+        .filter((d): d is DataPoint => d !== null);
 
       console.log('[FetchIncremental] Incremental new points:', newPoints.length, newPoints);
       if (newPoints.length) setData(prev => [...prev, ...newPoints]);
       if (newPoints.length) setLiveStatus({ lastUpdated: Date.now(), rowCount: arrayLenRef.current + newPoints.length });
-      lastRowRef.current = Number(body.lastRow) || serverLastRow;
+      lastRowRef.current = Number((body as Record<string, unknown>).lastRow) || serverLastRow;
       arrayLenRef.current += newPoints.length;
       consecutiveErrorsRef.current = 0;
     } catch (err) {
       // Ignore deliberate aborts; otherwise log a concise warning (avoid dumping secrets)
-      if ((err as any)?.name === 'AbortError') return;
+      if ((err as Error & { name?: string })?.name === 'AbortError') return;
       console.warn('Incremental fetch warning (will retry):', (err as Error)?.message || err);
       consecutiveErrorsRef.current += 1;
     } finally {
@@ -413,6 +556,8 @@ const ScatterPlot: React.FC = () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
       inflightRef.current?.abort();
     };
+  // Intentionally run only on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -426,6 +571,8 @@ const ScatterPlot: React.FC = () => {
     return () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
     };
+  // Intentionally run only on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // When the tab becomes visible or window regains focus, fetch immediately and refresh the polling timer.
@@ -450,6 +597,8 @@ const ScatterPlot: React.FC = () => {
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('focus', onFocus);
     };
+  // Intentionally run only on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Custom cursor: minimal ring + RAF follow (smooth & light)
@@ -493,7 +642,7 @@ const ScatterPlot: React.FC = () => {
 
     const nodes = gPoints
       .selectAll<SVGGElement, DataPoint>('g.node')
-      .data(data, (d: any) => `${d.timestamp}-${d.table}-${d.impact}-${d.effort}`);
+      .data(data, (d: DataPoint) => `${d.timestamp}-${d.table}-${d.impact}-${d.effort}`);
 
     const nodesEnter = nodes
       .enter()
@@ -511,7 +660,7 @@ const ScatterPlot: React.FC = () => {
 
     nodesEnter
       .append('circle')
-      .attr('r', 18)
+      .attr('r', NODE_RADIUS)
       .style('fill', 'url(#pointGradient)')
       // Remove immediate opacity assignment; fade in via transition
       //.style('opacity', pointsVisible ? 0.18 : 0)
@@ -532,18 +681,20 @@ const ScatterPlot: React.FC = () => {
       //.style('opacity', pointsVisible ? 0.95 : 0)
       .text((d) => d.table.toString());
 
-    const nodesMerge = nodesEnter.merge(nodes as any);
+    const nodesMerge = nodesEnter.merge(nodes);
 
     nodesMerge
       .on('mouseenter', (event, d: DataPoint) => {
-        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', 22);
+        // Bring hovered node to front for readability
+        d3.select(event.currentTarget).raise();
+        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', NODE_HOVER_RADIUS);
         d3.select(event.currentTarget).select('text').transition().duration(150).style('font-size', '20px');
         const tip = d3.select(tooltipRef.current);
         tip.style('opacity', 1)
            .text(d.idea || '(no idea)');
         d3.select(cursorRef.current).classed('cursor--hover', true);
       })
-      .on('mousemove', (event, d: DataPoint) => {
+      .on('mousemove', (event) => {
         const tip = d3.select(tooltipRef.current);
         const padding = 12;
         const xPos = event.pageX + padding;
@@ -552,7 +703,7 @@ const ScatterPlot: React.FC = () => {
       })
       .on('mouseleave', (event) => {
         d3.select(cursorRef.current).classed('cursor--hover', false);
-        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', 18);
+        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', NODE_RADIUS);
         d3.select(event.currentTarget).select('text').transition().duration(150).style('font-size', '18px');
         const tip = d3.select(tooltipRef.current);
         tip.style('opacity', 0)
@@ -573,7 +724,10 @@ const ScatterPlot: React.FC = () => {
         .transition(T_INIT)
         .duration(500)
         .delay((_, i) => i * 100)
-        .attr('transform', (d) => `translate(${x(d.effort)}, ${y(d.impact)})`)
+        .attr('transform', (d) => {
+          const [jx, jy] = jitterOffset(d);
+          return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
+        })
         .style('opacity', 1)
         .on('end', () => {
           pending--;
@@ -598,7 +752,10 @@ const ScatterPlot: React.FC = () => {
         .transition()
         .duration(500)
         .delay((_, i) => i * 100) // match initial stagger cadence
-        .attr('transform', (d) => `translate(${x(d.effort)}, ${y(d.impact)})`)
+        .attr('transform', (d) => {
+          const [jx, jy] = jitterOffset(d);
+          return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
+        })
         .style('opacity', 1);
       // Animate circle and text opacity for entering nodes
       nodesEnter.select('circle')
@@ -616,7 +773,10 @@ const ScatterPlot: React.FC = () => {
         nodes
           .transition()
           .duration(0)
-          .attr('transform', (d) => `translate(${x(d.effort)}, ${y(d.impact)})`)
+          .attr('transform', (d) => {
+            const [jx, jy] = jitterOffset(d);
+            return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
+          })
           .style('opacity', 1);
       }
     }
@@ -624,7 +784,7 @@ const ScatterPlot: React.FC = () => {
     nodes.exit().remove();
 
     prevCount.current = data.length;
-  }, [layersReady, data, x, y, height, margin]);
+  }, [layersReady, data, x, y, height, margin, pointsVisible, initialAnimating, jitterOffset]);
 
   
   useEffect(() => {
@@ -636,10 +796,7 @@ const ScatterPlot: React.FC = () => {
     });
   }, [pointsVisible, data]);
 
-  useEffect(() => {
-    if (data.length > 0 && prevCount.current === 0) {
-    }
-  }, [data]);
+  // Remove empty effect block
 
     // Keyboard shortcut: press 'H' to toggle point opacity
   useEffect(() => {
@@ -653,99 +810,84 @@ const ScatterPlot: React.FC = () => {
       if (e.key && e.key.toLowerCase() === 'h') {
         setPointsVisible(v => !v);
       }
+      if (e.key && e.key.toLowerCase() === 's') {
+        setShowStats(v => !v);
+      }
+      if (e.key && e.key.toLowerCase() === 'c') {
+        setSearchTerm('');
+        setSearchedTable(null);
+      }
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, []);
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        background: 'radial-gradient(1200px 800px at 20% 10%, rgba(21, 134, 113, 0.25), transparent 60%), radial-gradient(1000px 700px at 80% 90%, rgba(0, 255, 202, 0.18), transparent 60%), #0F1115',
-        textRendering: 'optimizeLegibility',
-        color: 'white',
-        zIndex: 10000,
-        overflow: 'hidden',
-        boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'none',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          left: 16,
-          top: 16,
-          padding: '6px 10px',
-          borderRadius: 8,
-          fontSize: 12,
-          color: '#CFEDEA',
-          background: 'rgba(15, 17, 21, 0.6)',
-          border: '1px solid rgba(255,255,255,0.12)',
-          boxShadow: '0 6px 18px rgba(0,0,0,0.25)',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)',
-          zIndex: 10002,
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.liveBadge}>
         Live: {initialAnimating ? 'booting…' : 'polling'} · Rows: {liveStatus.rowCount} · Updated: {liveStatus.lastUpdated ? new Date(liveStatus.lastUpdated).toLocaleTimeString() : '—'}
       </div>
-      <div
-        ref={tooltipRef}
-        style={{
-          position: 'absolute',
-          pointerEvents: 'none',
-          opacity: 0,
-          left: 0,
-          top: 0,
-          transform: 'translate(-9999px, -9999px)',
-          padding: '8px 10px',
-          background: 'rgba(15,17,21,0.9)',
-          color: '#EAF8F5',
-          border: '1px solid rgba(255,255,255,0.12)',
-          borderRadius: 8,
-          boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
-          fontSize: 12,
-          lineHeight: 1.3,
-          maxWidth: 260,
-          zIndex: 10003,
-          whiteSpace: 'normal',
-          backdropFilter: 'blur(6px)',
-          WebkitBackdropFilter: 'blur(6px)'
-        }}
-      />
-      <div
-        ref={cursorRef}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: 14,
-          height: 14,
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 10005,
-          transform: 'translate(-9999px, -9999px) scale(1)',
-          background: 'transparent',
-          border: '1.5px solid rgba(95,255,227,0.9)',
-          boxShadow: 'none',
-          willChange: 'transform',
-        }}
-        className="custom-cursor"
-      />
+      {showStats && (
+      <div className={styles.statsCard}>
+        <div className={styles.statsTitle}> Stats </div>
+        <div className={styles.statsGrid}>
+          {stats.map((s) => (
+            <div key={s.key} className={styles.statRow}>
+              <div className={styles.statLabel}>{s.key}</div>
+              <div className={styles.statValue}>{s.value ?? '—'}</div>
+              <div className={styles.statItems}>
+                {s.items.slice(0, 3).map((d, idx) => (
+                  <span key={`${s.key}-${idx}`} className={styles.badge}>{d.table}</span>
+                ))}
+                {s.items.length > 3 ? <span className={styles.more}>+{s.items.length - 3}</span> : null}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      )}
+      <div ref={tooltipRef} className={styles.tooltip} />
+      <div className={styles.searchBar}>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          placeholder="Find table # (e.g., 12)"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              const val = Number(searchTerm.trim());
+              setSearchedTable(Number.isFinite(val) ? val : null);
+            }
+          }}
+          className={styles.searchInput}
+        />
+        <button
+          className={styles.searchBtn}
+          onClick={() => {
+            const val = Number(searchTerm.trim());
+            setSearchedTable(Number.isFinite(val) ? val : null);
+          }}
+        >
+          Go
+        </button>
+        <button
+          className={styles.clearBtn}
+          onClick={() => {
+            setSearchTerm('');
+            setSearchedTable(null);
+          }}
+        >
+          Clear
+        </button>
+      </div>
+      <div ref={cursorRef} className={styles.cursor} />
       <svg
         ref={svgRef}
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-        width="75%"
-        height="75%"
+        width="80%"
+        height="80%"
         preserveAspectRatio="xMidYMid meet"
       />
     </div>
