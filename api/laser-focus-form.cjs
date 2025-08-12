@@ -6,6 +6,7 @@ const DEFAULT_APPSCRIPT_URL =
   "https://script.google.com/macros/s/AKfycbybMopcIjh1FIlGF7FarKew6nta_eLIJ5oUvJvoWUe-yTKFt4Mc7uMlkonViN1tYKWP/exec";
 const UPSTREAM_URL =
   process.env.LASER_FOCUS_APPSCRIPT_URL || DEFAULT_APPSCRIPT_URL;
+const API_KEY = process.env.LASER_FOCUS_API_KEY || "";
 
 async function fetchJsonWithBackoff(
   url,
@@ -46,6 +47,7 @@ module.exports = async function handler(req, res) {
     if (req.method === "GET") {
       // Forward all query params to the Apps Script
       const params = new URLSearchParams(req.query || {});
+      if (API_KEY) params.set("key", API_KEY);
       const url = `${UPSTREAM_URL}?${params.toString()}`;
       const json = await fetchJsonWithBackoff(url, {
         method: "GET",
@@ -57,7 +59,10 @@ module.exports = async function handler(req, res) {
     if (req.method === "POST") {
       const headers = { "Content-Type": "application/json" };
       const body = JSON.stringify(req.body || {});
-      const json = await fetchJsonWithBackoff(UPSTREAM_URL, {
+      const url = API_KEY
+        ? `${UPSTREAM_URL}?key=${encodeURIComponent(API_KEY)}`
+        : UPSTREAM_URL;
+      const json = await fetchJsonWithBackoff(url, {
         method: "POST",
         headers,
         body,
