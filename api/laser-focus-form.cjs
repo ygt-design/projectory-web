@@ -3,7 +3,7 @@ const { URLSearchParams } = require("url");
 // Upstream Google Apps Script endpoint. Prefer env var; fallback to the
 // same URL used elsewhere in the project.
 const DEFAULT_APPSCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyBjqgKCilAgqqpy_HkuyrrJ0HaLka-Ch6yea-swOFSKnfRu7dPO7dTc4yLNx2gQ0ZR/exec";
+  "https://script.google.com/macros/s/AKfycbybMopcIjh1FIlGF7FarKew6nta_eLIJ5oUvJvoWUe-yTKFt4Mc7uMlkonViN1tYKWP/exec";
 const UPSTREAM_URL =
   process.env.LASER_FOCUS_APPSCRIPT_URL || DEFAULT_APPSCRIPT_URL;
 
