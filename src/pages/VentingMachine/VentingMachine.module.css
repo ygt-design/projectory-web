@@ -1,0 +1,127 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  height: 100vh;
+  margin: auto;
+  padding: 2rem;
+}
+
+.step {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.step label {
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.step input[type="number"],
+.step textarea,
+.step input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: #191919;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* Prompt display */
+.prompt {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(47, 212, 178, 0.1);
+  border: 1px solid rgba(47, 212, 178, 0.3);
+  border-radius: 8px;
+  color: #CFEDEA;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Optional helper text */
+.helper {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #CFEDEA;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Loading state wrapper */
+.loading {
+  opacity: 0.75;
+}
+
+.step input[type="number"]::placeholder,
+.step textarea::placeholder,
+.step input[type="text"]::placeholder {
+  color: rgb(60, 60, 60);
+}
+
+.step input[type="number"]:focus,
+.step textarea:focus,
+.step input[type="text"]:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 1.5rem;
+  mix-blend-mode: screen;
+}
+
+.buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background: linear-gradient(300deg, #2FD4B2, #158671);
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.buttons button:disabled {
+  background: #282828;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.buttons button:hover:not(:disabled) {
+  background: linear-gradient(300deg, #158671, #106555);
+}
+
+.thankYou {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.error {
+  margin-top: 1rem;
+  color: #b00020;
+  font-size: 0.9rem;
+  text-align: center;
+}

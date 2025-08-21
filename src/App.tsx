@@ -14,6 +14,7 @@ import { LikedProductsProvider } from './context/LikedProductsContext';
 import ComboConvoForm from './pages/ComboConvo/ComboConvoForm';
 import LaserFocusForm from './pages/LaserFocus/LaserFocusForm';
 import ScatterPlot from './pages/LaserFocus/ScatterPlot/ScatterPlot';
+import VentingMachine from './pages/VentingMachine/VentingMachine';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/comboconvo" element={<ComboConvoForm />} />
             <Route path="/laserfocus" element={<LaserFocusForm />} />
             <Route path="/laserfocus/scatterplot" element={<ScatterPlot />} />
+            <Route path="/venting-machine" element={<VentingMachine />} />
           </Routes>
         </Layout>
       </Router>

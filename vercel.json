@@ -16,6 +16,10 @@
       "dest": "/api/laser-focus-form.cjs"
     },
     {
+      "src": "/api/venting-machine-form",
+      "dest": "/api/venting-machine-form.cjs"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1.cjs"
     },

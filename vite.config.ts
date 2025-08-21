@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -15,9 +14,14 @@ export default defineConfig({
           path.replace(/^\/api\/combo-convo-form/, '')
       },
       '/api/laser-focus-form': {
-        target: 'https://script.google.com/macros/s/AKfycbybMopcIjh1FIlGF7FarKew6nta_eLIJ5oUvJvoWUe-yTKFt4Mc7uMlkonViN1tYKWP/exec',
+        target: 'https://www.projectory.live',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/laser-focus-form/, '')
+        rewrite: (path) => path 
+      },
+      '/api/venting-machine-form': {
+        target: 'https://www.projectory.live',
+        changeOrigin: true,
+        rewrite: (path) => path
       },
     }
   },
