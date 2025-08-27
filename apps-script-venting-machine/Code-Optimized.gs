@@ -22,11 +22,14 @@ let PROMPTS_CACHE = null;
 let CACHE_TIMESTAMP = 0;
 const CACHE_DURATION = 300000; // 5 minutes
 
-// Fast JSON response helper
+// Fast JSON response helper with CORS headers
 function jsonResponse(data) {
   return ContentService
     .createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type, Cache-Control');
 }
 
 // Fast error response helper
@@ -53,6 +56,16 @@ function doGet(e) {
     console.error('doGet error:', error);
     return errorResponse(error.toString());
   }
+}
+
+// Handle OPTIONS preflight requests for CORS
+function doOptions(e) {
+  return ContentService
+    .createTextOutput('')
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type, Cache-Control')
+    .setHeader('Access-Control-Max-Age', '86400');
 }
 
 function doPost(e) {

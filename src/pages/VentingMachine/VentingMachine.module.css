@@ -11,7 +11,6 @@
 }
 
 .step {
-  width: 100%;
   margin-bottom: 1.5rem;
 }
 
@@ -39,37 +38,27 @@
 
 /* Prompt display */
 .prompt {
-  margin: 1rem 0;
-  padding: 1rem;
-  background: rgba(47, 212, 178, 0.1);
-  border: 1px solid rgba(47, 212, 178, 0.3);
-  border-radius: 8px;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(25, 25, 25, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   color: #CFEDEA;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Optional helper text */
-.helper {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #CFEDEA;
-  opacity: 0.7;
-  text-align: center;
-}
-
-/* Loading state wrapper */
-.loading {
-  opacity: 0.75;
-}
-
+/* Placeholder styling */
 .step input[type="number"]::placeholder,
 .step textarea::placeholder,
 .step input[type="text"]::placeholder {
   color: rgb(60, 60, 60);
 }
 
+/* Focus styling */
 .step input[type="number"]:focus,
 .step textarea:focus,
 .step input[type="text"]:focus {
@@ -124,4 +113,29 @@
   color: #b00020;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.loading {
+  margin-top: 1rem;
+  color: #CFEDEA;
+  font-size: 0.9rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.validationStatus {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.valid {
+  color: #4caf50;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.invalid {
+  color: #f44336;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
