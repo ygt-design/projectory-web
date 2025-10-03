@@ -5,8 +5,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(1200px 800px at 20% 10%, rgba(21, 134, 113, 0.25), transparent 60%),
-    radial-gradient(1000px 700px at 80% 90%, rgba(0, 255, 202, 0.18), transparent 60%), #0F1115;
+  background: #0F1115;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

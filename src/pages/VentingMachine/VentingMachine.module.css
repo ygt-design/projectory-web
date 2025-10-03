@@ -1,71 +1,74 @@
+/* Venting Machine Form Styles */
+
 .formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1100px;
+  max-width: 800px;
   height: 100vh;
   margin: auto;
   padding: 2rem;
 }
 
-.step {
+.questionContainer {
   margin-bottom: 1.5rem;
+  text-align: center;
+  width: 55%;
 }
 
-.step label {
+.questionTitle {
   display: block;
   text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.answerContainer{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.questionText {
+  color: white;
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.step input[type="number"],
-.step textarea,
-.step input[type="text"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  background: #191919;
-  color: #fff;
-  box-sizing: border-box;
-}
-
-/* Prompt display */
-.prompt {
-  margin: 1.5rem 0;
-  padding: 1.5rem;
-  background: rgba(25, 25, 25, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #CFEDEA;
-  font-size: 1.3rem;
-  font-weight: 500;
   text-align: center;
-  line-height: 1.5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Placeholder styling */
-.step input[type="number"]::placeholder,
-.step textarea::placeholder,
-.step input[type="text"]::placeholder {
-  color: rgb(60, 60, 60);
+.answerInput {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: none;
+  color: white;
+  transition: all 0.2s ease;
+  background: #191919;
+  margin-top: 1rem;
+  resize: vertical;
+  overflow: auto;
 }
 
-/* Focus styling */
-.step input[type="number"]:focus,
-.step textarea:focus,
-.step input[type="text"]:focus {
+.answerInput:focus {
   outline: none;
 }
 
-.buttons {
+.answerInput::placeholder {
+  color: rgb(60, 60, 60);
+}
+
+.wordCount {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.submitContainer {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
@@ -73,39 +76,32 @@
   mix-blend-mode: screen;
 }
 
-.buttons button {
-  padding: 0.5rem 1rem;
+.submitButton,
+.retryButton,
+.newQuestionButton {
   font-size: 1rem;
-  cursor: pointer;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
   background: linear-gradient(300deg, #2FD4B2, #158671);
-  color: #fff;
+  color: white;
   transition: all 0.5s ease;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
 }
 
-.buttons button:disabled {
+.submitButton:disabled,
+.retryButton:disabled,
+.newQuestionButton:disabled {
   background: #282828;
   color: #666;
   cursor: not-allowed;
 }
 
-.buttons button:hover:not(:disabled) {
+.submitButton:hover:not(:disabled),
+.retryButton:hover:not(:disabled),
+.newQuestionButton:hover:not(:disabled) {
   background: linear-gradient(300deg, #158671, #106555);
-}
-
-.thankYou {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-  padding: 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #fff;
 }
 
 .error {
@@ -115,27 +111,77 @@
   text-align: center;
 }
 
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .loading {
-  margin-top: 1rem;
-  color: #CFEDEA;
-  font-size: 0.9rem;
+  width: 48px;
+  height: 48px;
+  border: 4px solid #333;
+  border-top: 4px solid #2FD4B2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+.thankYou {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 16px;
+  width: 300px;
+  height: 100vh;
+  margin: auto;
   text-align: center;
-  opacity: 0.7;
 }
 
-.validationStatus {
-  margin-top: 8px;
-  text-align: center;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.valid {
-  color: #4caf50;
-  font-size: 0.9rem;
-  font-weight: 500;
+/* mobile responsive */
+@media (max-width: 768px) {
+  
+  
+  .questionTitle {
+    font-size: 1.3rem;
+  }
+
+  .questionContainer{
+    width: 80%;
+  }
+  
+  .questionText {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
 }
 
-.invalid {
-  color: #f44336;
-  font-size: 0.9rem;
-  font-weight: 500;
+@media (max-width: 480px) {
+  .formContainer {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .questionContainer {
+    padding: 1rem;
+  }
+  
+  .questionTitle {
+    font-size: 1.3rem;
+  }
+  
+  .questionText {
+    font-size: 1rem;
+  }
 }

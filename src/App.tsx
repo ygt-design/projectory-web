@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/comboconvo" element={<ComboConvoForm />} />
             <Route path="/laserfocus" element={<LaserFocusForm />} />
             <Route path="/laserfocus/scatterplot" element={<ScatterPlot />} />
-            <Route path="/venting-machine" element={<VentingMachine />} />
+            <Route path="/ventingmachine" element={<VentingMachine />} />
           </Routes>
         </Layout>
       </Router>

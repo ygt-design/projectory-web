@@ -9,8 +9,8 @@
  * - VENTING_MACHINE_DEPLOYMENT_URL: Google Apps Script web app URL
  *
  * Routes:
- * GET /api/venting-machine-form?action=prompts → { prompts: string[4] }
- * POST /api/venting-machine-form body { answers: string[4] } → { ok: true }
+ * GET /api/venting-machine-form?action=question → { question: string, totalQuestions: number }
+ * POST /api/venting-machine-form body { question: string, answer: string } → { success: true }
  */
 
 async function fetchJsonWithBackoff(url, options = {}, maxRetries = 3) {

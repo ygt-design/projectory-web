@@ -13,15 +13,17 @@ export default defineConfig({
         rewrite: (path) =>
           path.replace(/^\/api\/combo-convo-form/, '')
       },
+      '/api/venting-machine-form': {
+        // TODO: replace with your Venting Machine Web App /exec URL
+        target:
+          'https://script.google.com/macros/s/AKfycbz9PRZKGHPK6YMt-f8FXUY5vnsDVW8g2xyUI9NDoFyVuT-NH05UWqsLxhf-7NqvAzKfHA/exec',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/venting-machine-form/, '')
+      },
       '/api/laser-focus-form': {
         target: 'https://www.projectory.live',
         changeOrigin: true,
         rewrite: (path) => path 
-      },
-      '/api/venting-machine-form': {
-        target: 'https://www.projectory.live',
-        changeOrigin: true,
-        rewrite: (path) => path
       },
     }
   },

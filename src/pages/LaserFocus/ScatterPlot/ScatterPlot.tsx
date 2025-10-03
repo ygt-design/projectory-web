@@ -5,7 +5,6 @@ import styles from './ScatterPlot.module.css';
 
 
 const PROXY_PATH = '/api/laser-focus-form';
-const API_KEY = import.meta.env.VITE_GOOGLE_APPSCRIPT_API_KEY as string;
 
 interface DataPoint {
   timestamp: string;
@@ -25,6 +24,11 @@ const parseRowToDataPoint = (row: unknown): DataPoint | null => {
   const effort = Number(r.effort);
   if (Number.isNaN(table) || Number.isNaN(impact) || Number.isNaN(effort)) return null;
   return { timestamp, table, idea, impact, effort };
+};
+
+const isSameDataPoint = (a: DataPoint | null, b: DataPoint | null): boolean => {
+  if (!a || !b) return false;
+  return a.timestamp === b.timestamp && a.table === b.table && a.impact === b.impact && a.effort === b.effort;
 };
 
 const ScatterPlot: React.FC = () => {
@@ -71,6 +75,7 @@ const ScatterPlot: React.FC = () => {
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchedTable, setSearchedTable] = useState<number | null>(null);
+  const [focusedNode, setFocusedNode] = useState<DataPoint | null>(null);
 
   // Simple live status for debugging and visibility-triggered refetches
   const [liveStatus, setLiveStatus] = useState<{ lastUpdated: number; rowCount: number }>({
@@ -141,25 +146,7 @@ const ScatterPlot: React.FC = () => {
     }
 
     
-    const defsSel = root.select('defs');
-    if (defsSel.empty()) {
-      const defsNew = root.append('defs');
-      
-      const grad = defsNew
-        .append('radialGradient')
-        .attr('id', 'pointGradient')
-        .attr('cx', '50%')
-        .attr('cy', '50%');
-      grad.append('stop').attr('offset', '0%').attr('stop-color', '#5FFFE3').attr('stop-opacity', 1);
-      grad.append('stop').attr('offset', '100%').attr('stop-color', '#0E7B69').attr('stop-opacity', 1);
-
-      
-      const glow = defsNew.append('filter').attr('id', 'softGlow').attr('filterUnits', 'userSpaceOnUse');
-      glow.append('feGaussianBlur').attr('stdDeviation', 6).attr('result', 'coloredBlur');
-      const feMerge = glow.append('feMerge');
-      feMerge.append('feMergeNode').attr('in', 'coloredBlur');
-      feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
-    }
+    // Gradients and filters removed
 
     setLayersReady(true);
   }, []);
@@ -247,8 +234,7 @@ const ScatterPlot: React.FC = () => {
           .attr('r', NODE_HOVER_RADIUS + 10)
           .attr('stroke', '#5FFFE3')
           .attr('stroke-width', 2)
-          .attr('stroke-opacity', 0.75)
-          .attr('filter', 'url(#softGlow)');
+          .attr('stroke-opacity', 0.75);
 
         // Emphasize label
         node.select('text').transition().duration(150).style('font-size', '22px');
@@ -672,13 +658,12 @@ const ScatterPlot: React.FC = () => {
     nodesEnter
       .append('circle')
       .attr('r', NODE_RADIUS)
-      .style('fill', 'url(#pointGradient)')
+      .style('fill', '#5FFFE3')
       // Remove immediate opacity assignment; fade in via transition
       //.style('opacity', pointsVisible ? 0.18 : 0)
       .attr('stroke', '#E6F2EF')
       .attr('stroke-opacity', 0.25)
-      .attr('stroke-width', 1)
-      .attr('filter', 'url(#softGlow)');
+      .attr('stroke-width', 1);
 
     nodesEnter
       .append('text')
@@ -719,6 +704,38 @@ const ScatterPlot: React.FC = () => {
         const tip = d3.select(tooltipRef.current);
         tip.style('opacity', 0)
            .style('transform', 'translate(-9999px, -9999px)');
+      })
+      .on('click', (_, d: DataPoint) => {
+        const isCurrentlyFocused = isSameDataPoint(focusedNode, d);
+        
+        if (isCurrentlyFocused) {
+          // If clicking the same node again, restore all nodes
+          setFocusedNode(null);
+          const allNodes = gPoints.selectAll('g.node');
+          allNodes.each(function() {
+            const node = d3.select(this);
+            node.select('circle').transition().duration(200).style('opacity', pointsVisible ? 0.18 : 0);
+            node.select('text').transition().duration(200).style('opacity', pointsVisible ? 0.95 : 0);
+          });
+        } else {
+          // Hide all nodes except the clicked one
+          setFocusedNode(d);
+          const allNodes = gPoints.selectAll('g.node');
+          allNodes.each(function(nodeData) {
+            const node = d3.select(this);
+            const isClickedNode = isSameDataPoint(nodeData as DataPoint, d);
+            
+            if (!isClickedNode) {
+              // Hide other nodes
+              node.select('circle').transition().duration(200).style('opacity', 0);
+              node.select('text').transition().duration(200).style('opacity', 0);
+            } else {
+              // Keep clicked node visible (don't change fill color)
+              node.select('circle').transition().duration(200).style('opacity', 0.18);
+              node.select('text').transition().duration(200).style('opacity', 1);
+            }
+          });
+        }
       });
 
     nodesMerge.select('text').text((d) => d.table.toString());
@@ -795,7 +812,7 @@ const ScatterPlot: React.FC = () => {
     nodes.exit().remove();
 
     prevCount.current = data.length;
-  }, [layersReady, data, x, y, height, margin, pointsVisible, initialAnimating, jitterOffset]);
+  }, [layersReady, data, x, y, height, margin, pointsVisible, initialAnimating, jitterOffset, focusedNode]);
 
   
   useEffect(() => {
@@ -831,7 +848,7 @@ const ScatterPlot: React.FC = () => {
     };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, []);
+  }, [pointsVisible, focusedNode]);
 
   return (
     <div className={styles.container}>
