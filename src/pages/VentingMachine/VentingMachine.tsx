@@ -62,8 +62,15 @@ async function fetchQuestion(): Promise<string> {
     const data = await response.json();
     console.log('Response data:', data);
     
+    // Check if the response contains an error from the backend
+    if (data.error) {
+      throw new Error(`API error: ${data.error}`);
+    }
+    
+    // Check if the response has the expected question field
     if (!data.question || typeof data.question !== 'string') {
-      throw new Error('Invalid response format');
+      console.error('Invalid response structure:', data);
+      throw new Error(`Invalid response format - expected question field but got: ${JSON.stringify(data)}`);
     }
     
     return data.question;
