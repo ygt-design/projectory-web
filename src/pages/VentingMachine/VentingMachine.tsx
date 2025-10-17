@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ConfirmationModal from '../ComboConvo/components/ConfirmationModal';
 import styles from './VentingMachine.module.css';
 
 const PROXY_PATH = '/api/venting-machine-form';
@@ -108,7 +107,6 @@ const VentingMachine: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showModal, setShowModal] = useState(false);
   const [wordCount, setWordCount] = useState(0);
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -185,7 +183,6 @@ const VentingMachine: React.FC = () => {
     if (!isValidAnswer()) return;
 
     setError(null);
-    setShowModal(false);
 
     // Optimistic UI: show success immediately
     setSubmitted(true);
@@ -200,15 +197,15 @@ const VentingMachine: React.FC = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && isValidAnswer()) {
-      setShowModal(true);
+      handleSubmit();
     }
   };
 
   if (submitted) {
     return (
       <div className={styles.thankYou}>
-        <h2>Thanks for venting!</h2>
-        <p>Your response has been recorded.</p>
+        <h3 className={styles.thankYouTitle}>We got it. Thanks!</h3>
+        <p className={styles.thankYouText}>And now we have something waiting for you outside…</p>
       </div>
     );
   }
@@ -251,7 +248,7 @@ const VentingMachine: React.FC = () => {
 
       <div className={styles.answerContainer}>
         <label htmlFor="answer" className={styles.answerLabel}>
-          Your Answer (max 3 words):
+        Type your response here…
         </label>
         <input
           ref={answerRef}
@@ -267,7 +264,7 @@ const VentingMachine: React.FC = () => {
             }
           }}
           onKeyPress={handleKeyPress}
-          placeholder="Type your answer here..."
+          placeholder="Type your response here..."
           className={styles.answerInput}
           maxLength={50}
           disabled={loading}
@@ -280,24 +277,15 @@ const VentingMachine: React.FC = () => {
 
       <div className={styles.submitContainer}>
         <button 
-          onClick={() => setShowModal(true)} 
+          onClick={handleSubmit} 
           disabled={!isValidAnswer() || loading}
           className={styles.submitButton}
         >
-          {'Submit Answer'}
+          {'Submit Response'}
         </button>
       </div>
 
       {error && <div className={styles.error}>{error}</div>}
-
-      {showModal && (
-        <ConfirmationModal
-          message="Are you sure you want to submit your answer?"
-          onConfirm={handleSubmit}
-          onCancel={() => setShowModal(false)}
-          loading={loading}
-        />
-      )}
     </div>
   );
 };
