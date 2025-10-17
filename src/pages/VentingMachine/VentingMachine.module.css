@@ -15,7 +15,7 @@
 .questionContainer {
   margin-bottom: 1.5rem;
   text-align: center;
-  width: 55%;
+  width: 45%;
 }
 
 .questionTitle {
@@ -25,6 +25,17 @@
   font-weight: 700;
   margin: 0 0 1rem 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.thankYouTitle {
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
+  color: #2FD4B2;
+}
+
+.thankYouText {
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .answerContainer{
@@ -136,7 +147,7 @@
   justify-content: center;
   flex-direction: column;
   font-size: 16px;
-  width: 300px;
+  width: 350px;
   height: 100vh;
   margin: auto;
   text-align: center;
@@ -157,7 +168,7 @@
   }
 
   .questionContainer{
-    width: 80%;
+    width: 70%;
   }
   
   .questionText {
