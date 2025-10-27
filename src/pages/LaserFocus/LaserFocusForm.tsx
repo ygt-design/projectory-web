@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ConfirmationModal from '../ComboConvo/components/ConfirmationModal';
 import styles from './LaserFocusForm.module.css';
 
 // Proxy path for Vite dev server
@@ -58,7 +57,6 @@ const LaserFocusForm: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showModal, setShowModal] = useState(false);
 
   // Store fetched responses (reserved for future use)
   const [allResponses, setAllResponses] = useState<ResponseRow[]>([]);
@@ -131,7 +129,6 @@ const LaserFocusForm: React.FC = () => {
     try {
       await submitResponse({ table: Number(table), idea, impact, effort });
       setSubmitted(true);
-      setShowModal(false);
       // Ensure viewport shows the thank-you
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
     } catch (e) {
@@ -140,7 +137,6 @@ const LaserFocusForm: React.FC = () => {
       // server processed the POST. In that case, optimistically show thank-you.
       if (/load failed|failed to fetch|network error/i.test(msg)) {
         setSubmitted(true);
-        setShowModal(false);
         setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
       } else {
         setError(msg || 'Submission failed');
@@ -153,14 +149,14 @@ const LaserFocusForm: React.FC = () => {
   // Former inline slider background replaced by custom slider UI
 
   if (submitted) {
-    return <div className={styles.thankYou}>Thanks for your submission!</div>;
+    return <div className={styles.thankYou}>Got it! Thanks for sharing.</div>;
   }
 
   return (
     <div ref={formRef} className={styles.formContainer}>
       {step === 1 && (
         <div className={styles.step}>
-          <label>Table Number:</label>
+          <label>What's your table number?</label>
           <input
             type="number"
             inputMode="numeric"
@@ -191,7 +187,7 @@ const LaserFocusForm: React.FC = () => {
       )}
       {step === 2 && (
         <div className={styles.step}>
-          <label>Submit Your Idea (max 25 words):</label>
+          <label>Which AI application or opportunity discussed today did your table find most exciting for CIBC?</label>
           <textarea
             maxLength={200}
             value={idea}
@@ -204,7 +200,7 @@ const LaserFocusForm: React.FC = () => {
       )}
       {step === 3 && (
         <div className={styles.step}>
-          <label>Rate the Impact </label>
+          <label>Drag to rate the estimated time to value… </label>
           <div
             ref={impactBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}
@@ -237,15 +233,14 @@ const LaserFocusForm: React.FC = () => {
             />
           </div>
           <div className={styles.sliderScale}>
-            <span>0</span>
-            <span>5</span>
-            <span>10</span>
+            <span>Immediate</span>
+            <span>Long-Term</span>
           </div>
         </div>
       )}
       {step === 4 && (
         <div className={styles.step}>
-          <label>Rate the Effort </label>
+          <label>Drag to rate the estimated impact… </label>
           <div
             ref={effortBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}
@@ -278,9 +273,8 @@ const LaserFocusForm: React.FC = () => {
             />
           </div>
           <div className={styles.sliderScale}>
-            <span>0</span>
-            <span>5</span>
-            <span>10</span>
+            <span>Low</span>
+            <span>High</span>
           </div>
         </div>
       )}
@@ -296,25 +290,13 @@ const LaserFocusForm: React.FC = () => {
             Next →
           </button>
         ) : (
-          <button onClick={() => setShowModal(true)} disabled={loading}>
+          <button onClick={handleSubmit} disabled={loading}>
             Submit
           </button>
         )}
       </div>
 
       {error && <div className={styles.error}>{error}</div>}
-
-      {showModal && (
-        <ConfirmationModal
-          message="Are you sure you want to submit?"
-          onConfirm={() => {
-            // submit but keep modal open until data is sent
-            handleSubmit();
-          }}
-          onCancel={() => setShowModal(false)}
-          loading={loading}
-        />
-      )}
     </div>
   );
 };

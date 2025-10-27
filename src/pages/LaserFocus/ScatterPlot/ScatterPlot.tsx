@@ -159,10 +159,10 @@ const ScatterPlot: React.FC = () => {
 
   const margin = useMemo(
     () => ({
-      top: 20 + NODE_EDGE_PADDING,
-      right: 20 + NODE_EDGE_PADDING,
-      bottom: 60 + NODE_EDGE_PADDING,
-      left: 80 + NODE_EDGE_PADDING,
+      top: 100 + NODE_EDGE_PADDING, // Increased for more top space
+      right: 150 + NODE_EDGE_PADDING, // Extended to accommodate "Time to Value" text
+      bottom: 80 + NODE_EDGE_PADDING, // Increased for more bottom space
+      left: 120 + NODE_EDGE_PADDING, // Increased for more left space
     }),
     [NODE_EDGE_PADDING]
   );
@@ -274,11 +274,9 @@ const ScatterPlot: React.FC = () => {
       .attr('width', innerWidth)
       .attr('height', innerHeight)
       .attr('fill', 'rgba(255,255,255,0.03)')
-      .attr('stroke', 'rgba(255,255,255,0.08)')
-      .attr('rx', 8)
-      .attr('ry', 8);
+      .attr('stroke', 'none');
 
-    axes
+    const gridX = axes
       .append('g')
       .attr('class', 'grid grid--x')
       .attr('transform', `translate(0,${height - margin.bottom})`)
@@ -287,12 +285,15 @@ const ScatterPlot: React.FC = () => {
           .axisBottom(x)
           .tickSize(-innerHeight)
           .tickFormat(() => '')
-      )
-      .selectAll('line')
+      );
+    
+    gridX.selectAll('line')
       .attr('stroke', '#ffffff')
       .attr('stroke-opacity', 0.08);
+    
+    gridX.select('path').remove(); // Remove axis path (border line)
 
-    axes
+    const gridY = axes
       .append('g')
       .attr('class', 'grid grid--y')
       .attr('transform', `translate(${margin.left},0)`) 
@@ -301,55 +302,130 @@ const ScatterPlot: React.FC = () => {
           .axisLeft(y)
           .tickSize(-innerWidth)
           .tickFormat(() => '')
-      )
-      .selectAll('line')
+      );
+    
+    gridY.selectAll('line')
       .attr('stroke', '#ffffff')
       .attr('stroke-opacity', 0.08);
-
     
+    gridY.select('path').remove(); // Remove axis path (border line)
+
+    // Bottom border line (drawn after grid to appear on top)
     axes
-      .append('g')
-      .attr('class', 'axis axis--x')
-      .attr('transform', `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x));
+      .append('line')
+      .attr('x1', margin.left)
+      .attr('y1', height - margin.bottom)
+      .attr('x2', width - margin.right)
+      .attr('y2', height - margin.bottom)
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 2);
 
-    
+    // Left border line (drawn after grid to appear on top)
+    axes
+      .append('line')
+      .attr('x1', margin.left)
+      .attr('y1', margin.top)
+      .attr('x2', margin.left)
+      .attr('y2', height - margin.bottom)
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 2);
+
+    // X-axis segment labels
     axes
       .append('text')
-      .attr('class', 'axis-label')
-      .attr('x', width / 2)
-      .attr('y', height - margin.bottom / 2 + 16)
+      .attr('x', x(2.25)) // Near-Term (center of 1-3.5 range)
+      .attr('y', height - margin.bottom + 30)
       .attr('text-anchor', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('Near-Term');
+
+    axes
+      .append('text')
+      .attr('x', x(5.5)) // Medium-Term (center of 3.5-7.5 range)
+      .attr('y', height - margin.bottom + 30)
+      .attr('text-anchor', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('Medium-Term');
+
+    axes
+      .append('text')
+      .attr('x', x(8.75)) // Long-Term (center of 7.5-10 range)
+      .attr('y', height - margin.bottom + 30)
+      .attr('text-anchor', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('Long-Term');
+
+    // X-axis title at the right end (split into two lines)
+    const timeToValueText = axes
+      .append('text')
+      .attr('class', 'axis-label')
+      .attr('x', width - margin.right + 20)
+      .attr('y', height - margin.bottom)
+      .attr('text-anchor', 'start')
       .style('fill', 'white')
-      .style('font-size', '24px')
-      .text('Effort');
-
+      .style('font-size', '24px');
     
+    timeToValueText
+      .append('tspan')
+      .attr('x', width - margin.right + 20)
+      .attr('dy', '-0.6em')
+      .text('Time to');
+    
+    timeToValueText
+      .append('tspan')
+      .attr('x', width - margin.right + 20)
+      .attr('dy', '1.2em')
+      .text('Value');
+
+    // Y-axis segment labels
     axes
-      .append('g')
-      .attr('class', 'axis axis--y')
-      .attr('transform', `translate(${margin.left},0)`) 
-      .call(d3.axisLeft(y));
+      .append('text')
+      .attr('x', margin.left - 20)
+      .attr('y', y(2.25)) // LOW (center of 1-3.5 range)
+      .attr('text-anchor', 'end')
+      .attr('dominant-baseline', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('LOW');
 
-    
+    axes
+      .append('text')
+      .attr('x', margin.left - 20)
+      .attr('y', y(5.5)) // MED (center of 3.5-7.5 range)
+      .attr('text-anchor', 'end')
+      .attr('dominant-baseline', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('MED');
+
+    axes
+      .append('text')
+      .attr('x', margin.left - 20)
+      .attr('y', y(8.75)) // HIGH (center of 7.5-10 range)
+      .attr('text-anchor', 'end')
+      .attr('dominant-baseline', 'middle')
+      .style('fill', '#E6F2EF')
+      .style('font-size', '16px')
+      .style('font-weight', '500')
+      .text('HIGH');
+
+    // Y-axis title at the top
     axes
       .append('text')
       .attr('class', 'axis-label')
-      .attr('transform', `translate(${margin.left / 2}, ${height / 2}) rotate(-90)`) 
-      .attr('text-anchor', 'middle')
+      .attr('transform', `translate(${margin.left - 30}, ${margin.top - 20})`)
+      .attr('text-anchor', 'start')
       .style('fill', 'white')
       .style('font-size', '24px')
       .text('Impact');
-
-    
-    axes.selectAll('g.axis text')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
-      .style('font-weight', '500');
-
-    axes.selectAll('g.axis path, g.axis line')
-      .attr('stroke', '#A7D9D0')
-      .attr('stroke-opacity', 0.3);
   }, [layersReady, x, y, width, height, margin]);
 
   
@@ -914,8 +990,8 @@ const ScatterPlot: React.FC = () => {
       <svg
         ref={svgRef}
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-        width="80%"
-        height="80%"
+        width="95%"
+        height="90%"
         preserveAspectRatio="xMidYMid meet"
       />
     </div>
