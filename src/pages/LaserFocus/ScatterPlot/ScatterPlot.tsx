@@ -74,8 +74,9 @@ const ScatterPlot: React.FC = () => {
   const [initialAnimating, setInitialAnimating] = useState(true);
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchedTable, setSearchedTable] = useState<number | null>(null);
   const [focusedNode, setFocusedNode] = useState<DataPoint | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupData, setPopupData] = useState<DataPoint | null>(null);
 
   // Simple live status for debugging and visibility-triggered refetches
   const [liveStatus, setLiveStatus] = useState<{ lastUpdated: number; rowCount: number }>({
@@ -190,67 +191,7 @@ const ScatterPlot: React.FC = () => {
     return [Math.cos(angle) * radius, Math.sin(angle) * radius];
   }, []);
 
-  // Apply visual highlight to searched table number
-  useEffect(() => {
-    if (!pointsGRef.current) return;
-    const gPoints = d3.select(pointsGRef.current);
-    const nodesSel = gPoints.selectAll<SVGGElement, DataPoint>('g.node');
-    // If search cleared, fully reset styles for all nodes
-    if (searchedTable == null) {
-      nodesSel.select('circle.highlight-ring').remove();
-      nodesSel.select('circle')
-        .transition()
-        .duration(150)
-        .attr('r', NODE_RADIUS)
-        .attr('stroke', '#E6F2EF')
-        .attr('stroke-width', 1)
-        .attr('stroke-opacity', 0.25);
-      nodesSel.select('text').transition().duration(150).style('font-size', '18px');
-      return;
-    }
-    nodesSel.each(function (d) {
-      const node = d3.select(this);
-      const circle = node.select('circle');
-      const isMatch = searchedTable != null && d.table === searchedTable;
-      if (isMatch) {
-        node.raise();
-        circle
-          .transition()
-          .duration(150)
-          .attr('r', NODE_HOVER_RADIUS + 4)
-          .attr('stroke', '#5FFFE3')
-          .attr('stroke-width', 3)
-          .attr('stroke-opacity', 1);
-
-        // Add or update a static highlight ring for extra vivid focus
-        let ring = node.select<SVGCircleElement>('circle.highlight-ring');
-        if (ring.empty()) {
-          // Insert before the main circle so text remains on top
-          ring = node.insert('circle', 'circle')
-            .attr('class', 'highlight-ring')
-            .attr('fill', 'none');
-        }
-        ring
-          .attr('r', NODE_HOVER_RADIUS + 10)
-          .attr('stroke', '#5FFFE3')
-          .attr('stroke-width', 2)
-          .attr('stroke-opacity', 0.75);
-
-        // Emphasize label
-        node.select('text').transition().duration(150).style('font-size', '22px');
-      } else {
-        circle
-          .transition()
-          .duration(150)
-          .attr('r', NODE_RADIUS)
-          .attr('stroke', '#E6F2EF')
-          .attr('stroke-width', 1)
-          .attr('stroke-opacity', 0.25);
-        node.select('circle.highlight-ring').remove();
-        node.select('text').transition().duration(150).style('font-size', '18px');
-      }
-    });
-  }, [searchedTable, data]);
+  // Visual highlight removed - using fullscreen popup instead
 
   
   useEffect(() => {
@@ -919,7 +860,11 @@ const ScatterPlot: React.FC = () => {
       }
       if (e.key && e.key.toLowerCase() === 'c') {
         setSearchTerm('');
-        setSearchedTable(null);
+      }
+      if (e.key === 'Escape') {
+        setShowPopup(false);
+        setPopupData(null);
+        setSearchTerm('');
       }
     };
     document.addEventListener('keydown', onKeyDown);
@@ -962,7 +907,13 @@ const ScatterPlot: React.FC = () => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               const val = Number(searchTerm.trim());
-              setSearchedTable(Number.isFinite(val) ? val : null);
+              if (Number.isFinite(val)) {
+                const found = data.find(d => d.table === val);
+                if (found) {
+                  setPopupData(found);
+                  setShowPopup(true);
+                }
+              }
             }
           }}
           className={styles.searchInput}
@@ -971,7 +922,13 @@ const ScatterPlot: React.FC = () => {
           className={styles.searchBtn}
           onClick={() => {
             const val = Number(searchTerm.trim());
-            setSearchedTable(Number.isFinite(val) ? val : null);
+            if (Number.isFinite(val)) {
+              const found = data.find(d => d.table === val);
+              if (found) {
+                setPopupData(found);
+                setShowPopup(true);
+              }
+            }
           }}
         >
           Go
@@ -980,7 +937,8 @@ const ScatterPlot: React.FC = () => {
           className={styles.clearBtn}
           onClick={() => {
             setSearchTerm('');
-            setSearchedTable(null);
+            setShowPopup(false);
+            setPopupData(null);
           }}
         >
           Clear
@@ -994,6 +952,13 @@ const ScatterPlot: React.FC = () => {
         height="90%"
         preserveAspectRatio="xMidYMid meet"
       />
+      {showPopup && popupData && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <div className={styles.popupIdea}>{popupData.idea}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

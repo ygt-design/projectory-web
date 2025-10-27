@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'FounderGrotesk_Bold';
+  src: url('../../assets/fonts/FoundersGrotesk-Bold.otf') format('opentype');
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;

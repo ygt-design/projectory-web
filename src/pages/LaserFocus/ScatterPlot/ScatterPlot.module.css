@@ -195,3 +195,37 @@
   opacity: 0.9;
 }
 
+/* Fullscreen popup for search results */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 17, 21, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10010;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.popupContent {
+  max-width: 1400px;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.popupIdea {
+  font-size: 60px;
+  color: #EAF8F5;
+  line-height: 1.2;
+  max-width: 1400px;
+  font-family: "FounderGrotesk_Bold";
+}
+
