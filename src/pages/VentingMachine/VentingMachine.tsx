@@ -247,9 +247,6 @@ const VentingMachine: React.FC = () => {
       </div>
 
       <div className={styles.answerContainer}>
-        <label htmlFor="answer" className={styles.answerLabel}>
-        Type your response here…
-        </label>
         <input
           ref={answerRef}
           id="answer"
