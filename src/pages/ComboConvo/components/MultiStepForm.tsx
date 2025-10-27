@@ -381,6 +381,7 @@ const MultiStepForm: React.FC = () => {
           message="Click submit to send your awesome response"
           email={form.email}
           onEmailChange={(newEmail) => handleChange('email', newEmail)}
+          showEmailInput={true}
           onConfirm={handleConfirm}
           onCancel={() => setShowModal(false)}
           loading={loading}
