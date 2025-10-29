@@ -763,9 +763,9 @@ const ScatterPlot: React.FC = () => {
       }
       initialAnimAppliedRef.current = true;
       const T_INIT = d3.transition('init-stagger');
-      let pending = nodesMerge.size();
-      // Animate all nodes (initial load) from (0,0) to their positions, fade in
-      nodesMerge
+      let pending = nodesEnter.size();
+      // Animate ONLY new entering nodes (initial load) from (0,0) to their positions, fade in
+      nodesEnter
         .transition(T_INIT)
         .duration(500)
         .delay((_, i) => i * 100)
@@ -814,15 +814,17 @@ const ScatterPlot: React.FC = () => {
         .delay((_, i) => i * 100)
         .style('opacity', pointsVisible ? 0.95 : 0);
 
+      // Update existing nodes immediately without animation (prevent re-animation)
       if (!initialAnimating) {
         nodes
-          .transition()
-          .duration(0)
           .attr('transform', (d) => {
             const [jx, jy] = jitterOffset(d);
             return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
           })
           .style('opacity', 1);
+        // Also ensure their circle and text have correct opacity
+        nodes.select('circle').style('opacity', pointsVisible ? 0.18 : 0);
+        nodes.select('text').style('opacity', pointsVisible ? 0.95 : 0);
       }
     }
 

@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './LaserFocusForm.module.css';
 
-// Proxy path for Vite dev server
+// Proxy path - backend will add API key automatically
 const PROXY_PATH = '/api/laser-focus-form';
-// Your API key still goes as a query param
-const API_KEY = import.meta.env.VITE_GOOGLE_APPSCRIPT_API_KEY as string;
 
 interface ResponseRow {
   Timestamp: string;
@@ -16,14 +14,14 @@ interface ResponseRow {
 
 // Fetch all submitted rows
 async function fetchResponses(): Promise<ResponseRow[]> {
-  const res = await fetch(`${PROXY_PATH}?key=${API_KEY}`);
+  const res = await fetch(PROXY_PATH);
   if (!res.ok) throw new Error(`Error fetching data: ${res.status}`);
   return res.json();
 }
 
 // Submit a new response (tolerant of varied success payloads)
 async function submitResponse(payload: Omit<ResponseRow, 'Timestamp'>) {
-  const res = await fetch(`${PROXY_PATH}?key=${API_KEY}`, {
+  const res = await fetch(PROXY_PATH, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
     body: JSON.stringify(payload),
@@ -127,9 +125,7 @@ const LaserFocusForm: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const payload = { table: Number(table), idea, impact, effort };
-      console.log('Submitting payload:', payload);
-      await submitResponse(payload);
+      await submitResponse({ table: Number(table), idea, impact, effort });
       setSubmitted(true);
       // Ensure viewport shows the thank-you
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
