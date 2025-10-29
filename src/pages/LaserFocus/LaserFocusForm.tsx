@@ -127,7 +127,9 @@ const LaserFocusForm: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      await submitResponse({ table: Number(table), idea, impact, effort });
+      const payload = { table: Number(table), idea, impact, effort };
+      console.log('Submitting payload:', payload);
+      await submitResponse(payload);
       setSubmitted(true);
       // Ensure viewport shows the thank-you
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
