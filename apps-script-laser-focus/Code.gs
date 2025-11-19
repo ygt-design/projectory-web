@@ -142,15 +142,15 @@ function getFormConfig() {
     }
     
     // Read configuration from Input sheet
-    // B1=question, B3=xAxisTitle, B4=yAxisTitle
+    // B1=question, B9=xAxisTitle, B10=yAxisTitle
     // B6, C6, D6 = X-axis labels (3 measures)
     // B7, C7, D7 = Y-axis labels (3 measures)
-    const values = inputSheet.getRange('B1:D7').getValues();
+    const values = inputSheet.getRange('B1:D10').getValues();
     
     const config = {
       question: String(values[0][0] || '').trim(),
-      xAxisTitle: String(values[2][0] || '').trim(),
-      yAxisTitle: String(values[3][0] || '').trim(),
+      xAxisTitle: String(values[8][0] || '').trim(),   // B9
+      yAxisTitle: String(values[9][0] || '').trim(),   // B10
       xAxisLabel1: String(values[5][0] || '').trim(),  // B6
       xAxisLabel2: String(values[5][1] || '').trim(),  // C6
       xAxisLabel3: String(values[5][2] || '').trim(),  // D6

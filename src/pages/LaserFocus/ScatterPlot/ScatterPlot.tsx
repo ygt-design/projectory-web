@@ -330,7 +330,7 @@ const ScatterPlot: React.FC = () => {
       .attr('transform', `translate(${width - margin.right + 20}, ${height - margin.bottom})`)
       .attr('text-anchor', 'start')
       .style('fill', 'white')
-      .style('font-size', '24px')
+      .style('font-size', '32px')
       .text(config.xAxisTitle);
 
     // Y-axis segment labels (3 measures)
@@ -374,7 +374,7 @@ const ScatterPlot: React.FC = () => {
       .attr('transform', `translate(${margin.left - 30}, ${margin.top - 20})`)
       .attr('text-anchor', 'start')
       .style('fill', 'white')
-      .style('font-size', '24px')
+      .style('font-size', '32px')
       .text(config.yAxisTitle);
   }, [layersReady, x, y, width, height, margin, config]);
 
