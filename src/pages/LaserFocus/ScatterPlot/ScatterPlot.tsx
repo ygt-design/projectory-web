@@ -7,7 +7,6 @@ const PROXY_PATH = '/api/laser-focus-form';
 
 // Animation constants
 const INITIAL_ANIMATION_DELAY = 100;
-const INITIAL_ANIMATION_DURATION = 500;
 const ENTER_ANIMATION_DURATION = 500;
 const HOVER_TRANSITION_DURATION = 150;
 const CLICK_TRANSITION_DURATION = 200;
@@ -120,7 +119,7 @@ const ScatterPlot: React.FC = () => {
     rowCount: 0,
   });
 
-  const initialAnimAppliedRef = useRef(false);
+  const newRowsRef = useRef<Set<string>>(new Set());
 
   // Stats snapshot (highest/lowest effort/impact)
   const stats = useMemo(() => {
@@ -408,15 +407,14 @@ const ScatterPlot: React.FC = () => {
       console.log('[DEBUG] First parsed point:', points[0]);
       setData(points);
       setLiveStatus({ lastUpdated: Date.now(), rowCount: points.length });
-      if (points.length === 0) {
-        setInitialAnimating(false);
-      }
+      // Initial load complete - don't animate these points
+      setInitialAnimating(false);
     } catch (err) {
       console.error('Initial load error:', err);
     }
   };
 
-  const fetchIncremental = async () => {
+  const fetchIncremental = useCallback(async () => {
     const processFullArray = (full: unknown[]) => {
       const serverCount = full.length;
       // Map all rows once
@@ -429,6 +427,10 @@ const ScatterPlot: React.FC = () => {
       const incomingNew = fullPoints.filter(d => !existing.has(key(d)));
 
       if (incomingNew.length > 0) {
+        // Mark new rows for animation
+        incomingNew.forEach(d => {
+          newRowsRef.current.add(keyForPoint(d));
+        });
         setData(prev => [...prev, ...incomingNew]);
         setLiveStatus({ lastUpdated: Date.now(), rowCount: (dataRef.current?.length || 0) + incomingNew.length });
         arrayLenRef.current = Math.max(arrayLenRef.current + incomingNew.length, serverCount);
@@ -516,8 +518,14 @@ const ScatterPlot: React.FC = () => {
         .map(parseRowToDataPoint)
         .filter((d): d is DataPoint => d !== null);
 
-      if (newPoints.length) setData(prev => [...prev, ...newPoints]);
-      if (newPoints.length) setLiveStatus({ lastUpdated: Date.now(), rowCount: arrayLenRef.current + newPoints.length });
+      if (newPoints.length) {
+        // Mark new rows for animation
+        newPoints.forEach(d => {
+          newRowsRef.current.add(keyForPoint(d));
+        });
+        setData(prev => [...prev, ...newPoints]);
+        setLiveStatus({ lastUpdated: Date.now(), rowCount: arrayLenRef.current + newPoints.length });
+      }
       lastRowRef.current = Number((payload as { lastRow?: unknown })?.lastRow) || serverLastRow;
       arrayLenRef.current += newPoints.length;
       consecutiveErrorsRef.current = 0;
@@ -527,7 +535,7 @@ const ScatterPlot: React.FC = () => {
     } finally {
       inflightRef.current = null;
     }
-  };
+  }, []);
 
   useEffect(() => {
     let canceled = false;
@@ -560,6 +568,7 @@ const ScatterPlot: React.FC = () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
       inflightRef.current?.abort();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -571,7 +580,7 @@ const ScatterPlot: React.FC = () => {
     return () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
     };
-  }, []);
+  }, [fetchIncremental]);
 
   useEffect(() => {
     const onVisible = () => {
@@ -592,7 +601,7 @@ const ScatterPlot: React.FC = () => {
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('focus', onFocus);
     };
-  }, []);
+  }, [fetchIncremental]);
 
   useEffect(() => {
     const el = cursorRef.current;
@@ -716,69 +725,63 @@ const ScatterPlot: React.FC = () => {
 
     nodesMerge.select('text').text((d) => d.table.toString());
 
-    if (prevCount.current === 0 && data.length > 0) {
-      if (initialAnimAppliedRef.current) {
-        return; 
+    // Handle entering nodes - separate new edits from initial load
+    let animationIndex = 0;
+    nodesEnter.each(function(d) {
+      const pointKey = keyForPoint(d);
+      const [jx, jy] = jitterOffset(d);
+      const isNewEdit = newRowsRef.current.has(pointKey);
+      
+      if (isNewEdit) {
+        // Animate new rows that were detected from sheet edits
+        d3.select(this)
+          .transition()
+          .duration(ENTER_ANIMATION_DURATION)
+          .delay(animationIndex * INITIAL_ANIMATION_DELAY)
+          .attr('transform', `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`)
+          .style('opacity', 1)
+          .on('end', () => {
+            // Remove from tracking after animation completes
+            newRowsRef.current.delete(pointKey);
+          });
+        
+        d3.select(this).select('circle')
+          .transition()
+          .duration(ENTER_ANIMATION_DURATION)
+          .delay(animationIndex * INITIAL_ANIMATION_DELAY)
+          .style('opacity', pointsVisible ? NODE_OPACITY : 0);
+        
+        d3.select(this).select('text')
+          .transition()
+          .duration(ENTER_ANIMATION_DURATION)
+          .delay(animationIndex * INITIAL_ANIMATION_DELAY)
+          .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
+        
+        animationIndex++;
+      } else {
+        // Show initial load data instantly (no animation)
+        d3.select(this)
+          .attr('transform', `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`)
+          .style('opacity', 1);
+        
+        d3.select(this).select('circle')
+          .style('opacity', pointsVisible ? NODE_OPACITY : 0);
+        
+        d3.select(this).select('text')
+          .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
       }
-      initialAnimAppliedRef.current = true;
-      const T_INIT = d3.transition('init-stagger');
-      let pending = nodesEnter.size();
-      nodesEnter
-        .transition(T_INIT)
-        .duration(INITIAL_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
-        .attr('transform', (d) => {
-          const [jx, jy] = jitterOffset(d);
-          return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
-        })
-        .style('opacity', 1)
-        .on('end', () => {
-          pending--;
-          if (pending === 0) {
-            setInitialAnimating(false); 
-          }
-        });
-      nodesEnter.select('circle')
-        .transition(T_INIT)
-        .duration(INITIAL_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
-        .style('opacity', pointsVisible ? NODE_OPACITY : 0);
-      nodesEnter.select('text')
-        .transition(T_INIT)
-        .duration(INITIAL_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
-        .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
-    } else {
-      nodesEnter
-        .transition()
-        .duration(ENTER_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
+    });
+
+    // Update existing nodes positions
+    if (!initialAnimating) {
+      nodes
         .attr('transform', (d) => {
           const [jx, jy] = jitterOffset(d);
           return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
         })
         .style('opacity', 1);
-      nodesEnter.select('circle')
-        .transition()
-        .duration(ENTER_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
-        .style('opacity', pointsVisible ? NODE_OPACITY : 0);
-      nodesEnter.select('text')
-        .transition()
-        .duration(ENTER_ANIMATION_DURATION)
-        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
-        .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
-
-      if (!initialAnimating) {
-        nodes
-          .attr('transform', (d) => {
-            const [jx, jy] = jitterOffset(d);
-            return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
-          })
-          .style('opacity', 1);
-        nodes.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
-        nodes.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
-      }
+      nodes.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
+      nodes.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
     }
 
     nodes.exit().remove();
