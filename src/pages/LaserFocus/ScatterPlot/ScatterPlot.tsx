@@ -791,6 +791,8 @@ const ScatterPlot: React.FC = () => {
       if (shouldAnimate) {
         // Animate this node
         animationsStarted++;
+        
+        // If this is part of initial load, increment counter
         if (isInitialLoad) {
           pendingInitialAnimationsRef.current++;
         }
@@ -809,7 +811,7 @@ const ScatterPlot: React.FC = () => {
             // If this was part of initial load, decrement counter
             if (isInitialLoad) {
               pendingInitialAnimationsRef.current--;
-              // When all initial animations are complete, mark initial load done
+              // When ALL initial animations are complete, mark initial load done
               if (pendingInitialAnimationsRef.current === 0) {
                 initialLoadCompleteRef.current = true;
                 setInitialAnimating(false);
