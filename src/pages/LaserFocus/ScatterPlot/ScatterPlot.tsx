@@ -855,16 +855,24 @@ const ScatterPlot: React.FC = () => {
       setInitialAnimating(false);
     }
 
-    // Update existing nodes positions
+    // Update existing nodes positions (only nodes that already exist, not entering ones)
+    // In D3, after .enter(), the original selection is the update selection
+    // But we need to make sure we're not updating nodes that are being animated
+    const nodesUpdate = nodes.filter(function(d) {
+      const pointKey = keyForPoint(d);
+      // Only update nodes that are already rendered (not in enter selection)
+      return renderedNodesRef.current.has(pointKey);
+    });
+    
     if (!initialAnimating) {
-      nodes
+      nodesUpdate
         .attr('transform', (d) => {
           const [jx, jy] = jitterOffset(d);
           return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
         })
         .style('opacity', 1);
-      nodes.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
-      nodes.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
+      nodesUpdate.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
+      nodesUpdate.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
     }
 
     nodes.exit().remove();
