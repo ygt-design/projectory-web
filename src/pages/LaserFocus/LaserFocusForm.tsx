@@ -1,8 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './LaserFocusForm.module.css';
 
-// Proxy path - backend will add API key automatically
 const PROXY_PATH = '/api/laser-focus-form';
+
+// Form validation and slider constants
+const MAX_SLIDER_VALUE = 10;
+const MIN_SLIDER_VALUE = 0;
+const SLIDER_STEP = 0.1;
+const MAX_WORD_COUNT = 25;
+
+interface FormConfig {
+  question: string;
+  xAxisTitle: string;
+  yAxisTitle: string;
+  xAxisLabel1: string;
+  xAxisLabel2: string;
+  xAxisLabel3: string;
+  yAxisLabel1: string;
+  yAxisLabel2: string;
+  yAxisLabel3: string;
+}
 
 interface ResponseRow {
   Timestamp: string;
@@ -10,6 +27,18 @@ interface ResponseRow {
   idea: string;
   impact: number;
   effort: number;
+}
+
+// Fetch form configuration from Input sheet
+async function fetchConfig(): Promise<FormConfig> {
+  const res = await fetch(`${PROXY_PATH}?action=config`);
+  if (!res.ok) throw new Error(`Error fetching config: ${res.status}`);
+  const json = await res.json();
+  if (json.error) {
+    console.error('Config error from server:', json.error);
+    throw new Error(json.error);
+  }
+  return json;
 }
 
 // Fetch all submitted rows
@@ -26,9 +55,7 @@ async function submitResponse(payload: Omit<ResponseRow, 'Timestamp'>) {
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
     body: JSON.stringify(payload),
   });
-  // If HTTP status not OK, fail
   if (!res.ok) throw new Error(`Submission failed: ${res.status}`);
-  // Some backends return empty body; tolerate
   let json: unknown = null;
   try {
     json = await res.json();
@@ -51,22 +78,34 @@ const LaserFocusForm: React.FC = () => {
   const [table, setTable] = useState<number | ''>('');
   const [idea, setIdea] = useState('');
   const [impact, setImpact] = useState(5);
-  const [effort, setEffort] = useState(5);
+  const [timeToValue, setTimeToValue] = useState(5);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Form configuration from Input sheet
+  const [config, setConfig] = useState<FormConfig>({
+    question: 'Which AI application or opportunity discussed today did your table find most exciting for CIBC?',
+    xAxisTitle: 'time to value',
+    yAxisTitle: 'impact',
+    xAxisLabel1: 'Immediate',
+    xAxisLabel2: '',
+    xAxisLabel3: 'Long-Term',
+    yAxisLabel1: 'Low',
+    yAxisLabel2: '',
+    yAxisLabel3: 'High'
+  });
+  const [configLoading, setConfigLoading] = useState(true);
 
   // Store fetched responses (reserved for future use)
   const [allResponses, setAllResponses] = useState<ResponseRow[]>([]);
   void allResponses; // keep variable for future without triggering unused warnings
 
-  // Reference for scrolling
   const formRef = useRef<HTMLDivElement>(null);
   const impactBoxRef = useRef<HTMLDivElement>(null);
-  const effortBoxRef = useRef<HTMLDivElement>(null);
+  const timeToValueBoxRef = useRef<HTMLDivElement>(null);
   const isDraggingImpactRef = useRef(false);
-  const isDraggingEffortRef = useRef(false);
-  // (no rAF batching currently)
+  const isDraggingTimeToValueRef = useRef(false);
 
   const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
   const valueFromPointer = (clientX: number, box: HTMLDivElement | null) => {
@@ -74,18 +113,29 @@ const LaserFocusForm: React.FC = () => {
     const rect = box.getBoundingClientRect();
     const raw = (clientX - rect.left) / rect.width;
     const t = clamp(raw, 0, 1);
-    const val = t * 10; // 0..10
-    // Snap to 0.1 but avoid micro jitter
+    const val = t * MAX_SLIDER_VALUE;
     const rounded = Math.round(val * 10) / 10;
     return rounded;
   };
 
-  // (previous smooth setters removed for immediate updates)
-
-  // Scroll into view on step change
   useEffect(() => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [step]);
+
+  // Load form configuration on mount
+  useEffect(() => {
+    fetchConfig()
+      .then(cfg => {
+        console.log('Config loaded:', cfg);
+        setConfig(cfg);
+        setConfigLoading(false);
+      })
+      .catch(err => {
+        console.error('Fetch config error:', err);
+        // Keep default config values if fetch fails
+        setConfigLoading(false);
+      });
+  }, []);
 
   // Load existing submissions on mount
   useEffect(() => {
@@ -103,12 +153,12 @@ const LaserFocusForm: React.FC = () => {
         return table !== '';
       case 2: {
         const wordCount = idea.trim().split(/\s+/).filter(w => w).length;
-        return wordCount > 0 && wordCount <= 25;
+        return wordCount > 0 && wordCount <= MAX_WORD_COUNT;
       }
       case 3:
-        return impact >= 0 && impact <= 10;
+        return impact >= MIN_SLIDER_VALUE && impact <= MAX_SLIDER_VALUE;
       case 4:
-        return effort >= 0 && effort <= 10;
+        return timeToValue >= MIN_SLIDER_VALUE && timeToValue <= MAX_SLIDER_VALUE;
       default:
         return false;
     }
@@ -125,9 +175,16 @@ const LaserFocusForm: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      await submitResponse({ table: Number(table), idea, impact, effort });
+      // Map UI fields to backend schema:
+      // - impact (step 3) → backend 'impact' field (y-axis on scatter plot)
+      // - timeToValue (step 4) → backend 'effort' field (x-axis on scatter plot)
+      await submitResponse({ 
+        table: Number(table), 
+        idea, 
+        impact: impact,
+        effort: timeToValue
+      });
       setSubmitted(true);
-      // Ensure viewport shows the thank-you
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
     } catch (e) {
       const msg = (e as Error)?.message || '';
@@ -144,10 +201,16 @@ const LaserFocusForm: React.FC = () => {
     }
   };
 
-  // Former inline slider background replaced by custom slider UI
-
   if (submitted) {
     return <div className={styles.thankYou}>Got it! Thanks for sharing.</div>;
+  }
+
+  if (configLoading) {
+    return (
+      <div className={styles.spinnerContainer}>
+        <div className={styles.spinner}></div>
+      </div>
+    );
   }
 
   return (
@@ -185,23 +248,36 @@ const LaserFocusForm: React.FC = () => {
       )}
       {step === 2 && (
         <div className={styles.step}>
-          <label>Which AI application or opportunity discussed today did your table find most exciting for CIBC?</label>
+          <label>{config.question}</label>
           <textarea
             maxLength={200}
             value={idea}
             onChange={e => setIdea(e.target.value)}
           />
           <div>
-            {idea.trim().split(/\s+/).filter(w => w).length}/25 words
+            {idea.trim().split(/\s+/).filter(w => w).length}/{MAX_WORD_COUNT} words
           </div>
         </div>
       )}
       {step === 3 && (
         <div className={styles.step}>
-          <label>Drag to rate the estimated time to value… </label>
+          <label>Drag to rate the estimated {config.yAxisTitle}… </label>
           <div
             ref={impactBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              isDraggingImpactRef.current = true;
+              const val = valueFromPointer(e.clientX, impactBoxRef.current);
+              if (val != null) setImpact(val);
+            }}
+            onMouseMove={(e) => {
+              if (!isDraggingImpactRef.current) return;
+              const val = valueFromPointer(e.clientX, impactBoxRef.current);
+              if (val != null) setImpact(val);
+            }}
+            onMouseUp={() => { isDraggingImpactRef.current = false; }}
+            onMouseLeave={() => { isDraggingImpactRef.current = false; }}
             onTouchStart={(e) => {
               e.preventDefault();
               isDraggingImpactRef.current = true;
@@ -218,61 +294,74 @@ const LaserFocusForm: React.FC = () => {
             }}
             onTouchEnd={() => { isDraggingImpactRef.current = false; }}
           >
-            <div className={styles.sliderFill} style={{ width: `${(impact / 10) * 100}%` }} />
+            <div className={styles.sliderFill} style={{ width: `${(impact / MAX_SLIDER_VALUE) * 100}%` }} />
             <div className={styles.sliderGlow} />
             <input
               className={styles.sliderInput}
               type="range"
-              min={0}
-              max={10}
-              step={0.1}
+              min={MIN_SLIDER_VALUE}
+              max={MAX_SLIDER_VALUE}
+              step={SLIDER_STEP}
               value={impact}
               onChange={e => setImpact(parseFloat(e.target.value))}
             />
           </div>
           <div className={styles.sliderScale}>
-            <span>Immediate</span>
-            <span>Long-Term</span>
+            <span>{config.yAxisLabel1}</span>
+            <span>{config.yAxisLabel3}</span>
           </div>
         </div>
       )}
       {step === 4 && (
         <div className={styles.step}>
-          <label>Drag to rate the estimated impact… </label>
+          <label>Drag to rate the estimated {config.xAxisTitle}… </label>
           <div
-            ref={effortBoxRef}
+            ref={timeToValueBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              isDraggingTimeToValueRef.current = true;
+              const val = valueFromPointer(e.clientX, timeToValueBoxRef.current);
+              if (val != null) setTimeToValue(val);
+            }}
+            onMouseMove={(e) => {
+              if (!isDraggingTimeToValueRef.current) return;
+              const val = valueFromPointer(e.clientX, timeToValueBoxRef.current);
+              if (val != null) setTimeToValue(val);
+            }}
+            onMouseUp={() => { isDraggingTimeToValueRef.current = false; }}
+            onMouseLeave={() => { isDraggingTimeToValueRef.current = false; }}
             onTouchStart={(e) => {
               e.preventDefault();
-              isDraggingEffortRef.current = true;
+              isDraggingTimeToValueRef.current = true;
               const t = e.touches[0];
-              const val = valueFromPointer(t?.clientX ?? 0, effortBoxRef.current);
-              if (val != null) setEffort(val);
+              const val = valueFromPointer(t?.clientX ?? 0, timeToValueBoxRef.current);
+              if (val != null) setTimeToValue(val);
             }}
             onTouchMove={(e) => {
               e.preventDefault();
-              if (!isDraggingEffortRef.current) return;
+              if (!isDraggingTimeToValueRef.current) return;
               const t = e.touches[0];
-              const val = valueFromPointer(t?.clientX ?? 0, effortBoxRef.current);
-              if (val != null) setEffort(val);
+              const val = valueFromPointer(t?.clientX ?? 0, timeToValueBoxRef.current);
+              if (val != null) setTimeToValue(val);
             }}
-            onTouchEnd={() => { isDraggingEffortRef.current = false; }}
+            onTouchEnd={() => { isDraggingTimeToValueRef.current = false; }}
           >
-            <div className={styles.sliderFill} style={{ width: `${(effort / 10) * 100}%` }} />
+            <div className={styles.sliderFill} style={{ width: `${(timeToValue / MAX_SLIDER_VALUE) * 100}%` }} />
             <div className={styles.sliderGlow} />
             <input
               className={styles.sliderInput}
               type="range"
-              min={0}
-              max={10}
-              step={0.1}
-              value={effort}
-              onChange={e => setEffort(parseFloat(e.target.value))}
+              min={MIN_SLIDER_VALUE}
+              max={MAX_SLIDER_VALUE}
+              step={SLIDER_STEP}
+              value={timeToValue}
+              onChange={e => setTimeToValue(parseFloat(e.target.value))}
             />
           </div>
           <div className={styles.sliderScale}>
-            <span>Low</span>
-            <span>High</span>
+            <span>{config.xAxisLabel1}</span>
+            <span>{config.xAxisLabel3}</span>
           </div>
         </div>
       )}

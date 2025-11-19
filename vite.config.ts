@@ -21,9 +21,16 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api\/venting-machine-form/, '')
       },
       '/api/laser-focus-form': {
-        target: 'https://www.projectory.live',
+        target: 'https://script.google.com/macros/s/AKfycbx008M516hGzbzP_8uczo-jgt0JSIclh5Dr_2bmz2Vor_Z7ONPA5Wc6v3dq18Ny7bGD/exec',
         changeOrigin: true,
-        rewrite: (path) => path 
+        rewrite: (path) => path.replace(/^\/api\/laser-focus-form/, ''),
+        configure: (proxy) => {
+          proxy.on('proxyRes', (proxyRes) => {
+            proxyRes.headers['access-control-allow-origin'] = '*';
+            proxyRes.headers['access-control-allow-methods'] = 'GET,POST,OPTIONS';
+            proxyRes.headers['access-control-allow-headers'] = 'Content-Type';
+          });
+        }
       },
     }
   },

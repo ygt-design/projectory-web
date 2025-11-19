@@ -3,8 +3,38 @@ import * as d3 from 'd3';
 import { useCallback } from 'react';
 import styles from './ScatterPlot.module.css';
 
-
 const PROXY_PATH = '/api/laser-focus-form';
+
+// Animation constants
+const INITIAL_ANIMATION_DELAY = 100;
+const INITIAL_ANIMATION_DURATION = 500;
+const ENTER_ANIMATION_DURATION = 500;
+const HOVER_TRANSITION_DURATION = 150;
+const CLICK_TRANSITION_DURATION = 200;
+
+// Opacity constants
+const NODE_OPACITY = 0.18;
+const TEXT_OPACITY = 0.95;
+
+// Fetch and polling constants
+const FETCH_LIMIT = 500;
+const POLLING_INTERVAL = 1000;
+const POLLING_INTERVAL_ON_FOCUS = 2000;
+
+// Cursor smoothing
+const LERP_FACTOR = 0.25;
+
+interface FormConfig {
+  question: string;
+  xAxisTitle: string;
+  yAxisTitle: string;
+  xAxisLabel1: string;
+  xAxisLabel2: string;
+  xAxisLabel3: string;
+  yAxisLabel1: string;
+  yAxisLabel2: string;
+  yAxisLabel3: string;
+}
 
 interface DataPoint {
   timestamp: string;
@@ -17,7 +47,7 @@ interface DataPoint {
 const parseRowToDataPoint = (row: unknown): DataPoint | null => {
   if (!row || typeof row !== 'object') return null;
   const r = row as Record<string, unknown>;
-  const timestamp = String(r.timestamp ?? '');
+  const timestamp = String(r.Timestamp ?? r.timestamp ?? '');
   const table = Number(r.table);
   const idea = String(r.idea ?? '');
   const impact = Number(r.impact);
@@ -35,6 +65,20 @@ const ScatterPlot: React.FC = () => {
   const [data, setData] = useState<DataPoint[]>([]);
   // Keep a mirror of the latest data for diffing new rows on full fetch
   const dataRef = useRef<DataPoint[]>([]);
+  
+  // Form configuration from Input sheet
+  const [config, setConfig] = useState<FormConfig>({
+    question: '',
+    xAxisTitle: '',
+    yAxisTitle: '',
+    xAxisLabel1: '',
+    xAxisLabel2: '',
+    xAxisLabel3: '',
+    yAxisLabel1: '',
+    yAxisLabel2: '',
+    yAxisLabel3: ''
+  });
+  const [configLoading, setConfigLoading] = useState(true);
 
   // Keep dataRef in sync with state for robust diffing
   useEffect(() => {
@@ -47,30 +91,23 @@ const ScatterPlot: React.FC = () => {
 
   const [layersReady, setLayersReady] = useState(false);
 
-  
   const svgRef = useRef<SVGSVGElement>(null);
   const axesGRef = useRef<SVGGElement | null>(null);
   const pointsGRef = useRef<SVGGElement | null>(null);
   const tooltipRef = useRef<HTMLDivElement | null>(null);
   const cursorRef = useRef<HTMLDivElement | null>(null);
 
-  
   const initialFetchDone = useRef(false);
 
-  
   const lastRowRef = useRef<number>(0);
   const arrayLenRef = useRef<number>(0);
   const pollIdRef = useRef<number | null>(null);
   const inflightRef = useRef<AbortController | null>(null);
-  // Track consecutive polling errors for simple backoff
   const consecutiveErrorsRef = useRef<number>(0);
-  // If true, bypass meta/incremental and always full-fetch
   const forceFullFetchRef = useRef<boolean>(false);
 
-  
   const [pointsVisible, setPointsVisible] = useState(true);
 
-  
   const [initialAnimating, setInitialAnimating] = useState(true);
   const [showStats, setShowStats] = useState(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -78,13 +115,11 @@ const ScatterPlot: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupData, setPopupData] = useState<DataPoint | null>(null);
 
-  // Simple live status for debugging and visibility-triggered refetches
   const [liveStatus, setLiveStatus] = useState<{ lastUpdated: number; rowCount: number }>({
     lastUpdated: 0,
     rowCount: 0,
   });
 
-  
   const initialAnimAppliedRef = useRef(false);
 
   // Stats snapshot (highest/lowest effort/impact)
@@ -109,7 +144,6 @@ const ScatterPlot: React.FC = () => {
     ];
   }, [data]);
 
-  
   useEffect(() => {
     let frame = 0;
     const onResize = () => {
@@ -125,20 +159,15 @@ const ScatterPlot: React.FC = () => {
     };
   }, []);
 
-  
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    
     let root = svg.select<SVGGElement>('g.root');
     if (root.empty()) {
       root = svg.append('g').attr('class', 'root');
-      
       axesGRef.current = root.append('g').attr('class', 'axes-layer').node() as SVGGElement;
-      
       pointsGRef.current = root.append('g').attr('class', 'points-layer').node() as SVGGElement;
       root.append('g').attr('class', 'interaction-layer');
     } else {
-      
       axesGRef.current = root.select<SVGGElement>('g.axes-layer').node();
       pointsGRef.current = root.select<SVGGElement>('g.points-layer').node();
       if (root.select('g.interaction-layer').empty()) {
@@ -146,24 +175,19 @@ const ScatterPlot: React.FC = () => {
       }
     }
 
-    
-    // Gradients and filters removed
-
     setLayersReady(true);
   }, []);
 
-  
-  // Shared node sizing and extra padding so circles don't bleed out of the plot
   const NODE_RADIUS = 18;
   const NODE_HOVER_RADIUS = 22;
-  const NODE_EDGE_PADDING = NODE_HOVER_RADIUS + 6; // a bit extra beyond hover size
+  const NODE_EDGE_PADDING = NODE_HOVER_RADIUS + 6;
 
   const margin = useMemo(
     () => ({
-      top: 100 + NODE_EDGE_PADDING, // Increased for more top space
-      right: 150 + NODE_EDGE_PADDING, // Extended to accommodate "Time to Value" text
-      bottom: 80 + NODE_EDGE_PADDING, // Increased for more bottom space
-      left: 120 + NODE_EDGE_PADDING, // Increased for more left space
+      top: 100 + NODE_EDGE_PADDING,
+      right: 150 + NODE_EDGE_PADDING,
+      bottom: 80 + NODE_EDGE_PADDING,
+      left: 120 + NODE_EDGE_PADDING,
     }),
     [NODE_EDGE_PADDING]
   );
@@ -171,11 +195,10 @@ const ScatterPlot: React.FC = () => {
   const x = useMemo(() => d3.scaleLinear().domain([0, 10]).range([margin.left, width - margin.right]), [width, margin]);
   const y = useMemo(() => d3.scaleLinear().domain([0, 10]).range([height - margin.bottom, margin.top]), [height, margin]);
 
-  // Deterministic micro-jitter to reduce visual overlap without changing values
   const jitterRadiusPx = 10;
   const keyForPoint = (d: DataPoint) => `${d.timestamp}|${d.table}|${d.impact}|${d.effort}`;
   const hash32 = (str: string) => {
-    let h = 2166136261 >>> 0; // FNV-1a base
+    let h = 2166136261 >>> 0;
     for (let i = 0; i < str.length; i++) {
       h ^= str.charCodeAt(i);
       h = Math.imul(h, 16777619);
@@ -184,25 +207,20 @@ const ScatterPlot: React.FC = () => {
   };
   const jitterOffset = useCallback((d: DataPoint): [number, number] => {
     const h = hash32(keyForPoint(d));
-    const hx = (h & 0xffff) / 0xffff; // 0..1
-    const hy = ((h >>> 16) & 0xffff) / 0xffff; // 0..1
+    const hx = (h & 0xffff) / 0xffff;
+    const hy = ((h >>> 16) & 0xffff) / 0xffff;
     const angle = hx * Math.PI * 2;
-    const radius = (0.2 + 0.8 * hy) * jitterRadiusPx; // avoid piling all at center
+    const radius = (0.2 + 0.8 * hy) * jitterRadiusPx;
     return [Math.cos(angle) * radius, Math.sin(angle) * radius];
   }, []);
 
-  // Visual highlight removed - using fullscreen popup instead
-
-  
   useEffect(() => {
     if (!layersReady) return;
     const axes = d3.select(axesGRef.current);
     if (axes.empty()) return;
 
-    
     axes.selectAll('*').remove();
 
-    
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -271,92 +289,80 @@ const ScatterPlot: React.FC = () => {
       .attr('stroke', '#ffffff')
       .attr('stroke-width', 2);
 
-    // X-axis segment labels
+    // X-axis segment labels (3 measures)
     axes
       .append('text')
-      .attr('x', x(2.25)) // Near-Term (center of 1-3.5 range)
+      .attr('x', x(2.25)) // Left (center of 1-3.5 range)
       .attr('y', height - margin.bottom + 30)
       .attr('text-anchor', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('Near-Term');
+      .text(config.xAxisLabel1);
 
     axes
       .append('text')
-      .attr('x', x(5.5)) // Medium-Term (center of 3.5-7.5 range)
+      .attr('x', x(5.5)) // Middle (center of 3.5-7.5 range)
       .attr('y', height - margin.bottom + 30)
       .attr('text-anchor', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('Medium-Term');
+      .text(config.xAxisLabel2);
 
     axes
       .append('text')
-      .attr('x', x(8.75)) // Long-Term (center of 7.5-10 range)
+      .attr('x', x(8.75)) // Right (center of 7.5-10 range)
       .attr('y', height - margin.bottom + 30)
       .attr('text-anchor', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('Long-Term');
+      .text(config.xAxisLabel3);
 
-    // X-axis title at the right end (split into two lines)
-    const timeToValueText = axes
+    // X-axis title at the right end
+    axes
       .append('text')
       .attr('class', 'axis-label')
-      .attr('x', width - margin.right + 20)
-      .attr('y', height - margin.bottom)
+      .attr('transform', `translate(${width - margin.right + 20}, ${height - margin.bottom})`)
       .attr('text-anchor', 'start')
       .style('fill', 'white')
-      .style('font-size', '24px');
-    
-    timeToValueText
-      .append('tspan')
-      .attr('x', width - margin.right + 20)
-      .attr('dy', '-0.6em')
-      .text('Time to');
-    
-    timeToValueText
-      .append('tspan')
-      .attr('x', width - margin.right + 20)
-      .attr('dy', '1.2em')
-      .text('Value');
+      .style('font-size', '24px')
+      .text(config.xAxisTitle);
 
-    // Y-axis segment labels
+    // Y-axis segment labels (3 measures)
     axes
       .append('text')
       .attr('x', margin.left - 20)
-      .attr('y', y(2.25)) // LOW (center of 1-3.5 range)
+      .attr('y', y(2.25)) // Bottom (center of 1-3.5 range)
       .attr('text-anchor', 'end')
       .attr('dominant-baseline', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('LOW');
+      .text(config.yAxisLabel1);
 
     axes
       .append('text')
       .attr('x', margin.left - 20)
-      .attr('y', y(5.5)) // MED (center of 3.5-7.5 range)
+      .attr('y', y(5.5)) // Middle (center of 3.5-7.5 range)
       .attr('text-anchor', 'end')
       .attr('dominant-baseline', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('MED');
+      .text(config.yAxisLabel2);
 
     axes
       .append('text')
       .attr('x', margin.left - 20)
-      .attr('y', y(8.75)) // HIGH (center of 7.5-10 range)
+      .attr('y', y(8.75)) // Top (center of 7.5-10 range)
       .attr('text-anchor', 'end')
       .attr('dominant-baseline', 'middle')
       .style('fill', '#E6F2EF')
       .style('font-size', '16px')
       .style('font-weight', '500')
-      .text('HIGH');
+      .text(config.yAxisLabel3);
 
     // Y-axis title at the top
     axes
@@ -366,15 +372,17 @@ const ScatterPlot: React.FC = () => {
       .attr('text-anchor', 'start')
       .style('fill', 'white')
       .style('font-size', '24px')
-      .text('Impact');
-  }, [layersReady, x, y, width, height, margin]);
+      .text(config.yAxisTitle);
+  }, [layersReady, x, y, width, height, margin, config]);
 
-  
   const initialLoad = async () => {
     try {
-      const res = await fetch(`${PROXY_PATH}?limit=500&format=obj&_t=${Date.now()}`, { cache: 'no-store' });
+      const res = await fetch(`${PROXY_PATH}?limit=${FETCH_LIMIT}&format=obj&_t=${Date.now()}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Fetch error: ${res.status}`);
       const body = (await res.json()) as unknown;
+
+      console.log('[DEBUG] Raw body:', body);
+      console.log('[DEBUG] Body is array?', Array.isArray(body));
 
       const rawRows: unknown[] = Array.isArray(body)
         ? (body as unknown[])
@@ -385,17 +393,21 @@ const ScatterPlot: React.FC = () => {
         ? rawRows.length
         : Number((body as Record<string, unknown>).lastRow) || rawRows.length;
 
+      console.log('[DEBUG] Raw rows count:', rawRows.length);
+      console.log('[DEBUG] First row sample:', rawRows[0]);
+      console.log('[DEBUG] First row keys:', rawRows[0] ? Object.keys(rawRows[0] as Record<string, unknown>) : 'no keys');
+      console.log('[DEBUG] Second row sample:', rawRows[1]);
+
       const points: DataPoint[] = rawRows
         .map(parseRowToDataPoint)
         .filter((d): d is DataPoint => d !== null);
 
-      // Track sheet row index (header included)
       lastRowRef.current = serverCount + 1;
       arrayLenRef.current = points.length;
-      console.log('[InitialLoad] Loaded points:', points.length, points);
+      console.log('[DEBUG] Initial load - points:', points.length);
+      console.log('[DEBUG] First parsed point:', points[0]);
       setData(points);
       setLiveStatus({ lastUpdated: Date.now(), rowCount: points.length });
-      // If nothing to animate, start polling immediately
       if (points.length === 0) {
         setInitialAnimating(false);
       }
@@ -405,9 +417,6 @@ const ScatterPlot: React.FC = () => {
   };
 
   const fetchIncremental = async () => {
-    // allow fetching even during initial animation; rendering guards prevent clobbering
-    console.log('[FetchIncremental] tick, initialAnimating=', initialAnimating, 'arrayLen=', arrayLenRef.current, 'lastRow=', lastRowRef.current);
-    // Helper: process a full array payload
     const processFullArray = (full: unknown[]) => {
       const serverCount = full.length;
       // Map all rows once
@@ -415,36 +424,25 @@ const ScatterPlot: React.FC = () => {
         .map(parseRowToDataPoint)
         .filter((d): d is DataPoint => d !== null);
 
-      // Build stable keys for existing & incoming data (match D3 join)
       const key = (d: DataPoint) => `${d.timestamp}-${d.table}-${d.impact}-${d.effort}`;
       const existing = new Set((dataRef.current || []).map(key));
       const incomingNew = fullPoints.filter(d => !existing.has(key(d)));
 
-      console.log('[ProcessFullArray] serverCount:', serverCount, 'arrayLenRef:', arrayLenRef.current, 'incomingNew:', incomingNew.length);
-
       if (incomingNew.length > 0) {
-        // Append only truly new rows (wherever they appear in the sheet)
         setData(prev => [...prev, ...incomingNew]);
         setLiveStatus({ lastUpdated: Date.now(), rowCount: (dataRef.current?.length || 0) + incomingNew.length });
         arrayLenRef.current = Math.max(arrayLenRef.current + incomingNew.length, serverCount);
       } else {
-        // No brand-new rows detected; keep our current data but sync counters to server
         arrayLenRef.current = Math.max(arrayLenRef.current, serverCount);
       }
 
-      // Track sheet last row index (header included)
       lastRowRef.current = serverCount + 1;
     };
-    // Keep lastChecksumRef on the function (optional, not used elsewhere)
-    (processFullArray as unknown as { lastChecksumRef?: { current: number } }).lastChecksumRef =
-      (processFullArray as unknown as { lastChecksumRef?: { current: number } }).lastChecksumRef || { current: 0 };
 
-    // Helper: best‑effort full fetch fallback (used when meta endpoint fails)
     const fallbackFullFetch = async (ac: AbortController) => {
       const fullRes = await fetch(`${PROXY_PATH}?format=obj&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!fullRes.ok) throw new Error(`Full fetch error: ${fullRes.status}`);
       const payload = (await fullRes.json()) as unknown;
-      // Accept either a plain array or an object with a 'rows' array
       let rows: unknown[] | null = null;
       if (Array.isArray(payload)) {
         rows = payload as unknown[];
@@ -454,74 +452,58 @@ const ScatterPlot: React.FC = () => {
       if (!rows) {
         throw new Error('Full fetch returned non-array.');
       }
-      console.log('[FallbackFullFetch] Full fetch accepted rows:', rows.length);
       processFullArray(rows);
     };
 
     try {
-      // If a request is already in flight, skip this tick (avoid aborting our own fetch)
       if (inflightRef.current) {
-        console.log('[FetchIncremental] skipped tick: request in flight');
         return;
       }
       const ac = new AbortController();
       inflightRef.current = ac;
 
-      // If we've flipped into force-full-fetch mode, bypass meta/incremental
       if (forceFullFetchRef.current) {
-        console.log('[FetchIncremental] Force full-fetch mode: ON');
         await fallbackFullFetch(ac);
         consecutiveErrorsRef.current = 0;
         return;
       }
 
-      // try lightweight meta probe first
       const metaRes = await fetch(`${PROXY_PATH}?meta=1&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!metaRes.ok) {
-        // Meta endpoint is unhappy (e.g., 500) — switch into force full-fetch mode
         forceFullFetchRef.current = true;
-        console.warn('[FetchIncremental] Meta probe failed, forcing full-fetch mode. Status:', metaRes.status);
         await fallbackFullFetch(ac);
         consecutiveErrorsRef.current = 0;
         return;
       }
       const metaBody = (await metaRes.json()) as unknown;
 
-      // If meta probe returns OK but the body isn’t an array and doesn’t contain a numeric lastRow, fall back to a full fetch
       if (!Array.isArray(metaBody) && (typeof (metaBody as Record<string, unknown>).lastRow !== 'number' || isNaN(Number((metaBody as Record<string, unknown>).lastRow)))) {
         await fallbackFullFetch(ac);
         consecutiveErrorsRef.current = 0;
         return;
       }
 
-      // If server just returns the full array, process it
       if (Array.isArray(metaBody)) {
         if (forceFullFetchRef.current) {
-          console.log('[FetchIncremental] Meta healthy again, turning force full-fetch mode OFF.');
           forceFullFetchRef.current = false;
         }
-        console.log('[FetchIncremental] Meta returned full array, length:', metaBody.length);
         processFullArray(metaBody);
         consecutiveErrorsRef.current = 0;
         return;
       }
 
-      // Incremental path using lastRow
       const serverLastRow = Number((metaBody as Record<string, unknown>).lastRow) || 0;
-      console.log('[Incremental] serverLastRow=', serverLastRow, 'local lastRowRef=', lastRowRef.current);
       if (forceFullFetchRef.current) {
-        console.log('[FetchIncremental] Meta healthy again, turning force full-fetch mode OFF.');
         forceFullFetchRef.current = false;
       }
       if (serverLastRow <= lastRowRef.current) {
-        console.log('[FetchIncremental] No new rows, forcing full refresh.');
         await fallbackFullFetch(ac);
         consecutiveErrorsRef.current = 0;
         return;
       }
 
       const sinceRow = lastRowRef.current + 1;
-      const incRes = await fetch(`${PROXY_PATH}?sinceRow=${sinceRow}&limit=500&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
+      const incRes = await fetch(`${PROXY_PATH}?sinceRow=${sinceRow}&limit=${FETCH_LIMIT}&_t=${Date.now()}`, { signal: ac.signal, cache: 'no-store' });
       if (!incRes.ok) throw new Error(`Inc fetch error: ${incRes.status}`);
       const payload = (await incRes.json()) as unknown;
       const rawRows: unknown[] = Array.isArray((payload as { rows?: unknown[] })?.rows)
@@ -534,35 +516,43 @@ const ScatterPlot: React.FC = () => {
         .map(parseRowToDataPoint)
         .filter((d): d is DataPoint => d !== null);
 
-      console.log('[FetchIncremental] Incremental new points:', newPoints.length, newPoints);
       if (newPoints.length) setData(prev => [...prev, ...newPoints]);
       if (newPoints.length) setLiveStatus({ lastUpdated: Date.now(), rowCount: arrayLenRef.current + newPoints.length });
       lastRowRef.current = Number((payload as { lastRow?: unknown })?.lastRow) || serverLastRow;
       arrayLenRef.current += newPoints.length;
       consecutiveErrorsRef.current = 0;
     } catch (err) {
-      // Ignore deliberate aborts; otherwise log a concise warning (avoid dumping secrets)
       if ((err as Error & { name?: string })?.name === 'AbortError') return;
-      console.warn('Incremental fetch warning (will retry):', (err as Error)?.message || err);
       consecutiveErrorsRef.current += 1;
     } finally {
-      // Allow the next polling tick to start a new request
       inflightRef.current = null;
     }
   };
 
-  
   useEffect(() => {
     let canceled = false;
     const boot = async () => {
+      // Load config first
+      try {
+        const configRes = await fetch(`${PROXY_PATH}?action=config`);
+        if (configRes.ok) {
+          const cfg = await configRes.json();
+          if (!cfg.error) {
+            setConfig(cfg);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load config:', err);
+      } finally {
+        setConfigLoading(false);
+      }
+      
       if (!initialFetchDone.current) {
         await initialLoad();
         if (canceled) return;
         initialFetchDone.current = true;
-        // Kick one fetch right away so we don't wait for the first interval tick
         fetchIncremental();
       }
-      
     };
     boot();
     return () => {
@@ -570,26 +560,19 @@ const ScatterPlot: React.FC = () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
       inflightRef.current?.abort();
     };
-  // Intentionally run only on mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (pollIdRef.current) window.clearInterval(pollIdRef.current);
-    // Run one fetch immediately, then continue on an interval
     fetchIncremental();
-    console.log('[Polling] started (mount)');
     pollIdRef.current = window.setInterval(() => {
       fetchIncremental();
-    }, 1000);
+    }, POLLING_INTERVAL);
     return () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
     };
-  // Intentionally run only on mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When the tab becomes visible or window regains focus, fetch immediately and refresh the polling timer.
   useEffect(() => {
     const onVisible = () => {
       if (document.visibilityState === 'visible') {
@@ -597,13 +580,11 @@ const ScatterPlot: React.FC = () => {
         if (pollIdRef.current) window.clearInterval(pollIdRef.current);
         pollIdRef.current = window.setInterval(() => {
           fetchIncremental();
-        }, 2000);
-        console.log('[Polling] restarted (visibilitychange)');
+        }, POLLING_INTERVAL_ON_FOCUS);
       }
     };
     const onFocus = () => {
       fetchIncremental();
-      console.log('[Polling] tick on focus');
     };
     document.addEventListener('visibilitychange', onVisible);
     window.addEventListener('focus', onFocus);
@@ -611,11 +592,8 @@ const ScatterPlot: React.FC = () => {
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('focus', onFocus);
     };
-  // Intentionally run only on mount
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Custom cursor: minimal ring + RAF follow (smooth & light)
   useEffect(() => {
     const el = cursorRef.current;
     if (!el) return;
@@ -629,12 +607,10 @@ const ScatterPlot: React.FC = () => {
     };
 
     const tick = () => {
-      // simple smoothing (lerp)
-      pos.x += (target.x - pos.x) * 0.25;
-      pos.y += (target.y - pos.y) * 0.25;
+      pos.x += (target.x - pos.x) * LERP_FACTOR;
+      pos.y += (target.y - pos.y) * LERP_FACTOR;
       const hover = el.classList.contains('cursor--hover');
       const scale = hover ? 1.25 : 1.0;
-      // center a 14px ring on the pointer and scale on hover
       el.style.transform = `translate(${pos.x - 7}px, ${pos.y - 7}px) scale(${scale})`;
       raf = requestAnimationFrame(tick);
     };
@@ -647,7 +623,6 @@ const ScatterPlot: React.FC = () => {
     };
   }, []);
 
-  
   const prevCount = useRef(0);
   useEffect(() => {
     if (!layersReady) return;
@@ -662,22 +637,13 @@ const ScatterPlot: React.FC = () => {
       .enter()
       .append('g')
       .attr('class', 'node')
-      // Enter at (0,0) and invisible
       .attr('transform', `translate(${x(0)}, ${y(0)})`)
       .style('opacity', 0);
-
-    // Log enter/update selection sizes for debugging
-    console.log('[D3] enter size:', nodesEnter.size(), 'update size:', nodes.size());
-
-    // Log before rendering new nodes
-    console.log('[D3] Rendering nodes, total data points:', data.length);
 
     nodesEnter
       .append('circle')
       .attr('r', NODE_RADIUS)
       .style('fill', '#5FFFE3')
-      // Remove immediate opacity assignment; fade in via transition
-      //.style('opacity', pointsVisible ? 0.18 : 0)
       .attr('stroke', '#E6F2EF')
       .attr('stroke-opacity', 0.25)
       .attr('stroke-width', 1);
@@ -690,18 +656,15 @@ const ScatterPlot: React.FC = () => {
       .style('font-weight', '600')
       .style('letter-spacing', '0.2px')
       .style('fill', '#F8FFFD')
-      // Remove immediate opacity assignment; fade in via transition
-      //.style('opacity', pointsVisible ? 0.95 : 0)
       .text((d) => d.table.toString());
 
     const nodesMerge = nodesEnter.merge(nodes);
 
     nodesMerge
       .on('mouseenter', (event, d: DataPoint) => {
-        // Bring hovered node to front for readability
         d3.select(event.currentTarget).raise();
-        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', NODE_HOVER_RADIUS);
-        d3.select(event.currentTarget).select('text').transition().duration(150).style('font-size', '20px');
+        d3.select(event.currentTarget).select('circle').transition().duration(HOVER_TRANSITION_DURATION).attr('r', NODE_HOVER_RADIUS);
+        d3.select(event.currentTarget).select('text').transition().duration(HOVER_TRANSITION_DURATION).style('font-size', '20px');
         const tip = d3.select(tooltipRef.current);
         tip.style('opacity', 1)
            .text(d.idea || '(no idea)');
@@ -716,8 +679,8 @@ const ScatterPlot: React.FC = () => {
       })
       .on('mouseleave', (event) => {
         d3.select(cursorRef.current).classed('cursor--hover', false);
-        d3.select(event.currentTarget).select('circle').transition().duration(150).attr('r', NODE_RADIUS);
-        d3.select(event.currentTarget).select('text').transition().duration(150).style('font-size', '18px');
+        d3.select(event.currentTarget).select('circle').transition().duration(HOVER_TRANSITION_DURATION).attr('r', NODE_RADIUS);
+        d3.select(event.currentTarget).select('text').transition().duration(HOVER_TRANSITION_DURATION).style('font-size', '18px');
         const tip = d3.select(tooltipRef.current);
         tip.style('opacity', 0)
            .style('transform', 'translate(-9999px, -9999px)');
@@ -726,16 +689,14 @@ const ScatterPlot: React.FC = () => {
         const isCurrentlyFocused = isSameDataPoint(focusedNode, d);
         
         if (isCurrentlyFocused) {
-          // If clicking the same node again, restore all nodes
           setFocusedNode(null);
           const allNodes = gPoints.selectAll('g.node');
           allNodes.each(function() {
             const node = d3.select(this);
-            node.select('circle').transition().duration(200).style('opacity', pointsVisible ? 0.18 : 0);
-            node.select('text').transition().duration(200).style('opacity', pointsVisible ? 0.95 : 0);
+            node.select('circle').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', pointsVisible ? NODE_OPACITY : 0);
+            node.select('text').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', pointsVisible ? TEXT_OPACITY : 0);
           });
         } else {
-          // Hide all nodes except the clicked one
           setFocusedNode(d);
           const allNodes = gPoints.selectAll('g.node');
           allNodes.each(function(nodeData) {
@@ -743,13 +704,11 @@ const ScatterPlot: React.FC = () => {
             const isClickedNode = isSameDataPoint(nodeData as DataPoint, d);
             
             if (!isClickedNode) {
-              // Hide other nodes
-              node.select('circle').transition().duration(200).style('opacity', 0);
-              node.select('text').transition().duration(200).style('opacity', 0);
+              node.select('circle').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', 0);
+              node.select('text').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', 0);
             } else {
-              // Keep clicked node visible (don't change fill color)
-              node.select('circle').transition().duration(200).style('opacity', 0.18);
-              node.select('text').transition().duration(200).style('opacity', 1);
+              node.select('circle').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', NODE_OPACITY);
+              node.select('text').transition().duration(CLICK_TRANSITION_DURATION).style('opacity', 1);
             }
           });
         }
@@ -764,11 +723,10 @@ const ScatterPlot: React.FC = () => {
       initialAnimAppliedRef.current = true;
       const T_INIT = d3.transition('init-stagger');
       let pending = nodesEnter.size();
-      // Animate ONLY new entering nodes (initial load) from (0,0) to their positions, fade in
       nodesEnter
         .transition(T_INIT)
-        .duration(500)
-        .delay((_, i) => i * 100)
+        .duration(INITIAL_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
         .attr('transform', (d) => {
           const [jx, jy] = jitterOffset(d);
           return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
@@ -780,41 +738,37 @@ const ScatterPlot: React.FC = () => {
             setInitialAnimating(false); 
           }
         });
-      // Animate shape and text opacity for initial load
       nodesEnter.select('circle')
         .transition(T_INIT)
-        .duration(500)
-        .delay((_, i) => i * 100)
-        .style('opacity', pointsVisible ? 0.18 : 0);
+        .duration(INITIAL_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
+        .style('opacity', pointsVisible ? NODE_OPACITY : 0);
       nodesEnter.select('text')
         .transition(T_INIT)
-        .duration(500)
-        .delay((_, i) => i * 100)
-        .style('opacity', pointsVisible ? 0.95 : 0);
+        .duration(INITIAL_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
+        .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
     } else {
-      // Animate only entering nodes from (0,0) to their correct position and fade in
       nodesEnter
         .transition()
-        .duration(500)
-        .delay((_, i) => i * 100) // match initial stagger cadence
+        .duration(ENTER_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
         .attr('transform', (d) => {
           const [jx, jy] = jitterOffset(d);
           return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
         })
         .style('opacity', 1);
-      // Animate circle and text opacity for entering nodes
       nodesEnter.select('circle')
         .transition()
-        .duration(500)
-        .delay((_, i) => i * 100)
-        .style('opacity', pointsVisible ? 0.18 : 0);
+        .duration(ENTER_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
+        .style('opacity', pointsVisible ? NODE_OPACITY : 0);
       nodesEnter.select('text')
         .transition()
-        .duration(500)
-        .delay((_, i) => i * 100)
-        .style('opacity', pointsVisible ? 0.95 : 0);
+        .duration(ENTER_ANIMATION_DURATION)
+        .delay((_, i) => i * INITIAL_ANIMATION_DELAY)
+        .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
 
-      // Update existing nodes immediately without animation (prevent re-animation)
       if (!initialAnimating) {
         nodes
           .attr('transform', (d) => {
@@ -822,9 +776,8 @@ const ScatterPlot: React.FC = () => {
             return `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`;
           })
           .style('opacity', 1);
-        // Also ensure their circle and text have correct opacity
-        nodes.select('circle').style('opacity', pointsVisible ? 0.18 : 0);
-        nodes.select('text').style('opacity', pointsVisible ? 0.95 : 0);
+        nodes.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
+        nodes.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
       }
     }
 
@@ -833,22 +786,17 @@ const ScatterPlot: React.FC = () => {
     prevCount.current = data.length;
   }, [layersReady, data, x, y, height, margin, pointsVisible, initialAnimating, jitterOffset, focusedNode]);
 
-  
   useEffect(() => {
     const gPoints = d3.select(pointsGRef.current);
     gPoints.selectAll('g.node').each(function () {
       const node = d3.select(this);
-      node.select('circle').style('opacity', pointsVisible ? 0.18 : 0);
-      node.select('text').style('opacity', pointsVisible ? 0.95 : 0);
+      node.select('circle').style('opacity', pointsVisible ? NODE_OPACITY : 0);
+      node.select('text').style('opacity', pointsVisible ? TEXT_OPACITY : 0);
     });
   }, [pointsVisible, data]);
 
-  // Remove empty effect block
-
-    // Keyboard shortcut: press 'H' to toggle point opacity
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      // avoid toggling while typing in inputs/textareas/contenteditable
       const t = e.target as HTMLElement | null;
       const isTyping =
         !!t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable === true);
@@ -875,6 +823,11 @@ const ScatterPlot: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      {configLoading && (
+        <div className={styles.spinnerContainer}>
+          <div className={styles.spinner}></div>
+        </div>
+      )}
       <div className={styles.liveBadge}>
         Live: {initialAnimating ? 'booting…' : 'polling'} · Rows: {liveStatus.rowCount} · Updated: {liveStatus.lastUpdated ? new Date(liveStatus.lastUpdated).toLocaleTimeString() : '—'}
       </div>
