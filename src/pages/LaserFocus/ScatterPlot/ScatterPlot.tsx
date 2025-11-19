@@ -123,6 +123,7 @@ const ScatterPlot: React.FC = () => {
   const renderedNodesRef = useRef<Set<string>>(new Set());
   const lastKnownTimestampRef = useRef<number>(0);
   const initialLoadCompleteRef = useRef<boolean>(false);
+  const pendingInitialAnimationsRef = useRef<number>(0);
 
   // Stats snapshot (highest/lowest effort/impact)
   const stats = useMemo(() => {
@@ -765,6 +766,7 @@ const ScatterPlot: React.FC = () => {
     // Handle entering nodes - track rendered nodes to prevent re-animation
     let animationIndex = 0;
     let animationsStarted = 0;
+    const isInitialLoad = !initialLoadCompleteRef.current;
     
     nodesEnter.each(function(d) {
       const pointKey = keyForPoint(d);
@@ -789,6 +791,10 @@ const ScatterPlot: React.FC = () => {
       if (shouldAnimate) {
         // Animate this node
         animationsStarted++;
+        if (isInitialLoad) {
+          pendingInitialAnimationsRef.current++;
+        }
+        
         d3.select(this)
           .transition()
           .duration(ENTER_ANIMATION_DURATION)
@@ -800,10 +806,14 @@ const ScatterPlot: React.FC = () => {
             newRowsRef.current.delete(pointKey);
             renderedNodesRef.current.add(pointKey);
             
-            // If this was part of initial load, mark initial load complete
-            if (!initialLoadCompleteRef.current) {
-              initialLoadCompleteRef.current = true;
-              setInitialAnimating(false);
+            // If this was part of initial load, decrement counter
+            if (isInitialLoad) {
+              pendingInitialAnimationsRef.current--;
+              // When all initial animations are complete, mark initial load done
+              if (pendingInitialAnimationsRef.current === 0) {
+                initialLoadCompleteRef.current = true;
+                setInitialAnimating(false);
+              }
             }
           });
         
@@ -835,8 +845,8 @@ const ScatterPlot: React.FC = () => {
       }
     });
     
-    // If no animations started and we have data, mark initial load complete
-    if (animationsStarted === 0 && data.length > 0 && !initialLoadCompleteRef.current) {
+    // If no animations started and we have data, mark initial load complete immediately
+    if (animationsStarted === 0 && data.length > 0 && isInitialLoad) {
       initialLoadCompleteRef.current = true;
       setInitialAnimating(false);
     }

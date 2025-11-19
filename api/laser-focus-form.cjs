@@ -12,7 +12,7 @@ module.exports = async function handler(req, res) {
 
   // Your Apps Script deployment URL
   const APPSCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbw-2YogN1mtMr-wrhyMfqBjiMcKpRzXzQ8m2biNBR6Y1dA0Sdzh9Opdqy0JObQ0Nn31/exec";
+    "https://script.google.com/macros/s/AKfycbwDi0qifyAqK1bC8GOGWIzW7jFJESUeDlGvo-gqt3Q2tzkE9kJn40YxlKT3KSVhURZL/exec";
 
   try {
     if (req.method === "GET") {
