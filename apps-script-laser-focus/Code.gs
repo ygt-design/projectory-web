@@ -142,21 +142,24 @@ function getFormConfig() {
     }
     
     // Read configuration from Input sheet
-    // B1=question, B9=xAxisTitle, B10=yAxisTitle
+    // B1=question, B3=xAxisTitle, B4=yAxisTitle (for scatter plot)
     // B6, C6, D6 = X-axis labels (3 measures)
     // B7, C7, D7 = Y-axis labels (3 measures)
+    // B9=xAxisQuestion, B10=yAxisQuestion (for drag-to-estimate form)
     const values = inputSheet.getRange('B1:D10').getValues();
     
     const config = {
       question: String(values[0][0] || '').trim(),
-      xAxisTitle: String(values[8][0] || '').trim(),   // B9
-      yAxisTitle: String(values[9][0] || '').trim(),   // B10
+      xAxisTitle: String(values[2][0] || '').trim(),   // B3 (scatter plot axis title)
+      yAxisTitle: String(values[3][0] || '').trim(),   // B4 (scatter plot axis title)
       xAxisLabel1: String(values[5][0] || '').trim(),  // B6
       xAxisLabel2: String(values[5][1] || '').trim(),  // C6
       xAxisLabel3: String(values[5][2] || '').trim(),  // D6
       yAxisLabel1: String(values[6][0] || '').trim(),  // B7
       yAxisLabel2: String(values[6][1] || '').trim(),  // C7
-      yAxisLabel3: String(values[6][2] || '').trim()   // D7
+      yAxisLabel3: String(values[6][2] || '').trim(),  // D7
+      xAxisQuestion: String(values[8][0] || '').trim(), // B9 (form question)
+      yAxisQuestion: String(values[9][0] || '').trim()  // B10 (form question)
     };
     
     return json(config);

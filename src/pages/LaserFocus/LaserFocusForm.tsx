@@ -19,6 +19,8 @@ interface FormConfig {
   yAxisLabel1: string;
   yAxisLabel2: string;
   yAxisLabel3: string;
+  xAxisQuestion: string;
+  yAxisQuestion: string;
 }
 
 interface ResponseRow {
@@ -93,7 +95,9 @@ const LaserFocusForm: React.FC = () => {
     xAxisLabel3: 'Long-Term',
     yAxisLabel1: 'Low',
     yAxisLabel2: '',
-    yAxisLabel3: 'High'
+    yAxisLabel3: 'High',
+    xAxisQuestion: 'time to value',
+    yAxisQuestion: 'impact'
   });
   const [configLoading, setConfigLoading] = useState(true);
 
@@ -261,7 +265,7 @@ const LaserFocusForm: React.FC = () => {
       )}
       {step === 3 && (
         <div className={styles.step}>
-          <label>Drag to rate the estimated {config.yAxisTitle}… </label>
+          <label>{config.yAxisQuestion}</label>
           <div
             ref={impactBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}
@@ -314,7 +318,7 @@ const LaserFocusForm: React.FC = () => {
       )}
       {step === 4 && (
         <div className={styles.step}>
-          <label>Drag to rate the estimated {config.xAxisTitle}… </label>
+          <label>{config.xAxisQuestion}</label>
           <div
             ref={timeToValueBoxRef}
             className={`${styles.sliderBox} ${styles.sliderBoxFull}`}

@@ -33,6 +33,8 @@ interface FormConfig {
   yAxisLabel1: string;
   yAxisLabel2: string;
   yAxisLabel3: string;
+  xAxisQuestion?: string;
+  yAxisQuestion?: string;
 }
 
 interface DataPoint {
