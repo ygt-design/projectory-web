@@ -21,7 +21,7 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api\/venting-machine-form/, '')
       },
       '/api/laser-focus-form': {
-        target: 'https://script.google.com/macros/s/AKfycbx008M516hGzbzP_8uczo-jgt0JSIclh5Dr_2bmz2Vor_Z7ONPA5Wc6v3dq18Ny7bGD/exec',
+        target: 'https://script.google.com/macros/s/AKfycbw-2YogN1mtMr-wrhyMfqBjiMcKpRzXzQ8m2biNBR6Y1dA0Sdzh9Opdqy0JObQ0Nn31/exec',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/laser-focus-form/, ''),
         configure: (proxy) => {

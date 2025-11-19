@@ -17,8 +17,8 @@ const TEXT_OPACITY = 0.95;
 
 // Fetch and polling constants
 const FETCH_LIMIT = 500;
-const POLLING_INTERVAL = 1000;
-const POLLING_INTERVAL_ON_FOCUS = 2000;
+const TIMESTAMP_POLLING_INTERVAL = 2000;
+const TIMESTAMP_POLLING_INTERVAL_ON_FOCUS = 3000;
 
 // Cursor smoothing
 const LERP_FACTOR = 0.25;
@@ -120,6 +120,9 @@ const ScatterPlot: React.FC = () => {
   });
 
   const newRowsRef = useRef<Set<string>>(new Set());
+  const renderedNodesRef = useRef<Set<string>>(new Set());
+  const lastKnownTimestampRef = useRef<number>(0);
+  const initialLoadCompleteRef = useRef<boolean>(false);
 
   // Stats snapshot (highest/lowest effort/impact)
   const stats = useMemo(() => {
@@ -405,10 +408,15 @@ const ScatterPlot: React.FC = () => {
       arrayLenRef.current = points.length;
       console.log('[DEBUG] Initial load - points:', points.length);
       console.log('[DEBUG] First parsed point:', points[0]);
+      
+      // Mark all initial points for animation
+      points.forEach(d => {
+        newRowsRef.current.add(keyForPoint(d));
+      });
+      
       setData(points);
       setLiveStatus({ lastUpdated: Date.now(), rowCount: points.length });
-      // Initial load complete - don't animate these points
-      setInitialAnimating(false);
+      // Don't set initialAnimating to false here - let render complete handle it
     } catch (err) {
       console.error('Initial load error:', err);
     }
@@ -537,6 +545,25 @@ const ScatterPlot: React.FC = () => {
     }
   }, []);
 
+  const checkForChanges = useCallback(async () => {
+    try {
+      const res = await fetch(`${PROXY_PATH}?action=timestamp&_t=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) return;
+      
+      const body = await res.json();
+      const serverTimestamp = Number(body.timestamp) || 0;
+      
+      // If timestamp has changed, fetch new data
+      if (serverTimestamp > lastKnownTimestampRef.current) {
+        console.log('[DEBUG] Timestamp changed, fetching new data:', serverTimestamp);
+        lastKnownTimestampRef.current = serverTimestamp;
+        await fetchIncremental();
+      }
+    } catch (err) {
+      console.error('Timestamp check error:', err);
+    }
+  }, [fetchIncremental]);
+
   useEffect(() => {
     let canceled = false;
     const boot = async () => {
@@ -559,7 +586,17 @@ const ScatterPlot: React.FC = () => {
         await initialLoad();
         if (canceled) return;
         initialFetchDone.current = true;
-        fetchIncremental();
+        
+        // Get initial timestamp
+        try {
+          const res = await fetch(`${PROXY_PATH}?action=timestamp&_t=${Date.now()}`, { cache: 'no-store' });
+          if (res.ok) {
+            const body = await res.json();
+            lastKnownTimestampRef.current = Number(body.timestamp) || 0;
+          }
+        } catch (err) {
+          console.error('Initial timestamp fetch error:', err);
+        }
       }
     };
     boot();
@@ -573,27 +610,27 @@ const ScatterPlot: React.FC = () => {
 
   useEffect(() => {
     if (pollIdRef.current) window.clearInterval(pollIdRef.current);
-    fetchIncremental();
+    checkForChanges();
     pollIdRef.current = window.setInterval(() => {
-      fetchIncremental();
-    }, POLLING_INTERVAL);
+      checkForChanges();
+    }, TIMESTAMP_POLLING_INTERVAL);
     return () => {
       if (pollIdRef.current) window.clearInterval(pollIdRef.current);
     };
-  }, [fetchIncremental]);
+  }, [checkForChanges]);
 
   useEffect(() => {
     const onVisible = () => {
       if (document.visibilityState === 'visible') {
-        fetchIncremental();
+        checkForChanges();
         if (pollIdRef.current) window.clearInterval(pollIdRef.current);
         pollIdRef.current = window.setInterval(() => {
-          fetchIncremental();
-        }, POLLING_INTERVAL_ON_FOCUS);
+          checkForChanges();
+        }, TIMESTAMP_POLLING_INTERVAL_ON_FOCUS);
       }
     };
     const onFocus = () => {
-      fetchIncremental();
+      checkForChanges();
     };
     document.addEventListener('visibilitychange', onVisible);
     window.addEventListener('focus', onFocus);
@@ -601,7 +638,7 @@ const ScatterPlot: React.FC = () => {
       document.removeEventListener('visibilitychange', onVisible);
       window.removeEventListener('focus', onFocus);
     };
-  }, [fetchIncremental]);
+  }, [checkForChanges]);
 
   useEffect(() => {
     const el = cursorRef.current;
@@ -725,15 +762,33 @@ const ScatterPlot: React.FC = () => {
 
     nodesMerge.select('text').text((d) => d.table.toString());
 
-    // Handle entering nodes - separate new edits from initial load
+    // Handle entering nodes - track rendered nodes to prevent re-animation
     let animationIndex = 0;
+    let animationsStarted = 0;
+    
     nodesEnter.each(function(d) {
       const pointKey = keyForPoint(d);
       const [jx, jy] = jitterOffset(d);
-      const isNewEdit = newRowsRef.current.has(pointKey);
       
-      if (isNewEdit) {
-        // Animate new rows that were detected from sheet edits
+      // Check if this node was already rendered (should never re-animate)
+      if (renderedNodesRef.current.has(pointKey)) {
+        // This shouldn't happen, but if it does, just show it instantly
+        d3.select(this)
+          .attr('transform', `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`)
+          .style('opacity', 1);
+        d3.select(this).select('circle')
+          .style('opacity', pointsVisible ? NODE_OPACITY : 0);
+        d3.select(this).select('text')
+          .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
+        return;
+      }
+      
+      // Check if this node should be animated (new addition)
+      const shouldAnimate = newRowsRef.current.has(pointKey);
+      
+      if (shouldAnimate) {
+        // Animate this node
+        animationsStarted++;
         d3.select(this)
           .transition()
           .duration(ENTER_ANIMATION_DURATION)
@@ -741,8 +796,15 @@ const ScatterPlot: React.FC = () => {
           .attr('transform', `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`)
           .style('opacity', 1)
           .on('end', () => {
-            // Remove from tracking after animation completes
+            // Remove from new rows tracking and add to rendered tracking
             newRowsRef.current.delete(pointKey);
+            renderedNodesRef.current.add(pointKey);
+            
+            // If this was part of initial load, mark initial load complete
+            if (!initialLoadCompleteRef.current) {
+              initialLoadCompleteRef.current = true;
+              setInitialAnimating(false);
+            }
           });
         
         d3.select(this).select('circle')
@@ -759,18 +821,25 @@ const ScatterPlot: React.FC = () => {
         
         animationIndex++;
       } else {
-        // Show initial load data instantly (no animation)
+        // Show instantly (no animation) - shouldn't normally happen
         d3.select(this)
           .attr('transform', `translate(${x(d.effort) + jx}, ${y(d.impact) + jy})`)
           .style('opacity', 1);
-        
         d3.select(this).select('circle')
           .style('opacity', pointsVisible ? NODE_OPACITY : 0);
-        
         d3.select(this).select('text')
           .style('opacity', pointsVisible ? TEXT_OPACITY : 0);
+        
+        // Still add to rendered nodes
+        renderedNodesRef.current.add(pointKey);
       }
     });
+    
+    // If no animations started and we have data, mark initial load complete
+    if (animationsStarted === 0 && data.length > 0 && !initialLoadCompleteRef.current) {
+      initialLoadCompleteRef.current = true;
+      setInitialAnimating(false);
+    }
 
     // Update existing nodes positions
     if (!initialAnimating) {

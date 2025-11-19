@@ -1,6 +1,26 @@
 // LaserFocus Google Apps Script
 // This handles form submissions and serves configuration
 
+// Trigger function that runs when the sheet is edited
+function onEdit(e) {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const sheetId = props.getProperty('SHEET_ID');
+    if (!sheetId) return;
+    
+    const ss = SpreadsheetApp.openById(sheetId);
+    const outputSheet = ss.getSheetByName('Output');
+    if (!outputSheet) return;
+    
+    // Update timestamp in A1 when any edit occurs in Output sheet
+    if (e && e.range && e.range.getSheet().getName() === 'Output') {
+      outputSheet.getRange('A1').setValue(new Date().getTime());
+    }
+  } catch (error) {
+    console.error('onEdit error:', error);
+  }
+}
+
 function doPost(e) {
   if (!e || !e.postData || !e.postData.contents) {
     return json({ error: 'No POST data received' });
@@ -20,6 +40,9 @@ function doPost(e) {
     data.effort
   ]);
   
+  // Update timestamp in A1 to trigger change detection
+  sheet.getRange('A1').setValue(new Date().getTime());
+  
   return json({ success: true });
 }
 
@@ -30,6 +53,11 @@ function doGet(e) {
   // Handle config request
   if (action === 'config') {
     return getFormConfig();
+  }
+  
+  // Handle timestamp request
+  if (action === 'timestamp') {
+    return getLastEditTimestamp();
   }
   
   // Get all data from Output
@@ -65,6 +93,33 @@ function doGet(e) {
   
   // Default: return array
   return json(allData);
+}
+
+function getLastEditTimestamp() {
+  try {
+    const props = PropertiesService.getScriptProperties();
+    const sheetId = props.getProperty('SHEET_ID');
+    
+    if (!sheetId) {
+      return json({ error: 'SHEET_ID not configured' });
+    }
+    
+    const ss = SpreadsheetApp.openById(sheetId);
+    const outputSheet = ss.getSheetByName('Output');
+    
+    if (!outputSheet) {
+      return json({ timestamp: 0 });
+    }
+    
+    // Read timestamp from A1
+    const timestampValue = outputSheet.getRange('A1').getValue();
+    const timestamp = timestampValue ? Number(timestampValue) : 0;
+    
+    return json({ timestamp: timestamp });
+    
+  } catch (error) {
+    return json({ error: 'Failed to get timestamp: ' + error.toString(), timestamp: 0 });
+  }
 }
 
 function getFormConfig() {
