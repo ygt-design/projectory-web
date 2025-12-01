@@ -296,87 +296,134 @@ const ScatterPlot: React.FC = () => {
 
     // X-axis segment labels (3 measures)
     axes
-      .append('text')
-      .attr('x', x(2.25)) // Left (center of 1-3.5 range)
-      .attr('y', height - margin.bottom + 30)
-      .attr('text-anchor', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', x(2.25) - 75) // Left (center of 1-3.5 range) - half width for centering
+      .attr('y', height - margin.bottom + 30 - 8) // Adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'center')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
       .text(config.xAxisLabel1);
 
     axes
-      .append('text')
-      .attr('x', x(5.5)) // Middle (center of 3.5-7.5 range)
-      .attr('y', height - margin.bottom + 30)
-      .attr('text-anchor', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', x(5.5) - 75) // Middle (center of 3.5-7.5 range) - half width for centering
+      .attr('y', height - margin.bottom + 30 - 8) // Adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'center')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
       .text(config.xAxisLabel2);
 
     axes
-      .append('text')
-      .attr('x', x(8.75)) // Right (center of 7.5-10 range)
-      .attr('y', height - margin.bottom + 30)
-      .attr('text-anchor', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', x(8.75) - 75) // Right (center of 7.5-10 range) - half width for centering
+      .attr('y', height - margin.bottom + 30 - 8) // Adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'center')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
       .text(config.xAxisLabel3);
 
     // X-axis title at the right end
     axes
-      .append('text')
+      .append('foreignObject')
+      .attr('x', width - margin.right + 50)
+      .attr('y', height - margin.bottom - 50) // Center vertically within the available space
+      .attr('width', 150)
+      .attr('height', 100)
+      .append('xhtml:div')
       .attr('class', 'axis-label')
-      .attr('transform', `translate(${width - margin.right + 20}, ${height - margin.bottom})`)
-      .attr('text-anchor', 'start')
-      .style('fill', 'white')
-      .style('font-size', '32px')
+      .style('color', 'white')
+      .style('font-size', '35px')
+      .style('font-family', 'FoundersGrotesk_Bold')
+      .style('text-align', 'left')
+      .style('max-width', '200px')
+      .style('word-wrap', 'break-word')
+      .style('display', 'flex')
+      .style('align-items', 'center')
+      .style('height', '100%')
       .text(config.xAxisTitle);
 
     // Y-axis segment labels (3 measures)
     axes
-      .append('text')
-      .attr('x', margin.left - 20)
-      .attr('y', y(2.25)) // Bottom (center of 1-3.5 range)
-      .attr('text-anchor', 'end')
-      .attr('dominant-baseline', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', margin.left - 20 - 150) // Position to the left, accounting for width
+      .attr('y', y(2.25) - 10) // Bottom (center of 1-3.5 range) - adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'right')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
+      .style('line-height', '1.2')
       .text(config.yAxisLabel1);
 
     axes
-      .append('text')
-      .attr('x', margin.left - 20)
-      .attr('y', y(5.5)) // Middle (center of 3.5-7.5 range)
-      .attr('text-anchor', 'end')
-      .attr('dominant-baseline', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', margin.left - 20 - 150) // Position to the left, accounting for width
+      .attr('y', y(5.5) - 10) // Middle (center of 3.5-7.5 range) - adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'right')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
+      .style('line-height', '1.2')
       .text(config.yAxisLabel2);
 
     axes
-      .append('text')
-      .attr('x', margin.left - 20)
-      .attr('y', y(8.75)) // Top (center of 7.5-10 range)
-      .attr('text-anchor', 'end')
-      .attr('dominant-baseline', 'middle')
-      .style('fill', '#E6F2EF')
-      .style('font-size', '16px')
+      .append('foreignObject')
+      .attr('x', margin.left - 20 - 150) // Position to the left, accounting for width
+      .attr('y', y(8.75) - 10) // Top (center of 7.5-10 range) - adjust for vertical centering
+      .attr('width', 150)
+      .attr('height', 50)
+      .append('xhtml:div')
+      .style('color', '#E6F2EF')
+      .style('font-size', '18px')
       .style('font-weight', '500')
+      .style('text-align', 'right')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
       .text(config.yAxisLabel3);
 
     // Y-axis title at the top
     axes
-      .append('text')
+      .append('foreignObject')
+      .attr('x', margin.left - 30)
+      .attr('y', margin.top - 66) // Add space below the title (moved up by 30px)
+      .attr('width', 150)
+      .attr('height', 100)
+      .append('xhtml:div')
       .attr('class', 'axis-label')
-      .attr('transform', `translate(${margin.left - 30}, ${margin.top - 20})`)
-      .attr('text-anchor', 'start')
-      .style('fill', 'white')
-      .style('font-size', '32px')
+      .style('color', 'white')
+      .style('font-size', '35px')
+      .style('font-family', 'FoundersGrotesk_Bold')
+      .style('text-align', 'left')
+      .style('max-width', '150px')
+      .style('word-wrap', 'break-word')
+      .style('line-height', '1.2')
       .text(config.yAxisTitle);
   }, [layersReady, x, y, width, height, margin, config]);
 
