@@ -87,12 +87,12 @@ const GetStartedForm: React.FC = () => {
         return {
           src,
           style: {
-            position: 'absolute',
+            position: 'absolute' as const,
             top,
             left,
             width: `${size}px`,
             transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
-            pointerEvents: 'none',
+            pointerEvents: 'none' as const,
             opacity: 1,
           },
         };
@@ -102,7 +102,6 @@ const GetStartedForm: React.FC = () => {
   }, [recommended]);
 
   // Determine if only one type is selected
-  const onlyFacilitated = filters.type.length === 1 && filters.type[0] === 'Facilitated session';
   const onlyInteractive = filters.type.length === 1 && filters.type[0] === 'Interactive installation';
   // Build dynamic steps: skip seating when only interactive installation is chosen
   const stepsUsed = onlyInteractive

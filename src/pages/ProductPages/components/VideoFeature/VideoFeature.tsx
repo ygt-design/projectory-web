@@ -21,9 +21,7 @@ const VideoFeature = ({ videoUrl, title }: VideoFeatureProps) => {
           src={videoUrl}
           title="YouTube Video"
           frameBorder="0"
-          // mute the video
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          controls={0}
           allowFullScreen
           className={styles.video}
         ></iframe>

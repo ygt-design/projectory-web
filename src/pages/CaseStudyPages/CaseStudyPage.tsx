@@ -21,31 +21,76 @@ const CaseStudyPage = () => {
     <div className={styles.container}>
       {caseStudy.sections.map((section, index) => {
         if (section.type === 'hero') {
-          return <ProductHero key={index} product={caseStudy} />;
+          // Map caseStudy to ProductHero format, using titleColor as categoryColor fallback
+          const productForHero: {
+            id: string;
+            heroVideo: string;
+            category: string;
+            categoryColor: string;
+            categoryHighlight: string;
+            tagline: string;
+            tags?: string[];
+            clientLogo?: string;
+          } = {
+            id: caseStudy.id,
+            heroVideo: caseStudy.heroVideo,
+            category: caseStudy.category,
+            categoryColor: ('categoryColor' in caseStudy && caseStudy.categoryColor) 
+              ? (caseStudy.categoryColor as string)
+              : caseStudy.titleColor || '#FFFFFF',
+            categoryHighlight: (caseStudy.categoryHighlight || '') as string,
+            tagline: caseStudy.tagline,
+            tags: (caseStudy.tags && Array.isArray(caseStudy.tags)) ? caseStudy.tags : undefined,
+            clientLogo: caseStudy.clientLogo,
+          };
+          return <ProductHero key={index} product={productForHero as Parameters<typeof ProductHero>[0]['product']} />;
         }
         if(section.type === 'details'){
-          return <ProductDetails key={index} product={caseStudy} details={section.content} />;
+          if (!section.content) return null;
+          // Ensure description exists - use heading as description if description is missing
+          const detailsContent = {
+            heading: ('heading' in section.content) ? (section.content.heading as string) : '',
+            description: ('description' in section.content && section.content.description) 
+              ? (section.content.description as string)
+              : ('heading' in section.content ? section.content.heading as string : ''),
+            features: ('features' in section.content) ? (section.content.features as string[]) : undefined,
+            headingType: ('headingType' in section.content && 
+              (section.content.headingType === 'features' || section.content.headingType === 'overview'))
+              ? section.content.headingType as 'features' | 'overview'
+              : undefined,
+          };
+          return <ProductDetails key={index} product={caseStudy} details={detailsContent} />;
         }
 
         if(section.type === 'image'){
-          return <img key={index} src={section.content.imageUrl} alt="" className={styles.fullPageImage} />;
+          if (!section.content || !('imageUrl' in section.content)) return null;
+          return <img key={index} src={section.content.imageUrl as string} alt="" className={styles.fullPageImage} />;
         }
 
         if (section.type === 'imageGrid') {
+          if (!section.content || !('imageLeft' in section.content) || !('imageRight' in section.content)) return null;
           return (
             <div className={styles.imageGrid} key={index}>
-              <img src={section.content.imageLeft} alt="" className={styles.imageLeft} />
-              <img src={section.content.imageRight} alt="" className={styles.imageRight} />
+              <img src={section.content.imageLeft as string} alt="" className={styles.imageLeft} />
+              <img src={section.content.imageRight as string} alt="" className={styles.imageRight} />
             </div>
           );
         }
 
         if(section.type === 'testimonialSizzle'){
-          return <TestimonialSizzle key={index} {...section.content} />;
+          if (!section.content) return null;
+          const testimonialContent = section.content as {
+            videoSrc?: string | null;
+            quote?: string | null;
+            author?: string | null;
+            role?: string | null;
+          };
+          return <TestimonialSizzle key={index} {...testimonialContent} />;
         }
 
         if(section.type === 'how-we-built'){
-          return <HowWeBuilt key={index} installations={section.content.installations} />;
+          if (!section.content || !('installations' in section.content) || !section.content.installations) return null;
+          return <HowWeBuilt key={index} installations={section.content.installations as Array<{name: string; color: string; image: string; description: string; link: string}>} />;
         }
 
         if(section.type === 'tealCTA'){
@@ -58,7 +103,16 @@ const CaseStudyPage = () => {
         }
 
         if(section.type === 'dataFeature'){
-          return <DataFeature key={index} {...section.content} />;
+          if (!section.content) return null;
+          const dataFeatureContent = section.content as {
+            title?: string;
+            description?: string;
+            imageUrl?: string;
+          };
+          if (!dataFeatureContent.title || !dataFeatureContent.description || !dataFeatureContent.imageUrl) {
+            return null;
+          }
+          return <DataFeature key={index} title={dataFeatureContent.title} description={dataFeatureContent.description} imageUrl={dataFeatureContent.imageUrl} />;
         }
 
         return null;

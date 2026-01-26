@@ -1,6 +1,6 @@
 // 📂 src/components/FeaturedCarousel/FeaturedCarousel.tsx
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCarousel.module.css';
 import { products } from '../../pages/ProductPages/productsData';
@@ -33,16 +33,11 @@ const FeaturedCarousel: React.FC = () => {
   // Interval ref
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    startCycle();
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
+  }, [featuredProducts.length]);
 
-    // Cleanup on unmount
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [currentIndex]);
-
-  const startCycle = () => {
+  const startCycle = useCallback(() => {
     // Reset progress and fade in
     setProgress(0);
     setFadeState('fadeIn');
@@ -68,7 +63,7 @@ const FeaturedCarousel: React.FC = () => {
           timerBarRef.current.style.transition = 'none';
           setProgress(0);
           // Force reflow to apply the change
-          timerBarRef.current.offsetHeight;
+          void timerBarRef.current.offsetHeight;
           // Re-enable transition for future updates
           timerBarRef.current.style.transition = 'height 0.1s linear';
         }
@@ -79,11 +74,16 @@ const FeaturedCarousel: React.FC = () => {
         }, 400); // fade-out duration in ms
       }
     }, step);
-  };
+  }, [goToNext]);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
-  };
+  useEffect(() => {
+    startCycle();
+
+    // Cleanup on unmount
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [currentIndex, startCycle]);
 
   const currentProduct = featuredProducts[currentIndex];
 
