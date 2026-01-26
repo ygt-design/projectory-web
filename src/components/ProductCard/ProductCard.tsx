@@ -1,12 +1,10 @@
 // src/components/ProductCard/ProductCard.tsx
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
-
-import { AdvancedVideo, lazyload as videoLazyload } from '@cloudinary/react';
 
 interface Product {
   id: string;
@@ -16,6 +14,8 @@ interface Product {
   categoryColor?: string;
   thumbnail: string;
   bgVideo?: string;
+  bgVideoPublicId?: string;
+  shortDescription?: string;
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
@@ -26,6 +26,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [descHeight, setDescHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 900);
@@ -33,26 +34,25 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
   const descRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     if (descRef.current) setDescHeight(descRef.current.scrollHeight);
   }, [product.shortDescription]);
 
-  // Set up Cloudinary video or fallback unconditionally
-  const videoComponent =
-    product.bgVideoPublicId ? (
-      <AdvancedVideo
-        cldVid={cld.video(product.bgVideoPublicId).videoCodec('auto').format('auto').quality('auto')}
-        plugins={[videoLazyload({ rootMargin: '200px' })]}
-        controls={false}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className={styles.bgVideo}
-      />
-    ) : product.bgVideo ? (
+  // Only load video when hovered (deferred loading)
+  useEffect(() => {
+    if (isHovered && !isMobile && product.bgVideo && !shouldLoadVideo) {
+      setShouldLoadVideo(true);
+    }
+  }, [isHovered, isMobile, product.bgVideo, shouldLoadVideo]);
+
+  // Memoize video component to prevent recreation
+  const videoComponent = useMemo(() => {
+    if (!shouldLoadVideo || !product.bgVideo) return null;
+    
+    return (
       <video
         className={styles.bgVideo}
         src={product.bgVideo}
@@ -63,7 +63,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         loop
         playsInline
       />
-    ) : null;
+    );
+  }, [shouldLoadVideo, product.bgVideo, product.thumbnail]);
 
   return (
     <div
@@ -81,7 +82,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {!isMobile && (
+        {!isMobile && videoComponent && (
           <div
             className={styles.bgVideoWrapper}
             style={{
@@ -89,7 +90,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
               transition: 'opacity 0.3s ease-in-out',
             }}
           >
-            {isHovered && videoComponent}
+            {videoComponent}
           </div>
         )}
       </div>
@@ -128,4 +129,10 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   );
 };
 
-export default ProductCard;
+// Memoize component to prevent unnecessary re-renders
+export default React.memo(ProductCard, (prevProps: { product: Product }, nextProps: { product: Product }) => {
+  // Only re-render if product data actually changes
+  return prevProps.product.id === nextProps.product.id &&
+         prevProps.product.thumbnail === nextProps.product.thumbnail &&
+         prevProps.product.bgVideo === nextProps.product.bgVideo;
+});

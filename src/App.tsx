@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout/Layout';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
@@ -15,8 +16,24 @@ import ComboConvoForm from './pages/ComboConvo/ComboConvoForm';
 import LaserFocusForm from './pages/LaserFocus/LaserFocusForm';
 import ScatterPlot from './pages/LaserFocus/ScatterPlot/ScatterPlot';
 import VentingMachine from './pages/VentingMachine/VentingMachine';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a loading period or wait for window load
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3 seconds to show off the animation
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <LikedProductsProvider>
       <Router>

@@ -81,8 +81,9 @@ const TAG_INFO: Record<string, { heading: string; description: string }> = {
 };
 
 // Helper function to group products into rows according to a pattern.
-const groupItems = (items: any[]) => {
-  const groups: any[][] = [];
+type ProductItem = { id: string; type?: 'cta'; [key: string]: unknown };
+const groupItems = (items: ProductItem[]) => {
+  const groups: ProductItem[][] = [];
   let i = 0;
   // Adjust pattern as desired; here we cycle through 3, 3, 2 items per row.
   const pattern = [3, 3, 2];
@@ -97,12 +98,14 @@ const groupItems = (items: any[]) => {
   if (groups.length > 1 && groups[groups.length - 1].length === 1) {
     const lastGroup = groups.pop();
     const prevGroup = groups.pop();
-    const mergedGroup = prevGroup.concat(lastGroup);
-    if (mergedGroup.length === 4) {
-      groups.push(mergedGroup.slice(0, 2));
-      groups.push(mergedGroup.slice(2));
-    } else {
-      groups.push(mergedGroup);
+    if (lastGroup && prevGroup) {
+      const mergedGroup = prevGroup.concat(lastGroup);
+      if (mergedGroup.length === 4) {
+        groups.push(mergedGroup.slice(0, 2));
+        groups.push(mergedGroup.slice(2));
+      } else {
+        groups.push(mergedGroup);
+      }
     }
   }
   // Special case: if exactly 3 items, group them in one row.
@@ -114,7 +117,7 @@ const groupItems = (items: any[]) => {
 
 const Products = () => {
   const [filteredProducts] = useState(allProducts);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const paramTag = searchParams.get('tag') || 'All Products';
   // Case-insensitive match against TAGS
   const matchedTag = TAGS.find(t => t.toLowerCase() === paramTag.toLowerCase());
@@ -158,7 +161,7 @@ const Products = () => {
     if (initialTag !== 'All Products') {
       tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, []); 
+  }, [initialTag]); 
 
   useEffect(() => {
     if (location.hash === '#tagContent') {
@@ -172,7 +175,7 @@ const Products = () => {
       : filteredProducts.filter((prod) => prod.tags?.includes(selectedTag));
 
   // Combine displayed products with a CTA item.
-  const items = [...displayedProducts, { id: 'cta', type: 'cta' }];
+  const items: ProductItem[] = [...displayedProducts, { id: 'cta', type: 'cta' }];
 
   // Group items into rows.
   const groupedItems =
@@ -260,13 +263,14 @@ const Products = () => {
               className={styles.row}
               style={{ gridTemplateColumns: `repeat(${group.length}, 1fr)` }}
             >
-              {group.map((item) =>
-                item.type === 'cta' ? (
-                  <GridCTA key="cta" />
-                ) : (
-                  <ProductCard key={item.id} product={item} />
-                )
-              )}
+              {group.map((item) => {
+                if ('type' in item && item.type === 'cta') {
+                  return <GridCTA key="cta" />;
+                }
+                // Type assertion: we know this is a product at this point
+                const product = item as { id: string; name: string; category: string; categoryHighlight?: string | null; categoryColor?: string; thumbnail: string; bgVideo?: string; tags?: string[] };
+                return <ProductCard key={item.id} product={product} />;
+              })}
             </div>
           ))}
         </div>

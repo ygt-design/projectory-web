@@ -11,7 +11,7 @@ const CASE_STUDIES = [
     id: 'cibc-leadership',
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
-    imageUrl: 'https://res.cloudinary.com/dduchyyhf/image/upload/v1747841297/FM8A5043-Enhanced-NR_qywkjc.webp',
+    imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
     link: '/case-study/cibc-global-leadership-summit',
   },
   {
@@ -19,7 +19,7 @@ const CASE_STUDIES = [
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit',
     imageUrl:
-      'https://res.cloudinary.com/dduchyyhf/image/upload/v1747839217/Screenshot_2025-05-20_at_19.18.46_gfnyht.webp',
+      'https://res.cloudinary.com/dazzkestf/image/upload/v1749519212/Screenshot_2025-05-20_at_19.18.46_gfnyht_ssydvf.webp',
     link: '/case-study/pcma-2024-cema-summit',
   },
 ];

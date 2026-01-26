@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Intro from '../../components/Intro/Intro';
 import styles from './GetStarted.module.css';
 import faqStyles from '../../components/FAQ/FAQ.module.css';  
 import ContactForm from '../../components/ContactForm/ContactForm';
 import FAQ from '../../components/FAQ/FAQ';
+import CalendlyModal from './CalendlyModal/CalendlyModal';
 
 const extraElement = (
   <div className={faqStyles.extraContent}>
@@ -66,6 +67,7 @@ const caseStudiesFAQ = [
 
 const GetStarted = () => {
   const location = useLocation();
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -94,9 +96,12 @@ const GetStarted = () => {
         <div className={`${styles.gitBlock} ${styles.gitBlockLeft}`}>
         <h3>Book a Meeting with Us</h3>
         <p>Tell us about your event, and we'll prepare some initial ideas to discuss.</p>
-        <a href="https://calendly.com/oren-/projectory?month=2025-02" target="_blank" rel="noopener noreferrer" className={styles.gitButton}>
+        <button 
+          onClick={() => setIsCalendlyOpen(true)} 
+          className={styles.gitButton}
+        >
           Book a Meeting
-        </a>
+        </button>
       </div>
       <div className={`${styles.gitBlock} ${styles.gitBlockRight}`}>
         <h3>Message us on LinkedIn </h3>
@@ -118,6 +123,12 @@ const GetStarted = () => {
     <div className={styles.faqWrapper}>
       <FAQ faqs={caseStudiesFAQ} />
     </div>
+
+    <CalendlyModal 
+      isOpen={isCalendlyOpen} 
+      onClose={() => setIsCalendlyOpen(false)}
+      url="https://calendly.com/oren-/projectory?month=2026-01"
+    />
     </div>
   );
 };
