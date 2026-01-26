@@ -81,28 +81,7 @@ iframe {
 }
 
 .middleVideoSlide {
-    cursor: none;
     position: relative;
-}
-
-.customCursor {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.1);
-    border: 0.25px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-family: 'FounderGrotesk_Regular', sans-serif;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-    opacity: 1;
 }
 
 .videoSlide video {

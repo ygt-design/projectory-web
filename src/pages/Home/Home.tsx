@@ -11,6 +11,7 @@ import ClientLogos from '../../components/ClientLogos/ClientLogos';
 import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
 import BottomCTA from '../../components/BottomCTA/BottomCTA';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import CustomCursor from '../../components/CustomCursor/CustomCursor';
 
 import { products as allProducts } from '../../pages/ProductPages/productsData';
 import icon1 from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
@@ -32,12 +33,17 @@ const Home = () => {
   const secondSectionRef = useRef<HTMLDivElement>(null);
   const middleVideoRef = useRef<HTMLVideoElement>(null);
   const middleVideoSlideRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  // Initialize isMobile with actual check to avoid flash
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 764 : false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [isHoveringMiddleVideo, setIsHoveringMiddleVideo] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [cursorRotation, setCursorRotation] = useState(0);
-  const previousPositionRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Check screen size to disable animations on mobile - run first
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 1024);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // Handle ESC key to close lightbox
   useEffect(() => {
@@ -62,78 +68,6 @@ const Home = () => {
     };
   }, [isLightboxOpen]);
 
-  // Handle custom cursor for middle video
-  useEffect(() => {
-    const videoSlide = middleVideoSlideRef.current;
-    if (!videoSlide) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const currentX = e.clientX;
-      const currentY = e.clientY;
-      
-      // Update position immediately
-      setCursorPosition({ x: currentX, y: currentY });
-
-      // Calculate rotation based on movement direction (more subtle)
-      if (previousPositionRef.current) {
-        const deltaX = currentX - previousPositionRef.current.x;
-        const deltaY = currentY - previousPositionRef.current.y;
-        
-        // Only update rotation if there's significant movement (to avoid jitter)
-        if (Math.abs(deltaX) > 2 || Math.abs(deltaY) > 2) {
-          // Calculate angle in degrees
-          const rawAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-          
-          // Limit rotation to a subtle range (-15 to 15 degrees)
-          // Scale the rotation based on movement speed for subtlety
-          const movementSpeed = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-          const maxRotation = 15; // Maximum rotation in degrees
-          const speedFactor = Math.min(movementSpeed / 10, 1); // Normalize speed
-          
-          // Apply subtle rotation (only use a fraction of the calculated angle)
-          const subtleAngle = rawAngle * 0.3 * speedFactor;
-          const clampedAngle = Math.max(-maxRotation, Math.min(maxRotation, subtleAngle));
-          
-          setCursorRotation(clampedAngle);
-        }
-      }
-      
-      previousPositionRef.current = { x: currentX, y: currentY };
-    };
-
-    const handleMouseEnter = (e: MouseEvent) => {
-      setIsHoveringMiddleVideo(true);
-      // Initialize position immediately on enter
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-      previousPositionRef.current = { x: e.clientX, y: e.clientY };
-      setCursorRotation(0);
-    };
-
-    const handleMouseLeave = () => {
-      setIsHoveringMiddleVideo(false);
-      previousPositionRef.current = null;
-      // Reset rotation when leaving
-      setCursorRotation(0);
-    };
-
-    videoSlide.addEventListener('mousemove', handleMouseMove);
-    videoSlide.addEventListener('mouseenter', handleMouseEnter);
-    videoSlide.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      videoSlide.removeEventListener('mousemove', handleMouseMove);
-      videoSlide.removeEventListener('mouseenter', handleMouseEnter);
-      videoSlide.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
-  // Check screen size to disable animations on mobile
-  useEffect(() => {
-    const checkScreenSize = () => setIsMobile(window.innerWidth <= 1024);
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   // Handle middle video loading
   useEffect(() => {
@@ -302,18 +236,7 @@ const Home = () => {
                 src="https://res.cloudinary.com/dazzkestf/video/upload/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
                 {...commonVideoProps}
               />
-              {isHoveringMiddleVideo && (
-                <div 
-                  className={styles.customCursor}
-                  style={{
-                    left: `${cursorPosition.x}px`,
-                    top: `${cursorPosition.y}px`,
-                    transform: `translate(-50%, -50%) rotate(${cursorRotation}deg)`,
-                  }}
-                >
-                  see the whole reel
-                </div>
-              )}
+              <CustomCursor targetRef={middleVideoSlideRef} isMobile={isMobile} />
             </div>
             {!isMobile && (
               <div className={styles.videoSlide}>

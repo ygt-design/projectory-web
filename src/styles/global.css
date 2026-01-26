@@ -33,6 +33,11 @@
 body{
     background-color: var(--black);
     color: white;
+    cursor: auto;
+}
+
+html {
+    cursor: auto;
 }
 
 
@@ -49,6 +54,18 @@ body{
 a{
     text-decoration: none;
     color: white;
+    cursor: pointer;
+}
+
+/* Ensure navbar always has normal cursor */
+nav,
+nav * {
+    cursor: auto !important;
+}
+
+nav a,
+nav button {
+    cursor: pointer !important;
 }
 
 h1{

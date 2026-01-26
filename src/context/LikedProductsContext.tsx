@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useContext, ReactNode } from 'react';
 
 interface LikedProductsContextValue {
