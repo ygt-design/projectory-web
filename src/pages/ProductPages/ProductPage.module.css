@@ -22,13 +22,9 @@
 
 .floatingLikeButton {
     position: fixed;
-    /* pins it to the viewport, not the page content */
     bottom: 20px;
-    /* 20px from the bottom edge */
-    right: 20px;
-    /* 20px from the right edge */
+    left: 20px;
     z-index: 9999;
-    /* ensure it's above other elements */
 }
 
 /* The button styling itself */
@@ -53,7 +49,7 @@
     position: fixed;
     font-size: 17px;
     bottom: 20px;
-    right: 80px;
+    left: 80px;
     padding: 12px 15px;
     border-radius: 8px;
     z-index: 9999;
