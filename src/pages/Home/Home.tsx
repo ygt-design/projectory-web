@@ -36,6 +36,10 @@ const Home = () => {
   // Initialize isMobile with actual check to avoid flash
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 764 : false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  // When autoplay is blocked (e.g. power saving), show "Tap to play" so one tap starts video
+  const [middleVideoNeedsTapToPlay, setMiddleVideoNeedsTapToPlay] = useState(false);
+  const setMiddleVideoNeedsTapToPlayRef = useRef(setMiddleVideoNeedsTapToPlay);
+  setMiddleVideoNeedsTapToPlayRef.current = setMiddleVideoNeedsTapToPlay;
 
   // Check screen size to disable animations on mobile - run first
   useEffect(() => {
@@ -69,28 +73,44 @@ const Home = () => {
   }, [isLightboxOpen]);
 
 
-  // Handle middle video loading
+  // Handle middle video: play when in view (fixes mobile autoplay) and when ready
   useEffect(() => {
     const video = middleVideoRef.current;
-    if (!video) return;
+    const container = middleVideoSlideRef.current;
+    if (!video || !container) return;
 
     const attemptPlay = () => {
       if (video.readyState >= 2) {
         video.play().catch(() => {
-          // Silently handle autoplay policy restrictions
+          // Autoplay blocked (power saving, strict browser, etc.) — show "Tap to play"
+          setMiddleVideoNeedsTapToPlayRef.current?.(true);
         });
       }
     };
 
     const handleCanPlay = () => attemptPlay();
     const handleLoadedData = () => attemptPlay();
+    const handlePlaying = () => setMiddleVideoNeedsTapToPlayRef.current?.(false);
 
     video.addEventListener('canplay', handleCanPlay);
     video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('playing', handlePlaying);
+
+    // On mobile, play() is often blocked unless the video is in view — use Intersection Observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry?.isIntersecting) attemptPlay();
+      },
+      { threshold: 0.25, rootMargin: '0px' }
+    );
+    observer.observe(container);
 
     return () => {
       video.removeEventListener('canplay', handleCanPlay);
       video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('playing', handlePlaying);
+      observer.disconnect();
     };
   }, []);
 
@@ -236,6 +256,18 @@ const Home = () => {
                 src="https://res.cloudinary.com/dazzkestf/video/upload/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
                 {...commonVideoProps}
               />
+              {middleVideoNeedsTapToPlay && (
+                <button
+                  type="button"
+                  className={styles.tapToPlayOverlay}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    middleVideoRef.current?.play().then(() => setMiddleVideoNeedsTapToPlay(false)).catch(() => {});
+                  }}
+                  aria-label="Play video"
+                >
+                </button>
+              )}
               <CustomCursor targetRef={middleVideoSlideRef} isMobile={isMobile} />
             </div>
             {!isMobile && (
