@@ -78,6 +78,22 @@ const GetStarted = () => {
     }
   }, [location]);
 
+  useEffect(() => {
+    if (location.hash === '#schedule-demo') {
+      setIsCalendlyOpen(true);
+      window.history.replaceState(null, '', '/get-started');
+    }
+  }, [location.hash]);
+
+  useEffect(() => {
+    if (location.hash === '#faq') {
+      const el = document.getElementById('faq');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
   return (
     <div className={styles.getStartedWrapper}>
       <Intro
@@ -114,7 +130,7 @@ const GetStarted = () => {
     </div>
 
 
-      <div className={styles.faqSection}>
+      <div id="faq" className={styles.faqSection}>
       <h2>Frequently Asked Questions</h2>
       <p>Curious about how Projectory works or what experiences
       are right for you? Below, we’ve answered some of the most common questions to help you get started and make the most of your event.</p>
