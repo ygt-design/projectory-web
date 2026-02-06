@@ -8,6 +8,7 @@ import { FiInstagram } from 'react-icons/fi';
 import logo from '../../assets/images/logo.svg';
 import termsConditionsPdf from '../../assets/documents/terms-conditions.pdf';
 import privacyPolicyPdf from '../../assets/documents/privacy-policy.pdf';
+import cookieNoticePdf from '../../assets/documents/cookie-notice.pdf';
 
 const WEB3FORMS_ACCESS_KEY = '1c3fa95b-e42f-4bc0-b339-025a18bc51eb';
 
@@ -168,6 +169,8 @@ const Footer = () => {
             <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">Terms and conditions</a>
             <span className={styles.legalDivider}>|</span>
             <a href={privacyPolicyPdf} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <span className={styles.legalDivider}>|</span>
+            <a href={cookieNoticePdf} target="_blank" rel="noopener noreferrer">Cookie notice</a>
           </div>
         </div>
       </div>

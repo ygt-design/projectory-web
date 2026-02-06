@@ -18,6 +18,7 @@ import ScatterPlot from './pages/LaserFocus/ScatterPlot/ScatterPlot';
 import VentingMachine from './pages/VentingMachine/VentingMachine';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import LiveChat from './components/LiveChat/LiveChat';
+import CookieConsent from './components/CookieConsent/CookieConsent';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ const App = () => {
       <Router>
         <ScrollToTop />
         <LiveChat />
+        <CookieConsent />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
