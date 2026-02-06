@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import { FiInstagram } from 'react-icons/fi';
 import logo from '../../assets/images/logo.svg';
+import termsConditionsPdf from '../../assets/documents/terms-conditions.pdf';
 
 const WEB3FORMS_ACCESS_KEY = '1c3fa95b-e42f-4bc0-b339-025a18bc51eb';
 
@@ -163,7 +164,7 @@ const Footer = () => {
             Copyright &copy; 2026 <strong>Projectory.live inc.</strong> All rights reserved.
           </p>
           <div className={styles.legalLinks}>
-            <Link to="/terms">Terms and conditions</Link>
+            <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">Terms and conditions</a>
             <span className={styles.legalDivider}>|</span>
             <Link to="/privacy">Privacy Policy</Link>
           </div>
