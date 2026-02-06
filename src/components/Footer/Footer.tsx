@@ -107,7 +107,7 @@ const Footer = () => {
           <Link to="/get-started#faq">FAQ</Link>
           <Link to="/get-started#contact-form">Contact us</Link>
           <Link to="/get-started#schedule-demo">Schedule a demo</Link>
-          <Link to="/rfp">Add us to your RFP</Link>
+          <a href="https://qr-codes.io/XG17V3" target="_blank" rel="noopener noreferrer">Add us to your RFP</a>
         </div>
 
         {/* Column 5: Intro deck + Contact & Support */}
