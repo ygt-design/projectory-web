@@ -7,6 +7,7 @@ import { FaLinkedin, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import { FiInstagram } from 'react-icons/fi';
 import logo from '../../assets/images/logo.svg';
 import termsConditionsPdf from '../../assets/documents/terms-conditions.pdf';
+import privacyPolicyPdf from '../../assets/documents/privacy-policy.pdf';
 
 const WEB3FORMS_ACCESS_KEY = '1c3fa95b-e42f-4bc0-b339-025a18bc51eb';
 
@@ -166,7 +167,7 @@ const Footer = () => {
           <div className={styles.legalLinks}>
             <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">Terms and conditions</a>
             <span className={styles.legalDivider}>|</span>
-            <Link to="/privacy">Privacy Policy</Link>
+            <a href={privacyPolicyPdf} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
           </div>
         </div>
       </div>
