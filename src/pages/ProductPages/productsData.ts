@@ -75,43 +75,6 @@ export const products = [
           ]
         }
       },
-      // {
-      //   type: 'video',
-      //   content: {
-      //     videoUrl: 'https://www.youtube.com/embed/9nlyM-aAfrc?si=jAg4LeooyFUvvB88',
-      //     title: 'How we Prepare This Experience',
-      //     highlightWords: ['How', 'This'],
-      //     description: 'Ad scelerisque a arcu dis platea tristique class parturient parturient volutpat nisi dictum gravida scelerisque vestibulum. Dis dolor elit facilisi morbi adipiscing ad eros dapibus ante condimentum a tempus pretium a erat leo scelerisque adipiscing a.'
-      //   }
-      // },
-      // { 
-      //   type: 'dataFeature',
-      //   content: {
-      //     title: 'Data Gathering',
-      //     description: 'Lorem Ipsum this is sample data gathered from this experience. This describes the types of information we can collect from this experience and alludes to a post-event package. ',
-      //     imageUrl: '/public/images/Projectory_Website_PostEvent.png'
-      //   }, 
-      // },
-      // {
-      //   type: 'testimonialSizzle',
-      //   content: {
-      //     videoSrc: 'https://www.youtube.com/embed/9nlyM-aAfrc?si=jAg4LeooyFUvvB88', // Replace with actual video ID
-      //     quote: 'Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away.',
-      //     author: 'Sandy Sharman',
-      //     role: 'Group Head, People Culture & Brand, CIBC'
-      //   }
-      // },
-      // { 
-      //   type: 'case-study',
-      //   content: {
-      //     title: 'See it In Action',
-      //     description: 'Learn about how this product came to life at a past event and now it played a role in a fulsome event program.',
-      //     buttonLink: '/case-study/floating-opinions',
-      //     caseStudyTitle: 'Building Commitment in a Two-Day Leadership Event',
-      //     caseStudySubtitle: 'CIBC Executive Alignment',
-      //     caseStudyImage: ''
-      //   }
-      // }
       { 
         type: 'image', 
         content: {
@@ -2081,6 +2044,186 @@ export const products = [
           imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1753886313/Roll_Play_Socials_IP_V3.01_00_26_22.Still009_wvwjwt.webp'
         }
       }
+    ]
+  },
+  {
+    id: 'laser-focus',
+    name: 'LaserFocus',
+    tagline: 'A targeted exploration of priorities and alignment',
+    category: 'Laser',
+    categoryHighlight: 'Focus',
+    categoryColor: '#2BDCB7',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1770742887/LaserFocus_Sizzle_ravb4j.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1770742887/LaserFocus_Sizzle_ravb4j.mp4',
+    tags: ['Peer learning', 'Build alignment', 'Explore priorities'],
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_5_rlr9ue.webp',
+    shortDescription: 'A targeted exploration of priorities and alignment',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Facilitate peer learning and dialogue",
+        "Build alignment and consensus",
+        "Explore strategic priorities and decisions",
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
+
+    sections: [
+      { type: 'hero' },
+      {
+        type: 'details',
+        content: {
+          heading: 'LaserFocus is a visually dynamic, collaborative session that enables participants to explore different perspectives while working to prioritize a set of opportunities, strategies, solutions, etc (often building on previous work or program content). Ideas of interest are initially identified and evaluated by individual table groups before a subset of those ideas is shared with the full cohort and assessed on a simple matrix (e.g., Impact x Effort). After a quick table discussion, groups "pinpoint" their evaluation of each idea on the matrix in front of the room using a table-top laser. In aggregate, this creates a compelling visualization of sentiments in real time and becomes the basis of a facilitated shareout of perspectives and alignment around various proposals.',
+          features: ['Facilitated session', '50 - 70 min', 'Main stage', '40 - 500+ participants', 'Requires table seating']
+        }
+      },
+      {
+        type: 'grid',
+        content: {
+          items: [
+            { text: 'Creates a uniquely spectacular visual moment at the event' },
+            { text: 'Great as an end-of-day debrief or synthesis following an information-dense keynote' },
+            { text: 'Intuitive exploration/evaluation model that can be applied to a wide range of content' }
+          ]
+        }
+      },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_5_rlr9ue.webp'
+        }
+      },
+      {
+        type: 'how-it-works',
+        content: {
+          title: 'How it Works',
+          description: 'Event organizers identify subject of interest, matrix dimensions (e.g., Effort x Impact), and "focus" areas (e.g., Big Bets, Quick Wins, etc) in advance to scope session and interaction. At the start, table groups quickly identify, evaluate, and submit an idea/opportunity via a QR code & webform. Then, the Projectory team shows the full spread of ideas plotted on the matrix displayed at the front of the room and highlights a select few for discussion rounds. <br /><br />Each round, an idea is shared with the full cohort, quickly discussed at tables, and assessed via laser voting on the matrix. The visualization becomes the basis of a facilitated shareout highlighting points of alignment and diverging perspectives on each idea explored.',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_1_zxarxz.webp'
+        }
+      },
+      {
+        type: 'objectives',
+        content: {
+          title: 'Objectives',
+          titleColor: '#BCCE2D, #148771',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_4_noszkw.webp',
+          objectives: [
+            'Facilitate peer learning and dialogue',
+            'Build alignment and consensus',
+            'Explore strategic priorities and decisions',
+          ]
+        }
+      },
+      {
+        type: 'dataFeature',
+        content: {
+          title: 'Data Gathering',
+          description: 'All ideas/solutions/opportunities surfaced during the initial round of reflection and discussion are captured — along with the submitting table\'s evaluation — via webform for review post session.',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_2_qbsdje.webp'
+        },
+      },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740486/LaserFocus_3_acmfmt.webp'
+        }
+      }
+    ]
+  },
+  {
+    id: 'ramp-up',
+    name: 'RampUp',
+    tagline: 'A closing workshop that builds toward something bigger',
+    category: 'Ramp',
+    categoryHighlight: 'Up',
+    categoryColor: '#E26D4F',
+    heroVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1770743158/RampUp_Sizzle_h1eqb9.mp4',
+    bgVideo: 'https://res.cloudinary.com/dazzkestf/video/upload/v1770743158/RampUp_Sizzle_h1eqb9.mp4',
+    tags: ['Ideas to action', 'Reflect & synthesize', 'Inspire creativity'],
+    thumbnail: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740637/RampUP_5_rk5iv5.webp',
+    shortDescription: 'A closing workshop that builds toward something bigger',
+
+    filters: {
+      "type": [
+        "Facilitated session"
+      ],
+      "objectives": [
+        "Connect ideas to action",
+        "Promote reflection and synthesis",
+        "Inspire forward thinking and creativity",
+      ],
+      "seating": [
+        "Round tables",
+        "Not sure yet"
+      ]
+    },
+
+    sections: [
+      { type: 'hero' },
+      {
+        type: 'details',
+        content: {
+          heading: 'How often do events end with closing sessions that only look backward — creating space for reflection but no forward momentum? And how many programs end with plenty of energy but no real direction? Too often and too many.<br /><br />RampUp offers a highly interactive, intelligently structured alternative: the rare closing session that actually builds toward something meaningful through a conversational workshop that provides space for reflection AND a process for identifying next steps and a clear path forward building on attendee-generated actions.',
+          features: ['Facilitated session (panel)', '45 - 75 min', 'Main stage or breakout', '50 - 500', 'Table seating strongly advised']
+        }
+      },
+      {
+        type: 'grid',
+        content: {
+          items: [
+            { text: 'Ideal as a closing session with a focus on next steps and accountability' },
+            { text: 'Generates rich post-event output' },
+            { text: 'Can also be used to showcase key takeaways, commitments, mindset shifts, etc' }
+          ]
+        }
+      },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740637/RampUP_5_rk5iv5.webp'
+        }
+      },
+      {
+        type: 'how-it-works',
+        content: {
+          title: 'How it Works',
+          description: 'RampUp is Projectory\'s structured alternative to unfocused closing sessions. Working in small groups, participants are guided through a process designed to create a post-event roadmap of concrete experiments to launch, key milestones to hit, and/or objectives to target in a new learning agenda.<br /><br />The workshop begins with a set of themes or focus areas pre-identified and invites participant groups to address those themes with specific, relevant contributions (e.g., a 1-yr goal against a particular strategic objective). Each group then hands their work (captured on a Projectory RampUp block) off to another neighboring group, who now becomes the steward of the initial contribution and is responsible for generating a smart step or intermediate milestone in support of that objective. The RampUp block is then passed to another table group, who further contributes to the plan and process to create a series of linked actions focused on the original theme.<br /><br />Throughout, the facilitator invites groups to share their work, identifying common objectives, partners, and projects in the room as the session builds toward the physical construction of an installation pointing the way forward from the event.',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740636/RampUP_2_jwpdpb.webp'
+        }
+      },
+      {
+        type: 'objectives',
+        content: {
+          title: 'Objectives',
+          titleColor: '#BCCE2D, #148771',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740637/RampUP_4_oy0hsr.webp',
+          objectives: [
+            'Inspire forward thinking and creativity',
+            'Promote reflection and synthesis',
+            'Connect ideas to action',
+          ]
+        }
+      },
+      {
+        type: 'dataFeature',
+        content: {
+          title: 'Data Gathering',
+          description: 'RampUp is designed to capture sets of focused commitments, ideas, or action steps in support of particular strategic objectives or learning goals. Each set is collected on a "block" during the session, and the contents of the blocks are digitized after the workshop to inform post-event planning and communication.',
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740635/RampUP_1_r7ht6s.webp'
+        },
+      },
+      {
+        type: 'image',
+        content: {
+          imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/v1770740636/RampUP_3_yobb1z.webp'
+        }
+      },
     ]
   }
 ];

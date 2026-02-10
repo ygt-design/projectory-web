@@ -35,10 +35,12 @@ const ProductDetails = ({ details, product }: DetailsProps) => {
           className={styles.heading}
           dangerouslySetInnerHTML={{ __html: details.heading }}
         />
-        <p
-          className={styles.description}
-          dangerouslySetInnerHTML={{ __html: details.description }}
-        />
+        {details.description && (
+          <p
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: details.description }}
+          />
+        )}
       </div>
 
       {/* 🔹 Right Features/Overview Section (Only If Features Exist) */}

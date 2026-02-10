@@ -42,9 +42,9 @@ const ProductPage = () => {
             // Ensure description exists - use heading as description if description is missing
             const detailsContent = {
               heading: ('heading' in section.content) ? (section.content.heading as string) : '',
-              description: ('description' in section.content && section.content.description) 
+              description: ('description' in section.content && section.content.description)
                 ? (section.content.description as string)
-                : ('heading' in section.content ? section.content.heading as string : ''),
+                : '',
               features: ('features' in section.content) ? (section.content.features as string[]) : undefined,
               headingType: ('headingType' in section.content && 
                 (section.content.headingType === 'features' || section.content.headingType === 'overview'))
