@@ -149,7 +149,7 @@ export default function LiveChat() {
           gap: 4,
         }}
       >
-        <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '18px', marginBottom: 4, color: '#E26D4F'}}>
+        <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '20px', marginBottom: 4, color: '#E26D4F'}}>
           Need Help!
         </div>
         <div style={{ fontSize: '18px', opacity: 1}}>
