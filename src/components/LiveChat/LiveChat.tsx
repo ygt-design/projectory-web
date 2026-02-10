@@ -122,8 +122,11 @@ export default function LiveChat() {
         }}
       />
       <div
-        aria-hidden
         className="livechat-eyecatcher"
+        onClick={handleOverlayClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleOverlayClick(); }}
         style={{
           position: 'fixed',
           right: 70,
@@ -138,7 +141,8 @@ export default function LiveChat() {
           boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
           fontFamily: 'system-ui, -apple-system, sans-serif',
           maxWidth: 250,
-          pointerEvents: 'none',
+          cursor: 'pointer',
+          pointerEvents: eyecatcherFaded ? 'none' : 'auto',
           opacity: eyecatcherFaded ? 0 : 1,
           transition: 'opacity 0.4s ease-out',
           textAlign: 'center',
