@@ -110,7 +110,7 @@ export default function LiveChat() {
         className="livechat-float-behind"
         style={{
           position: 'fixed',
-          right: 215,
+          right: 275,
           bottom: 45,
           width: 64,
           transform: 'rotate(-25deg)',
@@ -137,7 +137,7 @@ export default function LiveChat() {
           borderRadius: 12,
           boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
           fontFamily: 'system-ui, -apple-system, sans-serif',
-          maxWidth: 200,
+          maxWidth: 250,
           pointerEvents: 'none',
           opacity: eyecatcherFaded ? 0 : 1,
           transition: 'opacity 0.4s ease-out',
@@ -149,10 +149,10 @@ export default function LiveChat() {
           gap: 4,
         }}
       >
-        <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '1.15rem', marginBottom: 4, color: '#E26D4F'}}>
+        <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '18px', marginBottom: 4, color: '#E26D4F'}}>
           Need Help!
         </div>
-        <div style={{ fontSize: '0.8125rem', opacity: 1}}>
+        <div style={{ fontSize: '18px', opacity: 1}}>
           Click here to start chatting
           <br />
            with us!
@@ -167,7 +167,7 @@ export default function LiveChat() {
         style={{
           position: 'fixed',
           right: 40,
-          bottom: 130,
+          bottom: 140,
           transform: 'rotate(-15deg)',
           width: 60,
           height: 'auto',
