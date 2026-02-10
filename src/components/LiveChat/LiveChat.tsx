@@ -1,4 +1,7 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+
+import abstractSymbol from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
+import gradientSymbol from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
 
 declare global {
   interface Window {
@@ -26,6 +29,19 @@ const liveChatBootstrap = `
 `;
 
 export default function LiveChat() {
+  const [eyecatcherFaded, setEyecatcherFaded] = useState(false);
+
+  /**
+   * When the overlay is clicked:
+   * 1. Fade out the eyecatcher
+   * 2. Open the LiveChat window via the SDK (bypasses the iframe click problem)
+   */
+  const handleOverlayClick = useCallback(() => {
+    setEyecatcherFaded(true);
+    // Use the LiveChat JS API to maximize (open) the chat window
+    window.LiveChatWidget?.call('maximize');
+  }, []);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -45,6 +61,7 @@ export default function LiveChat() {
       [id^="lc_script_container"] {
         right: 20px !important;
         bottom: 20px !important;
+        z-index: 2147483001 !important;
       }
     `;
     document.head.appendChild(style);
@@ -61,22 +78,137 @@ export default function LiveChat() {
     };
   }, []);
 
+  /* Auto-fade eyecatcher after 7.5s so it doesn't stay distracting */
+  useEffect(() => {
+    const timer = setTimeout(() => setEyecatcherFaded(true), 15000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <noscript>
-      <a
-        href={`https://www.livechat.com/chat-with/${LIVECHAT_LICENSE}/`}
-        rel="nofollow"
+    <>
+      <style>{`
+        @keyframes livechat-float-behind {
+          0%, 100% { transform: rotate(-25deg) translateY(0); }
+          50% { transform: rotate(-25deg) translateY(-6px); }
+        }
+        @keyframes livechat-float-front {
+          0%, 100% { transform: rotate(-15deg) translateY(0); }
+          50% { transform: rotate(-15deg) translateY(4px); }
+        }
+        .livechat-float-behind {
+          animation: livechat-float-behind 4s ease-in-out infinite;
+        }
+        .livechat-float-front {
+          animation: livechat-float-front 3.5s ease-in-out infinite;
+        }
+      `}</style>
+      {/* Decorative shape behind the eyecatcher — fixed position, fades with eyecatcher */}
+      <img
+        src={abstractSymbol}
+        alt=""
+        aria-hidden
+        className="livechat-float-behind"
+        style={{
+          position: 'fixed',
+          right: 215,
+          bottom: 45,
+          width: 64,
+          transform: 'rotate(-25deg)',
+          height: 'auto',
+          zIndex: 99999,
+          pointerEvents: 'none',
+          opacity: eyecatcherFaded ? 0 : 1,
+          transition: 'opacity 0.4s ease-out',
+        }}
+      />
+      <div
+        aria-hidden
+        className="livechat-eyecatcher"
+        style={{
+          position: 'fixed',
+          right: 70,
+          bottom: 70,
+          zIndex: 999999,
+          padding: '15px 20px',
+          background: 'rgba(0, 0, 0, 0.55)',
+          backdropFilter: 'blur(8px)',
+          border: '0.5px solid rgba(255, 255, 255, 0.1)',
+          color: '#fff',
+          borderRadius: 12,
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
+          maxWidth: 200,
+          pointerEvents: 'none',
+          opacity: eyecatcherFaded ? 0 : 1,
+          transition: 'opacity 0.4s ease-out',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 4,
+        }}
       >
-        Chat with us
-      </a>
-      , powered by{' '}
-      <a
-        href="https://www.livechat.com/?welcome"
-        rel="noopener nofollow"
-        target="_blank"
-      >
-        LiveChat
-      </a>
-    </noscript>
+        <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '1.15rem', marginBottom: 4, color: '#E26D4F'}}>
+          Need Help!
+        </div>
+        <div style={{ fontSize: '0.8125rem', opacity: 1}}>
+          Click here to start chatting
+          <br />
+           with us!
+        </div>
+      </div>
+      {/* Decorative shape in front of the eyecatcher — fixed position, fades with eyecatcher */}
+      <img
+        src={gradientSymbol}
+        alt=""
+        aria-hidden
+        className="livechat-float-front"
+        style={{
+          position: 'fixed',
+          right: 40,
+          bottom: 130,
+          transform: 'rotate(-15deg)',
+          width: 60,
+          height: 'auto',
+          zIndex: 999999,
+          pointerEvents: 'none',
+          opacity: eyecatcherFaded ? 0 : 1,
+          transition: 'opacity 0.4s ease-out',
+        }}
+      />
+      {/* Overlay captures click to fade eyecatcher and open chat via SDK */}
+      <div
+        role="presentation"
+        aria-hidden
+        onClick={handleOverlayClick}
+        style={{
+          position: 'fixed',
+          right: 25,
+          bottom: 32,
+          width: 65,
+          height: 65,
+          zIndex: 2147483002,
+          pointerEvents: 'auto',
+          cursor: 'pointer',
+        }}
+      />
+      <noscript>
+        <a
+          href={`https://www.livechat.com/chat-with/${LIVECHAT_LICENSE}/`}
+          rel="nofollow"
+        >
+          Chat with us
+        </a>
+        , powered by{' '}
+        <a
+          href="https://www.livechat.com/?welcome"
+          rel="noopener nofollow"
+          target="_blank"
+        >
+          LiveChat
+        </a>
+      </noscript>
+    </>
   );
 }
