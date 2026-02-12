@@ -113,16 +113,30 @@ const MultiStepForm: React.FC = () => {
       .then(async (r) => {
         const text = await r.text().catch(() => '');
         if (!r.ok) {
-          console.error('Server returned non-200:', r.status, text);
+          console.error('Combo Convo POST failed:', r.status, text.slice(0, 200));
           throw new Error(`HTTP ${r.status}`);
         }
-        return JSON.parse(text);
+        if (!text || text.trim().length === 0) {
+          console.warn('Combo Convo: empty response body');
+          return { success: false, error: 'Empty response from server' };
+        }
+        const first = text.trim().charAt(0);
+        if (first === '<') {
+          console.error('Combo Convo: got HTML instead of JSON (script may need redeploy or wrong URL)', text.slice(0, 300));
+          return { success: false, error: 'Server returned HTML instead of JSON' };
+        }
+        try {
+          return JSON.parse(text);
+        } catch {
+          console.error('Combo Convo: invalid JSON response', text.slice(0, 200));
+          return { success: false, error: 'Invalid JSON response' };
+        }
       })
       .then((res) => {
-        if (res.success) {
+        if (res?.success) {
           setSubmitted(true);
         } else {
-          alert('Server responded with error: ' + (res.error || 'Unknown'));
+          alert('Server responded with error: ' + (res?.error || 'Unknown'));
         }
       })
       .catch((err) => {

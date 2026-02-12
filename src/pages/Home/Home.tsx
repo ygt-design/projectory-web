@@ -235,7 +235,7 @@ const Home = () => {
             <ContactButton />
           </motion.div>
 
-          <motion.div className={styles.videoSlides} style={{ scale: slidesScale }}>
+          <motion.div id="home-video-slides" className={styles.videoSlides} style={{ scale: slidesScale }}>
             {!isMobile && (
               <div className={styles.videoSlide}>
                 <video
