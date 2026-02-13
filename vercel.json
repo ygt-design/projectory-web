@@ -13,49 +13,49 @@
   "redirects": [
     {
       "source": "/comboconvo",
-      "has": [{ "type": "host", "value": "projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "projectory.live" }],
       "destination": "https://activity.projectory.live/comboconvo",
       "permanent": true
     },
     {
       "source": "/comboconvo",
-      "has": [{ "type": "host", "value": "www.projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }],
       "destination": "https://activity.projectory.live/comboconvo",
       "permanent": true
     },
     {
       "source": "/laserfocus",
-      "has": [{ "type": "host", "value": "projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "projectory.live" }],
       "destination": "https://activity.projectory.live/laserfocus",
       "permanent": true
     },
     {
       "source": "/laserfocus",
-      "has": [{ "type": "host", "value": "www.projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }],
       "destination": "https://activity.projectory.live/laserfocus",
       "permanent": true
     },
     {
       "source": "/laserfocus/scatterplot",
-      "has": [{ "type": "host", "value": "projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "projectory.live" }],
       "destination": "https://activity.projectory.live/laserfocus/scatterplot",
       "permanent": true
     },
     {
       "source": "/laserfocus/scatterplot",
-      "has": [{ "type": "host", "value": "www.projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }],
       "destination": "https://activity.projectory.live/laserfocus/scatterplot",
       "permanent": true
     },
     {
       "source": "/ventingmachine",
-      "has": [{ "type": "host", "value": "projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "projectory.live" }],
       "destination": "https://activity.projectory.live/ventingmachine",
       "permanent": true
     },
     {
       "source": "/ventingmachine",
-      "has": [{ "type": "host", "value": "www.projectory.live" }],
+      "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }],
       "destination": "https://activity.projectory.live/ventingmachine",
       "permanent": true
     }
