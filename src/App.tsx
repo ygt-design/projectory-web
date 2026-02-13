@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from './components/Layout/Layout';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
@@ -12,10 +12,10 @@ import ProductPage from './pages/ProductPages/ProductPage';
 import GetEstimatePage from './pages/GetEstimatePage/GetEstimatePage';
 import GetStartedForm from './pages/GetStartedForm/GetStartedForm';
 import { LikedProductsProvider } from './context/LikedProductsContext';
-import ComboConvoForm from './pages/ComboConvo/ComboConvoForm';
-import LaserFocusForm from './pages/LaserFocus/LaserFocusForm';
-import ScatterPlot from './pages/LaserFocus/ScatterPlot/ScatterPlot';
-import VentingMachine from './pages/VentingMachine/VentingMachine';
+import ComboConvoForm from './pages/activities/ComboConvo/ComboConvoForm';
+import LaserFocusForm from './pages/activities/LaserFocus/LaserFocusForm';
+import ScatterPlot from './pages/activities/LaserFocus/ScatterPlot/ScatterPlot';
+import VentingMachine from './pages/activities/VentingMachine/VentingMachine';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import LiveChat from './components/LiveChat/LiveChat';
 
@@ -23,10 +23,9 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a loading period or wait for window load
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3 seconds to show off the animation
+    }, 3000); 
 
     return () => clearTimeout(timer);
   }, []);
