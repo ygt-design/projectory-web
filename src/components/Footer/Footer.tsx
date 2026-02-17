@@ -139,7 +139,7 @@ const Footer = () => {
           </form>
 
           <h4 className={`${styles.columnHeading} ${styles.subHeading}`}>Contact &amp; support</h4>
-          <a href="tel:18556663330" className={styles.contactLink}>+1 (855) 666-3330</a>
+          <a href="tel:8009668802" className={styles.contactLink}>(800) 966-8802</a>
           <a href="mailto:info@projectory.live" className={styles.contactLink}>info@projectory.live</a>
 
           <div className={styles.socialIcons}>
