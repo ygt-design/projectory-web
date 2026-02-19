@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import abstractSymbol from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
-import gradientSymbol from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
-
 declare global {
   interface Window {
     __lc?: {
@@ -29,34 +26,64 @@ const liveChatBootstrap = `
 (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice));
 `;
 
-const HOME_VIDEO_SLIDES_ID = 'home-video-slides';
+const MOBILE_BREAKPOINT_PX = 767;
+const EYECATCHER_SCROLL_THRESHOLD = 0.5; // show after 50% of page scrolled
+const EYECATCHER_SESSION_KEY = 'livechat-eyecatcher-shown';
 
 export default function LiveChat() {
   const { pathname } = useLocation();
   const [eyecatcherFaded, setEyecatcherFaded] = useState(false);
   const [showEyecatcherAfterScroll, setShowEyecatcherAfterScroll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const isHomePage = pathname === '/';
-  const eyecatcherEnabled = false; // set to true to show eyecatcher again
-  const showEyecatcher = eyecatcherEnabled && (!isHomePage || showEyecatcherAfterScroll);
+  const eyecatcherEnabled = true; // set to true to show eyecatcher again
+  const showEyecatcher =
+    eyecatcherEnabled && !isMobile && showEyecatcherAfterScroll;
+
+  /** Hide eyecatcher on mobile (matches chat widget breakpoint) */
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`);
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  /** Reset eyecatcher visibility when changing pages so 50% is required per page. */
+  useEffect(() => {
+    setShowEyecatcherAfterScroll(false);
+  }, [pathname]);
 
   /**
-   * On homepage only: show eyecatcher after user scrolls past the video slides.
+   * Show eyecatcher after user has scrolled 50% of the page (once per session).
    */
   useEffect(() => {
-    if (pathname !== '/') return;
-    const el = document.getElementById(HOME_VIDEO_SLIDES_ID);
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry && !entry.isIntersecting) setShowEyecatcherAfterScroll(true);
-      },
-      { threshold: 0, rootMargin: '0px' }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const checkScroll = () => {
+      if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem(EYECATCHER_SESSION_KEY)) {
+        return; // already shown this session
+      }
+      const { scrollY } = window;
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0 || scrollY / maxScroll >= EYECATCHER_SCROLL_THRESHOLD) {
+        setShowEyecatcherAfterScroll(true);
+      }
+    };
+    checkScroll();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    window.addEventListener('resize', checkScroll);
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
   }, [pathname]);
+
+  /** Mark session so eyecatcher is only shown once per session */
+  useEffect(() => {
+    if (showEyecatcher && typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem(EYECATCHER_SESSION_KEY, '1');
+    }
+  }, [showEyecatcher]);
 
   /**
    * When the overlay is clicked:
@@ -112,52 +139,10 @@ export default function LiveChat() {
     };
   }, []);
 
-  /* Auto-fade eyecatcher after 15s when it is visible (on home, only after scroll past video) */
-  useEffect(() => {
-    if (!showEyecatcher) return;
-    const timer = setTimeout(() => setEyecatcherFaded(true), 15000);
-    return () => clearTimeout(timer);
-  }, [showEyecatcher]);
-
   return (
     <>
-      <style>{`
-        @keyframes livechat-float-behind {
-          0%, 100% { transform: rotate(-25deg) translateY(0); }
-          50% { transform: rotate(-25deg) translateY(-6px); }
-        }
-        @keyframes livechat-float-front {
-          0%, 100% { transform: rotate(-15deg) translateY(0); }
-          50% { transform: rotate(-15deg) translateY(4px); }
-        }
-        .livechat-float-behind {
-          animation: livechat-float-behind 4s ease-in-out infinite;
-        }
-        .livechat-float-front {
-          animation: livechat-float-front 3.5s ease-in-out infinite;
-        }
-      `}</style>
       {showEyecatcher && (
         <>
-          {/* Decorative shape behind the eyecatcher — fixed position, fades with eyecatcher */}
-          <img
-            src={abstractSymbol}
-            alt=""
-            aria-hidden
-            className="livechat-float-behind"
-            style={{
-              position: 'fixed',
-              right: 275,
-              bottom: 45,
-              width: 64,
-              transform: 'rotate(-25deg)',
-              height: 'auto',
-              zIndex: 99999,
-              pointerEvents: 'none',
-              opacity: eyecatcherFaded ? 0 : 1,
-              transition: 'opacity 0.4s ease-out',
-            }}
-          />
           <div
             className="livechat-eyecatcher"
             onClick={handleOverlayClick}
@@ -166,13 +151,12 @@ export default function LiveChat() {
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleOverlayClick(); }}
             style={{
               position: 'fixed',
-              right: 70,
+              right: 100,
               bottom: 70,
               zIndex: 999999,
               padding: '15px 20px',
-              background: 'rgba(0, 0, 0, 0.55)',
-              backdropFilter: 'blur(8px)',
-              border: '0.5px solid rgba(255, 255, 255, 0.1)',
+              background: '#2FD4B2',
+              border: '0.5px solid rgba(255, 255, 255, 0.2)',
               color: '#fff',
               borderRadius: 12,
               boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
@@ -190,34 +174,15 @@ export default function LiveChat() {
               gap: 4,
             }}
           >
-            <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '20px', marginBottom: 4, color: '#E26D4F'}}>
-              Need Help!
+            <div style={{ fontFamily: 'FounderGrotesk_Medium', fontSize: '20px', marginBottom: 4, color: 'black'}}>
+              Need Help?
             </div>
-            <div style={{ fontSize: '18px', opacity: 1}}>
+            <div style={{ fontSize: '18px', opacity: 1, color: 'black'}}>
               Click here to start chatting
               <br />
                with us!
             </div>
           </div>
-          {/* Decorative shape in front of the eyecatcher — fixed position, fades with eyecatcher */}
-          <img
-            src={gradientSymbol}
-            alt=""
-            aria-hidden
-            className="livechat-float-front"
-            style={{
-              position: 'fixed',
-              right: 40,
-              bottom: 140,
-              transform: 'rotate(-15deg)',
-              width: 60,
-              height: 'auto',
-              zIndex: 999999,
-              pointerEvents: 'none',
-              opacity: eyecatcherFaded ? 0 : 1,
-              transition: 'opacity 0.4s ease-out',
-            }}
-          />
           {/* Overlay captures click to fade eyecatcher and open chat via SDK */}
           <div
             role="presentation"
