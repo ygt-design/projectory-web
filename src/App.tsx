@@ -52,7 +52,7 @@ const App = () => {
             <Route path="/get-estimate" element={<GetEstimatePage />} />
             <Route path="/get-started-form" element={<GetStartedForm />} />
             <Route path="/comboconvo" element={<ComboConvoForm />} />
-            <Route path="/comboconvo-alt" element={<ComboConvoAltForm />} />
+            <Route path="/comboconvo-noemail" element={<ComboConvoAltForm />} />
             <Route path="/laserfocus" element={<LaserFocusForm />} />
             <Route path="/laserfocus/scatterplot" element={<ScatterPlot />} />
             <Route path="/ventingmachine" element={<VentingMachine />} />
