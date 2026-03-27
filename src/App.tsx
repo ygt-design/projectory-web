@@ -18,7 +18,6 @@ import LaserFocusForm from './pages/activities/LaserFocus/LaserFocusForm';
 import ScatterPlot from './pages/activities/LaserFocus/ScatterPlot/ScatterPlot';
 import VentingMachine from './pages/activities/VentingMachine/VentingMachine';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
-import LiveChat from './components/LiveChat/LiveChat';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -39,7 +38,6 @@ const App = () => {
     <LikedProductsProvider>
       <Router>
         <ScrollToTop />
-        <LiveChat />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
