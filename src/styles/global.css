@@ -1,26 +1,31 @@
 @font-face {
     font-family: 'FounderGrotesk_Regular';
     src: url('../assets/fonts/FoundersGrotesk-Regular.otf') format('opentype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'FounderGrotesk_Medium';
     src: url('../assets/fonts/FoundersGrotesk-Medium.otf') format('opentype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'FounderGrotesk_SemiBold';
     src: url('../assets/fonts/FoundersGrotesk-Semibold.otf') format('opentype');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'FoundersGrotesk_Bold';
     src: url('../assets/fonts/FoundersGrotesk-Bold.otf') format('opentype');
+    font-display: swap;
 }
 
 @font-face{
     font-family: 'GT-Alpina-Regular';
-    src: url('../assets/fonts/GT-Alpina-Standard-Light-Trial.otf') format('truetype');
+    src: url('../assets/fonts/GT-Alpina-Standard-Light-Trial.otf') format('opentype');
+    font-display: swap;
 }
 
 * {

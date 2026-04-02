@@ -1,3 +1,4 @@
+import { useInView } from 'react-intersection-observer';
 import styles from './TestimonialSizzle.module.css';
 
 interface TestimonialSizzleProps {
@@ -13,12 +14,14 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
   author,
   role,
 }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' });
+
   return (
     <div className={styles.flowWrapper}> 
-      <section className={styles.testimonialWrapper}>
+      <section ref={ref} className={styles.testimonialWrapper}>
         <div className={styles.topLeftGraphic}></div>
         <div className={styles.videoContainer}>
-          {videoSrc && (
+          {videoSrc && inView && (
             videoSrc.toLowerCase().endsWith('.mp4') ? (
               <video
                 className={styles.video}
@@ -27,7 +30,7 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 controls={true}
               />
             ) : (

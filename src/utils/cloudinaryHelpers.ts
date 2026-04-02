@@ -1,12 +1,3 @@
-/**
- * Adds Cloudinary transformations to a raw Cloudinary URL.
- * For images: use 'f_auto,q_auto' (auto format + auto quality)
- * For videos: use 'q_auto' (auto quality)
- *
- * Example:
- *   optimizeCloudinaryUrl('https://res.cloudinary.com/dazzkestf/image/upload/v123/photo.webp')
- *   → 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v123/photo.webp'
- */
 export function optimizeCloudinaryUrl(
   original: string,
   transformations = 'f_auto,q_auto'

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiX } from 'react-icons/fi';
+import { useInView } from 'react-intersection-observer';
 import styles from './Home.module.css';
 import '../../styles/global.css';
 
@@ -33,13 +34,13 @@ const Home = () => {
   const secondSectionRef = useRef<HTMLDivElement>(null);
   const middleVideoRef = useRef<HTMLVideoElement>(null);
   const middleVideoSlideRef = useRef<HTMLDivElement>(null);
-  // Initialize isMobile with actual check to avoid flash
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 764 : false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  // When autoplay is blocked (e.g. power saving), show "Tap to play" so one tap starts video
   const [middleVideoNeedsTapToPlay, setMiddleVideoNeedsTapToPlay] = useState(false);
   const setMiddleVideoNeedsTapToPlayRef = useRef(setMiddleVideoNeedsTapToPlay);
   setMiddleVideoNeedsTapToPlayRef.current = setMiddleVideoNeedsTapToPlay;
+
+  const { ref: sizzleRef, inView: sizzleInView } = useInView({ triggerOnce: true, rootMargin: '300px' });
 
   // Check screen size to disable animations on mobile - run first
   useEffect(() => {
@@ -318,15 +319,17 @@ const Home = () => {
       </div>
 
       {/* Main Video Section */}
-      <div className={styles.mainSizzleWrapper}>
+      <div ref={sizzleRef} className={styles.mainSizzleWrapper}>
         <div className={styles.mainSizzle}>
-          <video
-            className={styles.mainSizzleVideo}
-            src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
-            {...commonVideoProps}
-            controls
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+          {sizzleInView && (
+            <video
+              className={styles.mainSizzleVideo}
+              src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
+              {...commonVideoProps}
+              controls
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          )}
         </div>
       </div>
 

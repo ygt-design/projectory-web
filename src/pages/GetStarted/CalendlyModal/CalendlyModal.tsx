@@ -21,57 +21,37 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Load Calendly script
-    const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-    
-    if (!existingScript) {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
+    if (!isOpen || !widgetRef.current) return;
 
-  useEffect(() => {
-    if (isOpen && widgetRef.current) {
-      // Wait for Calendly to be available, then initialize
-      const initWidget = () => {
-        if (window.Calendly && widgetRef.current) {
-          // Clear any existing content
-          widgetRef.current.innerHTML = '';
-          try {
-            window.Calendly.initInlineWidget({
-              url: url,
-              parentElement: widgetRef.current
-            });
-          } catch (error) {
-            console.error('Error initializing Calendly widget:', error);
-          }
-        } else {
-          // Retry after a short delay if Calendly isn't loaded yet
-          setTimeout(initWidget, 100);
-        }
-      };
+    const SCRIPT_URL = 'https://assets.calendly.com/assets/external/widget.js';
 
-      // Check if script is already loaded
-      const script = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-      if (script) {
-        if (window.Calendly) {
-          initWidget();
-        } else {
-          script.addEventListener('load', initWidget);
-          const timeoutId = setTimeout(initWidget, 2000);
-          return () => {
-            script.removeEventListener('load', initWidget);
-            clearTimeout(timeoutId);
-          };
+    const initWidget = () => {
+      if (window.Calendly && widgetRef.current) {
+        widgetRef.current.innerHTML = '';
+        try {
+          window.Calendly.initInlineWidget({ url, parentElement: widgetRef.current });
+        } catch (error) {
+          console.error('Error initializing Calendly widget:', error);
         }
       } else {
-        const timeoutId = setTimeout(initWidget, 1000);
-        return () => {
-          clearTimeout(timeoutId);
-        };
+        setTimeout(initWidget, 100);
       }
+    };
+
+    const existing = document.querySelector(`script[src="${SCRIPT_URL}"]`) as HTMLScriptElement | null;
+    if (existing) {
+      if (window.Calendly) {
+        initWidget();
+      } else {
+        existing.addEventListener('load', initWidget);
+        return () => existing.removeEventListener('load', initWidget);
+      }
+    } else {
+      const script = document.createElement('script');
+      script.src = SCRIPT_URL;
+      script.async = true;
+      script.onload = initWidget;
+      document.body.appendChild(script);
     }
   }, [isOpen, url]);
 

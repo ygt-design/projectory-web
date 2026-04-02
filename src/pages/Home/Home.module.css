@@ -194,6 +194,7 @@ iframe {
     flex-direction: column;
     line-height: 1.4;
     justify-content: center;
+    gap: clamp(16px, 2.5vw, 30px);
 }
 
 .text {
