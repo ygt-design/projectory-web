@@ -1,22 +1,30 @@
-// import { cld } from './cloudinary';
-// import type { CloudinaryImage } from '@cloudinary/url-gen';
+/**
+ * Adds Cloudinary transformations to a raw Cloudinary URL.
+ * For images: use 'f_auto,q_auto' (auto format + auto quality)
+ * For videos: use 'q_auto' (auto quality)
+ *
+ * Example:
+ *   optimizeCloudinaryUrl('https://res.cloudinary.com/dazzkestf/image/upload/v123/photo.webp')
+ *   → 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v123/photo.webp'
+ */
+export function optimizeCloudinaryUrl(
+  original: string,
+  transformations = 'f_auto,q_auto'
+): string {
+  if (!original || !original.includes('res.cloudinary.com')) return original;
 
-// export function optimizeCloudinaryUrl(
-//   original: string,
-//   transformations = 'f_auto,q_auto,w_auto'
-// ): string {
-//   return original.replace('/upload/', `/upload/${transformations}/`);
-// }
+  // Split requested transformations and filter out ones already in the URL
+  const newParams = transformations.split(',').filter(t => !original.includes(t));
+  if (newParams.length === 0) return original;
 
-// export function cldImageFromUrl(url: string): CloudinaryImage | undefined {
-//   if (!url) return undefined;
+  const afterUpload = original.indexOf('/upload/') + '/upload/'.length;
+  const hasExistingTransforms = !/^v\d/.test(original.slice(afterUpload));
 
-//   const cleanUrl = url.split('?')[0];
-//   const match = cleanUrl.match(/\/upload\/(?:v\d+\/)?(.+)$/);
-//   if (!match || !match[1]) {
-//     return undefined;
-//   }
-//   const publicIdWithExt = match[1];
-//   const publicId = publicIdWithExt.replace(/\.[^/.]+$/, '');
-//   return cld.image(publicId);
-// }
+  if (hasExistingTransforms) {
+    // Append new params to existing transform chain
+    const nextSlash = original.indexOf('/', afterUpload);
+    return original.slice(0, nextSlash) + ',' + newParams.join(',') + original.slice(nextSlash);
+  }
+
+  return original.replace('/upload/', `/upload/${newParams.join(',')}/`);
+}

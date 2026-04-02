@@ -19,13 +19,30 @@ import ScatterPlot from './pages/activities/LaserFocus/ScatterPlot/ScatterPlot';
 import VentingMachine from './pages/activities/VentingMachine/VentingMachine';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
+const HERO_VIDEOS = [
+  'https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4',
+  'https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1769443947/Projectory_LandingVideo_t4wkon.mp4',
+  'https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4',
+];
+
 const App = () => {
   const [loading, setLoading] = useState(true);
+
+  // Preload hero videos during loading screen so they're cached when Home mounts
+  useEffect(() => {
+    HERO_VIDEOS.forEach(src => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'video';
+      link.href = src;
+      document.head.appendChild(link);
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); 
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);

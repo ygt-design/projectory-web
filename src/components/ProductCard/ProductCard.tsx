@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import { useLikedProducts } from '../../context/LikedProductsContext';
+import { optimizeCloudinaryUrl } from '../../utils/cloudinaryHelpers';
 import HeartIconSVG from '../../assets/images/heartIcon.svg';
 import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
 
@@ -22,6 +23,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const navigate = useNavigate();
   const { likedProducts, toggleLike } = useLikedProducts();
   const isLiked = likedProducts.includes(product.id);
+
+  const optimizedThumbnail = optimizeCloudinaryUrl(product.thumbnail, 'f_auto,q_auto,w_900');
+  const optimizedBgVideo = product.bgVideo ? optimizeCloudinaryUrl(product.bgVideo, 'q_auto,w_900') : undefined;
 
   const [isHovered, setIsHovered] = useState(false);
   const [descHeight, setDescHeight] = useState(0);
@@ -50,13 +54,13 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
   // Memoize video component to prevent recreation
   const videoComponent = useMemo(() => {
-    if (!shouldLoadVideo || !product.bgVideo) return null;
-    
+    if (!shouldLoadVideo || !optimizedBgVideo) return null;
+
     return (
       <video
         className={styles.bgVideo}
-        src={product.bgVideo}
-        poster={product.thumbnail}
+        src={optimizedBgVideo}
+        poster={optimizedThumbnail}
         preload="none"
         autoPlay
         muted
@@ -64,7 +68,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         playsInline
       />
     );
-  }, [shouldLoadVideo, product.bgVideo, product.thumbnail]);
+  }, [shouldLoadVideo, optimizedBgVideo, optimizedThumbnail]);
 
   return (
     <div
@@ -77,7 +81,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       <div className={styles.bgLayer}>
         <img
           className={styles.bgImage}
-          src={product.thumbnail}
+          src={optimizedThumbnail}
           alt={product.name}
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}

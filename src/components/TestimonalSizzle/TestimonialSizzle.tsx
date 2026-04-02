@@ -27,7 +27,7 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
                 muted
                 loop
                 playsInline
-                preload="auto"
+                preload="metadata"
                 controls={true}
               />
             ) : (

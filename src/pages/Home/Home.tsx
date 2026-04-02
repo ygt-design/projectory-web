@@ -220,7 +220,7 @@ const Home = () => {
     muted: true,
     loop: true,
     playsInline: true,
-    preload: 'auto' as const,
+    preload: 'metadata' as const,
   };
 
   return (
@@ -240,7 +240,7 @@ const Home = () => {
               <div className={styles.videoSlide}>
                 <video
                   className={styles.videoBackground}
-                  src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4"
+                  src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1746457021/Flag_Finder_Website_IP_V4_leeta4.mp4"
                   {...commonVideoProps}
                 />
               </div>
@@ -253,7 +253,7 @@ const Home = () => {
               <video
                 ref={middleVideoRef}
                 className={styles.videoBackground}
-                src="https://res.cloudinary.com/dazzkestf/video/upload/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
+                src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
                 {...commonVideoProps}
               />
               {middleVideoNeedsTapToPlay && (
@@ -274,7 +274,7 @@ const Home = () => {
               <div className={styles.videoSlide}>
                 <video
                   className={styles.videoBackground}
-                  src="https://res.cloudinary.com/dazzkestf/video/upload/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4"
+                  src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1746457030/Align_by_Line_Website_IP_V5_Final_Colour_Pass_nzfmxp.mp4"
                   {...commonVideoProps}
                 />
               </div>
@@ -322,7 +322,7 @@ const Home = () => {
         <div className={styles.mainSizzle}>
           <video
             className={styles.mainSizzleVideo}
-            src="https://res.cloudinary.com/dazzkestf/video/upload/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
+            src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
             {...commonVideoProps}
             controls
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -369,7 +369,7 @@ const Home = () => {
       </div>
 
       <TestimonialSizzle
-        videoSrc="https://res.cloudinary.com/dazzkestf/video/upload/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
+        videoSrc="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"
@@ -396,7 +396,7 @@ const Home = () => {
           <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
             <video
               className={styles.lightboxVideo}
-              src="https://res.cloudinary.com/dazzkestf/video/upload/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
+              src="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1769443947/Projectory_LandingVideo_t4wkon.mp4"
               autoPlay
               controls
               playsInline

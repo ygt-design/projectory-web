@@ -85,28 +85,28 @@ const caseStudies = [
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
     link: '/case-study/cibc-global-leadership-summit',
-    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
   },
   {
     id: 2,
     title: 'Highlighting the value of audience engagement for event industry professionals',
     subtitle: 'PCMA 2024 CEMA Summit ',
     link: '/pcma-2024-cema-summit',
-    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519212/Screenshot_2025-05-20_at_19.18.46_gfnyht_ssydvf.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749519212/Screenshot_2025-05-20_at_19.18.46_gfnyht_ssydvf.webp',
   },
   {
     id: 3,
     title: 'Turning an SKO into an action-packed and collaborative experience',
     subtitle: "Surescript's Sales Kickoff",
     link: '/surescripts-sales-kickoff',
-    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749519968/Flagfinder_udmunk_fil12l.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749519968/Flagfinder_udmunk_fil12l.webp',
   },
   {
     id: 4,
     title: 'Bringing ecosystem partners together for a day of connection and inspiration',
     subtitle: "Deloitte Connect 2024",
     link: '/deloitte-connect-2024',
-    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/v1749520803/Deloitte-June19th2024-0125_websize_hgkwds_cbli1w.webp',
+    imageSrc: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749520803/Deloitte-June19th2024-0125_websize_hgkwds_cbli1w.webp',
   },
   
 ];
@@ -321,7 +321,7 @@ const CaseStudies: React.FC = () => {
       />
       
       <TestimonialSizzle
-        videoSrc="https://res.cloudinary.com/dazzkestf/video/upload/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
+        videoSrc="https://res.cloudinary.com/dazzkestf/video/upload/q_auto/v1749521688/Website_Testimonials_Dec_2024_V4_jsyqfo_mb8c7q.mp4"
         quote='"Projectory helped bring our conference to life. As soon as I heard they took the analog experience and could make it read out results for us, I was blown away."'
         author="Sandy Sharman"
         role="Group Head, People Culture & Brand, CIBC"
