@@ -42,7 +42,15 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const descRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (descRef.current) setDescHeight(descRef.current.scrollHeight);
+    const el = descRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setDescHeight(entry.target.scrollHeight);
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
   }, [product.shortDescription]);
 
   // Only load video when hovered (deferred loading)

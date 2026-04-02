@@ -1,12 +1,39 @@
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+
+const CRITICAL_FONTS = ['FoundersGrotesk-Regular', 'FoundersGrotesk-Semibold'];
+
+function preloadFonts(): Plugin {
+  return {
+    name: 'preload-fonts',
+    enforce: 'post',
+    transformIndexHtml(_html, ctx) {
+      if (!ctx.bundle) return [];
+
+      const fontAssets = Object.keys(ctx.bundle).filter(
+        (k) => k.endsWith('.woff2') && CRITICAL_FONTS.some((f) => k.includes(f))
+      );
+
+      return fontAssets.map((asset) => ({
+        tag: 'link',
+        attrs: {
+          rel: 'preload',
+          href: `/${asset}`,
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: 'anonymous',
+        },
+        injectTo: 'head' as const,
+      }));
+    },
+  };
+}
 
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [react(), preloadFonts()],
   server: {
     proxy: {
-      // Same URL as api/combo-convo-form.cjs so dev and prod hit the same Google sheet
       '/api/combo-convo-form': {
         target:
           'https://script.google.com/macros/s/AKfycbyBjqgKCilAgqqpy_HkuyrrJ0HaLka-Ch6yea-swOFSKnfRu7dPO7dTc4yLNx2gQ0ZR/exec',
@@ -15,7 +42,6 @@ export default defineConfig({
           path.replace(/^\/api\/combo-convo-form/, '')
       },
       '/api/venting-machine-form': {
-        // TODO: replace with your Venting Machine Web App /exec URL
         target:
           'https://script.google.com/macros/s/AKfycbz9PRZKGHPK6YMt-f8FXUY5vnsDVW8g2xyUI9NDoFyVuT-NH05UWqsLxhf-7NqvAzKfHA/exec',
         changeOrigin: true,

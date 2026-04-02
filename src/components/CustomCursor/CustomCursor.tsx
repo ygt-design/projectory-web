@@ -18,15 +18,37 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
   const rafRef = useRef<number | null>(null);
   const wasActiveRef = useRef(false);
 
-  const isOverNavbar = (x: number, y: number) => {
+  const navRectRef = useRef<DOMRect | null>(null);
+  const elRectRef = useRef<DOMRect | null>(null);
+  const rectStaleRef = useRef(true);
+
+  useEffect(() => {
+    const markStale = () => { rectStaleRef.current = true; };
+    window.addEventListener('scroll', markStale, { passive: true });
+    window.addEventListener('resize', markStale, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', markStale);
+      window.removeEventListener('resize', markStale);
+    };
+  }, []);
+
+  const refreshRects = (el: HTMLElement) => {
+    if (!rectStaleRef.current) return;
     const nav = document.querySelector('nav');
-    if (!nav) return false;
-    const r = nav.getBoundingClientRect();
+    navRectRef.current = nav ? nav.getBoundingClientRect() : null;
+    elRectRef.current = el.getBoundingClientRect();
+    rectStaleRef.current = false;
+  };
+
+  const isOverNavbar = (x: number, y: number) => {
+    const r = navRectRef.current;
+    if (!r) return false;
     return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
   };
 
-  const isPointInEl = (x: number, y: number, el: HTMLElement) => {
-    const r = el.getBoundingClientRect();
+  const isPointInEl = (x: number, y: number) => {
+    const r = elRectRef.current;
+    if (!r) return false;
     return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
   };
 
@@ -44,8 +66,9 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
       const x = e.clientX;
       const y = e.clientY;
 
+      refreshRects(el);
       const overNav = isOverNavbar(x, y);
-      const overTarget = isPointInEl(x, y, el);
+      const overTarget = isPointInEl(x, y);
       const shouldShow = overTarget && !overNav;
 
       // position updates can happen every move
@@ -104,8 +127,9 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
     const onPointerEnter = (e: PointerEvent) => {
       const x = e.clientX;
       const y = e.clientY;
+      refreshRects(el);
       const overNav = isOverNavbar(x, y);
-      const overTarget = isPointInEl(x, y, el);
+      const overTarget = isPointInEl(x, y);
       const shouldShow = overTarget && !overNav;
 
       if (shouldShow) {

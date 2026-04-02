@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { lazy, Suspense, useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect, useCallback } from 'react';
 import Layout from './components/Layout/Layout';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home/Home';
@@ -23,7 +23,13 @@ const VentingMachine = lazy(() => import('./pages/activities/VentingMachine/Vent
 const MIN_LOADING_MS = 1200;
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const dismiss = useCallback(() => {
+    setFadeOut(true);
+    setTimeout(() => setShowLoader(false), 500);
+  }, []);
 
   useEffect(() => {
     const start = performance.now();
@@ -31,7 +37,7 @@ const App = () => {
     const finish = () => {
       const elapsed = performance.now() - start;
       const remaining = Math.max(0, MIN_LOADING_MS - elapsed);
-      setTimeout(() => setLoading(false), remaining);
+      setTimeout(dismiss, remaining);
     };
 
     if (document.readyState === 'complete') {
@@ -40,14 +46,11 @@ const App = () => {
       window.addEventListener('load', finish, { once: true });
       return () => window.removeEventListener('load', finish);
     }
-  }, []);
-
-  if (loading) {
-    return <LoadingScreen />;
-  }
+  }, [dismiss]);
 
   return (
     <LikedProductsProvider>
+      {showLoader && <LoadingScreen fadeOut={fadeOut} />}
       <Router>
         <ScrollToTop />
         <Layout>
