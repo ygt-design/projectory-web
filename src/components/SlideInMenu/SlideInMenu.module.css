@@ -1,3 +1,20 @@
+/* Match navbar motion: open 0.32s / close 0.45s, cubic-bezier(0.83, 0, 0.17, 1) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10040;
+  background: rgba(0, 0, 0, 0.72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.32s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
 .slideInMenu {
   position: fixed;
   top: 0;
@@ -9,12 +26,19 @@
   padding: 20px;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
   z-index: 10050;
-  pointer-events: auto;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
+.slideInMenu.open {
+  transform: translateX(0);
+  pointer-events: auto;
+  transition: transform 0.32s cubic-bezier(0.83, 0, 0.17, 1);
+}
 
 .slideInMenuText{
   margin-bottom: 20px;
@@ -153,5 +177,12 @@
 @media (max-width: 768px) {
   .slideInMenu {
     width: 80vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .slideInMenu {
+    transition-duration: 0.01ms;
   }
 }

@@ -185,6 +185,7 @@
     --card-x: 0px;
     --card-y: 0px;
     --card-r: 0deg;
+    --entrance-y: 0px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -195,8 +196,8 @@
     background: #1c1c1c;
     box-sizing: border-box;
     overflow: hidden;
-    transform: translate(-50%, -50%) translateX(var(--card-x)) translateY(var(--card-y))
-        rotate(var(--card-r));
+    transform: translate(-50%, -50%) translateX(var(--card-x))
+        translateY(calc(var(--card-y) + var(--entrance-y))) rotate(var(--card-r));
 }
 
 .mediaCardImg {

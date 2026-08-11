@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import { products } from '../../pages/ProductPages/productsData';
@@ -14,10 +15,6 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const navigate = useNavigate();
 
-  if (!isOpen) {
-    return null;
-  }
-
   const likedItems = products.filter((p) => likedProducts.includes(p.id));
   const productsCount = likedItems.length;
   let headingText: string;
@@ -30,63 +27,94 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
     headingText = `You have ${productsCount} product${productsCount !== 1 ? 's' : ''} selected. Continue to get an estimate for your selected products.`;
   }
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   return createPortal(
-    <div className={styles.slideInMenu} role="dialog" aria-modal="true" aria-label="Liked products">
-      <button type="button" onClick={onClose} className={styles.closeButton} aria-label="Close">
-        <FiX />
-      </button>
-
-      <div className={styles.slideInMenuText}>
-        <h2 className={styles.selectionsTitle}>{headingText}</h2>
-        <button
-          type="button"
-          className={styles.estimateButton}
-          onClick={() => {
-            navigate('/get-estimate');
-            onClose();
-          }}
-        >
-          Get an Estimate
+    <>
+      <div
+        className={`${styles.overlay} ${isOpen ? styles.open : ''}`}
+        onClick={onClose}
+        aria-hidden={!isOpen}
+      />
+      <div
+        className={`${styles.slideInMenu} ${isOpen ? styles.open : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Liked products"
+        aria-hidden={!isOpen}
+      >
+        <button type="button" onClick={onClose} className={styles.closeButton} aria-label="Close" tabIndex={isOpen ? undefined : -1}>
+          <FiX />
         </button>
-      </div>
 
-      {likedItems.map((prod) => (
-        <div key={prod.id} className={styles.likedItem}>
-          <div className={styles.itemWrapper}>
-            <div className={styles.itemImageWrapper}>
-              <Link to={`/products/${prod.id}`} onClick={onClose}>
-                <img src={prod.thumbnail} alt={prod.name} />
-              </Link>
-            </div>
-            <div className={styles.itemTextWrapper}>
-              <Link to={`/products/${prod.id}`} onClick={onClose}>
-                <h4
-                  className={styles.title}
-                  style={{ color: prod.categoryColor || '#ffffff' }}
+        <div className={styles.slideInMenuText}>
+          <h2 className={styles.selectionsTitle}>{headingText}</h2>
+          <button
+            type="button"
+            className={styles.estimateButton}
+            tabIndex={isOpen ? undefined : -1}
+            onClick={() => {
+              navigate('/get-estimate');
+              onClose();
+            }}
+          >
+            Get an Estimate
+          </button>
+        </div>
+
+        {likedItems.map((prod) => (
+          <div key={prod.id} className={styles.likedItem}>
+            <div className={styles.itemWrapper}>
+              <div className={styles.itemImageWrapper}>
+                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
+                  <img src={prod.thumbnail} alt={prod.name} />
+                </Link>
+              </div>
+              <div className={styles.itemTextWrapper}>
+                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
+                  <h4
+                    className={styles.title}
+                    style={{ color: prod.categoryColor || '#ffffff' }}
+                  >
+                    {prod.category}
+                    <strong>{prod.categoryHighlight}</strong>
+                  </h4>
+                  <p>{prod.tagline}</p>
+                </Link>
+                <button
+                  type="button"
+                  className={styles.removeButton}
+                  tabIndex={isOpen ? undefined : -1}
+                  onClick={() => {
+                    toggleLike(prod.id);
+                  }}
                 >
-                  {prod.category}
-                  <strong>{prod.categoryHighlight}</strong>
-                </h4>
-                <p>{prod.tagline}</p>
-              </Link>
-              <button
-                type="button"
-                className={styles.removeButton}
-                onClick={() => {
-                  toggleLike(prod.id);
-                }}
-              >
-                Remove
-              </button>
+                  Remove
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      {productsCount === 0 && (
-        <p className={styles.noItemsText}>No items selected</p>
-      )}
-    </div>,
+        {productsCount === 0 && (
+          <p className={styles.noItemsText}>No items selected</p>
+        )}
+      </div>
+    </>,
     document.body
   );
 };
