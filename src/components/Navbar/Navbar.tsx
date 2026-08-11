@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
@@ -14,13 +14,40 @@ const NAV_LINKS = [
   { to: '/pricing', label: 'Pricing' },
 ] as const;
 
+type NavIslandProps = {
+  variant: 'like' | 'menu';
+  menuOpen: boolean;
+  children: ReactNode;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'children'>;
+
+/** Shared mobile island chrome — like + hamburger use the same transitions. */
+function NavIsland({ variant, menuOpen, className, children, ...rest }: NavIslandProps) {
+  const variantClass = variant === 'like' ? styles.likeIsland : styles.menuIsland;
+  return (
+    <button
+      type="button"
+      className={`${styles.navIsland} ${variantClass}${className ? ` ${className}` : ''}`}
+      tabIndex={menuOpen ? -1 : undefined}
+      aria-hidden={menuOpen}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+
+const LIKE_ENTER_MS = 450;
+const LIKE_EXIT_MS = 200;
+const HEART_PULSE_MS = 360;
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSlideInOpen, setIsSlideInOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [heartKey, setHeartKey] = useState(0);
+  const [likeMounted, setLikeMounted] = useState(false);
+  const [likeMotion, setLikeMotion] = useState<'enter' | 'exit' | null>(null);
+  const [heartPulse, setHeartPulse] = useState(false);
   const { likedProducts } = useLikedProducts();
-  const hasLikedProducts = likedProducts.length > 0;
   const prevLikedCount = useRef(0);
 
   useEffect(() => {
@@ -33,11 +60,41 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (likedProducts.length > prevLikedCount.current) {
-      setHeartKey((k) => k + 1);
+    const count = likedProducts.length;
+    const prev = prevLikedCount.current;
+
+    if (count > 0 && prev === 0) {
+      setLikeMounted(true);
+      setLikeMotion('enter');
+    } else if (count === 0 && prev > 0) {
+      setLikeMotion('exit');
+    } else if (count > prev && prev > 0) {
+      setHeartPulse(true);
     }
-    prevLikedCount.current = likedProducts.length;
+
+    prevLikedCount.current = count;
   }, [likedProducts.length]);
+
+  useEffect(() => {
+    if (likeMotion !== 'enter') return;
+    const t = window.setTimeout(() => setLikeMotion(null), LIKE_ENTER_MS);
+    return () => window.clearTimeout(t);
+  }, [likeMotion]);
+
+  useEffect(() => {
+    if (likeMotion !== 'exit') return;
+    const t = window.setTimeout(() => {
+      setLikeMounted(false);
+      setLikeMotion(null);
+    }, LIKE_EXIT_MS);
+    return () => window.clearTimeout(t);
+  }, [likeMotion]);
+
+  useEffect(() => {
+    if (!heartPulse) return;
+    const t = window.setTimeout(() => setHeartPulse(false), HEART_PULSE_MS);
+    return () => window.clearTimeout(t);
+  }, [heartPulse]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -65,6 +122,14 @@ const Navbar = () => {
 
   const toggleMenu = () => setMenuOpen((open) => !open);
   const closeMenu = () => setMenuOpen(false);
+
+  const likeMotionClass =
+    likeMotion === 'enter'
+      ? styles.likeButtonReveal
+      : likeMotion === 'exit'
+        ? styles.likeButtonExit
+        : undefined;
+  const heartIconClass = `${styles.heartIcon}${heartPulse ? ` ${styles.heartPulse}` : ''}`;
 
   return (
     <>
@@ -96,14 +161,14 @@ const Navbar = () => {
                     <Link to="/get-started" className={styles.ctaButton}>
                       <span className={styles.ctaButtonLabel}>Get Started</span>
                     </Link>
-                    {hasLikedProducts && (
+                    {likeMounted && (
                       <button
-                        key={`desk-heart-${heartKey}`}
-                        className={`${styles.slideInToggleBtn} ${styles.likeButtonReveal}`}
+                        className={`${styles.slideInToggleBtn}${likeMotionClass ? ` ${likeMotionClass}` : ''}`}
                         onClick={() => setIsSlideInOpen(true)}
                         aria-label="Liked products"
+                        tabIndex={likeMotion === 'exit' ? -1 : undefined}
                       >
-                        <img className={styles.heartIcon} src={HeartIconNavSVG} alt="" />
+                        <img className={heartIconClass} src={HeartIconNavSVG} alt="" />
                       </button>
                     )}
                   </div>
@@ -147,31 +212,28 @@ const Navbar = () => {
           </div>
 
           <div className={styles.navIslands}>
-            {hasLikedProducts && (
-              <button
-                key={`mob-heart-${heartKey}`}
-                type="button"
-                className={`${styles.navIsland} ${styles.likeIsland} ${styles.likeButtonReveal}`}
+            {likeMounted && (
+              <NavIsland
+                variant="like"
+                menuOpen={menuOpen}
+                className={likeMotionClass}
                 onClick={() => setIsSlideInOpen(true)}
                 aria-label="Liked products"
-                tabIndex={menuOpen ? -1 : undefined}
-                aria-hidden={menuOpen}
+                tabIndex={menuOpen || likeMotion === 'exit' ? -1 : undefined}
               >
-                <img className={styles.heartIcon} src={HeartIconNavSVG} alt="" />
-              </button>
+                <img className={heartIconClass} src={HeartIconNavSVG} alt="" />
+              </NavIsland>
             )}
 
-            <button
-              type="button"
-              className={`${styles.navIsland} ${styles.menuToggle}`}
+            <NavIsland
+              variant="menu"
+              menuOpen={menuOpen}
               onClick={toggleMenu}
               aria-label="Open menu"
               aria-expanded={menuOpen}
-              tabIndex={menuOpen ? -1 : undefined}
-              aria-hidden={menuOpen}
             >
               <FiMenu className={styles.menuIcon} />
-            </button>
+            </NavIsland>
           </div>
         </div>
       </nav>

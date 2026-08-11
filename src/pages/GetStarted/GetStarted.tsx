@@ -55,6 +55,12 @@ const MEDIA_CARDS = [
   },
 ] as const;
 
+/** Entrance order: middle → left → right (card indices 1, 0, 2) */
+const CARD_ENTRANCE_DELAY = [0.14, 0.06, 0.22] as const;
+/** All floaters together, after cards are underway */
+const FLOATER_ENTRANCE_DELAY = 0.4;
+const FLOATER_ENTRANCE_DURATION = 1.05;
+
 const caseStudiesFAQ = [
   {
     question: 'What if I want to mix different experiences?',
@@ -106,6 +112,13 @@ const GetStarted = () => {
 
   // Real-time with scroll; smoothstep only shapes the curve (no spring lag).
   const shoot = useTransform(scrollYProgress, (p) => p * p * (3 - 2 * p));
+
+  useEffect(() => {
+    MEDIA_CARDS.forEach(({ src }) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -169,11 +182,21 @@ const GetStarted = () => {
                 className={styles.scrollMotion}
                 style={floaterMotions[i]}
               >
-                <img
-                  src={floater.src}
-                  alt=""
-                  className={`${styles.floater} ${floater.className}`}
-                />
+                <motion.div
+                  initial={entrance.play ? { opacity: 0, y: 20 } : false}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    ...entrance.transition(FLOATER_ENTRANCE_DELAY),
+                    duration: FLOATER_ENTRANCE_DURATION,
+                  }}
+                  style={{ position: 'absolute', inset: 0 }}
+                >
+                  <img
+                    src={floater.src}
+                    alt=""
+                    className={`${styles.floater} ${floater.className}`}
+                  />
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -185,20 +208,45 @@ const GetStarted = () => {
                 className={`${styles.scrollMotion} ${card.motionClass}`}
                 style={cardMotions[i]}
               >
-                <div className={`${styles.mediaCard} ${card.className}`}>
-                  <img src={card.src} alt="" className={styles.mediaCardImg} />
-                </div>
+                <motion.div
+                  className={`${styles.mediaCard} ${card.className}`}
+                  initial={
+                    entrance.play
+                      ? { opacity: 0, ['--entrance-y' as string]: '50px' }
+                      : false
+                  }
+                  animate={{ opacity: 1, ['--entrance-y' as string]: '0px' }}
+                  transition={entrance.transition(CARD_ENTRANCE_DELAY[i])}
+                >
+                  <img
+                    src={card.src}
+                    alt=""
+                    className={styles.mediaCardImg}
+                    decoding="async"
+                    {...({ fetchpriority: 'high' } as React.ImgHTMLAttributes<HTMLImageElement>)}
+                  />
+                </motion.div>
               </motion.div>
             ))}
           </div>
 
           <div className={styles.floatersFront} aria-hidden>
             <motion.div className={styles.scrollMotion} style={floaterLimeOliveMotion}>
-              <img
-                src={limeOlive}
-                alt=""
-                className={`${styles.floater} ${styles.floaterLimeOlive}`}
-              />
+              <motion.div
+                initial={entrance.play ? { opacity: 0, y: 20 } : false}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  ...entrance.transition(FLOATER_ENTRANCE_DELAY),
+                  duration: FLOATER_ENTRANCE_DURATION,
+                }}
+                style={{ position: 'absolute', inset: 0 }}
+              >
+                <img
+                  src={limeOlive}
+                  alt=""
+                  className={`${styles.floater} ${styles.floaterLimeOlive}`}
+                />
+              </motion.div>
             </motion.div>
           </div>
 

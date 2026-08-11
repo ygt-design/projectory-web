@@ -7,6 +7,15 @@
     --nav-glass-bg: rgba(19, 19, 19, 0.80);
     --nav-glass-border: 0.5px solid rgba(123, 123, 123, 0.50);
     --nav-glass-shadow: 0 12px 36px 0 rgba(19, 19, 19, 0.12);
+    --nav-ease: cubic-bezier(0.83, 0, 0.17, 1);
+    --nav-motion: 0.45s var(--nav-ease);
+    --nav-open-ease: cubic-bezier(0.83, 0, 0.17, 1);
+    --nav-open-motion: 0.32s var(--nav-open-ease);
+    --nav-close-ease: cubic-bezier(0.83, 0, 0.17, 1);
+    --nav-close-motion: 0.45s var(--nav-close-ease);
+    --nav-fade-out: 0.45s var(--nav-close-ease);
+    --nav-fade-in: 0.32s var(--nav-open-ease);
+    --nav-fade-in-delay: 0s;
 
     position: fixed;
     top: 0;
@@ -25,12 +34,13 @@
     background: rgba(0, 0, 0, 0.72);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity var(--nav-close-motion);
 }
 
 .menuOverlay.open {
     opacity: 1;
     pointer-events: auto;
+    transition: opacity var(--nav-open-motion);
 }
 
 .navShell,
@@ -55,13 +65,6 @@
     --nav-control: 36px;
     --nav-island-size: calc(var(--nav-control) + 2 * var(--nav-pad));
     --nav-mobile-at: 760px;
-    --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
-    --nav-motion: 0.6s var(--nav-ease);
-    --nav-open-ease: cubic-bezier(0.22, 1, 0.36, 1);
-    --nav-open-motion: 0.9s var(--nav-open-ease);
-    --nav-fade-out: 0.18s var(--nav-ease);
-    --nav-fade-in: 0.16s var(--nav-ease);
-    --nav-fade-in-delay: 0.22s;
 
     pointer-events: auto;
     position: relative;
@@ -74,11 +77,12 @@
     margin: 18px auto 0;
     container-type: inline-size;
     container-name: nav;
-    transition: gap var(--nav-motion);
+    transition: gap var(--nav-close-motion);
 }
 
 .navCluster.expanded {
     gap: 0;
+    transition: gap var(--nav-open-motion);
 }
 
 .navShell {
@@ -104,7 +108,8 @@
         background 0.3s ease,
         box-shadow 0.3s ease,
         min-height var(--nav-motion),
-        border-radius var(--nav-motion);
+        border-radius var(--nav-motion),
+        padding var(--nav-close-motion);
 }
 
 .navCluster.expanded .navShell {
@@ -115,9 +120,15 @@
     height: auto;
     min-height: var(--nav-island-size);
     border-radius: var(--nav-radius);
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        min-height var(--nav-motion),
+        border-radius var(--nav-motion),
+        padding var(--nav-open-motion),
+        gap var(--nav-open-motion);
 }
 
-/* ——— Title row ——— */
 .navRow {
     display: flex;
     align-items: center;
@@ -170,7 +181,6 @@
     flex-shrink: 0;
 }
 
-/* ——— Desktop links & actions ——— */
 .desktopNav {
     display: flex;
     align-items: center;
@@ -265,28 +275,21 @@
     flex-shrink: 0;
 }
 
-/* ——— Islands (mobile chips) ——— */
+/* ——— Islands (mobile btns / like + burger menu) ——— */
 .navIslands {
     display: none;
     flex: 0 0 auto;
     align-items: flex-start;
     gap: var(--nav-gap);
     min-width: 0;
-    transition: opacity var(--nav-fade-out);
+    /* Keep row in flow — only children animate width (flex collapse snaps) */
+    transition: gap var(--nav-close-motion);
 }
 
 .navCluster.expanded .navIslands {
-    flex: 0 0 0;
-    width: 0;
-    min-width: 0;
-    max-width: 0;
     gap: 0;
-    overflow: hidden;
-    opacity: 0;
     pointer-events: none;
-    border: none;
-    margin: 0;
-    padding: 0;
+    transition: gap var(--nav-open-motion);
 }
 
 .navIsland {
@@ -312,15 +315,16 @@
     appearance: none;
     -webkit-appearance: none;
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: scale(1);
+    transform-origin: center center;
     transition:
-        flex-basis var(--nav-motion),
-        width var(--nav-motion),
-        min-width var(--nav-motion),
-        transform var(--nav-motion),
-        border-color var(--nav-motion),
-        box-shadow var(--nav-motion),
-        opacity var(--nav-fade-in) var(--nav-fade-in-delay);
+        flex-basis var(--nav-close-motion),
+        width var(--nav-close-motion),
+        min-width var(--nav-close-motion),
+        transform var(--nav-close-motion),
+        border-color var(--nav-close-motion),
+        box-shadow var(--nav-close-motion),
+        opacity var(--nav-close-motion);
 }
 
 .navCluster.expanded .navIsland {
@@ -328,22 +332,18 @@
     width: 0;
     min-width: 0;
     opacity: 0;
-    transform: translate3d(24px, 0, 0);
+    transform: scale(0.4);
     pointer-events: none;
     border-color: transparent;
     box-shadow: none;
     transition:
-        flex-basis var(--nav-motion),
-        width var(--nav-motion),
-        min-width var(--nav-motion),
-        transform var(--nav-motion),
-        border-color var(--nav-fade-out),
-        box-shadow var(--nav-fade-out),
-        opacity var(--nav-fade-out);
-}
-
-.navCluster.expanded .navIsland.likeIsland {
-    animation: none;
+        flex-basis var(--nav-open-motion),
+        width var(--nav-open-motion),
+        min-width var(--nav-open-motion),
+        transform var(--nav-open-motion),
+        border-color var(--nav-open-motion),
+        box-shadow var(--nav-open-motion),
+        opacity var(--nav-open-motion);
 }
 
 .navIsland .heartIcon {
@@ -391,21 +391,42 @@
     }
 }
 
+@keyframes likeButtonExit {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+}
+
+@keyframes heartPulse {
+    0%,
+    100% {
+        transform: translateY(2px) scale(1);
+    }
+
+    40% {
+        transform: translateY(2px) scale(1.28);
+    }
+}
+
 .likeButtonReveal {
     transform-origin: center center;
     animation: likeButtonReveal 0.45s cubic-bezier(0.34, 1.45, 0.64, 1) both;
 }
 
-.menuToggle {
-    display: none;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
+.likeButtonExit {
+    transform-origin: center center;
+    pointer-events: none;
+    animation: likeButtonExit 0.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.heartPulse {
+    animation: heartPulse 0.36s cubic-bezier(0.34, 1.45, 0.64, 1);
 }
 
 .closeToggle {
@@ -419,16 +440,15 @@
     background: none;
     border: none;
     color: white;
+    line-height: 0;
 }
 
-.navIsland.menuToggle {
-    margin-left: 0;
+.navIsland.menuIsland {
     border: var(--nav-glass-border);
     background: var(--nav-glass-bg);
     box-shadow: var(--nav-glass-shadow);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--nav-radius);
     color: white;
 }
 
@@ -441,6 +461,8 @@
 .menuIcon {
     display: block;
     font-size: 30px;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 /* ——— Mobile sheet body ——— */
@@ -453,10 +475,13 @@
     gap: 16px;
     overflow: hidden;
     padding: 0;
+    max-height: 0;
     opacity: 0;
+    transform: translateY(-18px);
     transition:
-        max-height 0.4s var(--nav-ease),
-        opacity 0.28s var(--nav-ease);
+        max-height var(--nav-close-motion),
+        opacity var(--nav-close-motion),
+        transform var(--nav-close-motion);
 }
 
 .mobileMenu.open {
@@ -464,9 +489,11 @@
     flex: 0 0 auto;
     max-height: 400px;
     opacity: 1;
+    transform: translateY(0);
     transition:
         max-height var(--nav-open-motion),
-        opacity 0.55s var(--nav-open-ease);
+        opacity var(--nav-open-motion),
+        transform var(--nav-open-motion);
 }
 
 .mobileMenu ul {
@@ -519,12 +546,41 @@
     background: #fff;
 }
 
-/* ——— Mobile when cluster ≤ 760px (desktop min width) ——— */
 @container nav (max-width: 760px) {
+    .navShell,
+    .navIsland {
+        --nav-pad: 10px;
+        --nav-control: 28px;
+        --nav-island-size: 48px;
+    }
+
     .navShell {
         flex: 1 1 auto;
         width: auto;
         min-width: 0;
+        height: auto;
+        max-height: var(--nav-island-size);
+        overflow: hidden;
+        transition:
+            background 0.3s ease,
+            box-shadow 0.3s ease,
+            max-height var(--nav-close-motion),
+            padding var(--nav-close-motion),
+            gap var(--nav-close-motion);
+    }
+
+    .navCluster.expanded .navShell {
+        /* Never width:100% / flex:0 on mobile — grows as islands squish */
+        flex: 1 1 auto;
+        width: auto;
+        padding: 18px;
+        max-height: 520px;
+        transition:
+            background 0.3s ease,
+            box-shadow 0.3s ease,
+            max-height var(--nav-open-motion),
+            padding var(--nav-open-motion),
+            gap var(--nav-open-motion);
     }
 
     .navRight {
@@ -539,16 +595,38 @@
         display: grid;
     }
 
-    .menuToggle {
-        display: inline-flex;
-    }
-
-    .navIsland.menuToggle {
-        display: grid;
-    }
-
     .navMobileTrailing {
         display: flex;
+        height: var(--nav-control);
+        min-height: var(--nav-control);
+        align-items: center;
+    }
+
+    .logo {
+        height: var(--nav-control);
+        align-items: center;
+        padding-left: 3px;
+        transition: padding-left var(--nav-close-motion);
+    }
+
+    .navCluster.expanded .logo {
+        padding-left: 0;
+        transition: padding-left var(--nav-open-motion);
+    }
+
+    .logoImage {
+        height: 20px;
+        transform: none;
+    }
+
+    .menuIcon {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .navIsland .heartIcon {
+        width: 22px;
+        height: 22px;
     }
 
     .mobileMenu a:hover {
@@ -556,44 +634,18 @@
     }
 }
 
-@container nav (max-width: 400px) {
-    .navShell {
-        --nav-pad: 14px;
-        --nav-island-size: 60px;
-        height: 60px;
-        min-height: 60px;
-        padding: 14px;
-    }
-
-    .logoImage {
-        transform: translateY(-2px);
-    }
-
-    .navIsland {
-        flex-basis: 60px;
-        width: 60px;
-        min-width: 60px;
-        height: 60px;
-    }
-
-    .menuIcon {
-        font-size: 24px;
-    }
-
-    .navIsland .heartIcon {
-        width: 24px;
-        height: 24px;
-    }
-}
-
 @media (max-width: 448px) {
     .navCluster {
+        --nav-gap: 8px;
         width: calc(100% - 32px);
-        gap: 8px;
     }
 
     .navCluster.expanded .navShell {
         padding: 20px;
+    }
+
+    .logo {
+        padding-left: 5px;
     }
 }
 
@@ -607,15 +659,6 @@
 
 .navCluster.expanded .navMobileTrailing .closeToggle {
     display: inline-flex;
-}
-
-.navCluster.expanded .navIslands,
-.navCluster.expanded .navIsland {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-    transform: none;
-    transition: opacity var(--nav-fade-out);
 }
 
 @media (min-width: 809px) {
@@ -657,7 +700,9 @@
 
 /* ——— Reduced motion ——— */
 @media (prefers-reduced-motion: reduce) {
-    .likeButtonReveal {
+    .likeButtonReveal,
+    .likeButtonExit,
+    .heartPulse {
         animation: none;
     }
 
@@ -669,6 +714,10 @@
     }
 
     .navCluster.expanded .navIsland {
+        transform: none;
+    }
+
+    .mobileMenu {
         transform: none;
     }
 }
