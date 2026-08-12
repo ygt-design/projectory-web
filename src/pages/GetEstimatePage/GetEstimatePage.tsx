@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLikedProducts } from '../../context/LikedProductsContext';
 import { Link } from 'react-router-dom';
-import { products } from '../../pages/ProductPages/productsData';
+import { getProductsByIds } from '../../lib/findProduct';
 import styles from './GetEstimatePage.module.css';
 import { submitToWeb3Forms } from '../../lib/web3forms';
 
@@ -63,7 +63,7 @@ const GetEstimatePage: React.FC = () => {
   };
 
   // Retrieve the full product objects for the liked items (likedProducts is assumed to be an array of product IDs)
-  const likedItems = products.filter((p) => likedProducts.includes(p.id));
+  const likedItems = getProductsByIds(likedProducts);
 
   return (
     <section className={styles.getEstimateWrapper}>

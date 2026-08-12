@@ -1,6 +1,6 @@
 // HowWeBuilt.tsx
 import { useState } from 'react';
-import { products as allProducts } from '../../../ProductPages/productsData';
+import { findProductById } from '../../../../lib/findProduct';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './HowWeBuilt.module.css';
@@ -42,7 +42,7 @@ const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
 
   // Derive thumbnail from productsData based on the link URL
   const productId = selectedInstallation.link.split('/').pop() || '';
-  const matchedProduct = allProducts.find((p) => p.id === productId);
+  const matchedProduct = findProductById(productId);
   const thumbnailSrc = matchedProduct?.thumbnail || selectedInstallation.image;
   // Determine the assigned color from productsData or fallback
   const assignedColor = matchedProduct?.categoryColor || selectedInstallation.color;
@@ -67,7 +67,7 @@ const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
           const isActive = index === selectedIndex;
           // Determine button color from productsData or fallback
           const btnId = inst.link.split('/').pop() || '';
-          const btnProduct = allProducts.find((p) => p.id === btnId);
+          const btnProduct = findProductById(btnId);
           const btnColor = btnProduct?.categoryColor || inst.color;
           return (
             <button

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './CalendlyModal.module.css';
 import { CALENDLY_URL } from '../../../config/site';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 interface CalendlyModalProps {
   isOpen: boolean;
@@ -58,24 +59,17 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = CA
     }
   }, [isOpen, url]);
 
-  useEffect(() => {
-    // Handle ESC key to close modal
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
+  useEscapeKey(onClose, isOpen);
 
+  useEffect(() => {
     if (isOpen) {
-      document.addEventListener('keydown', handleEsc);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

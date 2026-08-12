@@ -16,6 +16,7 @@ import CustomCursor from '../../components/CustomCursor/CustomCursor';
 
 import { products as allProducts } from '../../pages/ProductPages/productsData';
 import type { Product } from '../../types/product';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import icon1 from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
 import icon2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
 import icon3 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
@@ -46,16 +47,9 @@ const Home = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Handle ESC key to close lightbox
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsLightboxOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, []);
+  // Handle ESC key to close lightbox. Always active, matching the previous
+  // effect's empty dependency array.
+  useEscapeKey(() => setIsLightboxOpen(false));
 
   // Handle body scroll lock
   useEffect(() => {

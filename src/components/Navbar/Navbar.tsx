@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode 
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import logo from '../../assets/images/logo.svg';
 import HeartIconNavSVG from '../../assets/images/heartIconNav.svg';
 import SlideInMenu from '../SlideInMenu/SlideInMenu';
@@ -108,17 +109,13 @@ const Navbar = () => {
       document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       document.body.style.overflow = previousOverflow;
       document.body.style.paddingRight = previousPaddingRight;
-      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [menuOpen]);
+
+  useEscapeKey(() => setMenuOpen(false), menuOpen);
 
   const toggleMenu = () => setMenuOpen((open) => !open);
   const closeMenu = () => setMenuOpen(false);

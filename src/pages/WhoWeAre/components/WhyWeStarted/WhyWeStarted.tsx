@@ -3,22 +3,14 @@ import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import { whyWeStartedSection } from '../../whoWeAreData';
 import styles from './WhyWeStarted.module.css';
+import { useEscapeKey } from '../../../../hooks/useEscapeKey';
 
 const WhyWeStarted = () => {
   const { title, videoSrc, paragraphs } = whyWeStartedSection;
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const lightboxVideoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    if (!isLightboxOpen) return;
-
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsLightboxOpen(false);
-    };
-
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [isLightboxOpen]);
+  useEscapeKey(() => setIsLightboxOpen(false), isLightboxOpen);
 
   useEffect(() => {
     if (isLightboxOpen) {

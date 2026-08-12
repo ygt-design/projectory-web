@@ -2,7 +2,7 @@ import { useCallback, useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { products } from './productsData';
+import { findProductById } from '../../lib/findProduct';
 
 import ProductHero from './components/ProductHero/ProductHero';
 import ProductDetails from './components/ProductDetails/ProductDetails';
@@ -21,7 +21,7 @@ import styles from './ProductPage.module.css';
 
 const ProductPage = () => {
   const { id } = useParams();
-  const product = products.find((p) => p.id === id);
+  const product = findProductById(id);
 
   const { likedProducts, toggleLike } = useLikedProducts();
 

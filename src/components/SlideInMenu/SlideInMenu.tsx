@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLikedProducts } from '../../context/LikedProductsContext';
-import { products } from '../../pages/ProductPages/productsData';
+import { getProductsByIds } from '../../lib/findProduct';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './SlideInMenu.module.css';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 interface SlideInMenuProps {
   onClose: () => void;
@@ -15,7 +16,7 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const navigate = useNavigate();
 
-  const likedItems = products.filter((p) => likedProducts.includes(p.id));
+  const likedItems = getProductsByIds(likedProducts);
   const productsCount = likedItems.length;
   let headingText: string;
   if (productsCount === 1) {
@@ -31,17 +32,14 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
     if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
+
+  useEscapeKey(onClose, isOpen);
 
   return createPortal(
     <>
