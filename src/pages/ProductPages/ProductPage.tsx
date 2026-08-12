@@ -8,9 +8,6 @@ import ProductHero from './components/ProductHero/ProductHero';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import QuickFacts from './components/QuickFacts/QuickFacts';
 import Objectives from './components/Objectives/Objectives';
-import VideoFeature from './components/VideoFeature/VideoFeature';
-import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
-import CaseStudyHighlight from './components/CaseStudyHighlight/CaseStudyHighlight';
 import FinalCTA from './components/FinalCTA/FinalCTA';
 import HowItWorks from './components/HowItWorks/HowItWorks';
 import DataFeature from './components/DataFeature/DataFeature';
@@ -190,68 +187,6 @@ const ProductPage = () => {
                 objectives={section.content.objectives || []}
               />
             );
-          case 'video': {
-            if (!section.content || !('videoUrl' in section.content)) return null;
-            const videoContent = section.content as {
-              videoUrl?: string;
-              title?: string;
-              description?: string;
-            };
-            return (
-              <VideoFeature
-                key={index}
-                videoUrl={videoContent.videoUrl || ''}
-                title={videoContent.title || ''}
-                description={videoContent.description || ''}
-              />
-            );
-          }
-          case 'testimonialSizzle': {
-            if (!section.content) return null;
-            const testimonialContent = section.content as {
-              videoSrc?: string | null;
-              quote?: string | null;
-              author?: string | null;
-              role?: string | null;
-            };
-            return <TestimonialSizzle key={index} {...testimonialContent} />;
-          }
-          // Deleted pricing section
-          case 'case-study': {
-            if (!section.content) return null;
-            // Ensure all required props exist for CaseStudyHighlight
-            const caseStudyContent = section.content as {
-              title?: string;
-              description?: string;
-              buttonText?: string;
-              buttonLink?: string;
-              caseStudyTitle?: string;
-              caseStudySubtitle?: string;
-              caseStudyImage?: string;
-            };
-            if (
-              !caseStudyContent.title ||
-              !caseStudyContent.description ||
-              !caseStudyContent.buttonText ||
-              !caseStudyContent.buttonLink ||
-              !caseStudyContent.caseStudyTitle ||
-              !caseStudyContent.caseStudySubtitle ||
-              !caseStudyContent.caseStudyImage
-            ) {
-              return null;
-            }
-            // Create properly typed object with all required fields (non-null assertion is safe due to checks above)
-            const validCaseStudyContent = {
-              title: caseStudyContent.title!,
-              description: caseStudyContent.description!,
-              buttonText: caseStudyContent.buttonText!,
-              buttonLink: caseStudyContent.buttonLink!,
-              caseStudyTitle: caseStudyContent.caseStudyTitle!,
-              caseStudySubtitle: caseStudyContent.caseStudySubtitle!,
-              caseStudyImage: caseStudyContent.caseStudyImage!,
-            };
-            return <CaseStudyHighlight key={index} {...validCaseStudyContent} />;
-          }
           case 'dataFeature':
             if (!section.content) return null;
             return (

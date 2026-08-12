@@ -92,8 +92,7 @@ const ContactForm = () => {
           message: formData.message,
         }),
       });
-      const result = await response.json();
-      console.log('FormSubmit response:', result);
+      await response.json();
       if (response.ok) {
         setStatus('Message sent successfully!');
         setFormData({

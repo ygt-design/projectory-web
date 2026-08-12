@@ -49,20 +49,6 @@ export const caseStudiesData = [
             'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749518973/CIBC_Align_by_line_sgztib_wibmdm.webp',
         },
       },
-      // {
-      //   type: 'imageGrid',
-      //   content:{
-      //     imageLeft: 'https://s3-alpha-sig.figma.com/img/1f24/2aac/522d06b917265ce8211d79ef1bc242ee?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Xs2RIziDMkTjhyIg-wjX1wWxT1f9HATC0D4n7z9P5I8ORd7qgGx3KkxKv~DDGeLmctlDb2xmHmxfyDIWiEkTTRXjRBNqh3Aw5Yn4KeGYN2qxLvAGQDZTxpVg0M1zltbjLzJ~w8b56nBmw15OXlmaJfz7S4chblnpXErFBouOh1QyVESJPAsUnJckadkZbvvEjFQ0sxknbzG4rq4wP7J0~tVzQzmTq6RUBrCvPPL0qYDKQREZDsMn1w6LrEDFViFQIhNUsqlcKxtvj8xpDuHy-YNqrYRKLih0895pxnqHim6uFL0YzYENMht9tng8b0UcFyjeB~EfLeq2mToaLco5ug__',
-      //     imageRight: 'https://s3-alpha-sig.figma.com/img/453a/3898/af43444f1b2a9759440c58b59176b404?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nEhAzuRj9GJ8NuNBwFamX2XnvFPfp3ZW4fXRQtwQXnSNuy76K-jdfLUKHhDrlnsyS9ogDRdXA1KCqZxh7Fua8eF~cq7jFiogcI7mkdhthlA~5FguCBmhY55Tb3jh~Nd2piEUyfQACXsPNHdo0yEDwvvUsA5wdVl-otV2hsdyY3B7V52t2ZYluXq9rrG5XmntRs8EApmn8RwZizuWrGQGKDMNm7XJX87Jf2DMmO2wD4-kiUl0Lqe3l-UTYCfCH7fYZgnzmcoG4I-AUHFpqDyPJsijaVzVNgLPX5BmEF5eQ0EU5jKA1j9Rp2ipcgTPaSOxTHun7hGvPul2~PY7D6uKyQ__',
-      //   }
-      // },
-      // {
-      //   type: 'imageGrid',
-      //   content:{
-      //     imageLeft: 'https://s3-alpha-sig.figma.com/img/1f24/2aac/522d06b917265ce8211d79ef1bc242ee?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Xs2RIziDMkTjhyIg-wjX1wWxT1f9HATC0D4n7z9P5I8ORd7qgGx3KkxKv~DDGeLmctlDb2xmHmxfyDIWiEkTTRXjRBNqh3Aw5Yn4KeGYN2qxLvAGQDZTxpVg0M1zltbjLzJ~w8b56nBmw15OXlmaJfz7S4chblnpXErFBouOh1QyVESJPAsUnJckadkZbvvEjFQ0sxknbzG4rq4wP7J0~tVzQzmTq6RUBrCvPPL0qYDKQREZDsMn1w6LrEDFViFQIhNUsqlcKxtvj8xpDuHy-YNqrYRKLih0895pxnqHim6uFL0YzYENMht9tng8b0UcFyjeB~EfLeq2mToaLco5ug__',
-      //     imageRight: 'https://s3-alpha-sig.figma.com/img/453a/3898/af43444f1b2a9759440c58b59176b404?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nEhAzuRj9GJ8NuNBwFamX2XnvFPfp3ZW4fXRQtwQXnSNuy76K-jdfLUKHhDrlnsyS9ogDRdXA1KCqZxh7Fua8eF~cq7jFiogcI7mkdhthlA~5FguCBmhY55Tb3jh~Nd2piEUyfQACXsPNHdo0yEDwvvUsA5wdVl-otV2hsdyY3B7V52t2ZYluXq9rrG5XmntRs8EApmn8RwZizuWrGQGKDMNm7XJX87Jf2DMmO2wD4-kiUl0Lqe3l-UTYCfCH7fYZgnzmcoG4I-AUHFpqDyPJsijaVzVNgLPX5BmEF5eQ0EU5jKA1j9Rp2ipcgTPaSOxTHun7hGvPul2~PY7D6uKyQ__',
-      //   }
-      // },
       {
         type: 'how-we-built',
         content: {

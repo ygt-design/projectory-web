@@ -59,7 +59,6 @@ const GetEstimatePage: React.FC = () => {
         }),
       });
       const result = await response.json();
-      console.log('Web3Forms response:', result);
       if (response.ok && result.success !== false) {
         setShowOverlay(true);
         setStatus('');
