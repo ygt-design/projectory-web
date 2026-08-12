@@ -59,14 +59,7 @@ const WhyWeStarted = () => {
         tabIndex={0}
         aria-label="Play video fullscreen"
       >
-        <video
-          className={styles.video}
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <video className={styles.video} src={videoSrc} autoPlay muted loop playsInline />
       </div>
       <div className={styles.copy}>
         <h2 className={styles.title}>{title}</h2>
@@ -93,10 +86,7 @@ const WhyWeStarted = () => {
             >
               <FiX />
             </button>
-            <div
-              className={styles.lightboxContent}
-              onClick={(event) => event.stopPropagation()}
-            >
+            <div className={styles.lightboxContent} onClick={(event) => event.stopPropagation()}>
               <video
                 ref={lightboxVideoRef}
                 key={videoSrc}
@@ -108,7 +98,7 @@ const WhyWeStarted = () => {
               />
             </div>
           </div>,
-          document.body,
+          document.body
         )}
     </section>
   );

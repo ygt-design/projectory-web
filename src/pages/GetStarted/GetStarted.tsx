@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-  type MotionValue,
-} from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import styles from './GetStarted.module.css';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import FaqAccordion from '../../components/FaqAccordion/FaqAccordion';
@@ -160,8 +154,8 @@ const GetStarted = () => {
             animate={entrance.fade.animate}
             transition={entrance.transition(0.12)}
           >
-            Respond the next few questions and we’ll highlight a few products that you might
-            want to consider adding to your program.
+            Respond the next few questions and we’ll highlight a few products that you might want to
+            consider adding to your program.
           </motion.p>
           <motion.div
             initial={enterInitial}
@@ -211,9 +205,7 @@ const GetStarted = () => {
                 <motion.div
                   className={`${styles.mediaCard} ${card.className}`}
                   initial={
-                    entrance.play
-                      ? { opacity: 0, ['--entrance-y' as string]: '50px' }
-                      : false
+                    entrance.play ? { opacity: 0, ['--entrance-y' as string]: '50px' } : false
                   }
                   animate={{ opacity: 1, ['--entrance-y' as string]: '0px' }}
                   transition={entrance.transition(CARD_ENTRANCE_DELAY[i])}
@@ -286,7 +278,7 @@ const GetStarted = () => {
         <FaqAccordion
           id="faq"
           className={styles.faqAccordionInner}
-          title={"Questions? We\nhave answers."}
+          title={'Questions? We\nhave answers.'}
           items={caseStudiesFAQ}
         />
       </div>

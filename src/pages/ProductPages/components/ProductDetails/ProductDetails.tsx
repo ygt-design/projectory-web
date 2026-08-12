@@ -31,10 +31,7 @@ const ProductDetails = ({ details, product }: DetailsProps) => {
     <section className={styles.detailsWrapper}>
       {/* 🔹 Left Text Section */}
       <div className={styles.textContent}>
-      <h2
-          className={styles.heading}
-          dangerouslySetInnerHTML={{ __html: details.heading }}
-        />
+        <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: details.heading }} />
         {details.description && (
           <p
             className={styles.description}

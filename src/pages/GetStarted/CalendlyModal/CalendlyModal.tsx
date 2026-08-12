@@ -17,7 +17,11 @@ declare global {
   }
 }
 
-const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'https://calendly.com/oren-/projectory?month=2026-01' }) => {
+const CalendlyModal: React.FC<CalendlyModalProps> = ({
+  isOpen,
+  onClose,
+  url = 'https://calendly.com/oren-/projectory?month=2026-01',
+}) => {
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +42,9 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
       }
     };
 
-    const existing = document.querySelector(`script[src="${SCRIPT_URL}"]`) as HTMLScriptElement | null;
+    const existing = document.querySelector(
+      `script[src="${SCRIPT_URL}"]`
+    ) as HTMLScriptElement | null;
     if (existing) {
       if (window.Calendly) {
         initWidget();
@@ -82,10 +88,7 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           <FiX />
         </button>
-        <div 
-          ref={widgetRef}
-          className={styles.calendlyWidget}
-        />
+        <div ref={widgetRef} className={styles.calendlyWidget} />
       </div>
     </div>,
     document.body

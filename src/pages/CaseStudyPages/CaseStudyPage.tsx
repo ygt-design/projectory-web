@@ -35,48 +35,74 @@ const CaseStudyPage = () => {
             id: caseStudy.id,
             heroVideo: caseStudy.heroVideo,
             category: caseStudy.category,
-            categoryColor: ('categoryColor' in caseStudy && caseStudy.categoryColor) 
-              ? (caseStudy.categoryColor as string)
-              : caseStudy.titleColor || '#FFFFFF',
+            categoryColor:
+              'categoryColor' in caseStudy && caseStudy.categoryColor
+                ? (caseStudy.categoryColor as string)
+                : caseStudy.titleColor || '#FFFFFF',
             categoryHighlight: (caseStudy.categoryHighlight || '') as string,
             tagline: caseStudy.tagline,
-            tags: (caseStudy.tags && Array.isArray(caseStudy.tags)) ? caseStudy.tags : undefined,
+            tags: caseStudy.tags && Array.isArray(caseStudy.tags) ? caseStudy.tags : undefined,
             clientLogo: caseStudy.clientLogo,
           };
-          return <ProductHero key={index} product={productForHero as Parameters<typeof ProductHero>[0]['product']} />;
+          return (
+            <ProductHero
+              key={index}
+              product={productForHero as Parameters<typeof ProductHero>[0]['product']}
+            />
+          );
         }
-        if(section.type === 'details'){
+        if (section.type === 'details') {
           if (!section.content) return null;
           const detailsContent = {
-            heading: ('heading' in section.content) ? (section.content.heading as string) : '',
-            description: ('description' in section.content && section.content.description)
-              ? (section.content.description as string)
-              : '',
-            features: ('features' in section.content) ? (section.content.features as string[]) : undefined,
-            headingType: ('headingType' in section.content && 
-              (section.content.headingType === 'features' || section.content.headingType === 'overview'))
-              ? section.content.headingType as 'features' | 'overview'
-              : undefined,
+            heading: 'heading' in section.content ? (section.content.heading as string) : '',
+            description:
+              'description' in section.content && section.content.description
+                ? (section.content.description as string)
+                : '',
+            features:
+              'features' in section.content ? (section.content.features as string[]) : undefined,
+            headingType:
+              'headingType' in section.content &&
+              (section.content.headingType === 'features' ||
+                section.content.headingType === 'overview')
+                ? (section.content.headingType as 'features' | 'overview')
+                : undefined,
           };
           return <ProductDetails key={index} product={caseStudy} details={detailsContent} />;
         }
 
-        if(section.type === 'image'){
+        if (section.type === 'image') {
           if (!section.content || !('imageUrl' in section.content)) return null;
-          return <img key={index} src={section.content.imageUrl as string} alt="" className={styles.fullPageImage} />;
+          return (
+            <img
+              key={index}
+              src={section.content.imageUrl as string}
+              alt=""
+              className={styles.fullPageImage}
+            />
+          );
         }
 
         if (section.type === 'imageGrid') {
-          if (!section.content || !('imageLeft' in section.content) || !('imageRight' in section.content)) return null;
+          if (
+            !section.content ||
+            !('imageLeft' in section.content) ||
+            !('imageRight' in section.content)
+          )
+            return null;
           return (
             <div className={styles.imageGrid} key={index}>
               <img src={section.content.imageLeft as string} alt="" className={styles.imageLeft} />
-              <img src={section.content.imageRight as string} alt="" className={styles.imageRight} />
+              <img
+                src={section.content.imageRight as string}
+                alt=""
+                className={styles.imageRight}
+              />
             </div>
           );
         }
 
-        if(section.type === 'testimonialSizzle'){
+        if (section.type === 'testimonialSizzle') {
           if (!section.content) return null;
           const testimonialContent = section.content as {
             videoSrc?: string | null;
@@ -87,38 +113,69 @@ const CaseStudyPage = () => {
           return <TestimonialSizzle key={index} {...testimonialContent} />;
         }
 
-        if(section.type === 'how-we-built'){
-          if (!section.content || !('installations' in section.content) || !section.content.installations) return null;
-          return <HowWeBuilt key={index} installations={section.content.installations as Array<{name: string; color: string; image: string; description: string; link: string}>} />;
+        if (section.type === 'how-we-built') {
+          if (
+            !section.content ||
+            !('installations' in section.content) ||
+            !section.content.installations
+          )
+            return null;
+          return (
+            <HowWeBuilt
+              key={index}
+              installations={
+                section.content.installations as Array<{
+                  name: string;
+                  color: string;
+                  image: string;
+                  description: string;
+                  link: string;
+                }>
+              }
+            />
+          );
         }
 
-        if(section.type === 'tealCTA'){
-        return  <TealCTASection 
-          key={index}
-          title="Have an event coming up?" 
-          description="Get in touch to see how Projectory can help bring your event to life!"
-          buttonText="Contact Us →"
-          buttonLink="/build-your-program" />;
+        if (section.type === 'tealCTA') {
+          return (
+            <TealCTASection
+              key={index}
+              title="Have an event coming up?"
+              description="Get in touch to see how Projectory can help bring your event to life!"
+              buttonText="Contact Us →"
+              buttonLink="/build-your-program"
+            />
+          );
         }
 
-        if(section.type === 'dataFeature'){
+        if (section.type === 'dataFeature') {
           if (!section.content) return null;
           const dataFeatureContent = section.content as {
             title?: string;
             description?: string;
             imageUrl?: string;
           };
-          if (!dataFeatureContent.title || !dataFeatureContent.description || !dataFeatureContent.imageUrl) {
+          if (
+            !dataFeatureContent.title ||
+            !dataFeatureContent.description ||
+            !dataFeatureContent.imageUrl
+          ) {
             return null;
           }
-          return <DataFeature key={index} title={dataFeatureContent.title} description={dataFeatureContent.description} imageUrl={dataFeatureContent.imageUrl} />;
+          return (
+            <DataFeature
+              key={index}
+              title={dataFeatureContent.title}
+              description={dataFeatureContent.description}
+              imageUrl={dataFeatureContent.imageUrl}
+            />
+          );
         }
 
         return null;
       })}
       <FinalCTA experienceText="Case Studies" experienceLink="/case-studies" />
     </div>
-
   );
 };
 

@@ -30,7 +30,9 @@
   line-height: 28px;
   color: var(--white);
   text-align: center;
-  font-feature-settings: 'liga' off, 'clig' off;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
   margin: 0;
   white-space: pre-line;
 }

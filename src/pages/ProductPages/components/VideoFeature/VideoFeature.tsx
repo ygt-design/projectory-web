@@ -14,7 +14,10 @@ const VideoFeature = ({ videoUrl, title }: VideoFeatureProps) => {
         <h2 className={styles.highlight}>{title}</h2>
       </div>
 
-      <img src={AbstractImageTwo} className={`${styles.abstractImage} ${styles.abstractImageTwo}`}/>
+      <img
+        src={AbstractImageTwo}
+        className={`${styles.abstractImage} ${styles.abstractImageTwo}`}
+      />
 
       <div className={styles.videoContainer}>
         <iframe

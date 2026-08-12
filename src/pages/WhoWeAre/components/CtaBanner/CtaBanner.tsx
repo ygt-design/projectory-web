@@ -18,12 +18,7 @@ const CtaBanner = () => {
           </Link>
         </div>
       </div>
-      <img
-        src={tealBadge}
-        alt=""
-        className={styles.badgeTeal}
-        aria-hidden
-      />
+      <img src={tealBadge} alt="" className={styles.badgeTeal} aria-hidden />
     </section>
   );
 };

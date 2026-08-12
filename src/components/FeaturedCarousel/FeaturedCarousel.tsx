@@ -91,9 +91,13 @@ const FeaturedCarousel: React.FC = () => {
     <div className={styles.carouselWrapper}>
       {/* Left Column */}
       <div className={styles.leftColumn}>
-        <h4 className={`${styles.featuredText} ${
+        <h4
+          className={`${styles.featuredText} ${
             fadeState === 'fadeIn' ? styles.fadeIn : styles.fadeOut
-          }`}>Featured Product</h4>
+          }`}
+        >
+          Featured Product
+        </h4>
 
         <div
           className={`${styles.productInfo} ${
@@ -103,17 +107,11 @@ const FeaturedCarousel: React.FC = () => {
           <h2 className={styles.title}>
             {currentProduct.shortDescription || 'No short description available.'}
           </h2>
-          <p
-            className={styles.categoryLine}
-            style={{ color: currentProduct.categoryColor }}
-          >
+          <p className={styles.categoryLine} style={{ color: currentProduct.categoryColor }}>
             {currentProduct.category}
             <strong>{currentProduct.categoryHighlight}</strong>
           </p>
-          <Link
-            to={`/products/${currentProduct.id}`}
-            className={styles.learnMoreButton}
-          >
+          <Link to={`/products/${currentProduct.id}`} className={styles.learnMoreButton}>
             Learn More
           </Link>
         </div>
@@ -121,7 +119,7 @@ const FeaturedCarousel: React.FC = () => {
 
       {/* Right Column (Image) */}
       <div className={styles.rightColumn}>
-            <div
+        <div
           className={`${styles.timerBarWrapper} ${
             fadeState === 'fadeIn' ? styles.fadeIn : styles.fadeOut
           }`}

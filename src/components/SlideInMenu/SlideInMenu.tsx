@@ -57,7 +57,13 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
         aria-label="Liked products"
         aria-hidden={!isOpen}
       >
-        <button type="button" onClick={onClose} className={styles.closeButton} aria-label="Close" tabIndex={isOpen ? undefined : -1}>
+        <button
+          type="button"
+          onClick={onClose}
+          className={styles.closeButton}
+          aria-label="Close"
+          tabIndex={isOpen ? undefined : -1}
+        >
           <FiX />
         </button>
 
@@ -80,16 +86,21 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
           <div key={prod.id} className={styles.likedItem}>
             <div className={styles.itemWrapper}>
               <div className={styles.itemImageWrapper}>
-                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
+                <Link
+                  to={`/products/${prod.id}`}
+                  onClick={onClose}
+                  tabIndex={isOpen ? undefined : -1}
+                >
                   <img src={prod.thumbnail} alt={prod.name} />
                 </Link>
               </div>
               <div className={styles.itemTextWrapper}>
-                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
-                  <h4
-                    className={styles.title}
-                    style={{ color: prod.categoryColor || '#ffffff' }}
-                  >
+                <Link
+                  to={`/products/${prod.id}`}
+                  onClick={onClose}
+                  tabIndex={isOpen ? undefined : -1}
+                >
+                  <h4 className={styles.title} style={{ color: prod.categoryColor || '#ffffff' }}>
                     {prod.category}
                     <strong>{prod.categoryHighlight}</strong>
                   </h4>
@@ -110,9 +121,7 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
           </div>
         ))}
 
-        {productsCount === 0 && (
-          <p className={styles.noItemsText}>No items selected</p>
-        )}
+        {productsCount === 0 && <p className={styles.noItemsText}>No items selected</p>}
       </div>
     </>,
     document.body

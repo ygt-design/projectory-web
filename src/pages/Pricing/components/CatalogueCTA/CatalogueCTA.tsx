@@ -13,12 +13,7 @@ const CatalogueCTA = () => {
           {catalogueCta.button.label}
         </Link>
       </div>
-      <img
-        src={amberBadge}
-        alt=""
-        className={styles.badgeAmber}
-        aria-hidden
-      />
+      <img src={amberBadge} alt="" className={styles.badgeAmber} aria-hidden />
     </section>
   );
 };

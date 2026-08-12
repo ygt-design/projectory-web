@@ -27,7 +27,7 @@ const Intro: React.FC<IntroProps> = ({
   description,
   buttonText,
   buttonLink,
-  scrollToNext
+  scrollToNext,
 }) => {
   const [selectedShapes, setSelectedShapes] = useState<string[]>([]);
 
@@ -49,8 +49,8 @@ const Intro: React.FC<IntroProps> = ({
             duration: 4,
             repeat: Infinity,
             repeatType: 'loop',
-            ease: 'easeInOut'
-          }
+            ease: 'easeInOut',
+          },
         }}
       >
         {selectedShapes.map((shape, index) => (

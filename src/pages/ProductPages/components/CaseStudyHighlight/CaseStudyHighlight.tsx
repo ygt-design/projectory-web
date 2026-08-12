@@ -34,7 +34,7 @@ const CaseStudyHighlight = ({
       {/* 🔹 Right Section (Image & Overlay Text) */}
       <div className={styles.caseStudyImageWrapper}>
         <CloudinaryImage src={caseStudyImage} alt="Case Study" className={styles.caseStudyImage} />
-        <div className={styles.imageOverlay}></div> 
+        <div className={styles.imageOverlay}></div>
         <div className={styles.overlayText}>
           <h3>{caseStudyTitle}</h3>
           <p>{caseStudySubtitle}</p>

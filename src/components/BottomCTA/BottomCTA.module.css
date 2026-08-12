@@ -1,14 +1,14 @@
 .bottomCta {
-    width: 100%;
-    padding: 80px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-top: -1200px;
-    height: 2100px;
-    margin-bottom: -400px;
-    pointer-events: none;
+  width: 100%;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: -1200px;
+  height: 2100px;
+  margin-bottom: -400px;
+  pointer-events: none;
 }
 
 .bottomCta::before {
@@ -24,74 +24,72 @@
 }
 
 .inner {
-    max-width: 1000px;
-    text-align: center;
-    padding: 40px;
-    border-radius: 12px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    pointer-events: auto;
-    margin-bottom: -750px;
-    z-index: 0;
-
+  max-width: 1000px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: auto;
+  margin-bottom: -750px;
+  z-index: 0;
 }
 
 .title {
-    font-size: 65px;
-    margin: 0 0 20px;
-    color: #fff;
+  font-size: 65px;
+  margin: 0 0 20px;
+  color: #fff;
 }
 
 .text {
-    font-size: 28px;
-    color: #eee;
+  font-size: 28px;
+  color: #eee;
 }
 
 .button {
-    width: fit-content;
-    margin: auto;
-    display: inline-block;
-    padding: 14px 32px;
-    font-size: 24px;
-    background: white;
-    color: black;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: background 0.3s ease;
+  width: fit-content;
+  margin: auto;
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 24px;
+  background: white;
+  color: black;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
 .button:hover {
-    background: #ddd;
+  background: #ddd;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .bottomCta {
-        height: 2750px;
-        padding: 0;
-        margin-bottom: -1000px;
-    }
+  .bottomCta {
+    height: 2750px;
+    padding: 0;
+    margin-bottom: -1000px;
+  }
 
-    .inner {
-        bottom: 1000px;
-    }
+  .inner {
+    bottom: 1000px;
+  }
 
-    .title {
-        font-size: 40px;
-    }
-    .text {
-        font-size: 24px;
-    }
+  .title {
+    font-size: 40px;
+  }
+  .text {
+    font-size: 24px;
+  }
 
-    .button {
-        font-size: 20px;
-        padding: 12px 24px;
-    }
+  .button {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
 
-    .inner{
-        margin-bottom: -2200px;
-    }
-
+  .inner {
+    margin-bottom: -2200px;
+  }
 }

@@ -2,8 +2,6 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": ["index.html"],
   "project": ["src/**/*.{ts,tsx}"],
-  "ignore": [
-    "src/pages/activities/**"
-  ],
+  "ignore": ["src/pages/activities/**"],
   "ignoreDependencies": ["qs", "@vercel/node"]
 }

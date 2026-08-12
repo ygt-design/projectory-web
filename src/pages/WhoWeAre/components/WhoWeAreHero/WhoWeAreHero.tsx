@@ -9,14 +9,7 @@ const WhoWeAreHero = () => {
     <section className={styles.landing} aria-label="Who we are">
       <div className={styles.media}>
         {videoSrc ? (
-          <video
-            className={styles.heroMedia}
-            autoPlay
-            loop
-            muted
-            playsInline
-            key={videoSrc}
-          >
+          <video className={styles.heroMedia} autoPlay loop muted playsInline key={videoSrc}>
             <source src={videoSrc} type="video/mp4" />
           </video>
         ) : (

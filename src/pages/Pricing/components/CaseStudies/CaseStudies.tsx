@@ -49,11 +49,7 @@ const CaseStudies = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <img
-              src={selected.image}
-              alt=""
-              className={styles.image}
-            />
+            <img src={selected.image} alt="" className={styles.image} />
             <div className={styles.copy}>
               <h3 className={styles.heading} style={{ color: accent }}>
                 {selected.heading}

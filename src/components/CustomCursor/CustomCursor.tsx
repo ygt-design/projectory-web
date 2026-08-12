@@ -23,7 +23,9 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
   const rectStaleRef = useRef(true);
 
   useEffect(() => {
-    const markStale = () => { rectStaleRef.current = true; };
+    const markStale = () => {
+      rectStaleRef.current = true;
+    };
     window.addEventListener('scroll', markStale, { passive: true });
     window.addEventListener('resize', markStale, { passive: true });
     return () => {
@@ -73,7 +75,7 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
 
       // position updates can happen every move
       setPos({ x, y });
-      
+
       // Animate in/out based on state changes
       const wasActive = wasActiveRef.current;
       if (shouldShow && !wasActive) {
@@ -93,7 +95,7 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
         setActive(true);
         wasActiveRef.current = true;
       }
-      
+
       updateCursorStyle(shouldShow);
 
       // smooth rotation via rAF to reduce jitter/state spam
@@ -135,7 +137,7 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
       if (shouldShow) {
         // Always update position when entering
         setPos({ x, y });
-        
+
         if (!wasActiveRef.current) {
           // Just became active - trigger animation
           setIsVisible(true);
@@ -175,7 +177,7 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
     // Listen for enter/leave on the target element - these fire immediately on hover
     el.addEventListener('pointerenter', onPointerEnter);
     el.addEventListener('pointerleave', onPointerLeave);
-    
+
     // Also listen globally for movement
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('blur', onPointerLeaveWindow);
@@ -207,7 +209,9 @@ const CustomCursor = ({ targetRef, isMobile, text = 'see the whole reel' }: Cust
         transform: `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`,
         transformOrigin: 'center center',
         opacity: opacity,
-        transition: isVisible ? 'opacity 0.2s ease-out, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)' : 'opacity 0.15s ease-out, transform 0.15s ease-out',
+        transition: isVisible
+          ? 'opacity 0.2s ease-out, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+          : 'opacity 0.15s ease-out, transform 0.15s ease-out',
       }}
     >
       {text}

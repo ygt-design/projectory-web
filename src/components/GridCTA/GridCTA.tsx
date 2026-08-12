@@ -6,7 +6,8 @@ const GridCTA = () => {
     <div className={styles.gridCTA}>
       <h2>Looking to meet a specific objective?</h2>
       <p>
-        We’ll work with you to create a custom product that aligns with your event’s needs. Get in touch to learn more.
+        We’ll work with you to create a custom product that aligns with your event’s needs. Get in
+        touch to learn more.
       </p>
       <Link to="/get-started#contact-form" className={styles.ctaButton}>
         Contact Us

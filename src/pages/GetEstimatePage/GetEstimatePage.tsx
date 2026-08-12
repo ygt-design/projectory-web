@@ -16,7 +16,7 @@ const GetEstimatePage: React.FC = () => {
     eventDate: '',
     eventLocation: '',
     message: '',
-    selectedProducts: likedProducts.join(', '), 
+    selectedProducts: likedProducts.join(', '),
   });
   const [status, setStatus] = useState('');
   const [showOverlay, setShowOverlay] = useState(false);
@@ -25,14 +25,12 @@ const GetEstimatePage: React.FC = () => {
   useEffect(() => {
     setFormData((prev) => ({
       ...prev,
-      selectedProducts: likedProducts.join(', ')
+      selectedProducts: likedProducts.join(', '),
     }));
   }, [likedProducts]);
 
   // Handle changes on visible form fields
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -46,18 +44,18 @@ const GetEstimatePage: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
+          'X-Requested-With': 'XMLHttpRequest',
         },
         body: JSON.stringify({
           access_key: formData.access_key,
-          subject: "Estimate Request from Projectory",
+          subject: 'Estimate Request from Projectory',
           from_name: formData.name,
           name: formData.name,
           email: formData.email,
           eventDate: formData.eventDate,
           eventLocation: formData.eventLocation,
           message: formData.message,
-          selectedProducts: formData.selectedProducts
+          selectedProducts: formData.selectedProducts,
         }),
       });
       const result = await response.json();
@@ -83,53 +81,52 @@ const GetEstimatePage: React.FC = () => {
       <div className={styles.leftColumn}>
         <h2>Your Selected Products:</h2>
         <div className={styles.likedItemsWrapper}>
-        {likedItems.length === 0 ? (
-          <p>No products selected</p>
-        ) : (
-          likedItems.map((prod) => (
-            <div key={prod.id} className={styles.likedItem}>
-              <div className={styles.itemWrapper}>
-                <div className={styles.itemImageWrapper}>
-                  <Link to={`/products/${prod.id}`}>
-                    <img src={prod.thumbnail} alt={prod.name} />
-                  </Link>
-                </div>
-                <div className={styles.itemTextWrapper}>
-                  <Link to={`/products/${prod.id}`}>
-                    <h4
-                      className={styles.title}
-                      style={{ color: prod.categoryColor || '#ffffff' }}
-                    >
-                      {prod.category}<strong>{prod.categoryHighlight}</strong>
-                    </h4>
-                    <p>{prod.tagline}</p>
-                  </Link>
-                  <button
-                    className={styles.removeButton}
-                    onClick={() => toggleLike(prod.id)}
-                  >
-                    Remove
-                  </button>
+          {likedItems.length === 0 ? (
+            <p>No products selected</p>
+          ) : (
+            likedItems.map((prod) => (
+              <div key={prod.id} className={styles.likedItem}>
+                <div className={styles.itemWrapper}>
+                  <div className={styles.itemImageWrapper}>
+                    <Link to={`/products/${prod.id}`}>
+                      <img src={prod.thumbnail} alt={prod.name} />
+                    </Link>
+                  </div>
+                  <div className={styles.itemTextWrapper}>
+                    <Link to={`/products/${prod.id}`}>
+                      <h4
+                        className={styles.title}
+                        style={{ color: prod.categoryColor || '#ffffff' }}
+                      >
+                        {prod.category}
+                        <strong>{prod.categoryHighlight}</strong>
+                      </h4>
+                      <p>{prod.tagline}</p>
+                    </Link>
+                    <button className={styles.removeButton} onClick={() => toggleLike(prod.id)}>
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        )}
+            ))
+          )}
         </div>
       </div>
 
       {/* Right Column: Estimate Form */}
       <div className={styles.rightColumn}>
         <h2>So, What’s Next?</h2>
-        
+
         <p>
-          You’ve made some great picks! Tell us a bit more about your event, and we’ll follow up with more details on how we can work together. 
+          You’ve made some great picks! Tell us a bit more about your event, and we’ll follow up
+          with more details on how we can work together.
         </p>
 
         <div className={styles.formWrapper}>
           <form onSubmit={handleSubmit} className={styles.estimateForm}>
             {/* Hidden fields for Web3Forms */}
-            
+
             <input
               type="hidden"
               name="selectedProducts"
@@ -182,7 +179,7 @@ const GetEstimatePage: React.FC = () => {
                 onChange={handleChange}
               />
             </label>
-            
+
             <label>
               Message
               <textarea
@@ -204,7 +201,9 @@ const GetEstimatePage: React.FC = () => {
         <div className={styles.overlay}>
           <div className={styles.overlayContent}>
             <h2>Thank you {formData.name}, your form has been submitted!</h2>
-            <p>We’ll be in touch soon with an estimate and a quick orientation on how to get started.</p>
+            <p>
+              We’ll be in touch soon with an estimate and a quick orientation on how to get started.
+            </p>
             <a
               href="https://ca.linkedin.com/company/theprojectory"
               target="_blank"
@@ -212,16 +211,17 @@ const GetEstimatePage: React.FC = () => {
               className={styles.overlayButton}
             >
               Get Updates on LinkedIn
-            </a> <br />
+            </a>{' '}
+            <br />
             <Link to="/" className={styles.overlayLink}>
               Take Me Home
-            </Link>  
-          </div>   
-            <div className={styles.overlayShapes}>
-              <img src={shape1} alt="Shape 1" className={`${styles.shape} ${styles.shapeOne} `} />
-              <img src={shape2} alt="Shape 2" className={`${styles.shape} ${styles.shapeTwo} `} />     
-            </div>
+            </Link>
           </div>
+          <div className={styles.overlayShapes}>
+            <img src={shape1} alt="Shape 1" className={`${styles.shape} ${styles.shapeOne} `} />
+            <img src={shape2} alt="Shape 2" className={`${styles.shape} ${styles.shapeTwo} `} />
+          </div>
+        </div>
       )}
     </section>
   );

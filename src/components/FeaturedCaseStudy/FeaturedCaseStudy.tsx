@@ -5,13 +5,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCaseStudy.module.css';
 
-
 const CASE_STUDIES = [
   {
     id: 'cibc-leadership',
     title: 'Facilitating strategic conversations for the most senior leaders of the bank',
     subtitle: 'CIBC Global Leadership Summit',
-    imageUrl: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
+    imageUrl:
+      'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749518972/FM8A5043-Enhanced-NR_qywkjc_vydjdi.webp',
     link: '/case-study/cibc-global-leadership-summit',
   },
   {
@@ -64,7 +64,8 @@ const FeaturedCaseStudy = () => {
             </div>
             <div className={styles.headerRight}>
               <p>
-                Explore how our projects redefine interactive experiences and create lasting impacts.
+                Explore how our projects redefine interactive experiences and create lasting
+                impacts.
               </p>
               <Link to="/case-studies" className={styles.exploreButton}>
                 Explore All Case Studies →

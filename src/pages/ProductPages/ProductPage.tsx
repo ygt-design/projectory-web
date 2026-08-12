@@ -47,7 +47,7 @@ const ProductPage = () => {
         goNext();
       }
     },
-    [goPrev, goNext],
+    [goPrev, goNext]
   );
 
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -103,9 +103,7 @@ const ProductPage = () => {
   }
 
   const isLiked = likedProducts.includes(product.id);
-  const firstImageSectionIndex = product.sections.findIndex(
-    (section) => section.type === 'image'
-  );
+  const firstImageSectionIndex = product.sections.findIndex((section) => section.type === 'image');
 
   return (
     <div className={styles.productPage}>
@@ -116,32 +114,30 @@ const ProductPage = () => {
           case 'details': {
             if (!section.content) return null;
             const detailsContent = {
-              heading: ('heading' in section.content) ? (section.content.heading as string) : '',
-              description: ('description' in section.content && section.content.description)
-                ? (section.content.description as string)
-                : '',
-              features: ('features' in section.content) ? (section.content.features as string[]) : undefined,
-              headingType: ('headingType' in section.content && 
-                (section.content.headingType === 'features' || section.content.headingType === 'overview'))
-                ? section.content.headingType as 'features' | 'overview'
-                : undefined,
+              heading: 'heading' in section.content ? (section.content.heading as string) : '',
+              description:
+                'description' in section.content && section.content.description
+                  ? (section.content.description as string)
+                  : '',
+              features:
+                'features' in section.content ? (section.content.features as string[]) : undefined,
+              headingType:
+                'headingType' in section.content &&
+                (section.content.headingType === 'features' ||
+                  section.content.headingType === 'overview')
+                  ? (section.content.headingType as 'features' | 'overview')
+                  : undefined,
             };
-            return (
-              <ProductDetails
-                key={index}
-                product={product}
-                details={detailsContent}
-              />
-            );
+            return <ProductDetails key={index} product={product} details={detailsContent} />;
           }
           case 'image': {
             if (!section.content || !section.content.imageUrl) return null;
             const isPrimaryImage = index === firstImageSectionIndex;
 
             if (isPrimaryImage) {
-              const baseImages: string[] =
-                (section.content.imageUrls as string[] | undefined) ||
-                [section.content.imageUrl as string];
+              const baseImages: string[] = (section.content.imageUrls as string[] | undefined) || [
+                section.content.imageUrl as string,
+              ];
               const minSlides = Math.ceil(4 / baseImages.length);
               const images: string[] = [];
               for (let r = 0; r < minSlides; r++) {
@@ -149,7 +145,12 @@ const ProductPage = () => {
               }
 
               return (
-                <div key={index} className={styles.carousel} onClick={handleCarouselClick} ref={carouselRef}>
+                <div
+                  key={index}
+                  className={styles.carousel}
+                  onClick={handleCarouselClick}
+                  ref={carouselRef}
+                >
                   <div className={styles.carouselViewport} ref={emblaRef}>
                     <div className={styles.carouselTrack}>
                       {images.map((imgUrl, i) => (
@@ -171,12 +172,7 @@ const ProductPage = () => {
             const url = section.content.imageUrl;
             return (
               <div key={index}>
-                <CloudinaryImage
-                  src={url}
-                  alt=""
-                  className={styles.fullPageImage}
-                  loading="lazy"
-                />
+                <CloudinaryImage src={url} alt="" className={styles.fullPageImage} loading="lazy" />
               </div>
             );
           }
@@ -233,10 +229,15 @@ const ProductPage = () => {
               caseStudySubtitle?: string;
               caseStudyImage?: string;
             };
-            if (!caseStudyContent.title || !caseStudyContent.description || 
-                !caseStudyContent.buttonText || !caseStudyContent.buttonLink ||
-                !caseStudyContent.caseStudyTitle || !caseStudyContent.caseStudySubtitle ||
-                !caseStudyContent.caseStudyImage) {
+            if (
+              !caseStudyContent.title ||
+              !caseStudyContent.description ||
+              !caseStudyContent.buttonText ||
+              !caseStudyContent.buttonLink ||
+              !caseStudyContent.caseStudyTitle ||
+              !caseStudyContent.caseStudySubtitle ||
+              !caseStudyContent.caseStudyImage
+            ) {
               return null;
             }
             // Create properly typed object with all required fields (non-null assertion is safe due to checks above)
@@ -279,36 +280,34 @@ const ProductPage = () => {
       <FinalCTA experienceText="Products" experienceLink="/products" />
 
       <div className={styles.floatingLikeButton}>
-        <button
-          onClick={() => toggleLike(product.id)}
-          className={styles.likeButton}
-        >
-          <img
-            src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
-            alt="Like/Unlike Product"
-          />
+        <button onClick={() => toggleLike(product.id)} className={styles.likeButton}>
+          <img src={isLiked ? HeartIconSVG : HeartIconSVG_Outline} alt="Like/Unlike Product" />
         </button>
 
-      <div className={styles.floatingText}>
-        Like this product? <br />
-        Click the heart to save it for later!
-      </div>
+        <div className={styles.floatingText}>
+          Like this product? <br />
+          Click the heart to save it for later!
+        </div>
       </div>
 
-      {cursorActive && !isMobile && ReactDOM.createPortal(
-        <div
-          className={styles.carouselCursor}
-          style={{
-            left: `${cursorPos.x}px`,
-            top: `${cursorPos.y}px`,
-            opacity: cursorVisible ? 1 : 0,
-            transform: `translate(-50%, -50%) scale(${cursorVisible ? 1 : 0.8})`,
-          }}
-        >
-          <div className={`${styles.cursorArrow} ${cursorSide === 'left' ? styles.cursorArrowLeft : styles.cursorArrowRight}`} />
-        </div>,
-        document.body
-      )}
+      {cursorActive &&
+        !isMobile &&
+        ReactDOM.createPortal(
+          <div
+            className={styles.carouselCursor}
+            style={{
+              left: `${cursorPos.x}px`,
+              top: `${cursorPos.y}px`,
+              opacity: cursorVisible ? 1 : 0,
+              transform: `translate(-50%, -50%) scale(${cursorVisible ? 1 : 0.8})`,
+            }}
+          >
+            <div
+              className={`${styles.cursorArrow} ${cursorSide === 'left' ? styles.cursorArrowLeft : styles.cursorArrowRight}`}
+            />
+          </div>,
+          document.body
+        )}
     </div>
   );
 };

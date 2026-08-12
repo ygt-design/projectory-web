@@ -26,7 +26,9 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const isLiked = likedProducts.includes(product.id);
 
   const optimizedThumbnail = optimizeCloudinaryUrl(product.thumbnail, 'f_auto,q_auto,w_900');
-  const optimizedBgVideo = product.bgVideo ? optimizeCloudinaryUrl(product.bgVideo, 'q_auto,w_900') : undefined;
+  const optimizedBgVideo = product.bgVideo
+    ? optimizeCloudinaryUrl(product.bgVideo, 'q_auto,w_900')
+    : undefined;
 
   const [isHovered, setIsHovered] = useState(false);
   const [descHeight, setDescHeight] = useState(0);
@@ -124,12 +126,18 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           <Link
             to={`/products/${product.id}`}
             className={styles.learnMoreButton}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             Learn More
           </Link>
 
-          <button className={styles.likeButton} onClick={e => { e.stopPropagation(); toggleLike(product.id); }}>
+          <button
+            className={styles.likeButton}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleLike(product.id);
+            }}
+          >
             <img
               className={styles.heartIcon}
               src={isLiked ? HeartIconSVG : HeartIconSVG_Outline}
@@ -143,9 +151,14 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 };
 
 // Memoize component to prevent unnecessary re-renders
-export default React.memo(ProductCard, (prevProps: { product: Product }, nextProps: { product: Product }) => {
-  // Only re-render if product data actually changes
-  return prevProps.product.id === nextProps.product.id &&
-         prevProps.product.thumbnail === nextProps.product.thumbnail &&
-         prevProps.product.bgVideo === nextProps.product.bgVideo;
-});
+export default React.memo(
+  ProductCard,
+  (prevProps: { product: Product }, nextProps: { product: Product }) => {
+    // Only re-render if product data actually changes
+    return (
+      prevProps.product.id === nextProps.product.id &&
+      prevProps.product.thumbnail === nextProps.product.thumbnail &&
+      prevProps.product.bgVideo === nextProps.product.bgVideo
+    );
+  }
+);

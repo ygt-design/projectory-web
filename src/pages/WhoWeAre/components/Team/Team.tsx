@@ -5,10 +5,7 @@ import styles from './Team.module.css';
 const DesktopMemberCard = ({ member }: { member: TeamMember }) => {
   return (
     <article className={styles.personCard}>
-      <div
-        className={styles.personImageWrap}
-        style={{ backgroundColor: member.imageBg }}
-      >
+      <div className={styles.personImageWrap} style={{ backgroundColor: member.imageBg }}>
         <img
           src={member.image}
           alt={`${member.firstName} ${member.lastName}`}

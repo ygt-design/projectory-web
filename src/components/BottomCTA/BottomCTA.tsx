@@ -10,12 +10,7 @@ interface BottomCTAProps {
   buttonLink: string;
 }
 
-const BottomCTA: React.FC<BottomCTAProps> = ({
-  title,
-  text,
-  buttonText,
-  buttonLink,
-}) => {
+const BottomCTA: React.FC<BottomCTAProps> = ({ title, text, buttonText, buttonLink }) => {
   const ref = useRef<HTMLDivElement>(null);
   // track scroll progress of this section
   const { scrollYProgress } = useScroll({
@@ -26,11 +21,7 @@ const BottomCTA: React.FC<BottomCTAProps> = ({
   const opacity = useTransform(scrollYProgress, [0.4, 0.5], [0, 1]);
 
   return (
-    <motion.section
-      ref={ref}
-      className={styles.bottomCta}
-      style={{ opacity }}
-    >
+    <motion.section ref={ref} className={styles.bottomCta} style={{ opacity }}>
       <div className={styles.inner}>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.text}>{text}</p>
