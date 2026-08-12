@@ -49,7 +49,7 @@ const HowWeBuilt = ({ installations }: HowWeBuiltProps) => {
 
   // Pull the product's details heading from productsData
   const detailsSection = matchedProduct?.sections.find(sec => sec.type === 'details');
-  const detailsHeading = detailsSection?.content.heading || selectedInstallation.description;
+  const detailsHeading = detailsSection?.content?.heading || selectedInstallation.description;
 
   return (
     <section className={styles.howWeBuiltWrapper}>
