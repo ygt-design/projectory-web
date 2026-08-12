@@ -9,8 +9,7 @@ import logo from '../../assets/images/logo.svg';
 import termsConditionsPdf from '../../assets/documents/terms-conditions-Dw-Y0UD9.pdf';
 import privacyPolicyPdf from '../../assets/documents/privacy-policy.pdf';
 import cookieNoticePdf from '../../assets/documents/cookie-notice.pdf';
-
-const WEB3FORMS_ACCESS_KEY = '1c3fa95b-e42f-4bc0-b339-025a18bc51eb';
+import { submitToWeb3Forms } from '../../lib/web3forms';
 
 const Footer = () => {
   const [introDeckEmail, setIntroDeckEmail] = useState('');
@@ -20,20 +19,11 @@ const Footer = () => {
     e.preventDefault();
     setIntroDeckStatus('Sending...');
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: 'Intro deck request',
-          email: introDeckEmail,
-          message: 'Request for Projectory intro deck (from website footer).',
-        }),
+      const { response, result } = await submitToWeb3Forms({
+        name: 'Intro deck request',
+        email: introDeckEmail,
+        message: 'Request for Projectory intro deck (from website footer).',
       });
-      const result = await response.json();
       if (response.ok && result.success !== false) {
         setIntroDeckStatus("Thanks! We'll share the deck with you soon.");
         setIntroDeckEmail('');

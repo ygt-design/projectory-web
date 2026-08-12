@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './CalendlyModal.module.css';
+import { CALENDLY_URL } from '../../../config/site';
 
 interface CalendlyModalProps {
   isOpen: boolean;
@@ -17,11 +18,7 @@ declare global {
   }
 }
 
-const CalendlyModal: React.FC<CalendlyModalProps> = ({
-  isOpen,
-  onClose,
-  url = 'https://calendly.com/oren-/projectory?month=2026-01',
-}) => {
+const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = CALENDLY_URL }) => {
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

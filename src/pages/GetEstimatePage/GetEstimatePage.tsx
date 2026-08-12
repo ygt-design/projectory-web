@@ -3,6 +3,7 @@ import { useLikedProducts } from '../../context/LikedProductsContext';
 import { Link } from 'react-router-dom';
 import { products } from '../../pages/ProductPages/productsData';
 import styles from './GetEstimatePage.module.css';
+import { submitToWeb3Forms } from '../../lib/web3forms';
 
 import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
 import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
@@ -10,7 +11,6 @@ import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbo
 const GetEstimatePage: React.FC = () => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const [formData, setFormData] = useState({
-    access_key: '1c3fa95b-e42f-4bc0-b339-025a18bc51eb', // Replace with actual key
     name: '',
     email: '',
     eventDate: '',
@@ -40,25 +40,16 @@ const GetEstimatePage: React.FC = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({
-          access_key: formData.access_key,
-          subject: 'Estimate Request from Projectory',
-          from_name: formData.name,
-          name: formData.name,
-          email: formData.email,
-          eventDate: formData.eventDate,
-          eventLocation: formData.eventLocation,
-          message: formData.message,
-          selectedProducts: formData.selectedProducts,
-        }),
+      const { response, result } = await submitToWeb3Forms({
+        subject: 'Estimate Request from Projectory',
+        from_name: formData.name,
+        name: formData.name,
+        email: formData.email,
+        eventDate: formData.eventDate,
+        eventLocation: formData.eventLocation,
+        message: formData.message,
+        selectedProducts: formData.selectedProducts,
       });
-      const result = await response.json();
       if (response.ok && result.success !== false) {
         setShowOverlay(true);
         setStatus('');

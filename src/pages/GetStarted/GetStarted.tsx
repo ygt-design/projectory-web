@@ -8,6 +8,7 @@ import CalendlyModal from './CalendlyModal/CalendlyModal';
 import { usePageEntrance } from '../../hooks/usePageEntrance';
 
 import { apricot, yellowCoral, teal, limeOlive } from '../../assets/images/shapes/floaters';
+import { CALENDLY_URL } from '../../config/site';
 
 type ShootEnd = { x: number; y: number; rotate: number };
 
@@ -286,7 +287,7 @@ const GetStarted = () => {
       <CalendlyModal
         isOpen={isCalendlyOpen}
         onClose={() => setIsCalendlyOpen(false)}
-        url="https://calendly.com/oren-/projectory?month=2026-01"
+        url={CALENDLY_URL}
       />
     </div>
   );
