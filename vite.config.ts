@@ -1,5 +1,6 @@
 import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'node:url';
 
 const CRITICAL_FONTS = ['FoundersGrotesk-Regular', 'FoundersGrotesk-Semibold'];
 
@@ -60,6 +61,12 @@ function criticalCssAndFonts(): Plugin {
 export default defineConfig({
   base: '/',
   plugins: [react(), criticalCssAndFonts()],
+  resolve: {
+    // Mirrors "paths" in tsconfig.app.json.
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
   server: {
     proxy: {
       '/api/combo-convo-form': {
