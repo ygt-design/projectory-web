@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import styles from './ProductHero.module.css';
 import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryImage';
 
-interface Product {
+export type ProductHeroProduct = {
   id: string;
   heroVideo: string;
   category: string;
@@ -11,9 +11,9 @@ interface Product {
   tagline: string;
   tags?: string[];
   clientLogo?: string;
-}
+};
 
-const ProductHero = ({ product }: { product: Product | null }) => {
+const ProductHero = ({ product }: { product: ProductHeroProduct | null }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

@@ -15,20 +15,11 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import CustomCursor from '../../components/CustomCursor/CustomCursor';
 
 import { products as allProducts } from '../../pages/ProductPages/productsData';
+import type { Product } from '../../types/product';
 import icon1 from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
 import icon2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
 import icon3 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
 import icon4 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  categoryHighlight?: string | null;
-  categoryColor?: string;
-  thumbnail: string;
-  bgVideo?: string;
-}
 
 const Home = () => {
   const secondSectionRef = useRef<HTMLDivElement>(null);

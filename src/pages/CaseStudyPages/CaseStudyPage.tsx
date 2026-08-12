@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { caseStudiesData } from '../CaseStudyPages/caseStudiesData';
 import styles from './CaseStudyPage.module.css';
-import ProductHero from '../ProductPages/components/ProductHero/ProductHero';
+import ProductHero, {
+  type ProductHeroProduct,
+} from '../ProductPages/components/ProductHero/ProductHero';
 import ProductDetails from '../ProductPages/components/ProductDetails/ProductDetails';
 import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
 import HowWeBuilt from './components/HowWeBuilt/HowWeBuilt';
@@ -22,16 +24,7 @@ const CaseStudyPage = () => {
       {caseStudy.sections.map((section, index) => {
         if (section.type === 'hero') {
           // Map caseStudy to ProductHero format, using titleColor as categoryColor fallback
-          const productForHero: {
-            id: string;
-            heroVideo: string;
-            category: string;
-            categoryColor: string;
-            categoryHighlight: string;
-            tagline: string;
-            tags?: string[];
-            clientLogo?: string;
-          } = {
+          const productForHero: ProductHeroProduct = {
             id: caseStudy.id,
             heroVideo: caseStudy.heroVideo,
             category: caseStudy.category,
@@ -44,12 +37,7 @@ const CaseStudyPage = () => {
             tags: caseStudy.tags && Array.isArray(caseStudy.tags) ? caseStudy.tags : undefined,
             clientLogo: caseStudy.clientLogo,
           };
-          return (
-            <ProductHero
-              key={index}
-              product={productForHero as Parameters<typeof ProductHero>[0]['product']}
-            />
-          );
+          return <ProductHero key={index} product={productForHero} />;
         }
         if (section.type === 'details') {
           if (!section.content) return null;

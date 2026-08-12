@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { products as allProducts } from '../ProductPages/productsData';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductCard, { type ProductCardProduct } from '../../components/ProductCard/ProductCard';
 import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
 import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
 import GridCTA from '../../components/GridCTA/GridCTA';
@@ -230,16 +230,7 @@ const Products = () => {
                   return <GridCTA key="cta" />;
                 }
                 // Type assertion: we know this is a product at this point
-                const product = item as {
-                  id: string;
-                  name: string;
-                  category: string;
-                  categoryHighlight?: string | null;
-                  categoryColor?: string;
-                  thumbnail: string;
-                  bgVideo?: string;
-                  tags?: string[];
-                };
+                const product = item as ProductCardProduct;
                 return <ProductCard key={item.id} product={product} />;
               })}
             </div>

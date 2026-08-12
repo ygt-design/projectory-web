@@ -4,16 +4,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCarousel.module.css';
 import { products } from '../../pages/ProductPages/productsData';
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  categoryHighlight?: string | null;
-  categoryColor?: string;
-  thumbnail?: string;
-  shortDescription?: string;
-}
+import type { Product } from '../../types/product';
 
 const CAROUSEL_INTERVAL = 5000; // 5 seconds per product
 
