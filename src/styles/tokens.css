@@ -1,11 +1,9 @@
 /*
- * Design tokens for brand colour.
- *
- * All repeated colours turned tokens: a colour becomes a token at 2+ repeats.
+ * Design tokens for brand colour. (All repeated colours turned tokens: colour becomes a token at 2+ repeats.)
  */
 
 :root {
-  /* Neutrals, light to dark */
+  /* Neutrals */
   --white: #ffffff;
   --light-gray: #dddddd;
   --silver: #cccccc;
