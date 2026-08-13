@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import useEmblaCarousel from 'embla-carousel-react';
 import { findProductById } from '@/lib/findProduct';
 
-import ProductHero from '@/pages/ProductPages/components/ProductHero/ProductHero';
-import ProductDetails from '@/pages/ProductPages/components/ProductDetails/ProductDetails';
+import ProductHero from '@/components/sections/ProductHero/ProductHero';
+import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
 import QuickFacts from '@/pages/ProductPages/components/QuickFacts/QuickFacts';
 import Objectives from '@/pages/ProductPages/components/Objectives/Objectives';
-import FinalCTA from '@/pages/ProductPages/components/FinalCTA/FinalCTA';
+import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
 import HowItWorks from '@/pages/ProductPages/components/HowItWorks/HowItWorks';
-import DataFeature from '@/pages/ProductPages/components/DataFeature/DataFeature';
+import DataFeature from '@/components/sections/DataFeature/DataFeature';
 
 import { useLikedProducts } from '@/context/LikedProductsContext';
 import HeartIconSVG from '@/assets/images/heartIcon.svg';

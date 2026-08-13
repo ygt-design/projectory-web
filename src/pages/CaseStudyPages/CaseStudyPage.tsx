@@ -3,13 +3,13 @@ import { caseStudiesData } from '@/data/caseStudies';
 import styles from './CaseStudyPage.module.css';
 import ProductHero, {
   type ProductHeroProduct,
-} from '@/pages/ProductPages/components/ProductHero/ProductHero';
-import ProductDetails from '@/pages/ProductPages/components/ProductDetails/ProductDetails';
+} from '@/components/sections/ProductHero/ProductHero';
+import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
 import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
 import HowWeBuilt from '@/pages/CaseStudyPages/components/HowWeBuilt/HowWeBuilt';
 import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
-import DataFeature from '@/pages/ProductPages/components/DataFeature/DataFeature';
-import FinalCTA from '@/pages/ProductPages/components/FinalCTA/FinalCTA';
+import DataFeature from '@/components/sections/DataFeature/DataFeature';
+import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
 
 const CaseStudyPage = () => {
   const { id } = useParams();
