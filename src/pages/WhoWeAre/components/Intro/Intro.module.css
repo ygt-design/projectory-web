@@ -39,7 +39,9 @@
 .paragraph {
   margin: 0;
   color: #fff;
-  font-feature-settings: 'liga' off, 'clig' off;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 24px;
   font-weight: 400;

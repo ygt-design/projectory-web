@@ -9,15 +9,20 @@ interface TealCTASectionProps {
   buttonText: string;
   buttonLink: string;
 }
- 
-const TealCTASection: React.FC<TealCTASectionProps> = ({ title, description, buttonText, buttonLink }) => {
+
+const TealCTASection: React.FC<TealCTASectionProps> = ({
+  title,
+  description,
+  buttonText,
+  buttonLink,
+}) => {
   return (
     <section className={styles.ctaWrapper}>
       <div className={styles.ctaContent}>
         <h2>{title}</h2>
         <p>{description}</p>
         <Link to={buttonLink} className={styles.ctaButton}>
-          {buttonText} 
+          {buttonText}
         </Link>
       </div>
       <div className={styles.ctaImages}>

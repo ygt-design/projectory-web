@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
+import { submitToWeb3Forms } from '../../lib/web3forms';
 
 const MailIcon = () => (
   <svg
@@ -63,7 +64,6 @@ const ContactForm = () => {
     phone: '',
     company: '',
     message: '',
-    access_key: '1c3fa95b-e42f-4bc0-b339-025a18bc51eb',
   });
 
   const [status, setStatus] = useState('');
@@ -77,23 +77,13 @@ const ContactForm = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({
-          access_key: formData.access_key,
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          company: formData.company,
-          message: formData.message,
-        }),
+      const { response } = await submitToWeb3Forms({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        message: formData.message,
       });
-      const result = await response.json();
-      console.log('FormSubmit response:', result);
       if (response.ok) {
         setStatus('Message sent successfully!');
         setFormData({
@@ -102,7 +92,6 @@ const ContactForm = () => {
           phone: '',
           company: '',
           message: '',
-          access_key: formData.access_key,
         });
       } else {
         setStatus('Failed to send message. Please try again.');

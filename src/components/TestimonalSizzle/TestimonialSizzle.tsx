@@ -8,21 +8,17 @@ interface TestimonialSizzleProps {
   role?: string | null;
 }
 
-const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
-  videoSrc,
-  quote,
-  author,
-  role,
-}) => {
+const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({ videoSrc, quote, author, role }) => {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' });
 
   return (
-    <div className={styles.flowWrapper}> 
+    <div className={styles.flowWrapper}>
       <section ref={ref} className={styles.testimonialWrapper}>
         <div className={styles.topLeftGraphic}></div>
         <div className={styles.videoContainer}>
-          {videoSrc && inView && (
-            videoSrc.toLowerCase().endsWith('.mp4') ? (
+          {videoSrc &&
+            inView &&
+            (videoSrc.toLowerCase().endsWith('.mp4') ? (
               <video
                 className={styles.video}
                 src={videoSrc}
@@ -42,8 +38,7 @@ const TestimonialSizzle: React.FC<TestimonialSizzleProps> = ({
                 allow="autoplay; encrypted-media; fullscreen"
                 allowFullScreen
               />
-            )
-          )}
+            ))}
 
           {(quote || author || role) && (
             <div className={styles.quoteSection}>

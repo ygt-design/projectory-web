@@ -3,7 +3,7 @@ import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryIm
 
 interface ObjectivesProps {
   title: string;
-  titleColor: string; 
+  titleColor: string;
   imageUrl: string;
   objectives: string[];
 }
@@ -16,7 +16,11 @@ const Objectives = ({ title, titleColor, imageUrl, objectives }: ObjectivesProps
       </div>
 
       <div className={styles.textContent}>
-        <h2 style={{ backgroundImage: titleColor ? `linear-gradient(to right, ${titleColor})` : 'none' }}>
+        <h2
+          style={{
+            backgroundImage: titleColor ? `linear-gradient(to right, ${titleColor})` : 'none',
+          }}
+        >
           {title}
         </h2>
         <ul className={styles.list}>

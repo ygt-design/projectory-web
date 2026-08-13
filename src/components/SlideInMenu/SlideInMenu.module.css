@@ -21,7 +21,7 @@
   right: 0;
   width: 450px;
   height: 100vh;
-  background: #2C2A35;
+  background: #2c2a35;
   color: white;
   padding: 20px;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
@@ -40,7 +40,7 @@
   transition: transform 0.32s cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-.slideInMenuText{
+.slideInMenuText {
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);

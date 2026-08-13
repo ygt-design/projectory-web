@@ -12,9 +12,8 @@
   align-items: center;
   gap: 10px;
   box-sizing: border-box;
-  background:
-    linear-gradient(112deg, rgba(243, 118, 85, 0.50) 19.1%, rgba(167, 44, 75, 0.50) 67.29%),
-    #FF6D4A;
+  background: linear-gradient(112deg, rgba(243, 118, 85, 0.5) 19.1%, rgba(167, 44, 75, 0.5) 67.29%),
+    #ff6d4a;
 }
 
 .badgeAmber {
@@ -77,7 +76,9 @@
   color: var(--white);
   text-align: center;
   white-space: pre-line;
-  font-feature-settings: 'liga' off, 'clig' off;
+  font-feature-settings:
+    'liga' off,
+    'clig' off;
 }
 
 .button {
@@ -88,11 +89,14 @@
   align-items: center;
   border-radius: 8px;
   background: var(--white);
-  color: #A72C4B;
+  color: #a72c4b;
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
 }
@@ -108,7 +112,10 @@
   color: var(--black);
   border-color: var(--white);
   transform: scale(0.97);
-  transition: background 0.08s ease-out, color 0.08s ease-out, border-color 0.08s ease-out,
+  transition:
+    background 0.08s ease-out,
+    color 0.08s ease-out,
+    border-color 0.08s ease-out,
     transform 0.08s ease-out;
 }
 

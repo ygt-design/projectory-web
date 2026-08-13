@@ -18,11 +18,11 @@ import shape7 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbo
 
 const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
 
-
 const questionData = {
   type: {
     label: 'What kind of experience are you looking for?',
-    description: 'Sessions are facilitated group activities that can be added into the agenda. Installations are self-guided activities for guests to explore during breaks. <br /> <br /> You can choose both options',
+    description:
+      'Sessions are facilitated group activities that can be added into the agenda. Installations are self-guided activities for guests to explore during breaks. <br /> <br /> You can choose both options',
     options: ['Facilitated session', 'Interactive installation'],
   },
   objectives: {
@@ -47,7 +47,7 @@ const questionData = {
 } as const;
 
 const allStepKeys = ['type', 'objectives', 'seating'] as const;
-type StepKey = typeof allStepKeys[number];
+type StepKey = (typeof allStepKeys)[number];
 
 // one gradient per step
 const BG_GRADIENTS = [
@@ -64,7 +64,7 @@ const GetStartedForm: React.FC = () => {
     seating: [],
   });
   const { likedProducts, toggleLike } = useLikedProducts();
-  const [recommended, setRecommended] = useState<typeof products[number][]>([]);
+  const [recommended, setRecommended] = useState<(typeof products)[number][]>([]);
   const navigate = useNavigate();
 
   const [shapeInstances, setShapeInstances] = useState<
@@ -102,48 +102,47 @@ const GetStartedForm: React.FC = () => {
   }, [recommended]);
 
   // Determine if only one type is selected
-  const onlyInteractive = filters.type.length === 1 && filters.type[0] === 'Interactive installation';
+  const onlyInteractive =
+    filters.type.length === 1 && filters.type[0] === 'Interactive installation';
   // Build dynamic steps: skip seating when only interactive installation is chosen
   const stepsUsed = onlyInteractive
-    ? allStepKeys.slice(0, 2)  // ['type', 'objectives']
-    : allStepKeys;             // ['type','objectives','seating']
+    ? allStepKeys.slice(0, 2) // ['type', 'objectives']
+    : allStepKeys; // ['type','objectives','seating']
   const stepCount = stepsUsed.length;
   const stepKey = stepsUsed[step];
 
   const toggle = (k: StepKey, opt: string) => {
-    setFilters(f => {
+    setFilters((f) => {
       const arr = f[k];
       return {
         ...f,
-        [k]: arr.includes(opt) ? arr.filter(x => x !== opt) : [...arr, opt],
+        [k]: arr.includes(opt) ? arr.filter((x) => x !== opt) : [...arr, opt],
       };
     });
   };
 
   const next = () => {
-    if (step < stepCount - 1) setStep(s => s + 1);
+    if (step < stepCount - 1) setStep((s) => s + 1);
     else handleSubmit();
   };
-  const back = () => step > 0 && setStep(s => s - 1);
+  const back = () => step > 0 && setStep((s) => s - 1);
 
   const handleSubmit = () => {
     // First, discard products that don't match the single selected type (unless both are selected)
     let filteredProducts = products;
     if (filters.type.length === 1) {
       const onlyType = filters.type[0];
-      filteredProducts = products.filter(p =>
-        p.filters.type.includes(onlyType)
-      );
+      filteredProducts = products.filter((p) => p.filters.type.includes(onlyType));
     }
     // Score each product by matching filters
-    const scored = filteredProducts.map(product => {
+    const scored = filteredProducts.map((product) => {
       let score = 0;
-      score += product.filters.type.filter(t => filters.type.includes(t)).length;
-      score += product.filters.objectives.filter(o => filters.objectives.includes(o)).length;
+      score += product.filters.type.filter((t) => filters.type.includes(t)).length;
+      score += product.filters.objectives.filter((o) => filters.objectives.includes(o)).length;
       if (filters.seating.includes('Mixed/Other')) {
         score += 1;
       } else {
-        score += product.filters.seating.filter(s => filters.seating.includes(s)).length;
+        score += product.filters.seating.filter((s) => filters.seating.includes(s)).length;
       }
       return { product, score };
     });
@@ -152,9 +151,9 @@ const GetStartedForm: React.FC = () => {
     scored.sort((a, b) => b.score - a.score);
 
     // Take products with at least 4 points
-    const highMatches = scored.filter(item => item.score >= 4).map(item => item.product);
+    const highMatches = scored.filter((item) => item.score >= 4).map((item) => item.product);
 
-    let recommendations: typeof products[number][];
+    let recommendations: (typeof products)[number][];
 
     if (highMatches.length >= 5) {
       // 5 or more high matches: take top 5
@@ -165,12 +164,12 @@ const GetStartedForm: React.FC = () => {
     } else {
       // fewer than 3 high matches: fill with next best to reach 3
       const base = highMatches;
-      const others = scored.map(item => item.product).filter(p => !base.includes(p));
+      const others = scored.map((item) => item.product).filter((p) => !base.includes(p));
       recommendations = [...base, ...others.slice(0, 3 - base.length)];
     }
 
     // Auto-like the recommendations
-    recommendations.forEach(p => {
+    recommendations.forEach((p) => {
       if (!likedProducts.includes(p.id)) {
         toggleLike(p.id);
       }
@@ -182,7 +181,7 @@ const GetStartedForm: React.FC = () => {
   // Compute options for current step, filtering objectives if needed
   const options =
     stepKey === 'objectives' && onlyInteractive
-      ? questionData.objectives.options.filter(opt => opt !== 'Connect ideas to action')
+      ? questionData.objectives.options.filter((opt) => opt !== 'Connect ideas to action')
       : questionData[stepKey].options;
 
   return (
@@ -201,9 +200,7 @@ const GetStartedForm: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
-            <h1 className={styles.title}>
-              {questionData[stepKey].label}
-            </h1>
+            <h1 className={styles.title}>{questionData[stepKey].label}</h1>
             {questionData[stepKey].description && (
               <p
                 className={styles.description}
@@ -215,15 +212,11 @@ const GetStartedForm: React.FC = () => {
             </p>
 
             <div className={styles.options}>
-              {options.map(opt => (
+              {options.map((opt) => (
                 <button
                   key={opt}
                   type="button"
-                  className={
-                    filters[stepKey].includes(opt)
-                      ? styles.chipSelected
-                      : styles.chip
-                  }
+                  className={filters[stepKey].includes(opt) ? styles.chipSelected : styles.chip}
                   onClick={() => toggle(stepKey, opt)}
                 >
                   {opt}
@@ -233,11 +226,7 @@ const GetStartedForm: React.FC = () => {
 
             <div className={styles.nav}>
               {step > 0 && (
-                <button
-                  type="button"
-                  className={styles.backBtn}
-                  onClick={back}
-                >
+                <button type="button" className={styles.backBtn} onClick={back}>
                   ← Back
                 </button>
               )}
@@ -266,17 +255,14 @@ const GetStartedForm: React.FC = () => {
               Thanks! Here are a few ideas to get the conversation started:
             </h2>
             <div className={styles.recommendedGrid}>
-                {recommended.map(prod => (
-                    <div key={prod.id} className={styles.recommendedCard}>
-                    <ProductCard product={prod} />
-                    </div>
-                ))}
+              {recommended.map((prod) => (
+                <div key={prod.id} className={styles.recommendedCard}>
+                  <ProductCard product={prod} />
                 </div>
+              ))}
+            </div>
             <div className={styles.estimateWrapper}>
-              <button
-                className={styles.estimateBtn}
-                onClick={() => navigate('/get-estimate')}
-              >
+              <button className={styles.estimateBtn} onClick={() => navigate('/get-estimate')}>
                 Get An Estimate →
               </button>
             </div>
@@ -287,4 +273,4 @@ const GetStartedForm: React.FC = () => {
   );
 };
 
-export default GetStartedForm; 
+export default GetStartedForm;

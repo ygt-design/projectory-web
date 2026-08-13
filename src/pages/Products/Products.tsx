@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { products as allProducts } from '../ProductPages/productsData';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductCard, { type ProductCardProduct } from '../../components/ProductCard/ProductCard';
 import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
 import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
 import GridCTA from '../../components/GridCTA/GridCTA';
@@ -27,7 +27,7 @@ const TAG_INFO: Record<string, { heading: string; description: string }> = {
     description:
       'Explore everything or filter by objective to find products designed with your goals in mind.',
   },
-  'Networking': {
+  Networking: {
     heading: 'Networking',
     description:
       'Create meaningful opportunities for participants to build relationships, exchange ideas, and grow professional networks that extend beyond the event.',
@@ -109,7 +109,7 @@ const Products = () => {
   const [searchParams] = useSearchParams();
   const paramTag = searchParams.get('tag') || 'All Products';
   // Case-insensitive match against TAGS
-  const matchedTag = TAGS.find(t => t.toLowerCase() === paramTag.toLowerCase());
+  const matchedTag = TAGS.find((t) => t.toLowerCase() === paramTag.toLowerCase());
   const initialTag = matchedTag || 'All Products';
   const [selectedTag, setSelectedTag] = useState(initialTag);
 
@@ -137,8 +137,6 @@ const Products = () => {
   const tagContentRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-
-
   useEffect(() => {
     if (selectedTag !== 'All Products') {
       tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -150,7 +148,7 @@ const Products = () => {
     if (initialTag !== 'All Products') {
       tagContentRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [initialTag]); 
+  }, [initialTag]);
 
   useEffect(() => {
     if (location.hash === '#tagContent') {
@@ -175,7 +173,7 @@ const Products = () => {
       <LandingHero
         className={styles.hero}
         pill="Products"
-        title={"Make Your Event\nUnmissable"}
+        title={'Make Your Event\nUnmissable'}
         description="Projectory transforms half-listening event attendees into an engaged cohort of active, connected participants."
         buttonLabel="Explore Products"
         onButtonClick={() => tagContentRef.current?.scrollIntoView({ behavior: 'smooth' })}
@@ -209,7 +207,7 @@ const Products = () => {
                 <Link
                   key={tag}
                   to={href}
-                  ref={el => (tagRefs.current[idx] = el)}
+                  ref={(el) => (tagRefs.current[idx] = el)}
                   onClick={() => handleTagClick(tag, idx)}
                   className={tag === selectedTag ? styles.activeTag : styles.tagButton}
                 >
@@ -232,7 +230,7 @@ const Products = () => {
                   return <GridCTA key="cta" />;
                 }
                 // Type assertion: we know this is a product at this point
-                const product = item as { id: string; name: string; category: string; categoryHighlight?: string | null; categoryColor?: string; thumbnail: string; bgVideo?: string; tags?: string[] };
+                const product = item as ProductCardProduct;
                 return <ProductCard key={item.id} product={product} />;
               })}
             </div>

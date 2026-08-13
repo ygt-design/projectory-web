@@ -39,9 +39,7 @@ const CheckIcon = () => (
   </svg>
 );
 
-const CircleIcon = () => (
-  <span className={styles.circleIcon} aria-hidden />
-);
+const CircleIcon = () => <span className={styles.circleIcon} aria-hidden />;
 
 const DeliveryOptions = ({ entrance }: DeliveryOptionsProps) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -141,9 +139,7 @@ const DeliveryOptions = ({ entrance }: DeliveryOptionsProps) => {
                           <div className={styles.ctaTitleRow}>
                             <span className={styles.ctaTitle}>{card.cta.title}</span>
                             {'currency' in card.cta && card.cta.currency ? (
-                              <span className={styles.ctaCurrency}>
-                                {card.cta.currency}
-                              </span>
+                              <span className={styles.ctaCurrency}>{card.cta.currency}</span>
                             ) : null}
                           </div>
                           {'caption' in card.cta && card.cta.caption ? (

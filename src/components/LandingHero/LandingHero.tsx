@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './LandingHero.module.css';
-import {
-  yellowCoral,
-  teal,
-  coralBurgundy,
-  lime,
-} from '../../assets/images/shapes/floaters';
+import { yellowCoral, teal, coralBurgundy, lime } from '../../assets/images/shapes/floaters';
 import { usePageEntrance } from '../../hooks/usePageEntrance';
 
 const defaultShapes = {

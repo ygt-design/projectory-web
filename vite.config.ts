@@ -1,5 +1,6 @@
 import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'node:url';
 
 const CRITICAL_FONTS = ['FoundersGrotesk-Regular', 'FoundersGrotesk-Semibold'];
 
@@ -14,9 +15,12 @@ function criticalCssAndFonts(): Plugin {
         (k) => k.endsWith('.woff2') && CRITICAL_FONTS.some((f) => k.includes(f))
       );
 
-      const fontPreloads = fontAssets.map((asset) =>
-        `<link rel="preload" href="/${asset}" as="font" type="font/woff2" crossorigin="anonymous">`
-      ).join('\n  ');
+      const fontPreloads = fontAssets
+        .map(
+          (asset) =>
+            `<link rel="preload" href="/${asset}" as="font" type="font/woff2" crossorigin="anonymous">`
+        )
+        .join('\n  ');
 
       const cssEntry = Object.keys(ctx.bundle).find(
         (k) => k.endsWith('.css') && k.includes('index')
@@ -33,12 +37,18 @@ function criticalCssAndFonts(): Plugin {
         }
       }
 
-      const fontFaces = fontAssets.map((asset) => {
-        const name = asset.includes('Regular') ? 'FounderGrotesk_Regular'
-          : asset.includes('Semibold') ? 'FounderGrotesk_SemiBold' : '';
-        if (!name) return '';
-        return `@font-face{font-family:'${name}';src:url('/${asset}') format('woff2');font-display:swap}`;
-      }).filter(Boolean).join('');
+      const fontFaces = fontAssets
+        .map((asset) => {
+          const name = asset.includes('Regular')
+            ? 'FounderGrotesk_Regular'
+            : asset.includes('Semibold')
+              ? 'FounderGrotesk_SemiBold'
+              : '';
+          if (!name) return '';
+          return `@font-face{font-family:'${name}';src:url('/${asset}') format('woff2');font-display:swap}`;
+        })
+        .filter(Boolean)
+        .join('');
 
       criticalCss += fontFaces;
       criticalCss += `*{font-family:'FounderGrotesk_Regular',sans-serif}h1{font-family:'FounderGrotesk_SemiBold';font-size:80px}`;
@@ -60,23 +70,29 @@ function criticalCssAndFonts(): Plugin {
 export default defineConfig({
   base: '/',
   plugins: [react(), criticalCssAndFonts()],
+  resolve: {
+    // Mirrors "paths" in tsconfig.app.json.
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
   server: {
     proxy: {
       '/api/combo-convo-form': {
         target:
           'https://script.google.com/macros/s/AKfycbyBjqgKCilAgqqpy_HkuyrrJ0HaLka-Ch6yea-swOFSKnfRu7dPO7dTc4yLNx2gQ0ZR/exec',
         changeOrigin: true,
-        rewrite: (path) =>
-          path.replace(/^\/api\/combo-convo-form/, '')
+        rewrite: (path) => path.replace(/^\/api\/combo-convo-form/, ''),
       },
       '/api/venting-machine-form': {
         target:
           'https://script.google.com/macros/s/AKfycbz9PRZKGHPK6YMt-f8FXUY5vnsDVW8g2xyUI9NDoFyVuT-NH05UWqsLxhf-7NqvAzKfHA/exec',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/venting-machine-form/, '')
+        rewrite: (path) => path.replace(/^\/api\/venting-machine-form/, ''),
       },
       '/api/laser-focus-form': {
-        target: 'https://script.google.com/macros/s/AKfycbyPHYnixWbW2tKp2gK0LkAupBk89LDTDwOdCDy_DltvOvtgkq115bwUgRIDlG1eknJS/exec',
+        target:
+          'https://script.google.com/macros/s/AKfycbyPHYnixWbW2tKp2gK0LkAupBk89LDTDwOdCDy_DltvOvtgkq115bwUgRIDlG1eknJS/exec',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/laser-focus-form/, ''),
         configure: (proxy) => {
@@ -85,9 +101,9 @@ export default defineConfig({
             proxyRes.headers['access-control-allow-methods'] = 'GET,POST,OPTIONS';
             proxyRes.headers['access-control-allow-headers'] = 'Content-Type';
           });
-        }
+        },
       },
-    }
+    },
   },
   build: {
     outDir: 'docs',
@@ -101,5 +117,5 @@ export default defineConfig({
         },
       },
     },
-  }
+  },
 });

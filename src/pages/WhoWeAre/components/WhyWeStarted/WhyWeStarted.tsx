@@ -3,22 +3,14 @@ import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import { whyWeStartedSection } from '../../whoWeAreData';
 import styles from './WhyWeStarted.module.css';
+import { useEscapeKey } from '../../../../hooks/useEscapeKey';
 
 const WhyWeStarted = () => {
   const { title, videoSrc, paragraphs } = whyWeStartedSection;
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const lightboxVideoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    if (!isLightboxOpen) return;
-
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsLightboxOpen(false);
-    };
-
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [isLightboxOpen]);
+  useEscapeKey(() => setIsLightboxOpen(false), isLightboxOpen);
 
   useEffect(() => {
     if (isLightboxOpen) {
@@ -59,14 +51,7 @@ const WhyWeStarted = () => {
         tabIndex={0}
         aria-label="Play video fullscreen"
       >
-        <video
-          className={styles.video}
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <video className={styles.video} src={videoSrc} autoPlay muted loop playsInline />
       </div>
       <div className={styles.copy}>
         <h2 className={styles.title}>{title}</h2>
@@ -93,10 +78,7 @@ const WhyWeStarted = () => {
             >
               <FiX />
             </button>
-            <div
-              className={styles.lightboxContent}
-              onClick={(event) => event.stopPropagation()}
-            >
+            <div className={styles.lightboxContent} onClick={(event) => event.stopPropagation()}>
               <video
                 ref={lightboxVideoRef}
                 key={videoSrc}
@@ -108,7 +90,7 @@ const WhyWeStarted = () => {
               />
             </div>
           </div>,
-          document.body,
+          document.body
         )}
     </section>
   );

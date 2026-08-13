@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './CalendlyModal.module.css';
+import { CALENDLY_URL } from '../../../config/site';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 interface CalendlyModalProps {
   isOpen: boolean;
@@ -17,7 +19,7 @@ declare global {
   }
 }
 
-const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'https://calendly.com/oren-/projectory?month=2026-01' }) => {
+const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = CALENDLY_URL }) => {
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +40,9 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
       }
     };
 
-    const existing = document.querySelector(`script[src="${SCRIPT_URL}"]`) as HTMLScriptElement | null;
+    const existing = document.querySelector(
+      `script[src="${SCRIPT_URL}"]`
+    ) as HTMLScriptElement | null;
     if (existing) {
       if (window.Calendly) {
         initWidget();
@@ -55,24 +59,17 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
     }
   }, [isOpen, url]);
 
-  useEffect(() => {
-    // Handle ESC key to close modal
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
+  useEscapeKey(onClose, isOpen);
 
+  useEffect(() => {
     if (isOpen) {
-      document.addEventListener('keydown', handleEsc);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -82,10 +79,7 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = 'h
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           <FiX />
         </button>
-        <div 
-          ref={widgetRef}
-          className={styles.calendlyWidget}
-        />
+        <div ref={widgetRef} className={styles.calendlyWidget} />
       </div>
     </div>,
     document.body

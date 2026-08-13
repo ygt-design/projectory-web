@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLikedProducts } from '../../context/LikedProductsContext';
-import { products } from '../../pages/ProductPages/productsData';
+import { getProductsByIds } from '../../lib/findProduct';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './SlideInMenu.module.css';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 interface SlideInMenuProps {
   onClose: () => void;
@@ -15,7 +16,7 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
   const { likedProducts, toggleLike } = useLikedProducts();
   const navigate = useNavigate();
 
-  const likedItems = products.filter((p) => likedProducts.includes(p.id));
+  const likedItems = getProductsByIds(likedProducts);
   const productsCount = likedItems.length;
   let headingText: string;
   if (productsCount === 1) {
@@ -31,17 +32,14 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
     if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen]);
+
+  useEscapeKey(onClose, isOpen);
 
   return createPortal(
     <>
@@ -57,7 +55,13 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
         aria-label="Liked products"
         aria-hidden={!isOpen}
       >
-        <button type="button" onClick={onClose} className={styles.closeButton} aria-label="Close" tabIndex={isOpen ? undefined : -1}>
+        <button
+          type="button"
+          onClick={onClose}
+          className={styles.closeButton}
+          aria-label="Close"
+          tabIndex={isOpen ? undefined : -1}
+        >
           <FiX />
         </button>
 
@@ -80,16 +84,21 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
           <div key={prod.id} className={styles.likedItem}>
             <div className={styles.itemWrapper}>
               <div className={styles.itemImageWrapper}>
-                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
+                <Link
+                  to={`/products/${prod.id}`}
+                  onClick={onClose}
+                  tabIndex={isOpen ? undefined : -1}
+                >
                   <img src={prod.thumbnail} alt={prod.name} />
                 </Link>
               </div>
               <div className={styles.itemTextWrapper}>
-                <Link to={`/products/${prod.id}`} onClick={onClose} tabIndex={isOpen ? undefined : -1}>
-                  <h4
-                    className={styles.title}
-                    style={{ color: prod.categoryColor || '#ffffff' }}
-                  >
+                <Link
+                  to={`/products/${prod.id}`}
+                  onClick={onClose}
+                  tabIndex={isOpen ? undefined : -1}
+                >
+                  <h4 className={styles.title} style={{ color: prod.categoryColor || '#ffffff' }}>
                     {prod.category}
                     <strong>{prod.categoryHighlight}</strong>
                   </h4>
@@ -110,9 +119,7 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
           </div>
         ))}
 
-        {productsCount === 0 && (
-          <p className={styles.noItemsText}>No items selected</p>
-        )}
+        {productsCount === 0 && <p className={styles.noItemsText}>No items selected</p>}
       </div>
     </>,
     document.body

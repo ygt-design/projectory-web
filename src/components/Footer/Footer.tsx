@@ -9,8 +9,7 @@ import logo from '../../assets/images/logo.svg';
 import termsConditionsPdf from '../../assets/documents/terms-conditions-Dw-Y0UD9.pdf';
 import privacyPolicyPdf from '../../assets/documents/privacy-policy.pdf';
 import cookieNoticePdf from '../../assets/documents/cookie-notice.pdf';
-
-const WEB3FORMS_ACCESS_KEY = '1c3fa95b-e42f-4bc0-b339-025a18bc51eb';
+import { submitToWeb3Forms } from '../../lib/web3forms';
 
 const Footer = () => {
   const [introDeckEmail, setIntroDeckEmail] = useState('');
@@ -20,22 +19,13 @@ const Footer = () => {
     e.preventDefault();
     setIntroDeckStatus('Sending...');
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: 'Intro deck request',
-          email: introDeckEmail,
-          message: 'Request for Projectory intro deck (from website footer).',
-        }),
+      const { response, result } = await submitToWeb3Forms({
+        name: 'Intro deck request',
+        email: introDeckEmail,
+        message: 'Request for Projectory intro deck (from website footer).',
       });
-      const result = await response.json();
       if (response.ok && result.success !== false) {
-        setIntroDeckStatus('Thanks! We\'ll share the deck with you soon.');
+        setIntroDeckStatus("Thanks! We'll share the deck with you soon.");
         setIntroDeckEmail('');
       } else {
         setIntroDeckStatus('Something went wrong. Please try again.');
@@ -80,14 +70,30 @@ const Footer = () => {
         <div className={styles.footerColumn}>
           <h4 className={styles.columnHeading}>Products</h4>
           <Link to="/products#tagContent">All products</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Networking')}#tagContent`}>Networking</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Peer learning')}#tagContent`}>Peer Learning</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Explore priorities')}#tagContent`}>Explore Priorities</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Ideas to action')}#tagContent`}>Ideas to Action</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Reflect & synthesize')}#tagContent`}>Reflect &amp; Synthesize</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Build alignment')}#tagContent`}>Build Alignment</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Inspire creativity')}#tagContent`}>Inspire Creativity</Link>
-          <Link to={`/products?tag=${encodeURIComponent('Visualize insights')}#tagContent`}>Visualize Insights</Link>
+          <Link to={`/products?tag=${encodeURIComponent('Networking')}#tagContent`}>
+            Networking
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Peer learning')}#tagContent`}>
+            Peer Learning
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Explore priorities')}#tagContent`}>
+            Explore Priorities
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Ideas to action')}#tagContent`}>
+            Ideas to Action
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Reflect & synthesize')}#tagContent`}>
+            Reflect &amp; Synthesize
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Build alignment')}#tagContent`}>
+            Build Alignment
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Inspire creativity')}#tagContent`}>
+            Inspire Creativity
+          </Link>
+          <Link to={`/products?tag=${encodeURIComponent('Visualize insights')}#tagContent`}>
+            Visualize Insights
+          </Link>
         </div>
 
         {/* Column 3: Case Studies + Overview */}
@@ -100,7 +106,13 @@ const Footer = () => {
 
           <h4 className={`${styles.columnHeading} ${styles.subHeading}`}>Overview</h4>
           <Link to="/who-we-are">Who we are</Link>
-          <a href="https://www.youtube.com/watch?v=PCTFEtSYBlo&list=PLYVC91DsScUjsTvrMjYc2HR96rjkNg_SP" target="_blank" rel="noopener noreferrer">Testimonials</a>
+          <a
+            href="https://www.youtube.com/watch?v=PCTFEtSYBlo&list=PLYVC91DsScUjsTvrMjYc2HR96rjkNg_SP"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Testimonials
+          </a>
         </div>
 
         {/* Column 4: Get Started */}
@@ -111,7 +123,9 @@ const Footer = () => {
           <Link to="/get-started#faq">FAQ</Link>
           <Link to="/get-started#contact-form">Contact us</Link>
           <Link to="/get-started#schedule-demo">Schedule a demo</Link>
-          <a href="https://qr-codes.io/XG17V3" target="_blank" rel="noopener noreferrer">Add us to your RFP</a>
+          <a href="https://qr-codes.io/XG17V3" target="_blank" rel="noopener noreferrer">
+            Add us to your RFP
+          </a>
         </div>
 
         {/* Column 5: Intro deck + Contact & Support */}
@@ -131,29 +145,55 @@ const Footer = () => {
             <p className={styles.inputHelper}>
               Enter your email and we&apos;ll share with you our pitch deck
             </p>
-            <button type="submit" className={styles.submitBtn} disabled={introDeckStatus === 'Sending...'}>
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              disabled={introDeckStatus === 'Sending...'}
+            >
               Submit
             </button>
-            {introDeckStatus && (
-              <p className={styles.introDeckStatus}>{introDeckStatus}</p>
-            )}
+            {introDeckStatus && <p className={styles.introDeckStatus}>{introDeckStatus}</p>}
           </form>
 
           <h4 className={`${styles.columnHeading} ${styles.subHeading}`}>Contact &amp; support</h4>
-          <a href="tel:8009668802" className={styles.contactLink}>(800) 966-8802</a>
-          <a href="mailto:info@projectory.live" className={styles.contactLink}>info@projectory.live</a>
+          <a href="tel:8009668802" className={styles.contactLink}>
+            (800) 966-8802
+          </a>
+          <a href="mailto:info@projectory.live" className={styles.contactLink}>
+            info@projectory.live
+          </a>
 
           <div className={styles.socialIcons}>
-            <a href="https://wa.me/16474552051" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a
+              href="https://wa.me/16474552051"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
               <FaWhatsapp />
             </a>
-            <a href="https://www.youtube.com/@projectorylive/playlists?app=desktop" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a
+              href="https://www.youtube.com/@projectorylive/playlists?app=desktop"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
               <FaYoutube />
             </a>
-            <a href="https://www.instagram.com/projectory.live/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a
+              href="https://www.instagram.com/projectory.live/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
               <FiInstagram />
             </a>
-            <a href="https://ca.linkedin.com/company/theprojectory" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
+            <a
+              href="https://ca.linkedin.com/company/theprojectory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
               <FaLinkedin />
             </a>
           </div>
@@ -167,11 +207,17 @@ const Footer = () => {
             Copyright &copy; 2026 <strong>Projectory.live inc.</strong> All rights reserved.
           </p>
           <div className={styles.legalLinks}>
-            <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">Terms and conditions</a>
+            <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">
+              Terms and conditions
+            </a>
             <span className={styles.legalDivider}>|</span>
-            <a href={privacyPolicyPdf} target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href={privacyPolicyPdf} target="_blank" rel="noopener noreferrer">
+              Privacy Policy
+            </a>
             <span className={styles.legalDivider}>|</span>
-            <a href={cookieNoticePdf} target="_blank" rel="noopener noreferrer">Cookie notice</a>
+            <a href={cookieNoticePdf} target="_blank" rel="noopener noreferrer">
+              Cookie notice
+            </a>
           </div>
         </div>
       </div>

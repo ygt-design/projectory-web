@@ -10,8 +10,7 @@ import personThree from './assets/paddy.webp';
 export const heroSection = {
   eyebrow: 'About Us',
   title: 'Who We Are, Anyway?',
-  videoSrc:
-    'https://res.cloudinary.com/dazzkestf/video/upload/v1784911599/who-we-are_bxxyva.mp4',
+  videoSrc: 'https://res.cloudinary.com/dazzkestf/video/upload/v1784911599/who-we-are_bxxyva.mp4',
 };
 
 export const introSection = {
