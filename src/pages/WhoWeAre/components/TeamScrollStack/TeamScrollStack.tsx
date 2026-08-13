@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
-import { type TeamMember } from '@/pages/WhoWeAre/whoWeAreData';
+import { type TeamMember } from '../../whoWeAreData';
 import styles from './TeamScrollStack.module.css';
 
 const STAGE_PAD = 20;

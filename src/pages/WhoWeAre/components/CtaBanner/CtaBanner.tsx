@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ctaBanner } from '@/pages/WhoWeAre/whoWeAreData';
+import { ctaBanner } from '../../whoWeAreData';
 import tealBadge from '@/assets/images/shapes/pMonograms/projectory-p-teal.png';
 import styles from './CtaBanner.module.css';
 

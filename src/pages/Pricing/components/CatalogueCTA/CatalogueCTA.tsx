@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { catalogueCta } from '@/pages/Pricing/pricingData';
+import { catalogueCta } from '../../pricingData';
 import amberBadge from '@/assets/images/shapes/pMonograms/projectory-p-amber.png';
 import styles from './CatalogueCTA.module.css';
 

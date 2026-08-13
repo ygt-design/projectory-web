@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
-import { whyWeStartedSection } from '@/pages/WhoWeAre/whoWeAreData';
+import { whyWeStartedSection } from '../../whoWeAreData';
 import styles from './WhyWeStarted.module.css';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 

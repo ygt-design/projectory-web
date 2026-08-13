@@ -1,5 +1,5 @@
 import Marquee from 'react-fast-marquee';
-import { carouselIcons, carouselImages } from '@/pages/WhoWeAre/whoWeAreData';
+import { carouselIcons, carouselImages } from '../../whoWeAreData';
 import styles from './ImageCarousel.module.css';
 
 const ImageCarousel = () => {

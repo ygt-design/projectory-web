@@ -6,10 +6,10 @@ import { findProductById } from '@/lib/findProduct';
 
 import ProductHero from '@/components/sections/ProductHero/ProductHero';
 import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
-import QuickFacts from '@/pages/ProductPages/components/QuickFacts/QuickFacts';
-import Objectives from '@/pages/ProductPages/components/Objectives/Objectives';
+import QuickFacts from './components/QuickFacts/QuickFacts';
+import Objectives from './components/Objectives/Objectives';
 import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
-import HowItWorks from '@/pages/ProductPages/components/HowItWorks/HowItWorks';
+import HowItWorks from './components/HowItWorks/HowItWorks';
 import DataFeature from '@/components/sections/DataFeature/DataFeature';
 
 import { useLikedProducts } from '@/context/LikedProductsContext';

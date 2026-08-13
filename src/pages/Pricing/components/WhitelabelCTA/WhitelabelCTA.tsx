@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { whitelabelCta } from '@/pages/Pricing/pricingData';
+import { whitelabelCta } from '../../pricingData';
 import styles from './WhitelabelCTA.module.css';
 
 const WhitelabelCTA = () => {

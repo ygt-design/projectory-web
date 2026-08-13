@@ -1,9 +1,9 @@
 import styles from './WhoWeAre.module.css';
-import WhoWeAreHero from '@/pages/WhoWeAre/components/WhoWeAreHero/WhoWeAreHero';
-import ImageCarousel from '@/pages/WhoWeAre/components/ImageCarousel/ImageCarousel';
-import Team from '@/pages/WhoWeAre/components/Team/Team';
-import WhyWeStarted from '@/pages/WhoWeAre/components/WhyWeStarted/WhyWeStarted';
-import CtaBanner from '@/pages/WhoWeAre/components/CtaBanner/CtaBanner';
+import WhoWeAreHero from './components/WhoWeAreHero/WhoWeAreHero';
+import ImageCarousel from './components/ImageCarousel/ImageCarousel';
+import Team from './components/Team/Team';
+import WhyWeStarted from './components/WhyWeStarted/WhyWeStarted';
+import CtaBanner from './components/CtaBanner/CtaBanner';
 
 const WhoWeAre = () => {
   return (

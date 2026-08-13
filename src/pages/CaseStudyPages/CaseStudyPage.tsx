@@ -6,7 +6,7 @@ import ProductHero, {
 } from '@/components/sections/ProductHero/ProductHero';
 import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
 import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
-import HowWeBuilt from '@/pages/CaseStudyPages/components/HowWeBuilt/HowWeBuilt';
+import HowWeBuilt from './components/HowWeBuilt/HowWeBuilt';
 import TealCTASection from '@/components/TealCTA/TealCTA';
 import DataFeature from '@/components/sections/DataFeature/DataFeature';
 import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';

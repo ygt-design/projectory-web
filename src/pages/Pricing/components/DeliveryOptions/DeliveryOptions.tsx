@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { deliveryOptions, deliveryOptionsNote } from '@/pages/Pricing/pricingData';
+import { deliveryOptions, deliveryOptionsNote } from '../../pricingData';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
 import amberBadge from '@/assets/images/shapes/pMonograms/projectory-p-amber.png';
 import tealBadge from '@/assets/images/shapes/pMonograms/projectory-p-teal.png';

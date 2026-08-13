@@ -1,10 +1,10 @@
 import styles from './Pricing.module.css';
-import PricingHero from '@/pages/Pricing/components/PricingHero/PricingHero';
-import DeliveryOptions from '@/pages/Pricing/components/DeliveryOptions/DeliveryOptions';
-import WhitelabelCTA from '@/pages/Pricing/components/WhitelabelCTA/WhitelabelCTA';
-import CaseStudies from '@/pages/Pricing/components/CaseStudies/CaseStudies';
-import CatalogueCTA from '@/pages/Pricing/components/CatalogueCTA/CatalogueCTA';
-import FAQ from '@/pages/Pricing/components/FAQ/FAQ';
+import PricingHero from './components/PricingHero/PricingHero';
+import DeliveryOptions from './components/DeliveryOptions/DeliveryOptions';
+import WhitelabelCTA from './components/WhitelabelCTA/WhitelabelCTA';
+import CaseStudies from './components/CaseStudies/CaseStudies';
+import CatalogueCTA from './components/CatalogueCTA/CatalogueCTA';
+import FAQ from './components/FAQ/FAQ';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
 
 const Pricing = () => {

@@ -1,4 +1,4 @@
-import { heroSection, introSection } from '@/pages/WhoWeAre/whoWeAreData';
+import { heroSection, introSection } from '../../whoWeAreData';
 import styles from './Intro.module.css';
 
 const Intro = () => {

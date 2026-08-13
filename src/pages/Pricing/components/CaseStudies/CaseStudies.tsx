@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { caseStudies, caseStudiesHeader } from '@/pages/Pricing/pricingData';
+import { caseStudies, caseStudiesHeader } from '../../pricingData';
 import styles from './CaseStudies.module.css';
 
 const ACCENTS = ['#2BDCB7', '#F37655', '#C5DA20', '#B292C4', '#F3DA00'] as const;

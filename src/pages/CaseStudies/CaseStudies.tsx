@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useInView, useMotionValue } from 'fram
 import styles from './CaseStudies.module.css';
 import ClientLogos from '@/components/ClientLogos/ClientLogos';
 import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
-import TrustedBy from '@/pages/CaseStudies/components/TrustedBy/TrustedBy';
+import TrustedBy from './components/TrustedBy/TrustedBy';
 import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
 import LandingHero from '@/components/LandingHero/LandingHero';
 import { coralTeal, creamCoral, lime, redLime } from '@/assets/images/shapes/floaters';

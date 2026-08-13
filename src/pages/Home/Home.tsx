@@ -7,12 +7,12 @@ import { useInView } from 'react-intersection-observer';
 import styles from './Home.module.css';
 import '@/styles/global.css';
 
-import ContactButton from '@/pages/Home/components/ContactButton/ContactButton';
+import ContactButton from './components/ContactButton/ContactButton';
 import ClientLogos from '@/components/ClientLogos/ClientLogos';
 import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
-import BottomCTA from '@/pages/Home/components/BottomCTA/BottomCTA';
+import BottomCTA from './components/BottomCTA/BottomCTA';
 import ProductCard from '@/components/ProductCard/ProductCard';
-import CustomCursor from '@/pages/Home/components/CustomCursor/CustomCursor';
+import CustomCursor from './components/CustomCursor/CustomCursor';
 
 import { products as allProducts } from '@/data/products';
 import type { Product } from '@/types/product';
