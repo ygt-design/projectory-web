@@ -1,9 +1,10 @@
 # Cleanup Report
 
 Branch `chore/cleanup-phase-1`, from `f14c6c4`.
-**22 commits · 198 files changed · −4,060 net lines · −13.4 MB assets**
+**25 commits · 200 files changed · −3,657 net lines · −13.4 MB assets**
 
-All six phases complete. This document records what changed, what was
+All cleanup phases are complete, plus the scroll-lock follow-up. This document
+records what changed, what was
 deliberately left alone, and what still needs a decision from you.
 
 ---
@@ -161,6 +162,16 @@ of 10 and **missing `--white`**. Since the real stylesheet loads deferred via
 until the CSS arrived — and tokenising 74 more `#fff` would have widened that.
 The plugin now reads `:root` out of `tokens.css` at build time.
 
+### 7 — Scroll lock
+
+Opening the mobile menu and the likes drawer at the same time could break scrolling. Close one, then the other, and the page might scroll behind a still-open panel — or stay stuck forever.
+
+They were each saving/restoring “can you scroll?” without knowing the other was open.
+
+Now there’s one shared counter: lock when the first overlay opens, unlock only when the last one closes. All five overlays use it (nav, likes, Home lightbox, Calendly, Who We Are video).
+
+One menu at a time still feels the same. The navbar still adds a little padding so the page doesn’t jump when the scrollbar hides; other overlays don’t.
+
 ---
 
 ## Open items — need your decision
@@ -177,11 +188,8 @@ never mentions a discount. Note the original audit had this backwards:
 `pricingData.ts` is the **correct** copy — it has a real discounts answer _and_
 this estimate answer, each under the right question.
 
-**3. Scroll-lock implementations fight each other.** Five implementations in
-two incompatible idioms. Open the mobile nav and the liked-products drawer
-together, close the nav first, and the drawer's cleanup restores
-`overflow: hidden` — **the page becomes permanently unscrollable.** Left alone
-at your instruction; the fix is a ref-counted hook.
+**3. Scroll-lock implementations fight each other.** ✅ **Fixed** — see
+[Scroll lock](#7--scroll-lock) below.
 
 **4. Five backend dependencies are unused.** `cors`, `dotenv`, `express`,
 `googleapis`, `nodemailer` show zero references anywhere including `api/`. They
