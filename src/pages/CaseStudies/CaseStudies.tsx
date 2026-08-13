@@ -17,6 +17,8 @@ import CemaLogo from '@/assets/images/logos/cema.png';
 
 import { caseStudiesData } from '@/data/caseStudies';
 import { caseStudiesFAQ } from '@/data/faq';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const caseStudies = [
   {
@@ -54,6 +56,8 @@ const caseStudies = [
 ];
 
 const CaseStudies: React.FC = () => {
+  useDocumentMeta(pageMeta.caseStudies);
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);

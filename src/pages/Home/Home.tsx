@@ -21,8 +21,12 @@ import icon1 from '@/assets/images/shapes/pMonograms/Projectory_GradientSymbol_A
 import icon2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
 import icon3 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
 import icon4 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const Home = () => {
+  useDocumentMeta(pageMeta.home);
+
   const secondSectionRef = useRef<HTMLDivElement>(null);
   const middleVideoRef = useRef<HTMLVideoElement>(null);
   const middleVideoSlideRef = useRef<HTMLDivElement>(null);

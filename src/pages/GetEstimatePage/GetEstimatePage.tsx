@@ -7,8 +7,12 @@ import { submitToWeb3Forms } from '@/lib/web3forms';
 
 import shape1 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
 import shape2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const GetEstimatePage: React.FC = () => {
+  useDocumentMeta(pageMeta.getEstimate);
+
   const { likedProducts, toggleLike } = useLikedProducts();
   const [formData, setFormData] = useState({
     name: '',

@@ -18,10 +18,17 @@ import HeartIconSVG_Outline from '@/assets/images/heartIcon_outline.svg';
 import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 import styles from './ProductPage.module.css';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { DEFAULT_DESCRIPTION } from '@/config/seo';
 
 const ProductPage = () => {
   const { id } = useParams();
   const product = findProductById(id);
+
+  useDocumentMeta({
+    title: product?.name,
+    description: product?.shortDescription || product?.tagline || DEFAULT_DESCRIPTION,
+  });
 
   const { likedProducts, toggleLike } = useLikedProducts();
 

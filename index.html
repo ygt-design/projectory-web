@@ -5,19 +5,29 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="images/Projectory_Symbol_White.svg"
+      href="/images/Projectory_Symbol_White.svg"
       media="(prefers-color-scheme: dark)"
     />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="images/Projectory_Symbol_Black.svg"
+      href="/images/Projectory_Symbol_Black.svg"
       media="(prefers-color-scheme: light)"
     />
-    <link rel="apple-touch-icon" href="images/Projectory_Symbol_White.svg" />
+    <link rel="apple-touch-icon" href="/images/Projectory_Symbol_White.svg" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Defaults for crawlers that do not execute JS. useDocumentMeta replaces
+         these per route once React mounts. -->
     <title>Projectory</title>
+    <meta
+      name="description"
+      content="Projectory transforms half-listening event attendees into an engaged cohort of active, connected participants."
+    />
+    <meta property="og:site_name" content="Projectory" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />

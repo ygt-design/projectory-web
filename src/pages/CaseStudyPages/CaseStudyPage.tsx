@@ -10,10 +10,17 @@ import HowWeBuilt from './components/HowWeBuilt/HowWeBuilt';
 import TealCTASection from '@/components/TealCTA/TealCTA';
 import DataFeature from '@/components/sections/DataFeature/DataFeature';
 import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { DEFAULT_DESCRIPTION } from '@/config/seo';
 
 const CaseStudyPage = () => {
   const { id } = useParams();
   const caseStudy = caseStudiesData.find((study) => study.id === id);
+
+  useDocumentMeta({
+    title: caseStudy?.name,
+    description: caseStudy?.tagline || DEFAULT_DESCRIPTION,
+  });
 
   if (!caseStudy) {
     return <h2>Case Study Not Found</h2>;

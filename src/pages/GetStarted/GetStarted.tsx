@@ -10,6 +10,8 @@ import { usePageEntrance } from '@/hooks/usePageEntrance';
 import { apricot, yellowCoral, teal, limeOlive } from '@/assets/images/shapes/floaters';
 import { CALENDLY_URL } from '@/config/site';
 import { caseStudiesFAQ } from '@/data/faq';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 type ShootEnd = { x: number; y: number; rotate: number };
 
@@ -65,6 +67,8 @@ function useShootStyle(shoot: MotionValue<number>, end: ShootEnd, enabled: boole
 }
 
 const GetStarted = () => {
+  useDocumentMeta(pageMeta.getStarted);
+
   const location = useLocation();
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);

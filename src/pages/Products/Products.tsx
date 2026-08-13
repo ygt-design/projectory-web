@@ -8,6 +8,8 @@ import GridCTA from './components/GridCTA/GridCTA';
 import FeaturedCaseStudy from './components/FeaturedCaseStudy/FeaturedCaseStudy';
 import LandingHero from '@/components/LandingHero/LandingHero';
 import styles from './Products.module.css';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const TAGS = [
   'All Products',
@@ -105,6 +107,8 @@ const groupItems = (items: ProductItem[]) => {
 };
 
 const Products = () => {
+  useDocumentMeta(pageMeta.products);
+
   const [filteredProducts] = useState(allProducts);
   const [searchParams] = useSearchParams();
   const paramTag = searchParams.get('tag') || 'All Products';

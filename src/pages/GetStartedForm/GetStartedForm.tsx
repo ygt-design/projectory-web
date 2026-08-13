@@ -15,6 +15,8 @@ import shape4 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_5.
 import shape5 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
 import shape6 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_9.png';
 import shape7 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
 
@@ -57,6 +59,8 @@ const BG_GRADIENTS = [
 ];
 
 const GetStartedForm: React.FC = () => {
+  useDocumentMeta(pageMeta.getStartedForm);
+
   const [step, setStep] = useState(0);
   const [filters, setFilters] = useState<Filters>({
     type: [],
