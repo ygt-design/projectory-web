@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import styles from './GetStarted.module.css';
-import ContactForm from '@/components/ContactForm/ContactForm';
+import ContactForm from '@/pages/GetStarted/components/ContactForm/ContactForm';
 import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
-import CalendlyModal from '@/pages/GetStarted/CalendlyModal/CalendlyModal';
+import CalendlyModal from '@/pages/GetStarted/components/CalendlyModal/CalendlyModal';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
 
 import { apricot, yellowCoral, teal, limeOlive } from '@/assets/images/shapes/floaters';

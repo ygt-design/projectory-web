@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { products as allProducts } from '@/data/products';
 import ProductCard, { type ProductCardProduct } from '@/components/ProductCard/ProductCard';
-import FeaturedCarousel from '@/components/FeaturedCarousel/FeaturedCarousel';
+import FeaturedCarousel from '@/pages/Products/components/FeaturedCarousel/FeaturedCarousel';
 import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
-import GridCTA from '@/components/GridCTA/GridCTA';
-import FeaturedCaseStudy from '@/components/FeaturedCaseStudy/FeaturedCaseStudy';
+import GridCTA from '@/pages/Products/components/GridCTA/GridCTA';
+import FeaturedCaseStudy from '@/pages/Products/components/FeaturedCaseStudy/FeaturedCaseStudy';
 import LandingHero from '@/components/LandingHero/LandingHero';
 import styles from './Products.module.css';
 
