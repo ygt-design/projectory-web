@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import styles from './CustomCursor.module.css';
 
 interface CustomCursorProps {
-  targetRef: React.RefObject<HTMLDivElement>;
+  targetRef: React.RefObject<HTMLDivElement | null>;
   isMobile: boolean;
   text?: string;
 }

@@ -27,10 +27,7 @@ function upsertCanonical(href: string) {
 }
 
 /**
- * A small hook rather than a metadata library: this project is on React 18.3,
- * so React 19's native document-metadata hoisting is unavailable, and
- * react-helmet-async is effectively unmaintained. For 15 static routes a
- * dependency would be the heavier choice.
+ * A small hook rather than a metadata library.
  */
 export function useDocumentMeta({ title, description }: PageMeta) {
   const { pathname } = useLocation();

@@ -211,7 +211,9 @@ const Products = () => {
                 <Link
                   key={tag}
                   to={href}
-                  ref={(el) => (tagRefs.current[idx] = el)}
+                  ref={(el) => {
+                    tagRefs.current[idx] = el;
+                  }}
                   onClick={() => handleTagClick(tag, idx)}
                   className={tag === selectedTag ? styles.activeTag : styles.tagButton}
                 >

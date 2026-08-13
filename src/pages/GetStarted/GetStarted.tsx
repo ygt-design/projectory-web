@@ -193,7 +193,7 @@ const GetStarted = () => {
                     alt=""
                     className={styles.mediaCardImg}
                     decoding="async"
-                    {...({ fetchpriority: 'high' } as React.ImgHTMLAttributes<HTMLImageElement>)}
+                    fetchPriority="high"
                   />
                 </motion.div>
               </motion.div>

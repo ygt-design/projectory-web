@@ -17,7 +17,7 @@ interface HowWeBuiltProps {
   installations: Installation[];
 }
 
-function formatName(name: string): JSX.Element {
+function formatName(name: string): React.JSX.Element {
   // Remove all spaces, then highlight the last word
   const words = name.trim().split(' ');
   const noSpace = name.replace(/\s+/g, '');
