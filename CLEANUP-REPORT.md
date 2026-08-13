@@ -1,9 +1,10 @@
 # Cleanup Report
 
 Branch `chore/cleanup-phase-1`, from `f14c6c4`.
-**25 commits · 200 files changed · −3,657 net lines · −13.4 MB assets**
+**27 commits · 212 files changed · −3,642 net lines · −49.6 MB assets**
 
-All cleanup phases are complete, plus the scroll-lock follow-up. This document
+All cleanup phases are complete, plus three follow-ups: the scroll-lock fix,
+the Cloudinary asset migration and the React 19 upgrade. This document
 records what changed, what was
 deliberately left alone, and what still needs a decision from you.
 
@@ -131,8 +132,10 @@ stabilised, restoring the `React.memo` on `ProductCard`.
 description, Open Graph or canonical, and there was no `document.title`
 assignment anywhere. A ~60-line `useDocumentMeta` hook now sets title,
 description, canonical and og/twitter tags per route — not a library, because
-React 18.3 has no native metadata hoisting and `react-helmet-async` is
-effectively unmaintained. Copy lives in `config/seo.ts` and is taken from what
+`react-helmet-async` is effectively unmaintained and, at the time, React 18.3
+had no native metadata hoisting. The React 19 upgrade since made hoisting
+available; the hook stays for now, for the reasons in
+[React 19](#9--react-19). Copy lives in `config/seo.ts` and is taken from what
 each page already says on screen.
 
 Canonical host is **`https://projectory.live`** (apex), consistent across all
@@ -171,6 +174,88 @@ They were each saving/restoring “can you scroll?” without knowing the other 
 Now there’s one shared counter: lock when the first overlay opens, unlock only when the last one closes. All five overlays use it (nav, likes, Home lightbox, Calendly, Who We Are video).
 
 One menu at a time still feels the same. The navbar still adds a little padding so the page doesn’t jump when the scrollbar hides; other overlays don’t.
+
+### 8 — Cloudinary migration
+
+The repo still carried 23 raster assets totalling **36.2 MB**, of which a single
+file — `why-did-we-start-projectory.mp4` at 32.8 MB — was 94% of the weight.
+Roughly 70% of the site's media was already on Cloudinary (321 URLs, cloud
+`dazzkestf`), so this finished a migration that had been left half-done: Who We
+Are already streamed its hero video from Cloudinary while the why-we-started
+video beneath it loaded from `public/`.
+
+Moved: 11 photos, 10 raster shapes and the video. **Tracked assets are now
+1.16 MB across 41 files, down from 50.75 MB across 83 at the branch base** —
+and only 0.31 MB of that is images, the rest being fonts and PDFs.
+
+Deliberately kept local: every SVG (all ≤5.2 KB, they inline more cheaply than
+a round-trip costs), the whole of `src/assets/images/logos/`, the favicons,
+fonts and PDFs.
+
+Two things worth knowing about how it was done:
+
+- **Six of the seven abstract symbols were already on Cloudinary** via
+  `floaters.ts`, but their call sites still imported the local PNGs — the same
+  image existing twice, in two formats, in one build. Those call sites now
+  import the barrel instead of restating URLs. Only `_6` and the three
+  pMonogram badges were genuinely new uploads.
+- **`floaters.ts` is now fully remote.** Its `apricot` export was the last
+  `export { default as … } from '*.png'` in the file, which made a module of
+  URL constants also a bundler asset dependency.
+
+Transforms follow what was already there: `f_auto,q_auto` on images, `q_auto`
+on video. `optimizeCloudinaryUrl` was not introduced at these sites because the
+components rendering them (`ImageCarousel`, `WhyWeStarted`) use bare `<img>` and
+`<video>` — adding it would have changed which URL is requested, which is
+exactly the open question recorded under
+[`CloudinaryImage`'s two contracts](#not-done-and-why).
+
+`CheckCircle.svg` was deleted rather than migrated — zero references anywhere.
+
+### 9 — React 19
+
+React 18.3.1 → **19.2.8**, with `@types/react` and `@types/react-dom` moved in
+lockstep (the v18 types peer-require each other, so a partial bump does not
+install). Nothing else needed to move: `framer-motion`, `react-router-dom`,
+`embla-carousel-react` and `react-intersection-observer` all already declared
+React 19 peer support, and nothing in the tree duplicated React.
+
+Three type-level fixes, all mechanical:
+
+- `Products.tsx` — the tag callback ref used a concise arrow, and React 19
+  reads a ref callback's return value as a cleanup function.
+- `HowWeBuilt.tsx` — the global `JSX` namespace moved to `React.JSX`.
+- `CustomCursor.tsx` — `useRef<T>(null)` now returns `RefObject<T | null>`, so
+  the `targetRef` prop widened to match. The effect already guarded against a
+  null `current`, so nothing changed at runtime.
+
+`GetStarted.tsx` also drops the cast that smuggled `fetchpriority` past the JSX
+typings; React 19 types the attribute natively.
+
+**One build-config change was needed, and it is the non-obvious part.** From
+React 19 the client renderer lives behind the `react-dom/client` subpath rather
+than the `react-dom` root. The `manualChunks` map in `vite.config.ts` listed
+only `react-dom`, so ~130 KB silently relocated from the cacheable
+`vendor-react` chunk into the entry chunk — the build still succeeded and
+nothing warned. Listing the subpath restores the split.
+
+**React 19 costs about 13.7 KB gzip here** (100.7 → 114.4 KB across
+`vendor-react` + `index`). Not a regression, just the price.
+
+**StrictMode is still not enabled**, and that is deliberate. Three hooks would
+be exercised by double-invocation for the first time: `useScrollLock` (the
+module-level ref-count from [Scroll lock](#7--scroll-lock)), `useEscapeKey`
+(assigns a ref during render), and `usePageEntrance` (writes `sessionStorage`
+inside a `useState` initializer, so the "already seen this session" claim would
+be consumed by the throwaway render and the entrance animation suppressed).
+Enabling it is a separate piece of work with real behavioural risk.
+
+`useDocumentMeta` also stays as-is. React 19's native hoisting would replace it,
+but that is a behavioural change rather than a refactor: the hook mutates head
+tags in place and never removes them, whereas hoisting removes them on unmount
+and would replace — not update — the crawler fallback tags in `index.html`. The
+activity routes, which never call the hook and currently inherit the previous
+route's tags, would change behaviour too.
 
 ---
 
@@ -272,10 +357,20 @@ scan's output would have broken the Home page and the case-study logos.
 
 - **A trial font ships to production.** `GT-Alpina-Standard-Light-Trial.*` is
   the source for the `GT-Alpina-Regular` family. Licensing risk.
-- **39 MB of `.mp4` is tracked in git**, most of the pack size. Consider Git LFS
-  or Cloudinary.
+- **The tracked `.mp4` is gone** — resolved by
+  [Cloudinary migration](#8--cloudinary-migration). Note that git history still
+  contains every deleted asset, so the pack does not shrink without a rewrite;
+  only clones of the current tree get cheaper.
 - **Dead Figma URLs** in `TestimonialSizzle.module.css` — two `url()` references
-  to `figma.com/file/…`, which are not durable asset hosts.
+  to `figma.com/file/…`, which are not durable asset hosts. These are
+  auth-gated and do not render for the public at all. Left alone in the
+  Cloudinary pass because fixing them changes what appears on screen.
+- **Three client logos are hotlinked from third-party origins** in
+  `caseStudies.ts` — `companieslogo.com`, `surescripts.com`, `deloitte.com`.
+  They can break without warning and are not on Cloudinary.
+- **No `og:image`.** Deliberate — there is no 1200×630 brand asset and the logos
+  are SVGs, which social platforms do not render. Cloudinary could now generate
+  one from an existing photo.
 - **Security, in the frozen backend:** `apps-script-venting-machine/Code.gs`
   hardcodes a `SPREADSHEET_ID` fallback directly beneath a comment reading
   "Never hardcode it here — this file is in a public repo".
@@ -311,3 +406,17 @@ paying attention to `/` (loading screen on first paint), `/products/:id`
 `/pricing` (images resolve after the asset move), `/get-estimate` (like
 products → hard refresh → selections survive), and the three activity routes,
 which must be bit-for-bit unchanged.
+
+The two most recent changes widen that walk, because neither is the kind of
+thing a build catches:
+
+- **After the asset move**, every migrated image and both Who We Are videos
+  need to actually appear — a wrong Cloudinary id returns a 404, not a build
+  error. Check the founder portraits match their names, since the variable
+  naming in `whoWeAreData.ts` (`personTwo` is Jeff, `personThree` is Paddy)
+  invites exactly that mistake.
+- **After React 19**, watch the six `AnimatePresence` surfaces (SlideInMenu,
+  CalendlyModal, LoadingScreen and the carousels), all seven portals, and the
+  Who We Are marquee — `react-fast-marquee` is the one dependency whose peer
+  range admits React 19 only via a `>=16.8.0` arm, without the author having
+  declared 19 explicitly.
