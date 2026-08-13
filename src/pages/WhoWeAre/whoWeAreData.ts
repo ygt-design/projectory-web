@@ -1,11 +1,11 @@
-import carouselImageOne from '@/pages/WhoWeAre/assets/whoWeAreOne.avif';
-import carouselImageTwo from '@/pages/WhoWeAre/assets/whoWeAreTwo.avif';
-import carouselImageThree from '@/pages/WhoWeAre/assets/whoWeAreThree.avif';
-import marqueeIconBottom from '@/pages/WhoWeAre/assets/whoWeAre-pMonogram.avif';
+import carouselImageOne from '@/assets/images/who-we-are/whoWeAreOne.avif';
+import carouselImageTwo from '@/assets/images/who-we-are/whoWeAreTwo.avif';
+import carouselImageThree from '@/assets/images/who-we-are/whoWeAreThree.avif';
+import marqueeIconBottom from '@/assets/images/who-we-are/whoWeAre-pMonogram.avif';
 import marqueeIconTop from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
-import personOne from '@/pages/WhoWeAre/assets/oren.webp';
-import personTwo from '@/pages/WhoWeAre/assets/jeff.webp';
-import personThree from '@/pages/WhoWeAre/assets/paddy.webp';
+import personOne from '@/assets/images/who-we-are/oren.webp';
+import personTwo from '@/assets/images/who-we-are/jeff.webp';
+import personThree from '@/assets/images/who-we-are/paddy.webp';
 
 export const heroSection = {
   eyebrow: 'About Us',
