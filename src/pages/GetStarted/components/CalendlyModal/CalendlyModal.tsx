@@ -4,6 +4,7 @@ import { FiX } from 'react-icons/fi';
 import styles from './CalendlyModal.module.css';
 import { CALENDLY_URL } from '@/config/site';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useScrollLock } from '@/hooks/useScrollLock';
 
 interface CalendlyModalProps {
   isOpen: boolean;
@@ -61,15 +62,7 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({ isOpen, onClose, url = CA
 
   useEscapeKey(onClose, isOpen);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
   if (!isOpen) return null;
 

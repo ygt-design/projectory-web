@@ -17,6 +17,7 @@ import CustomCursor from './components/CustomCursor/CustomCursor';
 import { products as allProducts } from '@/data/products';
 import type { Product } from '@/types/product';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useScrollLock } from '@/hooks/useScrollLock';
 import icon1 from '@/assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
 import icon2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
 import icon3 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
@@ -55,17 +56,7 @@ const Home = () => {
   // effect's empty dependency array.
   useEscapeKey(() => setIsLightboxOpen(false));
 
-  // Handle body scroll lock
-  useEffect(() => {
-    if (isLightboxOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isLightboxOpen]);
+  useScrollLock(isLightboxOpen);
 
   // Handle middle video: play when in view (fixes mobile autoplay) and when ready
   useEffect(() => {

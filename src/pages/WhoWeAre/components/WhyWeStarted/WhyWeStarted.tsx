@@ -4,6 +4,7 @@ import { FiX } from 'react-icons/fi';
 import { whyWeStartedSection } from '../../whoWeAreData';
 import styles from './WhyWeStarted.module.css';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useScrollLock } from '@/hooks/useScrollLock';
 
 const WhyWeStarted = () => {
   const { title, videoSrc, paragraphs } = whyWeStartedSection;
@@ -12,16 +13,7 @@ const WhyWeStarted = () => {
 
   useEscapeKey(() => setIsLightboxOpen(false), isLightboxOpen);
 
-  useEffect(() => {
-    if (isLightboxOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isLightboxOpen]);
+  useScrollLock(isLightboxOpen);
 
   useEffect(() => {
     if (!isLightboxOpen) return;

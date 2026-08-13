@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useScrollLock } from '@/hooks/useScrollLock';
 import logo from '@/assets/images/logo.svg';
 import HeartIconNavSVG from '@/assets/images/heartIconNav.svg';
 import SlideInMenu from '../SlideInMenu/SlideInMenu';
@@ -97,23 +98,8 @@ const Navbar = () => {
     return () => window.clearTimeout(t);
   }, [heartPulse]);
 
-  useEffect(() => {
-    if (!menuOpen) return;
-
-    const previousOverflow = document.body.style.overflow;
-    const previousPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-    document.body.style.overflow = 'hidden';
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.body.style.paddingRight = previousPaddingRight;
-    };
-  }, [menuOpen]);
+  // The navbar is the only overlay that compensates for the scrollbar width.
+  useScrollLock(menuOpen, { compensateScrollbar: true });
 
   useEscapeKey(() => setMenuOpen(false), menuOpen);
 

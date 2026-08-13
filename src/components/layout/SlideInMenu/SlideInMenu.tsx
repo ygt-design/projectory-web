@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useLikedProducts } from '@/context/LikedProductsContext';
 import { getProductsByIds } from '@/lib/findProduct';
@@ -6,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './SlideInMenu.module.css';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
+import { useScrollLock } from '@/hooks/useScrollLock';
 
 interface SlideInMenuProps {
   onClose: () => void;
@@ -28,16 +28,7 @@ const SlideInMenu = ({ onClose, isOpen }: SlideInMenuProps) => {
     headingText = `You have ${productsCount} product${productsCount !== 1 ? 's' : ''} selected. Continue to get an estimate for your selected products.`;
   }
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
   useEscapeKey(onClose, isOpen);
 
