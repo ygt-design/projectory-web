@@ -215,7 +215,7 @@
 .navActions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   margin-left: 8px;
   flex-shrink: 0;
 }
