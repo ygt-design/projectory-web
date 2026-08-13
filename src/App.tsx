@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense, useState, useEffect, useCallback } from 'react';
-import Layout from '@/components/Layout/Layout';
-import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
+import Layout from '@/components/layout/Layout/Layout';
+import ScrollToTop from '@/components/layout/ScrollToTop/ScrollToTop';
 import Home from '@/pages/Home/Home';
 import { LikedProductsProvider } from '@/context/LikedProductsContext';
-import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
+import LoadingScreen from '@/components/layout/LoadingScreen/LoadingScreen';
 
 const WhoWeAre = lazy(() => import('@/pages/WhoWeAre/WhoWeAre'));
 const CaseStudies = lazy(() => import('@/pages/CaseStudies/CaseStudies'));

@@ -5,7 +5,7 @@ import styles from './Navbar.module.css';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import logo from '@/assets/images/logo.svg';
 import HeartIconNavSVG from '@/assets/images/heartIconNav.svg';
-import SlideInMenu from '@/components/SlideInMenu/SlideInMenu';
+import SlideInMenu from '@/components/layout/SlideInMenu/SlideInMenu';
 import { useLikedProducts } from '@/context/LikedProductsContext';
 
 const NAV_LINKS = [
