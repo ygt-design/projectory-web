@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ctaBanner } from '../../whoWeAreData';
-import tealBadge from '@/assets/images/shapes/pMonograms/projectory-p-teal.png';
 import styles from './CtaBanner.module.css';
+
+const tealBadge =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649241/projectory-p-teal_twddmb.png';
 
 const CtaBanner = () => {
   return (

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { catalogueCta } from '../../pricingData';
-import amberBadge from '@/assets/images/shapes/pMonograms/projectory-p-amber.png';
 import styles from './CatalogueCTA.module.css';
+
+const amberBadge =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649240/projectory-p-amber_q8opqw.png';
 
 const CatalogueCTA = () => {
   return (

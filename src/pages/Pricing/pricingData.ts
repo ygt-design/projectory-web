@@ -1,7 +1,11 @@
-import salesKickoffImg from '@/assets/images/pricing/sales-kickoff.webp';
-import leadershipSummitImg from '@/assets/images/pricing/leadership-summit.webp';
-import tradeShowImg from '@/assets/images/pricing/trade-show.webp';
-import whitelabelImg from '@/assets/images/pricing/projectory-CIBC-img.webp';
+const salesKickoffImg =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649008/sales-kickoff_xhgs6u.webp';
+const leadershipSummitImg =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649012/leadership-summit_t7av9e.webp';
+const tradeShowImg =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649009/trade-show_ue7l1t.webp';
+const whitelabelImg =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649011/projectory-CIBC-img_decsv8.webp';
 
 const tradeShowFormerImg =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749520804/PingPoll_1_d8rjc7_nsiwgv.webp';

@@ -5,8 +5,10 @@ import { getProductsByIds } from '@/lib/findProduct';
 import styles from './GetEstimatePage.module.css';
 import { submitToWeb3Forms } from '@/lib/web3forms';
 
-import shape1 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
-import shape2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+import { teal as shape2 } from '@/assets/images/shapes/floaters';
+
+const shape1 =
+  'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649204/Projectory_AbstractSymbol_6_irec5b.png';
 import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import { pageMeta } from '@/config/seo';
 
