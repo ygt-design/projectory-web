@@ -81,7 +81,7 @@
 
 .timerBarFill {
   width: 100%;
-  background: #fff;
+  background: var(--white);
   height: 0;
   transition: height 0.1s linear;
   border-radius: 100px;

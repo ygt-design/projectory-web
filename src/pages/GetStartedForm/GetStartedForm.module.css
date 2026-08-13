@@ -17,7 +17,7 @@
 .title {
   font-family: 'FounderGrotesk_Regular';
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 0.5rem;
 }
 
@@ -50,7 +50,7 @@
   border-radius: 999px;
   border: 2px solid rgba(255, 255, 255, 0.8);
   background: transparent;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   transition:
     background 0.3s,
@@ -62,9 +62,9 @@
 }
 
 .chipSelected {
-  background: #fff;
-  color: #333;
-  border-color: #fff;
+  background: var(--white);
+  color: var(--charcoal);
+  border-color: var(--white);
 }
 
 .nav {
@@ -84,12 +84,12 @@
 
 .backBtn {
   background: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  color: var(--white);
 }
 
 .nextBtn {
-  background: #fff;
-  color: #333;
+  background: var(--white);
+  color: var(--charcoal);
 }
 
 .nextBtn:disabled {
@@ -108,7 +108,7 @@
 }
 
 .recommendedTitle {
-  color: #fff;
+  color: var(--white);
   max-width: 600px;
   margin: auto;
   font-size: 3rem;
@@ -138,10 +138,10 @@
 .estimateBtn {
   padding: 15px 25px;
   font-size: 1.2rem;
-  background: linear-gradient(90deg, #f37655 0%, #a92e4c 80%);
+  background: linear-gradient(90deg, var(--coral) 0%, #a92e4c 80%);
   border: none;
   border-radius: 999px;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   transition: all 0.5s ease;
   margin-top: 50px;

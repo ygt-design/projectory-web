@@ -57,7 +57,7 @@
   align-self: stretch;
   border: none;
   border-radius: 12px;
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
   cursor: pointer;
   box-sizing: border-box;
   text-align: left;

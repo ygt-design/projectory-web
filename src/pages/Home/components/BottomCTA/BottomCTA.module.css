@@ -40,7 +40,7 @@
 .title {
   font-size: 65px;
   margin: 0 0 20px;
-  color: #fff;
+  color: var(--white);
 }
 
 .text {
@@ -62,7 +62,7 @@
 }
 
 .button:hover {
-  background: #ddd;
+  background: var(--light-gray);
 }
 
 /* Responsive */

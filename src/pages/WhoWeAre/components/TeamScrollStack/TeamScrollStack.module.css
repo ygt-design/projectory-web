@@ -40,7 +40,7 @@
   min-height: 0;
   border-radius: 20px;
   overflow: hidden;
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
   border: 0.5px solid rgba(123, 123, 123, 0.45);
   cursor: pointer;
   box-sizing: border-box;
@@ -62,7 +62,7 @@
   height: var(--strip-h);
   flex-shrink: 0;
   overflow: hidden;
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
 }
 
 .image {
@@ -71,8 +71,18 @@
   object-fit: cover;
   object-position: center 28%;
   display: block;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 200px), transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 200px), transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    var(--true-black) 0%,
+    var(--true-black) calc(100% - 200px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    var(--true-black) 0%,
+    var(--true-black) calc(100% - 200px),
+    transparent 100%
+  );
 }
 
 .overlay {
@@ -88,7 +98,7 @@
     rgba(28, 28, 28, 0) 0%,
     rgba(28, 28, 28, 0.2) 45%,
     rgba(28, 28, 28, 0.65) 75%,
-    #1c1c1c 100%
+    var(--background-dark-gray) 100%
   );
 }
 
@@ -110,7 +120,7 @@
 
 .name {
   margin: 0;
-  color: #fff;
+  color: var(--white);
   font-family: 'FounderGrotesk_Medium', sans-serif;
   font-size: 42px;
   font-weight: 500;
@@ -123,7 +133,7 @@
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
 }
 
 .detailInner {
@@ -138,7 +148,7 @@
 
 .bio {
   margin: 0;
-  color: #fff;
+  color: var(--white);
   text-align: left;
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 19px;
@@ -160,7 +170,7 @@
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
   border: 0.5px solid rgba(123, 123, 123, 0.45);
 }
 

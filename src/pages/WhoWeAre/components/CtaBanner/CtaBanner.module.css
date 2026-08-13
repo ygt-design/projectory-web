@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), #2bdcb7;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), var(--teal);
   overflow: visible;
 }
 
@@ -108,7 +108,7 @@
 
 .buttonPrimary {
   background: var(--white);
-  color: #2bdcb7;
+  color: var(--teal);
   border: 0.5px solid var(--white);
 }
 

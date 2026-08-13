@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   align-items: center;
-  background-color: #35343f; /* Dark background */
+  background-color: var(--dark-gray); /* Dark background */
   border-radius: 20px;
   padding: 50px;
   color: white;

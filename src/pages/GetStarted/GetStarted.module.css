@@ -37,7 +37,7 @@
   margin: 0;
   max-width: 900px;
   width: 100%;
-  color: #fff;
+  color: var(--white);
   text-align: center;
   font-family: 'FounderGrotesk_Medium', sans-serif;
   font-size: 58px;
@@ -49,7 +49,7 @@
 .heroCopy p {
   margin: 0;
   max-width: 650px;
-  color: #fff;
+  color: var(--white);
   text-align: center;
   font-feature-settings:
     'liga' off,
@@ -198,7 +198,7 @@
   height: clamp(235px, 23vw, 390px);
   border-radius: 12px;
   border: 0.597px solid rgba(123, 123, 123, 0.5);
-  background: #1c1c1c;
+  background: var(--background-dark-gray);
   box-sizing: border-box;
   overflow: hidden;
   transform: translate(-50%, -50%) translateX(var(--card-x))
@@ -218,7 +218,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(19, 19, 19, 0) 40%, #131313 100%);
+  background: linear-gradient(180deg, rgba(19, 19, 19, 0) 40%, var(--black) 100%);
   pointer-events: none;
 }
 
@@ -254,7 +254,7 @@
     rgba(19, 19, 19, 0.18) 45%,
     rgba(19, 19, 19, 0.4) 65%,
     rgba(19, 19, 19, 0.7) 82%,
-    #131313 100%
+    var(--black) 100%
   );
   pointer-events: none;
   z-index: 4;
@@ -305,8 +305,8 @@
   box-sizing: border-box;
   border-radius: 20px;
   border: 0.5px solid rgba(123, 123, 123, 0.5);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 55.29%), #fff;
-  color: #1c1c1c;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 55.29%), var(--white);
+  color: var(--background-dark-gray);
   text-align: center;
 }
 
@@ -322,8 +322,8 @@
   box-sizing: border-box;
   border: none;
   border-radius: 8px;
-  background-color: #1c1c1c;
-  color: #fff;
+  background-color: var(--background-dark-gray);
+  color: var(--white);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 17px;
   font-weight: 400;
@@ -342,7 +342,7 @@
 .gitBlock h3 {
   margin: 0 0 20px;
   max-width: 320px;
-  color: #1c1c1c;
+  color: var(--background-dark-gray);
   text-align: center;
   font-family: 'FounderGrotesk_Medium', sans-serif;
   font-size: 40px;
@@ -353,7 +353,7 @@
 .gitBlock p {
   margin: 0 0 28px;
   max-width: 330px;
-  color: #1c1c1c;
+  color: var(--background-dark-gray);
   text-align: center;
   font-feature-settings:
     'liga' off,
@@ -365,20 +365,20 @@
 }
 
 .gitBlockLeft {
-  background: #1c1c1c;
-  color: #fff;
+  background: var(--background-dark-gray);
+  color: var(--white);
 }
 
 .gitBlockLeft h3,
 .gitBlockLeft p {
-  color: #fff;
+  color: var(--white);
 }
 
 .gitBlockLeft a,
 .gitBlockLeft button,
 .gitBlockLeft .gitButton {
-  background: #fff;
-  color: #1c1c1c;
+  background: var(--white);
+  color: var(--background-dark-gray);
 }
 
 .gitBlockLeft a:hover,

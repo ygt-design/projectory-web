@@ -209,7 +209,7 @@
 
 .desktopNav a:not(.ctaButton):hover {
   background-color: var(--dark-gray);
-  color: #fff;
+  color: var(--white);
 }
 
 .navActions {
@@ -230,8 +230,8 @@
   font-size: 1rem;
   line-height: 1.2;
   white-space: nowrap;
-  background-color: #f37655;
-  color: #fff;
+  background-color: var(--coral);
+  color: var(--white);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-weight: normal;
   text-decoration: none;
@@ -241,7 +241,7 @@
 .ctaButtonLabel {
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: var(--white);
 }
 
 .ctaButton::before {
@@ -268,7 +268,7 @@
   width: 36px;
   height: 36px;
   padding: 0;
-  background-color: #fff;
+  background-color: var(--white);
   border: none;
   border-radius: 8px;
   outline: none;
@@ -453,7 +453,7 @@
 }
 
 .navIsland.likeIsland {
-  background: #fff;
+  background: var(--white);
   border: none;
   box-shadow: var(--nav-glass-shadow);
 }
@@ -513,7 +513,7 @@
 }
 
 .mobileMenu a {
-  color: #fff;
+  color: var(--white);
   text-align: left;
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 20px;
@@ -545,7 +545,7 @@
 }
 
 .scrolled .navIsland.likeIsland {
-  background: #fff;
+  background: var(--white);
 }
 
 @container nav (max-width: 760px) {

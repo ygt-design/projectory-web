@@ -19,12 +19,12 @@
 
 .ctaBoxDark {
   color: white;
-  background-color: #212121;
+  background-color: var(--off-black);
 }
 
 .ctaBoxLight {
   color: white;
-  background-color: #212121;
+  background-color: var(--off-black);
 }
 
 h3 {

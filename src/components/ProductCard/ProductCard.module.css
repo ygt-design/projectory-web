@@ -92,7 +92,7 @@ button {
   position: relative;
   z-index: 4;
   padding: 20px;
-  color: #fff;
+  color: var(--white);
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
@@ -130,9 +130,9 @@ button {
   display: inline-block;
   margin-top: 10px;
   padding: 8px 16px;
-  border: 1px solid #fff;
+  border: 1px solid var(--white);
   border-radius: 50px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition:
     background-color 0.3s ease,
@@ -140,8 +140,8 @@ button {
 }
 
 .learnMoreButton:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--white);
+  color: var(--true-black);
 }
 
 /* ── Like button ───────────────────────────────────────────────────────── */

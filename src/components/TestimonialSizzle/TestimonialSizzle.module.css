@@ -11,7 +11,7 @@
 }
 
 .testimonialWrapper {
-  background-color: #35343f; /* Dark grayish background */
+  background-color: var(--dark-gray); /* Dark grayish background */
   padding: 60px;
   border-radius: 24px;
   position: relative;
@@ -84,7 +84,7 @@
 
 .author {
   font-size: 24px;
-  color: #ddd;
+  color: var(--light-gray);
   font-style: italic;
 }
 

@@ -56,7 +56,7 @@
   font-size: 40px;
   margin-bottom: 10px;
   text-align: center;
-  color: #f37655;
+  color: var(--coral);
 }
 
 .rightColumn p {
@@ -87,7 +87,7 @@
   border-radius: 4px;
   font-size: 16px;
   border: none;
-  background-color: #2c2a35;
+  background-color: var(--slate);
   color: white;
   resize: none;
 }
@@ -110,7 +110,7 @@
 
 .submitButton {
   padding: 14px 24px;
-  background: linear-gradient(90deg, #a72c4b 0%, #f37655 100%);
+  background: linear-gradient(90deg, var(--burgundy) 0%, var(--coral) 100%);
   color: white;
   font-size: 16px;
   border-radius: 50px;
@@ -184,8 +184,8 @@
 
 /* Remove button styling */
 .removeButton {
-  background: #fff;
-  color: #000;
+  background: var(--white);
+  color: var(--true-black);
   border: none;
   padding: 6px 12px;
   cursor: pointer;
@@ -196,7 +196,7 @@
 }
 
 .removeButton:hover {
-  background: #ddd;
+  background: var(--light-gray);
 }
 
 /* No items text */
@@ -223,7 +223,7 @@
 }
 
 .estimateButton:hover {
-  background: #ddd;
+  background: var(--light-gray);
 }
 
 .overlay {
@@ -247,7 +247,7 @@
   max-width: 600px;
   width: 90%;
   text-align: center;
-  color: #fff;
+  color: var(--white);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
@@ -265,8 +265,8 @@
 
 .overlayButton {
   display: inline-block;
-  background: linear-gradient(90deg, #2bdcb7 0%, #178771 100%);
-  color: #fff;
+  background: linear-gradient(90deg, var(--teal) 0%, #178771 100%);
+  color: var(--white);
   padding: 0.75rem 2rem;
   border-radius: 50px;
   text-decoration: none;
@@ -282,13 +282,13 @@
 .overlayLink {
   display: inline-block;
   margin-top: 1rem;
-  color: #ddd;
+  color: var(--light-gray);
   text-decoration: underline;
   font-size: 0.9375rem;
 }
 
 .overlayLink:hover {
-  color: #fff;
+  color: var(--white);
 }
 
 .overlayShapes {

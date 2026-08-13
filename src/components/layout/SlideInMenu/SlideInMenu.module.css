@@ -21,7 +21,7 @@
   right: 0;
   width: 450px;
   height: 100vh;
-  background: #2c2a35;
+  background: var(--slate);
   color: white;
   padding: 20px;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
@@ -132,8 +132,8 @@
 
 /* Remove button styling */
 .removeButton {
-  background: #fff;
-  color: #000;
+  background: var(--white);
+  color: var(--true-black);
   border: none;
   padding: 6px 12px;
   cursor: pointer;
@@ -144,7 +144,7 @@
 }
 
 .removeButton:hover {
-  background: #ddd;
+  background: var(--light-gray);
 }
 
 /* No items text */
@@ -170,7 +170,7 @@
 }
 
 .estimateButton:hover {
-  background: #ddd;
+  background: var(--light-gray);
 }
 
 /* Adjust for smaller screens */

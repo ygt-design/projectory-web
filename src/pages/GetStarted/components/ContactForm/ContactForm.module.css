@@ -6,8 +6,8 @@
   box-sizing: border-box;
   width: 100%;
   padding: 120px clamp(24px, 12.5vw, 180px);
-  background: #fff;
-  color: #131313;
+  background: var(--white);
+  color: var(--black);
 }
 
 .infoColumn {
@@ -17,7 +17,7 @@
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #f37655;
+  color: var(--coral);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 23px;
   font-weight: 400;
@@ -26,7 +26,7 @@
 
 .title {
   margin: 0 0 16px;
-  color: #131313;
+  color: var(--black);
   font-family: 'FounderGrotesk_Medium', sans-serif;
   font-size: 38px;
   font-weight: 500;
@@ -37,7 +37,7 @@
   margin: 0 0 40px;
   width: auto;
   max-width: clamp(280px, 100%, 450px);
-  color: #131313;
+  color: var(--black);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -58,7 +58,7 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  color: #131313;
+  color: var(--black);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 20px;
   font-weight: 400;
@@ -102,7 +102,7 @@
 }
 
 .label {
-  color: #131313;
+  color: var(--black);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -116,8 +116,8 @@
   padding: 14px 16px;
   border-radius: 8px;
   border: 0.5px solid var(--main-stroke, rgba(123, 123, 123, 0.5));
-  background: #fff;
-  color: #131313;
+  background: var(--white);
+  color: var(--black);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -129,7 +129,7 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-  color: #7b7b7b;
+  color: var(--mid-gray);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -152,8 +152,8 @@
   padding: 13px 18px;
   border: none;
   border-radius: 8px;
-  background: #f37655;
-  color: #fff;
+  background: var(--coral);
+  color: var(--white);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 18px;
   font-weight: 400;
@@ -167,7 +167,7 @@
 
 .statusMessage {
   margin: 0;
-  color: #131313;
+  color: var(--black);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-size: 16px;
 }

@@ -41,7 +41,7 @@
   position: relative;
   padding: 0.9rem 1.5rem 1rem;
   border-radius: 14px;
-  background: #2bdcb7;
+  background: var(--teal);
   text-align: center;
 }
 
@@ -50,7 +50,7 @@
   font-size: 1rem;
   line-height: 1.2;
   font-family: 'FounderGrotesk_Medium', 'FounderGrotesk_Regular', sans-serif;
-  color: #fff;
+  color: var(--white);
 }
 
 .calloutLine + .calloutLine {
@@ -87,7 +87,7 @@
   background: rgba(10, 10, 10, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #fff;
+  color: var(--white);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -118,7 +118,7 @@
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.22),
     0 1px 0 rgba(255, 255, 255, 0.35) inset;
-  color: #fff;
+  color: var(--white);
 }
 
 .icon {

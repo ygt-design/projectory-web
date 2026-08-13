@@ -1,8 +1,8 @@
 /* Footer – black background, light text */
 
 .footer {
-  background-color: var(--black, #131313);
-  color: #fff;
+  background-color: var(--black);
+  color: var(--white);
   padding: 48px 80px 0;
   z-index: 10;
   font-family: inherit;
@@ -28,7 +28,7 @@
 
 .tagline {
   font-size: 14px;
-  color: var(--gray, #adadad);
+  color: var(--gray);
   margin-top: 4px;
 }
 
@@ -51,7 +51,7 @@
 .columnHeading,
 .addressBlock h4 {
   font-size: 20px;
-  color: #fff;
+  color: var(--white);
   margin: 0 0 12px;
   font-family: 'FounderGrotesk_Medium';
   font-weight: normal;
@@ -64,7 +64,7 @@
 /* Links inside columns */
 
 .footerColumn a {
-  color: #fff;
+  color: var(--white);
   font-size: 14px;
   text-decoration: none;
   margin-bottom: 6px;
@@ -73,7 +73,7 @@
 }
 
 .footerColumn a:hover {
-  color: var(--lime, #bcce2d);
+  color: var(--lime);
 }
 
 /* ── Column 1: Addresses ── */
@@ -88,7 +88,7 @@
 
 .addressBlock p {
   font-size: 14px;
-  color: var(--gray, #adadad);
+  color: var(--gray);
   margin: 0;
   line-height: 1.5;
 }
@@ -103,10 +103,10 @@
   width: 100%;
   padding: 10px 12px;
   font-size: 14px;
-  border: 0.5px solid #fff;
+  border: 0.5px solid var(--white);
   border-radius: 0;
   background: transparent;
-  color: #fff;
+  color: var(--white);
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
@@ -114,16 +114,16 @@
 }
 
 .emailInput::placeholder {
-  color: var(--gray, #adadad);
+  color: var(--gray);
 }
 
 .emailInput:focus {
-  border-color: var(--lime, #bcce2d);
+  border-color: var(--lime);
 }
 
 .inputHelper {
   font-size: 12px;
-  color: var(--gray, #adadad);
+  color: var(--gray);
   margin: 6px 0 0;
   line-height: 1.4;
 }
@@ -133,9 +133,9 @@
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--black, #131313);
-  background: #fff;
-  border: 1.5px solid #fff;
+  color: var(--black);
+  background: var(--white);
+  border: 1.5px solid var(--white);
   border-radius: 0;
   cursor: pointer;
   transition:
@@ -146,7 +146,7 @@
 
 .submitBtn:hover {
   background: transparent;
-  color: #fff;
+  color: var(--white);
 }
 
 .submitBtn:disabled {
@@ -156,7 +156,7 @@
 
 .introDeckStatus {
   font-size: 12px;
-  color: var(--gray, #adadad);
+  color: var(--gray);
   margin: 8px 0 0;
   line-height: 1.4;
 }
@@ -168,7 +168,7 @@
 /* Contact links */
 
 .contactLink {
-  color: #fff;
+  color: var(--white);
   font-size: 14px;
   text-decoration: none;
   margin-bottom: 4px;
@@ -177,7 +177,7 @@
 }
 
 .contactLink:hover {
-  color: var(--lime, #bcce2d);
+  color: var(--lime);
 }
 
 /* Social icons */
@@ -192,7 +192,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -203,7 +203,7 @@
 }
 
 .socialIcon:hover {
-  color: var(--lime, #bcce2d);
+  color: var(--lime);
 }
 
 /* ── Bottom bar ── */
@@ -227,12 +227,12 @@
 
 .copyright {
   font-size: 13px;
-  color: var(--gray, #adadad);
+  color: var(--gray);
   margin: 0;
 }
 
 .copyright strong {
-  color: #fff;
+  color: var(--white);
 }
 
 .legalLinks {
@@ -243,18 +243,18 @@
 }
 
 .legalLinks a {
-  color: #fff;
+  color: var(--white);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
 
 .legalLinks a:hover {
-  color: var(--lime, #bcce2d);
+  color: var(--lime);
 }
 
 .legalDivider {
-  color: var(--gray, #adadad);
+  color: var(--gray);
   user-select: none;
 }
 

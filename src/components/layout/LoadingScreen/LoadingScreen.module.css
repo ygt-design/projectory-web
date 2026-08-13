@@ -35,7 +35,7 @@
 
 .trailPath {
   fill: none;
-  stroke: #fff;
+  stroke: var(--white);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -43,13 +43,13 @@
 
 .strokePath {
   fill: none;
-  stroke: #fff;
+  stroke: var(--white);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .fillPath {
-  fill: #fff;
+  fill: var(--white);
   stroke: none;
 }

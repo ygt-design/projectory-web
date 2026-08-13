@@ -20,10 +20,10 @@
   pointer-events: none;
   background: linear-gradient(
     270deg,
-    #131313 0.02%,
+    var(--black) 0.02%,
     rgba(19, 19, 19, 0) 15.02%,
     rgba(19, 19, 19, 0) 84.98%,
-    #131313 99.98%
+    var(--black) 99.98%
   );
 }
 
