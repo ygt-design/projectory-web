@@ -1,5 +1,5 @@
 import { teamSection, type TeamMember } from '@/pages/WhoWeAre/whoWeAreData';
-import TeamScrollStack from './TeamScrollStack';
+import TeamScrollStack from '@/pages/WhoWeAre/components/TeamScrollStack/TeamScrollStack';
 import styles from './Team.module.css';
 
 const DesktopMemberCard = ({ member }: { member: TeamMember }) => {

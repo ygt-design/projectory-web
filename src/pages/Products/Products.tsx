@@ -3,7 +3,7 @@ import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import { products as allProducts } from '@/data/products';
 import ProductCard, { type ProductCardProduct } from '@/components/ProductCard/ProductCard';
 import FeaturedCarousel from '@/pages/Products/components/FeaturedCarousel/FeaturedCarousel';
-import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
+import TealCTASection from '@/components/TealCTA/TealCTA';
 import GridCTA from '@/pages/Products/components/GridCTA/GridCTA';
 import FeaturedCaseStudy from '@/pages/Products/components/FeaturedCaseStudy/FeaturedCaseStudy';
 import LandingHero from '@/components/LandingHero/LandingHero';

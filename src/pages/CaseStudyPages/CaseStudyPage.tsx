@@ -5,9 +5,9 @@ import ProductHero, {
   type ProductHeroProduct,
 } from '@/components/sections/ProductHero/ProductHero';
 import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
-import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
+import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
 import HowWeBuilt from '@/pages/CaseStudyPages/components/HowWeBuilt/HowWeBuilt';
-import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
+import TealCTASection from '@/components/TealCTA/TealCTA';
 import DataFeature from '@/components/sections/DataFeature/DataFeature';
 import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
 

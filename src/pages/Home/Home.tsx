@@ -9,7 +9,7 @@ import '@/styles/global.css';
 
 import ContactButton from '@/pages/Home/components/ContactButton/ContactButton';
 import ClientLogos from '@/components/ClientLogos/ClientLogos';
-import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
+import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
 import BottomCTA from '@/pages/Home/components/BottomCTA/BottomCTA';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import CustomCursor from '@/pages/Home/components/CustomCursor/CustomCursor';

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView, useMotionValue } from 'framer-motion';
 import styles from './CaseStudies.module.css';
 import ClientLogos from '@/components/ClientLogos/ClientLogos';
-import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
+import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
 import TrustedBy from '@/pages/CaseStudies/components/TrustedBy/TrustedBy';
 import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
 import LandingHero from '@/components/LandingHero/LandingHero';
