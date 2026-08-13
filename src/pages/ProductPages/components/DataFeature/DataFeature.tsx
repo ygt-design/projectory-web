@@ -1,5 +1,5 @@
 import styles from './DataFeature.module.css';
-import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryImage';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 interface DataFeatureProps {
   title: string;

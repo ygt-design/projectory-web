@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './ContactForm.module.css';
-import { submitToWeb3Forms } from '../../lib/web3forms';
+import { submitToWeb3Forms } from '@/lib/web3forms';
 
 const MailIcon = () => (
   <svg

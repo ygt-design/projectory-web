@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useLikedProducts } from '../../context/LikedProductsContext';
-import { getProductsByIds } from '../../lib/findProduct';
+import { useLikedProducts } from '@/context/LikedProductsContext';
+import { getProductsByIds } from '@/lib/findProduct';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './SlideInMenu.module.css';
-import { useEscapeKey } from '../../hooks/useEscapeKey';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 interface SlideInMenuProps {
   onClose: () => void;

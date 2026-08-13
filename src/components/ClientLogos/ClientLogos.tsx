@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 import styles from './ClientLogos.module.css';
 
 // Import logo images
-import logo1 from '../../assets/images/logos/cibc.png';
-import logo2 from '../../assets/images/logos/thomsonReuters.png';
-import logo3 from '../../assets/images/logos/canadianMedicalAssociation.png';
-import logo4 from '../../assets/images/logos/deloitte.webp';
-import logo5 from '../../assets/images/logos/enmax.png';
-import logo6 from '../../assets/images/logos/oracle.png';
-import logo7 from '../../assets/images/logos/pcma.png';
-import logo8 from '../../assets/images/logos/royalCanadianMint.svg';
+import logo1 from '@/assets/images/logos/cibc.png';
+import logo2 from '@/assets/images/logos/thomsonReuters.png';
+import logo3 from '@/assets/images/logos/canadianMedicalAssociation.png';
+import logo4 from '@/assets/images/logos/deloitte.webp';
+import logo5 from '@/assets/images/logos/enmax.png';
+import logo6 from '@/assets/images/logos/oracle.png';
+import logo7 from '@/assets/images/logos/pcma.png';
+import logo8 from '@/assets/images/logos/royalCanadianMint.svg';
 
 interface ClientLogosProps {
   background?: string;

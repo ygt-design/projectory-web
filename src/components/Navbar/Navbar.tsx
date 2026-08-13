@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, type ButtonHTMLAttributes, type ReactNode 
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import styles from './Navbar.module.css';
-import { useEscapeKey } from '../../hooks/useEscapeKey';
-import logo from '../../assets/images/logo.svg';
-import HeartIconNavSVG from '../../assets/images/heartIconNav.svg';
-import SlideInMenu from '../SlideInMenu/SlideInMenu';
-import { useLikedProducts } from '../../context/LikedProductsContext';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
+import logo from '@/assets/images/logo.svg';
+import HeartIconNavSVG from '@/assets/images/heartIconNav.svg';
+import SlideInMenu from '@/components/SlideInMenu/SlideInMenu';
+import { useLikedProducts } from '@/context/LikedProductsContext';
 
 const NAV_LINKS = [
   { to: '/who-we-are', label: 'Who We Are' },

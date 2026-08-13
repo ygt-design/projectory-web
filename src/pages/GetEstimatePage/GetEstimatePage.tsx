@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useLikedProducts } from '../../context/LikedProductsContext';
+import { useLikedProducts } from '@/context/LikedProductsContext';
 import { Link } from 'react-router-dom';
-import { getProductsByIds } from '../../lib/findProduct';
+import { getProductsByIds } from '@/lib/findProduct';
 import styles from './GetEstimatePage.module.css';
-import { submitToWeb3Forms } from '../../lib/web3forms';
+import { submitToWeb3Forms } from '@/lib/web3forms';
 
-import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
-import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+import shape1 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
+import shape2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
 
 const GetEstimatePage: React.FC = () => {
   const { likedProducts, toggleLike } = useLikedProducts();

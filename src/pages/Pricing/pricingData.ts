@@ -1,7 +1,7 @@
-import salesKickoffImg from './assets/sales-kickoff.webp';
-import leadershipSummitImg from './assets/leadership-summit.webp';
-import tradeShowImg from './assets/trade-show.webp';
-import whitelabelImg from './assets/projectory-CIBC-img.webp';
+import salesKickoffImg from '@/pages/Pricing/assets/sales-kickoff.webp';
+import leadershipSummitImg from '@/pages/Pricing/assets/leadership-summit.webp';
+import tradeShowImg from '@/pages/Pricing/assets/trade-show.webp';
+import whitelabelImg from '@/pages/Pricing/assets/projectory-CIBC-img.webp';
 
 const tradeShowFormerImg =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1749520804/PingPoll_1_d8rjc7_nsiwgv.webp';

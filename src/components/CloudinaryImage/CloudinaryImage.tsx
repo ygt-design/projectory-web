@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { getCloudinaryFallbackUrls } from '../../utils/cloudinaryHelpers';
+import { getCloudinaryFallbackUrls } from '@/utils/cloudinaryHelpers';
 
 type CloudinaryImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   src: string;

@@ -1,7 +1,7 @@
 import styles from './TealCTA.module.css';
 import { Link } from 'react-router-dom';
-import shape1 from '../../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.svg';
-import shape2 from '../../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
+import shape1 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_2.svg';
+import shape2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
 
 interface TealCTASectionProps {
   title: string;

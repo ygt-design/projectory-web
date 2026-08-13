@@ -1,4 +1,4 @@
-import cemaLogo from '../../assets/images/logos/cema.png';
+import cemaLogo from '@/assets/images/logos/cema.png';
 
 export const caseStudiesData = [
   {

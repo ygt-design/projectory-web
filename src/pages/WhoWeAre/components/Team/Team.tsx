@@ -1,4 +1,4 @@
-import { teamSection, type TeamMember } from '../../whoWeAreData';
+import { teamSection, type TeamMember } from '@/pages/WhoWeAre/whoWeAreData';
 import TeamScrollStack from './TeamScrollStack';
 import styles from './Team.module.css';
 

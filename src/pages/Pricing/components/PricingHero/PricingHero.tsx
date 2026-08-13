@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { pricingHero } from '../../pricingData';
-import { usePageEntrance } from '../../../../hooks/usePageEntrance';
+import { pricingHero } from '@/pages/Pricing/pricingData';
+import { usePageEntrance } from '@/hooks/usePageEntrance';
 import styles from './PricingHero.module.css';
 
 type Entrance = ReturnType<typeof usePageEntrance>;

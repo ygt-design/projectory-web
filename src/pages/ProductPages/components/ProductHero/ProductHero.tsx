@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styles from './ProductHero.module.css';
-import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryImage';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 export type ProductHeroProduct = {
   id: string;

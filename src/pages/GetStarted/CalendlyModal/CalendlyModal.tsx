@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { FiX } from 'react-icons/fi';
 import styles from './CalendlyModal.module.css';
-import { CALENDLY_URL } from '../../../config/site';
-import { useEscapeKey } from '../../../hooks/useEscapeKey';
+import { CALENDLY_URL } from '@/config/site';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 interface CalendlyModalProps {
   isOpen: boolean;

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
-import { whyWeStartedSection } from '../../whoWeAreData';
+import { whyWeStartedSection } from '@/pages/WhoWeAre/whoWeAreData';
 import styles from './WhyWeStarted.module.css';
-import { useEscapeKey } from '../../../../hooks/useEscapeKey';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
 
 const WhyWeStarted = () => {
   const { title, videoSrc, paragraphs } = whyWeStartedSection;

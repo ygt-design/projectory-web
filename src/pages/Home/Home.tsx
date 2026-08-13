@@ -5,22 +5,22 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiX } from 'react-icons/fi';
 import { useInView } from 'react-intersection-observer';
 import styles from './Home.module.css';
-import '../../styles/global.css';
+import '@/styles/global.css';
 
-import ContactButton from '../../components/Buttons/ContactButton/ContactButton';
-import ClientLogos from '../../components/ClientLogos/ClientLogos';
-import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
-import BottomCTA from '../../components/BottomCTA/BottomCTA';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import CustomCursor from '../../components/CustomCursor/CustomCursor';
+import ContactButton from '@/components/Buttons/ContactButton/ContactButton';
+import ClientLogos from '@/components/ClientLogos/ClientLogos';
+import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
+import BottomCTA from '@/components/BottomCTA/BottomCTA';
+import ProductCard from '@/components/ProductCard/ProductCard';
+import CustomCursor from '@/components/CustomCursor/CustomCursor';
 
-import { products as allProducts } from '../../pages/ProductPages/productsData';
-import type { Product } from '../../types/product';
-import { useEscapeKey } from '../../hooks/useEscapeKey';
-import icon1 from '../../assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
-import icon2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
-import icon3 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
-import icon4 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
+import { products as allProducts } from '@/pages/ProductPages/productsData';
+import type { Product } from '@/types/product';
+import { useEscapeKey } from '@/hooks/useEscapeKey';
+import icon1 from '@/assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';
+import icon2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_3.svg';
+import icon3 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_5.svg';
+import icon4 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.svg';
 
 const Home = () => {
   const secondSectionRef = useRef<HTMLDivElement>(null);

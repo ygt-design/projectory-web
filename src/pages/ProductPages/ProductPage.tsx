@@ -2,20 +2,20 @@ import { useCallback, useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { findProductById } from '../../lib/findProduct';
+import { findProductById } from '@/lib/findProduct';
 
-import ProductHero from './components/ProductHero/ProductHero';
-import ProductDetails from './components/ProductDetails/ProductDetails';
-import QuickFacts from './components/QuickFacts/QuickFacts';
-import Objectives from './components/Objectives/Objectives';
-import FinalCTA from './components/FinalCTA/FinalCTA';
-import HowItWorks from './components/HowItWorks/HowItWorks';
-import DataFeature from './components/DataFeature/DataFeature';
+import ProductHero from '@/pages/ProductPages/components/ProductHero/ProductHero';
+import ProductDetails from '@/pages/ProductPages/components/ProductDetails/ProductDetails';
+import QuickFacts from '@/pages/ProductPages/components/QuickFacts/QuickFacts';
+import Objectives from '@/pages/ProductPages/components/Objectives/Objectives';
+import FinalCTA from '@/pages/ProductPages/components/FinalCTA/FinalCTA';
+import HowItWorks from '@/pages/ProductPages/components/HowItWorks/HowItWorks';
+import DataFeature from '@/pages/ProductPages/components/DataFeature/DataFeature';
 
-import { useLikedProducts } from '../../context/LikedProductsContext';
-import HeartIconSVG from '../../assets/images/heartIcon.svg';
-import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
-import CloudinaryImage from '../../components/CloudinaryImage/CloudinaryImage';
+import { useLikedProducts } from '@/context/LikedProductsContext';
+import HeartIconSVG from '@/assets/images/heartIcon.svg';
+import HeartIconSVG_Outline from '@/assets/images/heartIcon_outline.svg';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 import styles from './ProductPage.module.css';
 

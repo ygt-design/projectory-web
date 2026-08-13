@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './GetStartedForm.module.css';
-import { products } from '../ProductPages/productsData';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import { useLikedProducts } from '../../context/LikedProductsContext';
+import { products } from '@/pages/ProductPages/productsData';
+import ProductCard from '@/components/ProductCard/ProductCard';
+import { useLikedProducts } from '@/context/LikedProductsContext';
 import { useNavigate } from 'react-router-dom';
 
 type Filters = { type: string[]; objectives: string[]; seating: string[] };
 
-import shape1 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_1.png';
-import shape2 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
-import shape3 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_3.png';
-import shape4 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_5.png';
-import shape5 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
-import shape6 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_9.png';
-import shape7 from '../../assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
+import shape1 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_1.png';
+import shape2 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_2.png';
+import shape3 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_3.png';
+import shape4 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_5.png';
+import shape5 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_6.png';
+import shape6 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_9.png';
+import shape7 from '@/assets/images/shapes/abstract/Projectory_AbstractSymbol_10.png';
 
 const shapePool = [shape1, shape2, shape3, shape4, shape5, shape6, shape7];
 

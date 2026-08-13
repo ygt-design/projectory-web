@@ -1,5 +1,5 @@
-import { heroSection } from '../../whoWeAreData';
-import Intro from '../Intro/Intro';
+import { heroSection } from '@/pages/WhoWeAre/whoWeAreData';
+import Intro from '@/pages/WhoWeAre/components/Intro/Intro';
 import styles from './WhoWeAreHero.module.css';
 
 const WhoWeAreHero = () => {

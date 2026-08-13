@@ -1,6 +1,6 @@
 // HowWeBuilt.tsx
 import { useState } from 'react';
-import { findProductById } from '../../../../lib/findProduct';
+import { findProductById } from '@/lib/findProduct';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './HowWeBuilt.module.css';

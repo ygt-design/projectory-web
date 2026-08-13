@@ -2,11 +2,11 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ProductCard.module.css';
-import { useLikedProducts } from '../../context/LikedProductsContext';
-import { optimizeCloudinaryUrl } from '../../utils/cloudinaryHelpers';
-import CloudinaryImage from '../CloudinaryImage/CloudinaryImage';
-import HeartIconSVG from '../../assets/images/heartIcon.svg';
-import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
+import { useLikedProducts } from '@/context/LikedProductsContext';
+import { optimizeCloudinaryUrl } from '@/utils/cloudinaryHelpers';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
+import HeartIconSVG from '@/assets/images/heartIcon.svg';
+import HeartIconSVG_Outline from '@/assets/images/heartIcon_outline.svg';
 
 export type ProductCardProduct = {
   id: string;

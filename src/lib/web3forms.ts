@@ -1,4 +1,4 @@
-import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '../config/site';
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from '@/config/site';
 
 // POSTs a payload to Web3Forms with the shared headers and access key, and
 // returns both the raw Response and the parsed body.

@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
-import { products as allProducts } from '../ProductPages/productsData';
-import ProductCard, { type ProductCardProduct } from '../../components/ProductCard/ProductCard';
-import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
-import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
-import GridCTA from '../../components/GridCTA/GridCTA';
-import FeaturedCaseStudy from '../../components/FeaturedCaseStudy/FeaturedCaseStudy';
-import LandingHero from '../../components/LandingHero/LandingHero';
+import { products as allProducts } from '@/pages/ProductPages/productsData';
+import ProductCard, { type ProductCardProduct } from '@/components/ProductCard/ProductCard';
+import FeaturedCarousel from '@/components/FeaturedCarousel/FeaturedCarousel';
+import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
+import GridCTA from '@/components/GridCTA/GridCTA';
+import FeaturedCaseStudy from '@/components/FeaturedCaseStudy/FeaturedCaseStudy';
+import LandingHero from '@/components/LandingHero/LandingHero';
 import styles from './Products.module.css';
 
 const TAGS = [

@@ -1,15 +1,15 @@
 import { useParams } from 'react-router-dom';
-import { caseStudiesData } from '../CaseStudyPages/caseStudiesData';
+import { caseStudiesData } from './caseStudiesData';
 import styles from './CaseStudyPage.module.css';
 import ProductHero, {
   type ProductHeroProduct,
-} from '../ProductPages/components/ProductHero/ProductHero';
-import ProductDetails from '../ProductPages/components/ProductDetails/ProductDetails';
-import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
-import HowWeBuilt from './components/HowWeBuilt/HowWeBuilt';
-import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
-import DataFeature from '../ProductPages/components/DataFeature/DataFeature';
-import FinalCTA from '../ProductPages/components/FinalCTA/FinalCTA';
+} from '@/pages/ProductPages/components/ProductHero/ProductHero';
+import ProductDetails from '@/pages/ProductPages/components/ProductDetails/ProductDetails';
+import TestimonialSizzle from '@/components/TestimonalSizzle/TestimonialSizzle';
+import HowWeBuilt from '@/pages/CaseStudyPages/components/HowWeBuilt/HowWeBuilt';
+import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';
+import DataFeature from '@/pages/ProductPages/components/DataFeature/DataFeature';
+import FinalCTA from '@/pages/ProductPages/components/FinalCTA/FinalCTA';
 
 const CaseStudyPage = () => {
   const { id } = useParams();

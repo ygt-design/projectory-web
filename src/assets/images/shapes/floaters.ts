@@ -14,6 +14,6 @@ export const creamCoral =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786453899/Projectory_AbstractSymbol_5_adwhfy.png';
 export const limeOlive =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786453899/Projectory_AbstractSymbol_11_bm2ici.webp';
-export { default as apricot } from './pMonograms/Projectory_GradientSymbol_Apricot_15.png';
+export { default as apricot } from '@/assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.png';
 export const redLime =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786453900/whoWeAre-Abstarct_gelxxd.avif';

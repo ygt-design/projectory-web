@@ -1,5 +1,5 @@
-import { products } from '../pages/ProductPages/productsData';
-import type { Product } from '../types/product';
+import { products } from '@/pages/ProductPages/productsData';
+import type { Product } from '@/types/product';
 
 const productsById = new Map(products.map((product) => [product.id, product]));
 
