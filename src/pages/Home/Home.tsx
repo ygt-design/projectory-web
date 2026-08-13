@@ -14,7 +14,7 @@ import BottomCTA from '@/components/BottomCTA/BottomCTA';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import CustomCursor from '@/components/CustomCursor/CustomCursor';
 
-import { products as allProducts } from '@/pages/ProductPages/productsData';
+import { products as allProducts } from '@/data/products';
 import type { Product } from '@/types/product';
 import { useEscapeKey } from '@/hooks/useEscapeKey';
 import icon1 from '@/assets/images/shapes/pMonograms/Projectory_GradientSymbol_Apricot_15.svg';

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
-import { products as allProducts } from '@/pages/ProductPages/productsData';
+import { products as allProducts } from '@/data/products';
 import ProductCard, { type ProductCardProduct } from '@/components/ProductCard/ProductCard';
 import FeaturedCarousel from '@/components/FeaturedCarousel/FeaturedCarousel';
 import TealCTASection from '@/components/CTAs/TealCTA/TealCTA';

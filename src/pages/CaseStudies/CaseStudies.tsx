@@ -15,7 +15,7 @@ import PcmaLogo from '@/assets/images/logos/pcmaLogo.png';
 import RainFocusLogo from '@/assets/images/logos/rainFocusLogo.png';
 import CemaLogo from '@/assets/images/logos/cema.png';
 
-import { caseStudiesData } from '@/pages/CaseStudyPages/caseStudiesData';
+import { caseStudiesData } from '@/data/caseStudies';
 import { caseStudiesFAQ } from '@/data/faq';
 
 const caseStudies = [

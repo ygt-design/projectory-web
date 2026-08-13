@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './GetStartedForm.module.css';
-import { products } from '@/pages/ProductPages/productsData';
+import { products } from '@/data/products';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import { useLikedProducts } from '@/context/LikedProductsContext';
 import { useNavigate } from 'react-router-dom';

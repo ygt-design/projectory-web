@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './FeaturedCarousel.module.css';
-import { products } from '@/pages/ProductPages/productsData';
+import { products } from '@/data/products';
 import type { Product } from '@/types/product';
 
 const CAROUSEL_INTERVAL = 5000; // 5 seconds per product

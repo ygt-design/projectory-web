@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { caseStudiesData } from './caseStudiesData';
+import { caseStudiesData } from '@/data/caseStudies';
 import styles from './CaseStudyPage.module.css';
 import ProductHero, {
   type ProductHeroProduct,
