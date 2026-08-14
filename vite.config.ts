@@ -1,8 +1,31 @@
 import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const CRITICAL_FONTS = ['FoundersGrotesk-Regular', 'FoundersGrotesk-Semibold'];
+
+/**
+ * Reads the :root block out of src/styles/tokens.css and minifies it.
+ *
+ * This is for the first paint of the site — the tiny CSS baked into the HTML so the page isn’t naked while the real stylesheet loads.
+ */
+function readTokensRoot(): string {
+  const css = readFileSync(
+    fileURLToPath(new URL('./src/styles/tokens.css', import.meta.url)),
+    'utf8'
+  );
+  const match = css.match(/:root\s*\{[^}]*\}/);
+  if (!match)
+    throw new Error(
+      'tokens.css: no :root block found — critical CSS would ship without design tokens'
+    );
+  return match[0]
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{}:;,])\s*/g, '$1')
+    .trim();
+}
 
 function criticalCssAndFonts(): Plugin {
   return {
@@ -26,7 +49,10 @@ function criticalCssAndFonts(): Plugin {
         (k) => k.endsWith('.css') && k.includes('index')
       );
 
-      let criticalCss = `*{margin:0;padding:0;box-sizing:border-box}:root{--black:#131313;--gray:#ADADAD;--dark-gray:#35343F;--background-dark-gray:#1c1c1c;--linear-gradient:linear-gradient(90deg,#A72C4B 0%,#F37655 100%);--second-gradient:linear-gradient(90deg,#B34747,#D87A5A);--lime:#BCCE2D}body{background-color:#131313;color:#fff}`;
+      let criticalCss =
+        `*{margin:0;padding:0;box-sizing:border-box}` +
+        readTokensRoot() +
+        `body{background-color:var(--black);color:var(--white)}`;
 
       if (cssEntry) {
         const chunk = ctx.bundle[cssEntry];
@@ -111,7 +137,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-react': ['react', 'react-dom', 'react-dom/client', 'react-router-dom'],
           'vendor-motion': ['framer-motion'],
           'vendor-d3': ['d3'],
         },

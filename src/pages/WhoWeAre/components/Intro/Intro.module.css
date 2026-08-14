@@ -25,7 +25,7 @@
 .title {
   margin: 0;
   max-width: clamp(160px, 34vw, 520px);
-  color: #fff;
+  color: var(--white);
   font-family: 'FounderGrotesk_Medium', sans-serif;
   font-size: clamp(28px, 6vw, 58px);
   font-weight: 500;
@@ -38,7 +38,7 @@
 
 .paragraph {
   margin: 0;
-  color: #fff;
+  color: var(--white);
   font-feature-settings:
     'liga' off,
     'clig' off;

@@ -2,14 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import styles from './GetStarted.module.css';
-import ContactForm from '../../components/ContactForm/ContactForm';
-import FaqAccordion from '../../components/FaqAccordion/FaqAccordion';
-import CalendlyModal from './CalendlyModal/CalendlyModal';
-import { usePageEntrance } from '../../hooks/usePageEntrance';
+import ContactForm from './components/ContactForm/ContactForm';
+import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
+import CalendlyModal from './components/CalendlyModal/CalendlyModal';
+import { usePageEntrance } from '@/hooks/usePageEntrance';
 
-import { apricot, yellowCoral, teal, limeOlive } from '../../assets/images/shapes/floaters';
-import { CALENDLY_URL } from '../../config/site';
-import { caseStudiesFAQ } from '../../data/faq';
+import { apricot, yellowCoral, teal, limeOlive } from '@/assets/images/shapes/floaters';
+import { CALENDLY_URL } from '@/config/site';
+import { caseStudiesFAQ } from '@/data/faq';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 type ShootEnd = { x: number; y: number; rotate: number };
 
@@ -65,6 +67,8 @@ function useShootStyle(shoot: MotionValue<number>, end: ShootEnd, enabled: boole
 }
 
 const GetStarted = () => {
+  useDocumentMeta(pageMeta.getStarted);
+
   const location = useLocation();
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -189,7 +193,7 @@ const GetStarted = () => {
                     alt=""
                     className={styles.mediaCardImg}
                     decoding="async"
-                    {...({ fetchpriority: 'high' } as React.ImgHTMLAttributes<HTMLImageElement>)}
+                    fetchPriority="high"
                   />
                 </motion.div>
               </motion.div>

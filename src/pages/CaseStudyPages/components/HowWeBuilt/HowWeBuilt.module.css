@@ -50,12 +50,12 @@
 
 .installationButton:hover {
   background-color: var(--inst-color);
-  color: #35343f;
+  color: var(--dark-gray);
 }
 
 .activeButton {
   background-color: var(--inst-color);
-  color: #35343f;
+  color: var(--dark-gray);
 }
 
 .installationContent {
@@ -112,7 +112,7 @@
 
 .linkButton:hover {
   background: white;
-  color: #35343f;
+  color: var(--dark-gray);
 }
 
 .installationContent {

@@ -1,5 +1,5 @@
 .productPage {
-  background-color: #131313;
+  background-color: var(--black);
 }
 
 .hero {
@@ -89,7 +89,7 @@
   padding: 10px;
   border-radius: 100px;
   justify-content: space-between;
-  background-color: #2c2c2d;
+  background-color: var(--graphite);
   bottom: 20px;
 }
 
@@ -195,7 +195,7 @@
     padding: 10px;
     border-radius: 100px;
     justify-content: space-between;
-    background-color: #2c2c2d;
+    background-color: var(--graphite);
   }
 }
 

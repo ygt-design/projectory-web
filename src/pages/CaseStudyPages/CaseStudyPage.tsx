@@ -1,19 +1,26 @@
 import { useParams } from 'react-router-dom';
-import { caseStudiesData } from '../CaseStudyPages/caseStudiesData';
+import { caseStudiesData } from '@/data/caseStudies';
 import styles from './CaseStudyPage.module.css';
 import ProductHero, {
   type ProductHeroProduct,
-} from '../ProductPages/components/ProductHero/ProductHero';
-import ProductDetails from '../ProductPages/components/ProductDetails/ProductDetails';
-import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
+} from '@/components/sections/ProductHero/ProductHero';
+import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
+import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
 import HowWeBuilt from './components/HowWeBuilt/HowWeBuilt';
-import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
-import DataFeature from '../ProductPages/components/DataFeature/DataFeature';
-import FinalCTA from '../ProductPages/components/FinalCTA/FinalCTA';
+import TealCTASection from '@/components/TealCTA/TealCTA';
+import DataFeature from '@/components/sections/DataFeature/DataFeature';
+import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { DEFAULT_DESCRIPTION } from '@/config/seo';
 
 const CaseStudyPage = () => {
   const { id } = useParams();
   const caseStudy = caseStudiesData.find((study) => study.id === id);
+
+  useDocumentMeta({
+    title: caseStudy?.name,
+    description: caseStudy?.tagline || DEFAULT_DESCRIPTION,
+  });
 
   if (!caseStudy) {
     return <h2>Case Study Not Found</h2>;

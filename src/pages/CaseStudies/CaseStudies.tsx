@@ -2,21 +2,23 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView, useMotionValue } from 'framer-motion';
 import styles from './CaseStudies.module.css';
-import ClientLogos from '../../components/ClientLogos/ClientLogos';
-import TestimonialSizzle from '../../components/TestimonalSizzle/TestimonialSizzle';
-import TrustedBy from '../../components/TrustedBy/TrustedBy';
-import FaqAccordion from '../../components/FaqAccordion/FaqAccordion';
-import LandingHero from '../../components/LandingHero/LandingHero';
-import { coralTeal, creamCoral, lime, redLime } from '../../assets/images/shapes/floaters';
+import ClientLogos from '@/components/ClientLogos/ClientLogos';
+import TestimonialSizzle from '@/components/TestimonialSizzle/TestimonialSizzle';
+import TrustedBy from './components/TrustedBy/TrustedBy';
+import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
+import LandingHero from '@/components/LandingHero/LandingHero';
+import { coralTeal, creamCoral, lime, redLime } from '@/assets/images/shapes/floaters';
 
-import CventImage from '../../assets/images/logos/cvent.png';
-import EventMarketer from '../../assets/images/logos/eventMarketerLogo.png';
-import PcmaLogo from '../../assets/images/logos/pcmaLogo.png';
-import RainFocusLogo from '../../assets/images/logos/rainFocusLogo.png';
-import CemaLogo from '../../assets/images/logos/cema.png';
+import CventImage from '@/assets/images/logos/cvent.png';
+import EventMarketer from '@/assets/images/logos/eventMarketerLogo.png';
+import PcmaLogo from '@/assets/images/logos/pcmaLogo.png';
+import RainFocusLogo from '@/assets/images/logos/rainFocusLogo.png';
+import CemaLogo from '@/assets/images/logos/cema.png';
 
-import { caseStudiesData } from '../CaseStudyPages/caseStudiesData';
-import { caseStudiesFAQ } from '../../data/faq';
+import { caseStudiesData } from '@/data/caseStudies';
+import { caseStudiesFAQ } from '@/data/faq';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const caseStudies = [
   {
@@ -54,6 +56,8 @@ const caseStudies = [
 ];
 
 const CaseStudies: React.FC = () => {
+  useDocumentMeta(pageMeta.caseStudies);
+
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);

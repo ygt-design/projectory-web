@@ -128,22 +128,22 @@
 .overlay h2 {
   font-size: 3rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--white);
   margin: 0 0 8px 0;
   width: 70%;
 }
 
 .overlay p {
   font-size: 1.4rem;
-  color: #ccc;
+  color: var(--silver);
   margin: 0 0 20px 0;
 }
 
 .caseStudyButton {
   display: inline-block;
   padding: 14px 24px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--white);
+  color: var(--true-black);
   text-decoration: none;
   border-radius: 100px;
   transition: 0.3s ease;
@@ -152,7 +152,7 @@
 
 .caseStudyButton:hover {
   background-color: var(--black);
-  color: #fff;
+  color: var(--white);
   border: 1px solid white;
 }
 

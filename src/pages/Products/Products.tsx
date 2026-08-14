@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation, Link } from 'react-router-dom';
-import { products as allProducts } from '../ProductPages/productsData';
-import ProductCard, { type ProductCardProduct } from '../../components/ProductCard/ProductCard';
-import FeaturedCarousel from '../../components/FeaturedCarousel/FeaturedCarousel';
-import TealCTASection from '../../components/CTAs/TealCTA/TealCTA';
-import GridCTA from '../../components/GridCTA/GridCTA';
-import FeaturedCaseStudy from '../../components/FeaturedCaseStudy/FeaturedCaseStudy';
-import LandingHero from '../../components/LandingHero/LandingHero';
+import { products as allProducts } from '@/data/products';
+import ProductCard, { type ProductCardProduct } from '@/components/ProductCard/ProductCard';
+import FeaturedCarousel from './components/FeaturedCarousel/FeaturedCarousel';
+import TealCTASection from '@/components/TealCTA/TealCTA';
+import GridCTA from './components/GridCTA/GridCTA';
+import FeaturedCaseStudy from './components/FeaturedCaseStudy/FeaturedCaseStudy';
+import LandingHero from '@/components/LandingHero/LandingHero';
 import styles from './Products.module.css';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { pageMeta } from '@/config/seo';
 
 const TAGS = [
   'All Products',
@@ -105,6 +107,8 @@ const groupItems = (items: ProductItem[]) => {
 };
 
 const Products = () => {
+  useDocumentMeta(pageMeta.products);
+
   const [filteredProducts] = useState(allProducts);
   const [searchParams] = useSearchParams();
   const paramTag = searchParams.get('tag') || 'All Products';
@@ -207,7 +211,9 @@ const Products = () => {
                 <Link
                   key={tag}
                   to={href}
-                  ref={(el) => (tagRefs.current[idx] = el)}
+                  ref={(el) => {
+                    tagRefs.current[idx] = el;
+                  }}
                   onClick={() => handleTagClick(tag, idx)}
                   className={tag === selectedTag ? styles.activeTag : styles.tagButton}
                 >

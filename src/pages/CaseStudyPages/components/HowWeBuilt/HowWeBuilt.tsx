@@ -1,6 +1,6 @@
 // HowWeBuilt.tsx
 import { useState } from 'react';
-import { findProductById } from '../../../../lib/findProduct';
+import { findProductById } from '@/lib/findProduct';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styles from './HowWeBuilt.module.css';
@@ -17,7 +17,7 @@ interface HowWeBuiltProps {
   installations: Installation[];
 }
 
-function formatName(name: string): JSX.Element {
+function formatName(name: string): React.JSX.Element {
   // Remove all spaces, then highlight the last word
   const words = name.trim().split(' ');
   const noSpace = name.replace(/\s+/g, '');

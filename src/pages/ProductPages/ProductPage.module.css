@@ -92,8 +92,8 @@
   left: 50%;
   width: 12px;
   height: 12px;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
+  border-top: 2px solid var(--white);
+  border-right: 2px solid var(--white);
 }
 
 .cursorArrowRight {

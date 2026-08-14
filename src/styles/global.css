@@ -1,3 +1,5 @@
+@import './tokens.css';
+
 @font-face {
   font-family: 'FounderGrotesk_Regular';
   src:
@@ -59,19 +61,6 @@ body {
 
 html {
   cursor: auto;
-}
-
-:root {
-  --black: #131313;
-  --gray: #adadad;
-  --dark-gray: #35343f;
-  --background-dark-gray: #1c1c1c;
-  --linear-gradient: linear-gradient(90deg, #a72c4b 0%, #f37655 100%);
-  --second-gradient: linear-gradient(90deg, #b34747, #d87a5a);
-  --lime: #bcce2d;
-  --yellow: #f3da00;
-  --white: #ffffff;
-  --border-subtle: 0.5px solid rgba(123, 123, 123, 0.5);
 }
 
 a {

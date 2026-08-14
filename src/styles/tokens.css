@@ -1,0 +1,34 @@
+/*
+ * Design tokens for brand colour. (All repeated colours turned tokens: colour becomes a token at 2+ repeats.)
+ */
+
+:root {
+  /* Neutrals */
+  --white: #ffffff;
+  --light-gray: #dddddd;
+  --silver: #cccccc;
+  --gray: #adadad;
+  --gray-alt: #b0b0b0;
+  --mid-gray: #7b7b7b;
+  --mid-gray-alt: #797979;
+  --charcoal: #333333;
+  --dark-gray: #35343f;
+  --slate: #2c2a35;
+  --graphite: #2c2c2d;
+  --off-black: #212121;
+  --background-dark-gray: #1c1c1c;
+  --black: #131313;
+  --true-black: #000000;
+
+  /* Brand */
+  --coral: #f37655;
+  --coral-light: #ffb787;
+  --burgundy: #a72c4b;
+  --teal: #2bdcb7;
+  --lime: #bcce2d;
+  --yellow: #f3da00;
+
+  /* Composites */
+  --linear-gradient: linear-gradient(90deg, var(--burgundy) 0%, var(--coral) 100%);
+  --border-subtle: 0.5px solid rgba(123, 123, 123, 0.5);
+}

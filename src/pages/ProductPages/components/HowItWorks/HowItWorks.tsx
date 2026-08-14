@@ -1,5 +1,5 @@
 import styles from './HowItWorks.module.css';
-import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryImage';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 interface HowItWorksProps {
   title: string;

@@ -1,5 +1,5 @@
 import styles from './Objectives.module.css';
-import CloudinaryImage from '../../../../components/CloudinaryImage/CloudinaryImage';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 interface ObjectivesProps {
   title: string;

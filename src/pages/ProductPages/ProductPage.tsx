@@ -2,26 +2,33 @@ import { useCallback, useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import useEmblaCarousel from 'embla-carousel-react';
-import { findProductById } from '../../lib/findProduct';
+import { findProductById } from '@/lib/findProduct';
 
-import ProductHero from './components/ProductHero/ProductHero';
-import ProductDetails from './components/ProductDetails/ProductDetails';
+import ProductHero from '@/components/sections/ProductHero/ProductHero';
+import ProductDetails from '@/components/sections/ProductDetails/ProductDetails';
 import QuickFacts from './components/QuickFacts/QuickFacts';
 import Objectives from './components/Objectives/Objectives';
-import FinalCTA from './components/FinalCTA/FinalCTA';
+import FinalCTA from '@/components/sections/FinalCTA/FinalCTA';
 import HowItWorks from './components/HowItWorks/HowItWorks';
-import DataFeature from './components/DataFeature/DataFeature';
+import DataFeature from '@/components/sections/DataFeature/DataFeature';
 
-import { useLikedProducts } from '../../context/LikedProductsContext';
-import HeartIconSVG from '../../assets/images/heartIcon.svg';
-import HeartIconSVG_Outline from '../../assets/images/heartIcon_outline.svg';
-import CloudinaryImage from '../../components/CloudinaryImage/CloudinaryImage';
+import { useLikedProducts } from '@/context/LikedProductsContext';
+import HeartIconSVG from '@/assets/images/heartIcon.svg';
+import HeartIconSVG_Outline from '@/assets/images/heartIcon_outline.svg';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 
 import styles from './ProductPage.module.css';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
+import { DEFAULT_DESCRIPTION } from '@/config/seo';
 
 const ProductPage = () => {
   const { id } = useParams();
   const product = findProductById(id);
+
+  useDocumentMeta({
+    title: product?.name,
+    description: product?.shortDescription || product?.tagline || DEFAULT_DESCRIPTION,
+  });
 
   const { likedProducts, toggleLike } = useLikedProducts();
 

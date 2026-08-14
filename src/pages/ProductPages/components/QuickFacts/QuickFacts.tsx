@@ -1,7 +1,7 @@
 import styles from './QuickFacts.module.css';
-import icon1 from '../../../../assets/images/shapes/pMonograms/columnP_1.svg';
-import icon2 from '../../../../assets/images/shapes/pMonograms/columnP_2.svg';
-import icon3 from '../../../../assets/images/shapes/pMonograms/columnP_3.svg';
+import icon1 from '@/assets/images/shapes/pMonograms/columnP_1.svg';
+import icon2 from '@/assets/images/shapes/pMonograms/columnP_2.svg';
+import icon3 from '@/assets/images/shapes/pMonograms/columnP_3.svg';
 
 interface GridItem {
   text: string;
