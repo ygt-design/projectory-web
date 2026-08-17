@@ -15,7 +15,25 @@
 }
 
 .badgeTeal {
-  composes: floatBadge from '@/styles/patterns.module.css';
+  position: absolute;
+  bottom: -80px;
+  right: 5%;
+  width: clamp(110px, 18vw, 260px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
+  rotate: -16.545deg;
+  animation: bob 4.2s ease-in-out 0.6s infinite alternate;
+}
+
+@keyframes bob {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -18px;
+  }
 }
 
 .content {

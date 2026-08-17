@@ -135,10 +135,20 @@
   z-index: 3;
 }
 
-/* Shares the site-wide bob; each floater varies only duration and delay so
-   they drift out of phase with one another. */
+/* The idle drift. Each floater below varies only duration and delay so they
+   stay out of phase with one another — which is why the shorthand comes first
+   here and the longhand overrides come after it. */
+@keyframes bob {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 -18px;
+  }
+}
+
 .floater {
-  composes: bobbing from '@/styles/patterns.module.css';
+  animation: bob 4.2s ease-in-out 0.6s infinite alternate;
   position: absolute;
   top: 50%;
   left: 50%;
