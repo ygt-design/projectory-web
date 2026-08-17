@@ -6,12 +6,15 @@ a scheme and retrofitting it. Anything built from here on should be buildable
 out of these pieces; when it isn't, that's a design conversation, not a
 reason to add a one-off value.
 
-Everything lives in two files:
+It lives in two places — the tokens, and the one construction that earned a
+React component of its own:
 
-| File                             | Holds                                    |
-| -------------------------------- | ---------------------------------------- |
-| `src/styles/tokens.css`          | every token, in one `:root`              |
-| `src/styles/patterns.module.css` | constructions repeated across components |
+| File                     | Holds                               |
+| ------------------------ | ----------------------------------- |
+| `src/styles/tokens.css`  | every token, in one `:root`         |
+| `src/components/Button/` | the CTA, as a component (see below) |
+
+Everything else is local to the component that uses it.
 
 ---
 
@@ -106,40 +109,110 @@ comment recording why.
 
 ---
 
-## Patterns
+## No shared CSS file
 
-`composes` is resolved at build time and needs no change in the TSX:
+There was one — `patterns.module.css`, four constructions pulled in with
+`composes`. It's gone, and the reason is worth keeping.
+
+It solved half of one problem. Geometry stopped being duplicated, but every CTA
+still wrote a class to paint it, which meant the pattern could never carry
+colour: two class names on one element have equal specificity, so anything a
+consumer redeclared would be settled by bundle order rather than intent. The
+CTA needed a component, not a class — and once `Button` existed, the file held
+three things that were shared only in the weak sense of looking alike.
+
+So those three are inlined at their call sites: the floating badge on the two
+banners, the idle drift on the Get Started floaters, and the hairline surface on
+the team cards, the scroll-stack cards, and the case-study, whitelabel and video
+panels. Four or five plain declarations each, where you can read them.
+
+**A shared file comes back when something is genuinely duplicated again** — the
+rule the old file had, applied to itself. Byte-identical in two or more places
+first; a pattern invented ahead of its second use is a guess, and every consumer
+inherits the guess.
+
+One consequence to know about. `@keyframes` is scoped per file by CSS Modules,
+so the two badges and the Get Started floaters now each carry their own copy of
+`bob`. Identical animations under different scoped names. If you change one,
+check the others — and in Get Started keep the `animation` shorthand as
+`.floater`'s first declaration, because the per-floater `animation-duration` and
+`animation-delay` below it win on source order, which is what keeps the four
+drifting out of phase.
+
+---
+
+## The Button
+
+`src/components/Button/` is the only way a CTA gets built. New work writes no
+button CSS at all:
+
+```tsx
+<Button variant="lime" to="/get-started">
+  Get started
+</Button>
+```
+
+It renders whichever element the props imply — `to` a router `<Link>`, `href` an
+`<a>` (external hrefs get `target="_blank"` and `rel="noopener noreferrer"`),
+neither a `<button type="button">`. Those are the three shapes the site's CTAs
+actually take, and the props are an exclusive union, so `to` and `href` together
+is a type error rather than a silent winner.
+
+Six variants — `lime` `coral` `teal` `plum` `light` `outline` — one for each paint
+already shipping across the three pages. Every value, hover literals included, was
+copied from the CTA it came from; none was retuned to make the set look tidy.
+**A variant must describe paint that already exists.** A seventh is a design
+decision, not a gap to fill because the palette has six hues and the buttons use
+four.
+
+### `--btn-*` is the component's API
+
+Variants don't restate `background` and `color`. `.base` paints itself from seven
+custom properties and a variant only sets them:
 
 ```css
-.buttonPrimary {
-  composes: button from '@/styles/patterns.module.css';
-  background: var(--color-surface-inverse);
-  color: var(--brand-teal);
+.teal {
+  --btn-bg: var(--color-surface-inverse);
+  --btn-fg: var(--brand-teal);
+  --btn-fg-hover: #1fb895;
 }
 ```
 
-| Pattern                       | Was duplicated in                                                             |
-| ----------------------------- | ----------------------------------------------------------------------------- |
-| `.button`                     | Who We Are CTA ×2, Catalogue CTA, Whitelabel CTA, Delivery Options            |
-| `.floatBadge`                 | Who We Are CTA, Catalogue CTA — identical to the `-16.545deg`                 |
-| `.bobbing` + `@keyframes bob` | the two badges and all four Get Started floaters                              |
-| `.hairlineSurface`            | team cards, scroll-stack cards, case-study and whitelabel images, video panel |
+This is the component-token tier from the top of this document, used the way
+`TeamScrollStack` uses `--card-inline`. It buys the thing a flat variant class
+can't: **a page can override paint without a specificity fight.** Custom
+properties inherit, so an override is set on an ancestor the page already has —
 
-Two rules govern this file:
+```css
+.column:nth-child(1) {
+  --btn-fg-hover: var(--brand-coral);
+}
+```
 
-**It must already be duplicated.** A pattern invented ahead of its second use
-is a guess, and every consumer inherits the guess.
+— which is exactly the shape Delivery Options' per-column hovers already have,
+and the reason they can migrate at all.
 
-**Patterns carry geometry and behaviour, never colour.** Consumers add their
-own paint. This is also what makes composing safe: the two class names have
-equal specificity, so anything a consumer redeclared would be settled by
-bundle order rather than intent. Keeping the concerns apart means that never
-comes up.
+The corollary is a rule. **Never re-paint a Button by redeclaring `background` or
+`color` in a page module.** Two class names on one element have equal specificity,
+so bundle order would settle it rather than intent. `className` on a Button is for
+layout only: margin, `flex-shrink`, `white-space` — never padding, height or
+width, which are the component's. And an override is for a genuinely local hover;
+a paint that turns up on two pages is a missing variant instead.
 
-The keyframes are worth a note. `@keyframes` is scoped per file by CSS
-Modules, so the same drift animation declared in three files was three
-separate animations. It's one now, and callers vary only `animation-duration`
-and `animation-delay` so the floaters stay out of phase.
+Delivery Options is the worked example of both halves. Its CTA is a `light`
+Button with a layout-only `.ctaButton`, and the two per-column hover colours it
+has always had are set as `--btn-fg-hover` on the `.column` ancestors.
+
+### What hasn't moved
+
+**Get Started's hero `.cta`** is 39px tall with 18px type, against Button's
+44px/16px. Making it a Button needs either a `size` prop or a visual change, so
+it stays local CSS — a design-level reconciliation, the same disposition as 17px
+versus 16px below. It is the last hand-written button on the three migrated
+pages.
+
+The older pages — Navbar, Home, the product CTAs — still write their own. They
+migrate when those pages do.
 
 ---
 
