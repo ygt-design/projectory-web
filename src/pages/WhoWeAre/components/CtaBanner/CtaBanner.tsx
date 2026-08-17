@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { ctaBanner } from '../../whoWeAreData';
+import Button from '@/components/Button/Button';
 import styles from './CtaBanner.module.css';
 
 const tealBadge =
@@ -12,12 +12,12 @@ const CtaBanner = () => {
         <h2 className={styles.title}>{ctaBanner.title}</h2>
         <p className={styles.body}>{ctaBanner.body}</p>
         <div className={styles.actions}>
-          <Link to={ctaBanner.primary.to} className={styles.buttonPrimary}>
+          <Button variant="teal" to={ctaBanner.primary.to}>
             {ctaBanner.primary.label}
-          </Link>
-          <Link to={ctaBanner.secondary.to} className={styles.buttonSecondary}>
+          </Button>
+          <Button variant="outline" to={ctaBanner.secondary.to}>
             {ctaBanner.secondary.label}
-          </Link>
+          </Button>
         </div>
       </div>
       <img src={tealBadge} alt="" className={styles.badgeTeal} aria-hidden />
