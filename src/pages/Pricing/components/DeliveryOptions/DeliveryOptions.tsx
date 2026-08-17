@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { deliveryOptions, deliveryOptionsNote } from '../../pricingData';
+import Button from '@/components/Button/Button';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
 import { above } from '@/config/breakpoints';
 import styles from './DeliveryOptions.module.css';
@@ -149,9 +149,9 @@ const DeliveryOptions = ({ entrance }: DeliveryOptionsProps) => {
                           ) : null}
                         </div>
                       ) : null}
-                      <Link to={card.cta.button.to} className={styles.button}>
+                      <Button variant="light" to={card.cta.button.to} className={styles.ctaButton}>
                         {card.cta.button.label}
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 ) : null}

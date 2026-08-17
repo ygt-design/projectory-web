@@ -475,34 +475,21 @@
   color: var(--color-text);
 }
 
-.button {
-  composes: button from '@/styles/patterns.module.css';
+/* Layout only. The paint is Button's `light` variant. */
+.ctaButton {
   flex-shrink: 0;
-  width: 160px;
-  background: var(--color-surface-inverse);
-  color: var(--color-bg);
   white-space: nowrap;
 }
 
-.button:hover {
-  background: var(--color-surface-inverse);
-  border-color: var(--color-surface-inverse);
-}
-
-.column:nth-child(1) .button:hover,
-.column:nth-child(1) .button:active {
-  color: var(--brand-coral);
+/* Each column shifts the CTA's hover colour through Button's own API, set on
+   an ancestor the page already has rather than re-painting the button. */
+.column:nth-child(1) {
+  --btn-fg-hover: var(--brand-coral);
 }
 
 /* Deep teal that holds contrast on a white fill — the only place it appears. */
-.column:nth-child(2) .button:hover,
-.column:nth-child(2) .button:active {
-  color: #00795f;
-}
-
-.button:active {
-  background: var(--color-surface-inverse);
-  border-color: var(--color-surface-inverse);
+.column:nth-child(2) {
+  --btn-fg-hover: #00795f;
 }
 
 @media (max-width: 768px) {

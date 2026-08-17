@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { catalogueCta } from '../../pricingData';
+import Button from '@/components/Button/Button';
 import styles from './CatalogueCTA.module.css';
 
 const amberBadge =
@@ -11,9 +11,9 @@ const CatalogueCTA = () => {
       <div className={styles.content}>
         <h2 className={styles.title}>{catalogueCta.title}</h2>
         <p className={styles.body}>{catalogueCta.body}</p>
-        <Link to={catalogueCta.button.to} className={styles.button}>
+        <Button variant="plum" to={catalogueCta.button.to}>
           {catalogueCta.button.label}
-        </Link>
+        </Button>
       </div>
       <img src={amberBadge} alt="" className={styles.badgeAmber} aria-hidden />
     </section>

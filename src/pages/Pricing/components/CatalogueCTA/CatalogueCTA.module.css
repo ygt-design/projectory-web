@@ -58,8 +58,7 @@
 }
 
 .title,
-.body,
-.button {
+.body {
   margin: 0;
 }
 
@@ -86,19 +85,6 @@
   font-feature-settings:
     'liga' off,
     'clig' off;
-}
-
-.button {
-  composes: button from '@/styles/patterns.module.css';
-  background: var(--color-surface-inverse);
-  color: var(--brand-plum);
-}
-
-.button:hover,
-.button:active {
-  background: var(--color-surface-inverse);
-  color: var(--color-bg);
-  border-color: var(--color-surface-inverse);
 }
 
 @media (max-width: 768px) {
