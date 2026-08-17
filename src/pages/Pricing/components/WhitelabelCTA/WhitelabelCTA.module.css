@@ -87,7 +87,9 @@
 }
 
 .image {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;

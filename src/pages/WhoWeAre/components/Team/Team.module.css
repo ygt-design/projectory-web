@@ -56,7 +56,9 @@
 }
 
 .personCard {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   display: flex;
   width: 340px;
   max-width: 100%;

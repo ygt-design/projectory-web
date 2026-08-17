@@ -9,7 +9,9 @@
 }
 
 .media {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-lg);

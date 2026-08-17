@@ -34,7 +34,9 @@
 }
 
 .card {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   --card-inline: var(--block-2);
   position: relative;
   display: flex;
@@ -170,7 +172,9 @@
 }
 
 .staticCard {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   --card-inline: var(--block-2);
   display: flex;
   flex-direction: column;

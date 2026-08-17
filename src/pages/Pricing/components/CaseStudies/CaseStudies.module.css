@@ -97,7 +97,9 @@
 }
 
 .image {
-  composes: hairlineSurface from '@/styles/patterns.module.css';
+  background-color: var(--color-surface);
+  border: var(--border-hairline);
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   min-height: 240px;
