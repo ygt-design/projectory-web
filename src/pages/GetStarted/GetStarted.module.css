@@ -1,8 +1,8 @@
 .getStartedWrapper {
   width: 100%;
   min-height: 100vh;
-  background: var(--black);
-  color: white;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .hero {
@@ -16,8 +16,8 @@
   overflow: hidden;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   text-align: center;
 }
 
@@ -27,9 +27,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 20px;
+  gap: var(--space-5);
   min-height: 0;
-  padding: 100px 50px 28px;
+  padding: var(--block-5) 50px var(--block-1);
   box-sizing: border-box;
 }
 
@@ -37,9 +37,9 @@
   margin: 0;
   max-width: 900px;
   width: 100%;
-  color: var(--white);
+  color: var(--color-text);
   text-align: center;
-  font-family: 'FounderGrotesk_Medium', sans-serif;
+  font-family: var(--font-medium);
   font-size: 58px;
   font-style: normal;
   font-weight: 500;
@@ -49,12 +49,12 @@
 .heroCopy p {
   margin: 0;
   max-width: 650px;
-  color: var(--white);
+  color: var(--color-text);
   text-align: center;
   font-feature-settings:
     'liga' off,
     'clig' off;
-  font-family: 'FounderGrotesk_Regular', sans-serif;
+  font-family: var(--font-body);
   font-size: 23px;
   font-style: normal;
   font-weight: 400;
@@ -64,26 +64,27 @@
 .cta {
   display: flex;
   height: 39px;
-  margin-top: 8px;
-  padding: 23px 20px;
+  margin-top: var(--space-2);
+  padding: 23px var(--space-5);
   justify-content: center;
   align-items: center;
   gap: 10px;
   border: none;
-  border-radius: 8px;
-  background: var(--lime);
-  color: var(--black);
-  font-family: 'FounderGrotesk_Regular', sans-serif;
+  border-radius: var(--radius-sm);
+  background: var(--brand-lime);
+  color: var(--color-bg);
+  font-family: var(--font-body);
   letter-spacing: 0.1px;
-  font-size: 18px;
+  font-size: var(--font-size-md);
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background var(--transition-fast);
 }
 
+/* Lime darkens cleanly, so its press state is derived rather than pinned. */
 .cta:hover {
-  background: #a8b828;
-  color: var(--black);
+  background: color-mix(in srgb, var(--brand-lime) 90%, black);
+  color: var(--color-bg);
 }
 
 .heroMedia {
@@ -93,7 +94,8 @@
   min-height: 0;
   width: 100%;
   box-sizing: border-box;
-  transform: translateY(clamp(24px, 3vw, 72px));
+  transform: translateY(clamp(var(--space-6), 3vw, 72px));
+  /* Component tokens: each floater's width, retuned wholesale at mobile. */
   --floater-apricot-w: clamp(90px, 7vw, 150px);
   --floater-yellowCoral-w: clamp(108px, 8.3vw, 180px);
   --floater-teal-w: clamp(126px, 9.7vw, 210px);
@@ -133,16 +135,10 @@
   z-index: 3;
 }
 
-@keyframes floaterFloat {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 0 -18px;
-  }
-}
-
+/* Shares the site-wide bob; each floater varies only duration and delay so
+   they drift out of phase with one another. */
 .floater {
+  composes: bobbing from '@/styles/patterns.module.css';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -155,28 +151,32 @@
   width: var(--floater-apricot-w);
   transform: translate(-50%, -50%) translateX(clamp(-470px, -24.4vw, -190px))
     translateY(clamp(-215px, -11.1vw, -96px)) rotate(-42.65deg);
-  animation: floaterFloat 4.2s ease-in-out 0.2s infinite alternate;
+  animation-duration: 4.2s;
+  animation-delay: 0.2s;
 }
 
 .floaterYellowCoral {
   width: var(--floater-yellowCoral-w);
   transform: translate(-50%, -50%) translateX(clamp(-265px, -13.75vw, -100px))
     translateY(clamp(-120px, -6.25vw, -54px)) scaleX(-1) rotate(18deg);
-  animation: floaterFloat 4.8s ease-in-out 0.6s infinite alternate;
+  animation-duration: 4.8s;
+  animation-delay: 0.6s;
 }
 
 .floaterTeal {
   width: var(--floater-teal-w);
   transform: translate(-50%, -50%) translateX(clamp(-610px, -31.9vw, -275px))
     translateY(clamp(70px, 8.3vw, 175px)) rotate(-28deg);
-  animation: floaterFloat 5s ease-in-out 0.9s infinite alternate;
+  animation-duration: 5s;
+  animation-delay: 0.9s;
 }
 
 .floaterLimeOlive {
   width: var(--floater-limeOlive-w);
   transform: translate(-50%, -50%) translateX(clamp(235px, 30.5vw, 620px))
     translateY(clamp(-52px, -2.43vw, -19px)) rotate(21.85deg);
-  animation: floaterFloat 4.2s ease-in-out 0s infinite alternate;
+  animation-duration: 4.2s;
+  animation-delay: 0s;
 }
 
 .mediaCards {
@@ -196,9 +196,9 @@
   left: 50%;
   width: clamp(235px, 23vw, 390px);
   height: clamp(235px, 23vw, 390px);
-  border-radius: 12px;
-  border: 0.597px solid rgba(123, 123, 123, 0.5);
-  background: var(--background-dark-gray);
+  border-radius: var(--radius-md);
+  border: var(--border-hairline);
+  background: var(--color-surface);
   box-sizing: border-box;
   overflow: hidden;
   transform: translate(-50%, -50%) translateX(var(--card-x))
@@ -218,7 +218,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(19, 19, 19, 0) 40%, var(--black) 100%);
+  background: linear-gradient(180deg, rgba(19, 19, 19, 0) 40%, var(--color-bg) 100%);
   pointer-events: none;
 }
 
@@ -254,7 +254,7 @@
     rgba(19, 19, 19, 0.18) 45%,
     rgba(19, 19, 19, 0.4) 65%,
     rgba(19, 19, 19, 0.7) 82%,
-    var(--black) 100%
+    var(--color-bg) 100%
   );
   pointer-events: none;
   z-index: 4;
@@ -264,7 +264,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 80px clamp(24px, 12.5vw, 180px) 100px;
+  padding: var(--block-4) clamp(var(--space-6), 12.5vw, 180px) var(--block-5);
   box-sizing: border-box;
 }
 
@@ -274,8 +274,8 @@
 }
 
 .getInTouch {
-  padding: 50px clamp(24px, 12.5vw, 180px);
-  margin-top: 100px;
+  padding: 50px clamp(var(--space-6), 12.5vw, 180px);
+  margin-top: var(--block-5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,16 +297,17 @@
   flex: 1 1 0;
   width: auto;
   min-width: 0;
-  padding: 60px 56px;
+  padding: 60px var(--block-3);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0;
   box-sizing: border-box;
-  border-radius: 20px;
-  border: 0.5px solid rgba(123, 123, 123, 0.5);
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 55.29%), var(--white);
-  color: var(--background-dark-gray);
+  border-radius: var(--radius-lg);
+  border: var(--border-hairline);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--alpha-black-10) 55.29%),
+    var(--color-surface-inverse);
+  color: var(--color-text-inverse);
   text-align: center;
 }
 
@@ -315,16 +316,16 @@
 .gitButton {
   display: flex;
   height: 44px;
-  padding: 12px 18px;
+  padding: var(--space-3) 18px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   box-sizing: border-box;
   border: none;
-  border-radius: 8px;
-  background-color: var(--background-dark-gray);
-  color: var(--white);
-  font-family: 'FounderGrotesk_Regular', sans-serif;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
   font-size: 17px;
   font-weight: 400;
   line-height: normal;
@@ -336,58 +337,58 @@
 .gitBlock a:hover,
 .gitBlock button:hover,
 .gitButton:hover {
-  background-color: #2a2a2a;
+  background-color: var(--color-surface-hover);
 }
 
 .gitBlock h3 {
-  margin: 0 0 20px;
+  margin: 0 0 var(--space-5);
   max-width: 320px;
-  color: var(--background-dark-gray);
+  color: var(--color-text-inverse);
   text-align: center;
-  font-family: 'FounderGrotesk_Medium', sans-serif;
+  font-family: var(--font-medium);
   font-size: 40px;
   font-weight: 500;
   line-height: 45px;
 }
 
 .gitBlock p {
-  margin: 0 0 28px;
+  margin: 0 0 var(--block-1);
   max-width: 330px;
-  color: var(--background-dark-gray);
+  color: var(--color-text-inverse);
   text-align: center;
   font-feature-settings:
     'liga' off,
     'clig' off;
-  font-family: 'FounderGrotesk_Regular', sans-serif;
-  font-size: 20px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
   font-weight: 400;
-  line-height: 25px;
+  line-height: var(--leading-normal);
 }
 
 .gitBlockLeft {
-  background: var(--background-dark-gray);
-  color: var(--white);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .gitBlockLeft h3,
 .gitBlockLeft p {
-  color: var(--white);
+  color: var(--color-text);
 }
 
 .gitBlockLeft a,
 .gitBlockLeft button,
 .gitBlockLeft .gitButton {
-  background: var(--white);
-  color: var(--background-dark-gray);
+  background: var(--color-surface-inverse);
+  color: var(--color-text-inverse);
 }
 
 .gitBlockLeft a:hover,
 .gitBlockLeft button:hover,
 .gitBlockLeft .gitButton:hover {
-  background: #f0f0f0;
+  background: var(--color-surface-inverse-hover);
 }
 
-@media screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .gitWrapper {
     flex-direction: column;
     align-items: center;
@@ -401,8 +402,9 @@
   }
 }
 
-/* HIDING the 3rd floater shape & moving 2nd to right on small/compact viewport */
-@media screen and (min-width: 769px) and (max-width: 1022px) {
+/* HIDING the 3rd floater shape & moving 2nd to right on small/compact viewport.
+   Was 1022px — 2px off the Desktop breakpoint, now aligned to it. */
+@media (min-width: 769px) and (max-width: 1024px) {
   .floaterYellowCoral {
     display: none;
   }
@@ -413,9 +415,9 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .heroCopy {
-    padding: 96px 36px 16px;
+    padding: 96px 36px var(--space-4);
     gap: 14px;
     max-width: 420px;
     margin-inline: auto;
@@ -424,12 +426,12 @@
 
   .heroCopy h1 {
     font-size: 36px;
-    line-height: 1.15;
+    line-height: var(--leading-tight);
     max-width: 20em;
   }
 
   .heroCopy p {
-    font-size: 20px;
+    font-size: var(--font-size-lg);
     line-height: 26px;
     max-width: 22em;
   }
@@ -488,13 +490,13 @@
   }
 
   .getInTouch {
-    margin: 100px 0 48px;
+    margin: var(--block-5) 0 48px;
     padding-top: 0;
     padding-bottom: 0;
   }
 
   .gitBlock {
-    padding: 50px 28px;
+    padding: 50px var(--block-1);
   }
 
   .gitBlock h3 {
@@ -503,12 +505,12 @@
   }
 
   .gitBlock p {
-    font-size: 18px;
+    font-size: var(--font-size-md);
     line-height: 24px;
   }
 
   .faqAccordion {
-    padding-top: 28px;
-    padding-bottom: 80px;
+    padding-top: var(--block-1);
+    padding-bottom: var(--block-4);
   }
 }

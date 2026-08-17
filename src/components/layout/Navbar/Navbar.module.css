@@ -230,7 +230,7 @@
   font-size: 1rem;
   line-height: 1.2;
   white-space: nowrap;
-  background-color: var(--coral);
+  background-color: var(--brand-coral);
   color: var(--white);
   font-family: 'FounderGrotesk_Regular', sans-serif;
   font-weight: normal;
@@ -632,7 +632,7 @@
   }
 
   .mobileMenu a:hover {
-    color: var(--lime);
+    color: var(--brand-lime);
   }
 }
 

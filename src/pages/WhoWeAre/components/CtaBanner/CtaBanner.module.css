@@ -3,36 +3,19 @@
   display: flex;
   width: 100%;
   min-height: 420px;
-  margin-block: clamp(56px, 7vw, 100px);
-  padding: 44px 56px;
+  margin-block: clamp(var(--block-3), 7vw, var(--block-5));
+  padding: 44px var(--block-3);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%), var(--teal);
+  background: linear-gradient(90deg, var(--alpha-black-10) 0%, var(--alpha-black-10) 100%),
+    var(--brand-teal);
   overflow: visible;
 }
 
 .badgeTeal {
-  position: absolute;
-  bottom: -80px;
-  right: 5%;
-  width: clamp(110px, 18vw, 260px);
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 2;
-  rotate: -16.545deg;
-  animation: floatP 4.2s ease-in-out 0.6s infinite alternate;
-}
-
-@keyframes floatP {
-  from {
-    translate: 0 0;
-  }
-  to {
-    translate: 0 -18px;
-  }
+  composes: floatBadge from '@/styles/patterns.module.css';
 }
 
 .content {
@@ -44,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-5);
   text-align: center;
 }
 
@@ -55,22 +38,22 @@
 
 .title {
   width: 100%;
-  font-family: 'FounderGrotesk_Medium', sans-serif;
-  font-size: 55px;
+  font-family: var(--font-medium);
+  font-size: var(--font-size-display);
   font-weight: 500;
-  line-height: 1;
-  color: var(--white);
+  line-height: var(--leading-none);
+  color: var(--color-text);
   text-align: center;
 }
 
 .body {
-  font-family: 'FounderGrotesk_Regular', sans-serif;
-  font-size: 20px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
   max-width: 520px;
   width: 100%;
   font-weight: 400;
-  line-height: 25px;
-  color: var(--white);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
   text-align: center;
   white-space: pre-line;
   font-feature-settings:
@@ -83,66 +66,40 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-}
-
-.buttonPrimary,
-.buttonSecondary {
-  display: inline-flex;
-  height: 44px;
-  padding: 11px 21px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  font-family: 'FounderGrotesk_Regular', sans-serif;
-  font-size: 16px;
-  box-sizing: border-box;
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  gap: var(--space-3);
 }
 
 .buttonPrimary {
-  background: var(--white);
-  color: var(--teal);
-  border: 0.5px solid var(--white);
+  composes: button from '@/styles/patterns.module.css';
+  background: var(--color-surface-inverse);
+  color: var(--brand-teal);
+  border: 0.5px solid var(--color-surface-inverse);
 }
 
+/* Deepened teal for hover only — the one place it appears, so it stays a
+   literal rather than earning a token. */
 .buttonPrimary:hover {
-  background: var(--white);
+  background: var(--color-surface-inverse);
   color: #1fb895;
 }
 
 .buttonSecondary {
+  composes: button from '@/styles/patterns.module.css';
   background: transparent;
-  color: var(--white);
-  border: 0.5px solid var(--white);
+  color: var(--color-text);
+  border: 0.5px solid var(--color-text);
 }
 
 .buttonSecondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--white);
-}
-
-.buttonPrimary:active,
-.buttonSecondary:active {
-  transform: scale(0.97);
-  transition:
-    background 0.08s ease-out,
-    color 0.08s ease-out,
-    border-color 0.08s ease-out,
-    transform 0.08s ease-out;
+  background: var(--alpha-white-12);
+  color: var(--color-text);
 }
 
 @media (max-width: 768px) {
   .banner {
     min-height: 400px;
     margin-block: 32px;
-    padding: 64px 24px;
+    padding: 64px var(--space-6);
   }
 
   .badgeTeal {
@@ -150,7 +107,7 @@
   }
 
   .content {
-    gap: 16px;
+    gap: var(--space-4);
   }
 
   .title {
@@ -166,8 +123,8 @@
   .actions {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    margin-top: 12px;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
   }
 
   .buttonPrimary,

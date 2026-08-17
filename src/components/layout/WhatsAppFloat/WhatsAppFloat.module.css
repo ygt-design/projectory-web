@@ -41,7 +41,7 @@
   position: relative;
   padding: 0.9rem 1.5rem 1rem;
   border-radius: 14px;
-  background: var(--teal);
+  background: var(--brand-teal);
   text-align: center;
 }
 

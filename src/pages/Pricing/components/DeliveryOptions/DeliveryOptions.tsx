@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { deliveryOptions, deliveryOptionsNote } from '../../pricingData';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
+import { above } from '@/config/breakpoints';
 import styles from './DeliveryOptions.module.css';
 
 const amberBadge =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649240/projectory-p-amber_q8opqw.png';
 const tealBadge =
   'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1786649241/projectory-p-teal_twddmb.png';
-
-const DESKTOP_MIN = 769;
 
 type Entrance = ReturnType<typeof usePageEntrance>;
 
@@ -59,7 +58,7 @@ const DeliveryOptions = ({ entrance }: DeliveryOptionsProps) => {
   const tealRotateMobile = useTransform(scrollYProgress, [0, 1], [0, -28]);
 
   useEffect(() => {
-    const mq = window.matchMedia(`(min-width: ${DESKTOP_MIN}px)`);
+    const mq = window.matchMedia(above('tablet'));
     const sync = () => setDesktop(mq.matches);
     sync();
     mq.addEventListener('change', sync);

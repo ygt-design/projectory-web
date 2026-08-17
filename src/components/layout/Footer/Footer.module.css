@@ -73,7 +73,7 @@
 }
 
 .footerColumn a:hover {
-  color: var(--lime);
+  color: var(--brand-lime);
 }
 
 /* ── Column 1: Addresses ── */
@@ -118,7 +118,7 @@
 }
 
 .emailInput:focus {
-  border-color: var(--lime);
+  border-color: var(--brand-lime);
 }
 
 .inputHelper {
@@ -177,7 +177,7 @@
 }
 
 .contactLink:hover {
-  color: var(--lime);
+  color: var(--brand-lime);
 }
 
 /* Social icons */
@@ -203,7 +203,7 @@
 }
 
 .socialIcon:hover {
-  color: var(--lime);
+  color: var(--brand-lime);
 }
 
 /* ── Bottom bar ── */
@@ -250,7 +250,7 @@
 }
 
 .legalLinks a:hover {
-  color: var(--lime);
+  color: var(--brand-lime);
 }
 
 .legalDivider {
