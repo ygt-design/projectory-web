@@ -2,20 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
-/*
- * Renders whichever element the props imply: `to` gives a router <Link>,
- * `href` a plain <a>, and neither a <button type="button">. Those are the
- * three shapes the site's CTAs actually take. The union below is exclusive,
- * so `to` and `href` together is a type error rather than a silent winner.
- */
-
 export type ButtonVariant = 'lime' | 'coral' | 'teal' | 'plum' | 'light' | 'outline';
 
 type ButtonBaseProps = {
   variant: ButtonVariant;
   children: React.ReactNode;
-  /* Layout only — margin, width, flex-shrink. For colour, set a --btn-*
-     custom property on an ancestor; see Button.module.css. */
   className?: string;
 };
 

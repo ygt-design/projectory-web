@@ -1,12 +1,6 @@
-/*
- * Button
+/* Button
  * ══════
- *
- * Do NOT re-paint a Button by redeclaring `background` / `color` in a page
- * module.
- *
- * Border width is its own property, defaulting to 0, so the variants that
- * carry no border are the exact size they were before this file existed.
+ * Button variants and customization for each variant.
  */
 
 .base {
@@ -79,8 +73,6 @@
   --btn-fg-hover: var(--color-text-inverse);
 }
 
-/* Rests and hovers identical on purpose: where this paint is used the hover
-   comes from the surrounding column, via --btn-fg-hover. */
 .light {
   --btn-bg: var(--color-surface-inverse);
   --btn-fg: var(--color-text-inverse);

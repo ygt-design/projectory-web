@@ -7,17 +7,6 @@
  * Pricing and Who We Are, and `iframe` rounds the Calendly embed on Get
  * Started, which has no iframe styling of its own.
  *
- * Scoping them was tried and reverted. Measured with a screenshot diff:
- *   · effect on the three migrated pages …… 0.00–0.04%
- *   · cost to Home itself ………………………………… 6.4%
- *   · cost to Products / Case Studies /
- *     Get Estimate / product + case-study … 3–8%, page heights shift
- *
- * Several old pages are leaning on these globals for heading sizes they never
- * declared. Fixing it means giving those pages explicit type, which is a
- * change to the rest of the site rather than a cleanup of it. Do it when
- * those pages migrate to the design system — at which point they get explicit
- * sizes anyway and these rules can simply be deleted.
  */
 h1 {
   margin: 30px;

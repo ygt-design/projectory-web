@@ -7,9 +7,6 @@
   text-align: left;
 }
 
-/* Sized against the intro band's height rather than the viewport — the band
-   is a container, so cqh keeps the eyebrow proportional to the space it
-   actually sits in. */
 .eyebrow {
   margin: 0;
   width: 100%;

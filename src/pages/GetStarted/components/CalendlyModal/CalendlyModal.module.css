@@ -35,8 +35,6 @@
   cursor: pointer;
   z-index: var(--z-modal-top);
   transition: all var(--transition-fast);
-  /* Pure black rather than --color-text-inverse: this glyph is 24px on a
-     near-white chip and the extra contrast is doing real work. */
   color: var(--neutral-1000);
   font-size: var(--font-size-xl);
 }

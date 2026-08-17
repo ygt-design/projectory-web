@@ -81,7 +81,6 @@
   transition: background var(--transition-fast);
 }
 
-/* Lime darkens cleanly, so its press state is derived rather than pinned. */
 .cta:hover {
   background: color-mix(in srgb, var(--brand-lime) 90%, black);
   color: var(--color-bg);
@@ -95,7 +94,6 @@
   width: 100%;
   box-sizing: border-box;
   transform: translateY(clamp(var(--space-6), 3vw, 72px));
-  /* Component tokens: each floater's width, retuned wholesale at mobile. */
   --floater-apricot-w: clamp(90px, 7vw, 150px);
   --floater-yellowCoral-w: clamp(108px, 8.3vw, 180px);
   --floater-teal-w: clamp(126px, 9.7vw, 210px);
@@ -135,9 +133,6 @@
   z-index: 3;
 }
 
-/* The idle drift. Each floater below varies only duration and delay so they
-   stay out of phase with one another — which is why the shorthand comes first
-   here and the longhand overrides come after it. */
 @keyframes bob {
   from {
     translate: 0 0;

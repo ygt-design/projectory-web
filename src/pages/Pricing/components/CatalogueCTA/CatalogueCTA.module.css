@@ -12,9 +12,6 @@
   align-items: center;
   gap: 10px;
   box-sizing: border-box;
-  /* Warm wash over a coral base. The two stops are the brand coral and plum
-     at half strength; the base beneath them is a lighter coral used only
-     here, so it stays literal. */
   background: linear-gradient(
       112deg,
       color-mix(in srgb, var(--brand-coral) 50%, transparent) 19.1%,

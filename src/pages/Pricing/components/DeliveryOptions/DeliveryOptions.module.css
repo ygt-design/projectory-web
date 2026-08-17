@@ -182,10 +182,6 @@
   font-size: 51px;
 }
 
-/* 17px, not --font-size-sm. Rounding the 1px reflowed this paragraph, and
-   the same 17px recurs on the feature-group titles and the Get Started
-   buttons — it is a real size in the design, not a stray. Left literal
-   pending a decision to reconcile it with 16px at design level. */
 .subtitle {
   margin: 0;
   font-family: var(--font-body);
@@ -370,11 +366,6 @@
   padding: 0;
 }
 
-/* Deliberately nowrap. Letting this wrap on content looks like the obvious
-   modernisation, but it is not equivalent: with nowrap the copy squeezes and
-   re-wraps inside itself while the button holds the right edge, and it only
-   stacks below 385px. Switching to flex-wrap drops the whole button onto its
-   own row at 390px — the width of most phones. The breakpoint below stays. */
 .footerRow {
   display: flex;
   flex-wrap: nowrap;
@@ -475,19 +466,15 @@
   color: var(--color-text);
 }
 
-/* Layout only. The paint is Button's `light` variant. */
 .ctaButton {
   flex-shrink: 0;
   white-space: nowrap;
 }
 
-/* Each column shifts the CTA's hover colour through Button's own API, set on
-   an ancestor the page already has rather than re-painting the button. */
 .column:nth-child(1) {
   --btn-fg-hover: var(--brand-coral);
 }
 
-/* Deep teal that holds contrast on a white fill — the only place it appears. */
 .column:nth-child(2) {
   --btn-fg-hover: #00795f;
 }
@@ -592,9 +579,6 @@
   }
 }
 
-/* Component-level exception to the four breakpoints. Below this the price
-   and the button genuinely cannot share a row; see .footerRow for why
-   content-driven wrapping is not a substitute here. */
 @media (max-width: 385px) {
   .footerRow {
     flex-direction: column;

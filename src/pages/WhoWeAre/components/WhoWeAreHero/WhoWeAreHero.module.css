@@ -5,13 +5,12 @@
   flex-direction: column;
 }
 
-/* The mid grey stands in behind the hero media while it loads, so the fold
-   is never a black hole. */
+/* Poster (via --hero-poster) covers the fold until the MP4 paints. */
 .media {
   flex: 7 0 0;
   min-height: 0;
   overflow: hidden;
-  background: var(--color-text-dim);
+  background: var(--color-bg) var(--hero-poster) center / cover no-repeat;
 }
 
 .heroMedia {
@@ -19,7 +18,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: var(--color-text-dim);
 }
 
 .introBand {

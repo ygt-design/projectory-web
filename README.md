@@ -40,8 +40,9 @@ them:
 | `npm run knip`      | Unused files, exports and dependencies                |
 
 > **`typecheck` reports 6 known errors**, all in `src/pages/activities/`. They
-> are a frozen baseline, not new breakage — see `CLEANUP-REPORT.md`, open item 5. Anything _outside_ that directory should be zero; treat a 7th error as a
-> regression. This is also why `build` does not yet run `typecheck`.
+> are a frozen baseline, not new breakage. Anything _outside_ that directory
+> should be zero; treat a 7th error as a regression. This is also why `build`
+> does not yet run `typecheck`.
 
 ## Project structure
 
@@ -111,5 +112,4 @@ redirect in `vercel.json`.
   plugin inlines the first `._container_*` rule it finds in the index CSS
   chunk, and that rule is LoadingScreen's overlay. Making it lazy ships the
   loader unstyled.
-- There is no test suite. `CLEANUP-REPORT.md` documents known issues and the
-  manual route walk that currently serves as the gate.
+- There is no test suite. A manual route walk is currently the gate.
