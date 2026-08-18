@@ -1,9 +1,9 @@
-/* Footer – black background, light text */
+/* Footer */
 
 .footer {
-  background-color: var(--black);
-  color: var(--white);
-  padding: 48px 80px 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 48px var(--block-4) 0;
   z-index: 10;
   font-family: inherit;
 }
@@ -13,7 +13,7 @@
 .footerTop {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: var(--block-2);
 }
 
 .logoLink {
@@ -27,9 +27,10 @@
 }
 
 .tagline {
-  font-size: 14px;
-  color: var(--gray);
-  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+  margin-top: var(--space-1);
 }
 
 /* ── Five columns ── */
@@ -37,8 +38,8 @@
 .footerColumns {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr 1fr 1.4fr;
-  gap: 40px;
-  padding-bottom: 40px;
+  gap: var(--block-2);
+  padding-bottom: var(--block-2);
 }
 
 .footerColumn {
@@ -50,26 +51,27 @@
 
 .columnHeading,
 .addressBlock h4 {
-  font-size: 20px;
-  color: var(--white);
-  margin: 0 0 12px;
-  font-family: 'FounderGrotesk_Medium';
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-medium);
   font-weight: normal;
 }
 
 .subHeading {
-  margin-top: 24px;
+  margin-top: var(--space-6);
 }
 
 /* Links inside columns */
 
 .footerColumn a {
-  color: var(--white);
-  font-size: 14px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
   text-decoration: none;
-  margin-bottom: 6px;
-  line-height: 1.2;
-  transition: color 0.2s ease;
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-snug);
+  transition: color var(--transition-fast);
 }
 
 .footerColumn a:hover {
@@ -79,42 +81,43 @@
 /* ── Column 1: Addresses ── */
 
 .addressBlock {
-  margin-bottom: 20px;
+  margin-bottom: var(--space-5);
 }
 
 .addressBlock h4 {
-  margin-bottom: 4px;
+  margin-bottom: var(--space-1);
 }
 
 .addressBlock p {
-  font-size: 14px;
-  color: var(--gray);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
   margin: 0;
-  line-height: 1.5;
+  line-height: var(--leading-gap);
 }
 
 /* ── Column 5: Intro deck ── */
 
 .introDeck {
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
 }
 
 .emailInput {
   width: 100%;
-  padding: 10px 12px;
-  font-size: 14px;
-  border: 0.5px solid var(--white);
-  border-radius: 0;
+  padding: 10px var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
   background: transparent;
-  color: var(--white);
+  color: var(--color-text);
   outline: none;
   box-sizing: border-box;
-  transition: border-color 0.2s ease;
-  border-radius: 5px;
+  transition: border-color var(--transition-fast);
 }
 
 .emailInput::placeholder {
-  color: var(--gray);
+  color: var(--color-text-dim);
 }
 
 .emailInput:focus {
@@ -122,43 +125,23 @@
 }
 
 .inputHelper {
-  font-size: 12px;
-  color: var(--gray);
-  margin: 6px 0 0;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+  color: var(--color-text-dim);
+  margin: var(--space-2) 0 0;
+  line-height: var(--leading-loose);
 }
 
 .submitBtn {
-  margin-top: 12px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--black);
-  background: var(--white);
-  border: 1.5px solid var(--white);
-  border-radius: 0;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-  border-radius: 5px;
-}
-
-.submitBtn:hover {
-  background: transparent;
-  color: var(--white);
-}
-
-.submitBtn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
+  margin-top: var(--space-3);
 }
 
 .introDeckStatus {
-  font-size: 12px;
-  color: var(--gray);
-  margin: 8px 0 0;
-  line-height: 1.4;
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+  color: var(--color-text-dim);
+  margin: var(--space-2) 0 0;
+  line-height: var(--leading-loose);
 }
 
 .introDeckStatus:empty {
@@ -168,12 +151,13 @@
 /* Contact links */
 
 .contactLink {
-  color: var(--white);
-  font-size: 14px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
   text-decoration: none;
-  margin-bottom: 4px;
-  line-height: 1.6;
-  transition: color 0.2s ease;
+  margin-bottom: var(--space-1);
+  line-height: var(--leading-loose);
+  transition: color var(--transition-fast);
 }
 
 .contactLink:hover {
@@ -184,7 +168,7 @@
 
 .socialIcons {
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
   margin-top: 14px;
 }
 
@@ -192,9 +176,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  color: var(--color-text);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .socialIcon svg {
@@ -212,41 +196,43 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 40px 0;
+  border-top: 1px solid var(--alpha-white-20);
+  padding: var(--block-2) 0;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .footerBottomLeft {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .copyright {
-  font-size: 13px;
-  color: var(--gray);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
+  color: var(--color-text-dim);
   margin: 0;
 }
 
 .copyright strong {
-  color: var(--white);
+  color: var(--color-text);
 }
 
 .legalLinks {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--font-size-s);
 }
 
 .legalLinks a {
-  color: var(--white);
+  color: var(--color-text);
   text-decoration: underline;
   text-underline-offset: 3px;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .legalLinks a:hover {
@@ -254,7 +240,7 @@
 }
 
 .legalDivider {
-  color: var(--gray);
+  color: var(--color-text-dim);
   user-select: none;
 }
 
@@ -262,23 +248,23 @@
 
 @media (max-width: 1200px) {
   .footer {
-    padding: 40px 40px 0;
+    padding: var(--block-2) var(--block-2) 0;
   }
 
   .footerColumns {
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    gap: var(--block-1);
   }
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 32px 24px 0;
+    padding: 32px var(--space-6) 0;
   }
 
   .footerColumns {
     grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    gap: var(--block-1);
   }
 
   /* Intro deck / input area spans full width on mobile */
@@ -289,12 +275,12 @@
   .footerBottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: var(--space-4);
   }
 }
 
 @media (max-width: 480px) {
   .footerColumns {
-    gap: 24px;
+    gap: var(--space-6);
   }
 }

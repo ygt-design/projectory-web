@@ -63,9 +63,6 @@ html {
   cursor: auto;
 }
 
-/* Every route is lazy while the Footer is eager, so without a reserved box the
-   footer paints at the top of the viewport and is then shoved down a full page
-   when the route chunk resolves. That shift was a large share of the site's CLS. */
 main {
   min-height: 100vh;
 }

@@ -3,7 +3,7 @@
 
   /* Neutrals */
   --neutral-0: #ffffff;
-  --neutral-300: #b0b0b0;
+  --neutral-300: #adadad;
   --neutral-500: #7b7b7b;
   --neutral-700: #35343f;
   --neutral-800: #1c1c1c;
@@ -69,6 +69,8 @@
   --font-medium: 'FounderGrotesk_Medium', sans-serif;
 
   --font-size-xs: 13px;
+  /* im adding an extra 14px token under here */
+  --font-size-s: 14px;
   --font-size-sm: 16px;
   --font-size-md: 18px;
   --font-size-lg: 20px;
@@ -83,6 +85,10 @@
   --leading-normal: 1.25;
   --leading-relaxed: 1.3;
   --leading-loose: 1.4;
+  /* im adding this "gap" variant for leading scales because i realized some copy are used as 
+  2-lines stacked, BUT they are one sentence, so can't use gap for these lines. 
+  Its a small hack for now */
+  --leading-gap: 1.9;
 
   /* Radius */
   --radius-sm: 8px;
