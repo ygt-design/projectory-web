@@ -140,8 +140,8 @@
 
 .submitBtn {
   align-self: flex-start;
-  /* 2px offset for optical alignment hack*/
-  margin-top: calc(var(--space-1) + 2px);
+  /* 1px offset for optical alignment hack*/
+  margin-top: calc(var(--space-1) + 1px);
 }
 
 .introDeckStatus {
