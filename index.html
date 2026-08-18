@@ -31,6 +31,35 @@
 
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+
+    <!-- /get-started LCP cards: start the exact w_ candidates React will request,
+         before the lazy chunk mounts. Pathname-gated so other routes stay clean. -->
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/$/, '') || '/';
+        if (path !== '/get-started') return;
+        var sizes = '(max-width: 768px) 44vw, 23vw';
+        var widths = [320, 480, 800];
+        var cards = [
+          'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1746630383/1732132444884_tgvvql.webp',
+          'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1746649932/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_ybgiyf.webp',
+        ];
+        cards.forEach(function (src) {
+          var srcset = widths
+            .map(function (w) {
+              return src.replace('/upload/f_auto,q_auto/', '/upload/f_auto,q_auto,w_' + w + '/') + ' ' + w + 'w';
+            })
+            .join(', ');
+          var link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'image';
+          link.setAttribute('imagesrcset', srcset);
+          link.setAttribute('imagesizes', sizes);
+          link.fetchPriority = 'high';
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
   </head>
 
   <body>

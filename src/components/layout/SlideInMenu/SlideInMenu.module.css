@@ -1,18 +1,27 @@
 /* Match navbar motion: open 0.32s / close 0.45s, cubic-bezier(0.83, 0, 0.17, 1) */
+/* `visibility` is the hard hide — opacity/transform alone leave the panel
+   paintable and focusable if the rules below ever resolve late. Same idiom as
+   WhatsAppFloat: the visibility step is delayed until the motion finishes. */
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 10040;
   background: rgba(0, 0, 0, 0.72);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.45s cubic-bezier(0.83, 0, 0.17, 1);
+  transition:
+    opacity 0.45s cubic-bezier(0.83, 0, 0.17, 1),
+    visibility 0s linear 0.45s;
 }
 
 .overlay.open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.32s cubic-bezier(0.83, 0, 0.17, 1);
+  transition:
+    opacity 0.32s cubic-bezier(0.83, 0, 0.17, 1),
+    visibility 0s linear 0s;
 }
 
 .slideInMenu {
@@ -30,14 +39,20 @@
   flex-direction: column;
   overflow-y: auto;
   transform: translateX(100%);
+  visibility: hidden;
   pointer-events: none;
-  transition: transform 0.45s cubic-bezier(0.83, 0, 0.17, 1);
+  transition:
+    transform 0.45s cubic-bezier(0.83, 0, 0.17, 1),
+    visibility 0s linear 0.45s;
 }
 
 .slideInMenu.open {
   transform: translateX(0);
+  visibility: visible;
   pointer-events: auto;
-  transition: transform 0.32s cubic-bezier(0.83, 0, 0.17, 1);
+  transition:
+    transform 0.32s cubic-bezier(0.83, 0, 0.17, 1),
+    visibility 0s linear 0s;
 }
 
 .slideInMenuText {

@@ -16,6 +16,12 @@
     { "source": "/ventingmachine", "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }], "destination": "https://activity.projectory.live/ventingmachine", "permanent": true },
     { "source": "/:path*", "has": [{ "type": "header", "key": "host", "value": "www.projectory.live" }], "destination": "https://projectory.live/:path*", "permanent": true }
   ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ],
   "rewrites": [
     { "source": "/api/laser-focus-form", "destination": "/api/laser-focus-form.cjs" },
     { "source": "/api/venting-machine-form", "destination": "/api/venting-machine-form.cjs" },

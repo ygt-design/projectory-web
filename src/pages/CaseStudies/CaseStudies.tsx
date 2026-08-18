@@ -9,11 +9,11 @@ import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
 import LandingHero from '@/components/LandingHero/LandingHero';
 import { coralTeal, creamCoral, lime, redLime } from '@/assets/images/shapes/floaters';
 
-import CventImage from '@/assets/images/logos/cvent.png';
-import EventMarketer from '@/assets/images/logos/eventMarketerLogo.png';
-import PcmaLogo from '@/assets/images/logos/pcmaLogo.png';
-import RainFocusLogo from '@/assets/images/logos/rainFocusLogo.png';
-import CemaLogo from '@/assets/images/logos/cema.png';
+import CventImage from '@/assets/images/logos/cvent.webp';
+import EventMarketer from '@/assets/images/logos/eventMarketerLogo.webp';
+import PcmaLogo from '@/assets/images/logos/pcmaLogo.webp';
+import RainFocusLogo from '@/assets/images/logos/rainFocusLogo.webp';
+import CemaLogo from '@/assets/images/logos/cema.webp';
 
 import { caseStudiesData } from '@/data/caseStudies';
 import { caseStudiesFAQ } from '@/data/faq';

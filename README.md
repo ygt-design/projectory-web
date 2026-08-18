@@ -84,7 +84,7 @@ used twice or more; one-off colours stay literal at the call site.
 `src/pages/activities/` holds the live-event apps (Combo Convo, Laser Focus,
 Venting Machine). They are self-contained — they import nothing from the rest
 of `src/` — and they post to Google Apps Script through the serverless
-functions in `api/`. The Apps Script sources live in `apps-script-*/`.
+functions in `api/`. The Apps Script sources live in `apps-script-*/`
 
 In production these routes redirect to `activity.projectory.live` (see
 `vercel.json`).
@@ -105,11 +105,23 @@ redirect in `vercel.json`.
 
 ## Notes
 
-- `vite.config.ts` inlines critical CSS and defers the main stylesheet. It
-  reads the `:root` block out of `styles/tokens.css` at build time, so keep
-  tokens there rather than duplicating them.
-- `LoadingScreen` must stay _eagerly_ imported in `App.tsx`. The critical-CSS
-  plugin inlines the first `._container_*` rule it finds in the index CSS
-  chunk, and that rule is LoadingScreen's overlay. Making it lazy ships the
-  loader unstyled.
+- **The main stylesheet is render-blocking on purpose. Do not defer it.** An
+  earlier `vite.config.ts` inlined hand-picked "critical CSS" and loaded the real
+  sheet with `media="print" onload="this.media='all'"`. The inline block covered a
+  few rules while every layout rule, every `@media` block and every CSS-module
+  class stayed in the deferred sheet, so the app painted and mounted unstyled and
+  then re-laid out. That cost CLS 0.641 desktop / 1.689 mobile, and off-canvas
+  panels hidden only by `transform` visibly slid off screen on first load. The
+  sheet is ~8 KB brotli; blocking on it is far cheaper than the reflow.
+  `vite.config.ts` now only emits `<link rel="preload">` for the two above-the-fold
+  woff2 faces (`CRITICAL_FONTS`).
+- `<main>` carries `min-height: 100vh` in `global.css`. Every route is `lazy()`
+  while the `Footer` is eager, so without a reserved box the footer paints at the
+  top of the viewport and is shoved down when the route chunk lands. Keep it.
+- Closed overlays must hard-hide with `visibility: hidden`, not `transform` or
+  `opacity` alone — see `SlideInMenu.module.css` and `WhatsAppFloat.module.css`
+  for the transition-delay idiom that keeps the exit animation intact.
+- `VITE_LOADING_SCREEN=off` skips the `LoadingScreen` at build time (see
+  `.env.example`). It is worth ~1.1 s of LCP on a throttled mobile run, so use the
+  flag to A/B it on a preview deploy rather than editing `App.tsx`.
 - There is no test suite. A manual route walk is currently the gate.

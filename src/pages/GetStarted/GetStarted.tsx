@@ -4,6 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } f
 import styles from './GetStarted.module.css';
 import ContactForm from './components/ContactForm/ContactForm';
 import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
+import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 import CalendlyModal from './components/CalendlyModal/CalendlyModal';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
 
@@ -32,24 +33,38 @@ const FLOATERS = [
   { src: teal, className: styles.floaterTeal, motion: 'floaterTeal' },
 ] as const;
 
+/**
+ * The cards are square and CSS-sized: clamp(235px, 23vw, 390px) on desktop,
+ * clamp(150px, 44vw, 235px) below 768px. Serving the untransformed originals
+ * into that box was ~400 KiB of wasted transfer on the LCP path.
+ */
+const CARD_SRCSET_WIDTHS = [320, 480, 800];
+const CARD_SIZES = '(max-width: 768px) 44vw, 23vw';
+/** Only carries the 1:1 ratio — CSS sizes the box. Prevents a pre-decode reflow. */
+const CARD_INTRINSIC_PX = 390;
+
 const MEDIA_CARDS = [
   {
     src: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1746630383/1732132444884_tgvvql.webp',
     className: styles.mediaCard1,
     motionClass: styles.scrollMotionCard1,
     motion: 'card1',
+    priority: 'high',
   },
   {
     src: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1746649932/d0fd6bbe-969a-4e6c-a1ae-84fa460b2950_ybgiyf.webp',
     className: styles.mediaCard2,
     motionClass: styles.scrollMotionCard2,
     motion: 'card2',
+    priority: 'high',
   },
   {
+    // Hidden below 768px, so it never competes with the LCP candidates on mobile.
     src: 'https://res.cloudinary.com/dazzkestf/image/upload/f_auto,q_auto/v1746648102/2024_11_13_Event_Marketer_Agency_Forum_at_Dream_Hotel_by_Alex_Markow-09342_yujk0f.webp',
     className: styles.mediaCard3,
     motionClass: styles.scrollMotionCard3,
     motion: 'card3',
+    priority: 'low',
   },
 ] as const;
 
@@ -84,13 +99,6 @@ const GetStarted = () => {
 
   // Real-time with scroll; smoothstep only shapes the curve (no spring lag).
   const shoot = useTransform(scrollYProgress, (p) => p * p * (3 - 2 * p));
-
-  useEffect(() => {
-    MEDIA_CARDS.forEach(({ src }) => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
 
   useEffect(() => {
     if (location.hash === '#contact-form') {
@@ -188,12 +196,16 @@ const GetStarted = () => {
                   animate={{ opacity: 1, ['--entrance-y' as string]: '0px' }}
                   transition={entrance.transition(CARD_ENTRANCE_DELAY[i])}
                 >
-                  <img
+                  <CloudinaryImage
                     src={card.src}
                     alt=""
                     className={styles.mediaCardImg}
+                    widths={CARD_SRCSET_WIDTHS}
+                    sizes={CARD_SIZES}
+                    width={CARD_INTRINSIC_PX}
+                    height={CARD_INTRINSIC_PX}
                     decoding="async"
-                    fetchPriority="high"
+                    fetchPriority={card.priority}
                   />
                 </motion.div>
               </motion.div>
