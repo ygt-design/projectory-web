@@ -140,7 +140,8 @@
 
 .submitBtn {
   align-self: flex-start;
-  margin-top: var(--space-1);
+  /* 2px offset for optical alignment hack*/
+  margin-top: calc(var(--space-1) + 2px);
 }
 
 .introDeckStatus {
@@ -156,7 +157,6 @@
 }
 
 /* Contact links */
-
 .contactLink {
   color: var(--color-text);
   font-family: var(--font-body);
