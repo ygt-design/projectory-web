@@ -56,7 +56,7 @@
   font-size: 40px;
   margin-bottom: 10px;
   text-align: center;
-  color: var(--coral);
+  color: var(--brand-coral);
 }
 
 .rightColumn p {
@@ -110,7 +110,7 @@
 
 .submitButton {
   padding: 14px 24px;
-  background: linear-gradient(90deg, var(--burgundy) 0%, var(--coral) 100%);
+  background: linear-gradient(90deg, var(--brand-plum) 0%, var(--brand-coral) 100%);
   color: white;
   font-size: 16px;
   border-radius: 50px;
@@ -265,7 +265,7 @@
 
 .overlayButton {
   display: inline-block;
-  background: linear-gradient(90deg, var(--teal) 0%, #178771 100%);
+  background: linear-gradient(90deg, var(--brand-teal) 0%, #178771 100%);
   color: var(--white);
   padding: 0.75rem 2rem;
   border-radius: 50px;

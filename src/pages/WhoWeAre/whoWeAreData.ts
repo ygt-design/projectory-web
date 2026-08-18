@@ -19,6 +19,9 @@ export const heroSection = {
   eyebrow: 'About Us',
   title: 'Who We Are, Anyway?',
   videoSrc: 'https://res.cloudinary.com/dazzkestf/video/upload/v1784911599/who-we-are_bxxyva.mp4',
+  /* First frame while the MP4 loads */
+  posterSrc:
+    'https://res.cloudinary.com/dazzkestf/video/upload/so_0,f_jpg,q_auto/v1784911599/who-we-are_bxxyva.jpg',
 };
 
 export const introSection = {

@@ -1,3 +1,13 @@
+/*
+ * ⚠ THESE FOUR ARE GLOBAL, NOT SCOPED. Left as-is deliberately — see below.
+ *
+ * CSS Modules only scopes class selectors, so a bare element selector
+ * compiles to a genuinely global rule. Home is imported eagerly in App.tsx
+ * (not lazily), so these apply to every route from first paint: `h2` reaches
+ * Pricing and Who We Are, and `iframe` rounds the Calendly embed on Get
+ * Started, which has no iframe styling of its own.
+ *
+ */
 h1 {
   margin: 30px;
   font-weight: 100;
@@ -11,7 +21,7 @@ h2 {
 }
 
 h5 {
-  color: var(--lime);
+  color: var(--brand-lime);
   font-size: 20px;
   margin-bottom: 10px;
 }
@@ -207,7 +217,7 @@ iframe {
 }
 
 .gradientText {
-  background: linear-gradient(90deg, var(--teal) 0%, #f4dca8 30%);
+  background: linear-gradient(90deg, var(--brand-teal) 0%, #f4dca8 30%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -285,7 +295,7 @@ iframe {
 }
 
 .btnOutlinePrimary:hover {
-  background-color: var(--lime);
+  background-color: var(--brand-lime);
   color: white;
 }
 

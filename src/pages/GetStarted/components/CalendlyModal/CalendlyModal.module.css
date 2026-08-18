@@ -8,8 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
-  padding: 20px;
+  z-index: var(--z-modal);
+  padding: var(--space-5);
 }
 
 .modalContent {
@@ -33,14 +33,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10001;
-  transition: all 0.2s ease;
-  color: var(--true-black);
-  font-size: 24px;
+  z-index: var(--z-modal-top);
+  transition: all var(--transition-fast);
+  color: var(--neutral-1000);
+  font-size: var(--font-size-xl);
 }
 
 .closeButton:hover {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--color-surface-inverse);
   transform: scale(1.1);
 }
 
@@ -61,18 +61,18 @@
   border: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .modalContent {
     max-width: 95%;
     flex-direction: column;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .modalContent {
     max-width: 100%;
     max-height: 95vh;
-    border-radius: 12px 12px 0 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
     flex-direction: column;
   }
 
