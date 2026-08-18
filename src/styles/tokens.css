@@ -27,7 +27,7 @@
   --color-surface: var(--neutral-800);
   --color-surface-hover: color-mix(in srgb, var(--color-surface) 94%, var(--neutral-0));
   --color-surface-inverse: var(--neutral-0);
-  --color-surface-inverse-hover: color-mix(in srgb, var(--neutral-0) 93.4%, var(--color-surface));
+  --color-surface-inverse-hover: color-mix(in srgb, var(--neutral-0) 85%, var(--color-surface));
 
   /* Text */
   --color-text: var(--neutral-0);
@@ -69,9 +69,8 @@
   --font-medium: 'FounderGrotesk_Medium', sans-serif;
 
   --font-size-xs: 13px;
-  /* im adding an extra 14px token under here */
   --font-size-s: 14px;
-  --font-size-sm: 16px;
+  --font-size-sm: 17px;
   --font-size-md: 18px;
   --font-size-lg: 20px;
   --font-size-xl: 24px;
@@ -85,9 +84,7 @@
   --leading-normal: 1.25;
   --leading-relaxed: 1.3;
   --leading-loose: 1.4;
-  /* im adding this "gap" variant for leading scales because i realized some copy are used as 
-  2-lines stacked, BUT they are one sentence, so can't use gap for these lines. 
-  Its a small hack for now */
+  /* "gap" variant for leading scales */
   --leading-gap: 1.9;
 
   /* Radius */

@@ -316,35 +316,6 @@
   text-align: center;
 }
 
-.gitBlock a,
-.gitBlock button,
-.gitButton {
-  display: flex;
-  height: 44px;
-  padding: var(--space-3) 18px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  box-sizing: border-box;
-  border: none;
-  border-radius: var(--radius-sm);
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-size: 17px;
-  font-weight: 400;
-  line-height: normal;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.gitBlock a:hover,
-.gitBlock button:hover,
-.gitButton:hover {
-  background-color: var(--color-surface-hover);
-}
-
 .gitBlock h3 {
   margin: 0 0 var(--space-5);
   max-width: 320px;
@@ -378,19 +349,6 @@
 .gitBlockLeft h3,
 .gitBlockLeft p {
   color: var(--color-text);
-}
-
-.gitBlockLeft a,
-.gitBlockLeft button,
-.gitBlockLeft .gitButton {
-  background: var(--color-surface-inverse);
-  color: var(--color-text-inverse);
-}
-
-.gitBlockLeft a:hover,
-.gitBlockLeft button:hover,
-.gitBlockLeft .gitButton:hover {
-  background: var(--color-surface-inverse-hover);
 }
 
 @media (max-width: 1024px) {

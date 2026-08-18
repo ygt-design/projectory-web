@@ -7,6 +7,7 @@ import FaqAccordion from '@/components/FaqAccordion/FaqAccordion';
 import CloudinaryImage from '@/components/CloudinaryImage/CloudinaryImage';
 import CalendlyModal from './components/CalendlyModal/CalendlyModal';
 import { usePageEntrance } from '@/hooks/usePageEntrance';
+import Button from '@/components/Button/Button';
 
 import { apricot, yellowCoral, teal, limeOlive } from '@/assets/images/shapes/floaters';
 import { CALENDLY_URL } from '@/config/site';
@@ -245,21 +246,16 @@ const GetStarted = () => {
           <div className={`${styles.gitBlock} ${styles.gitBlockRight}`}>
             <h3>Message us on LinkedIn</h3>
             <p>Message and follow us on LinkedIn to receive updates on what we’re up to.</p>
-            <a
-              href="https://ca.linkedin.com/company/theprojectory"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.gitButton}
-            >
+            <Button variant="dark" href="https://ca.linkedin.com/company/theprojectory">
               Find us on LinkedIn
-            </a>
+            </Button>
           </div>
           <div className={`${styles.gitBlock} ${styles.gitBlockLeft}`}>
             <h3>Book a Meeting with Us</h3>
             <p>Tell us about your event, and we'll prepare some initial ideas to discuss.</p>
-            <button onClick={() => setIsCalendlyOpen(true)} className={styles.gitButton}>
+            <Button variant="light" onClick={() => setIsCalendlyOpen(true)}>
               Book a Meeting
-            </button>
+            </Button>
           </div>
         </div>
       </div>

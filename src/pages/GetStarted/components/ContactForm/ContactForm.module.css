@@ -150,22 +150,6 @@
 .submit {
   align-self: flex-start;
   margin-top: var(--space-2);
-  padding: 13px 18px;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: var(--brand-coral);
-  color: var(--color-surface-inverse);
-  font-family: var(--font-body);
-  font-size: var(--font-size-md);
-  font-weight: 400;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-/* Coral's press state is a hue shift rather than a straight darkening, so
-   color-mix cannot express it. One use, one literal. */
-.submit:hover {
-  background: #e06545;
 }
 
 .statusMessage {

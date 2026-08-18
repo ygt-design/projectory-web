@@ -5,8 +5,7 @@
 
 .base {
   display: inline-flex;
-  height: 44px;
-  padding: 11px 21px;
+  padding: 13px 18px;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -40,8 +39,7 @@
     transform 0.08s ease-out;
 }
 
-/* ── Variants ─────────────────────────────────────────────────────────────
- */
+/* ── Variants ─── */
 
 .lime {
   --btn-bg: var(--brand-lime);
@@ -54,9 +52,8 @@
   --btn-fg: var(--color-text);
   --btn-border-width: 0.5px;
   --btn-border: var(--brand-coral);
-  --btn-bg-hover: var(--color-surface-inverse);
-  --btn-fg-hover: var(--color-text-inverse);
-  --btn-border-hover: var(--color-surface-inverse);
+  --btn-bg-hover: #e06545;
+  --btn-border-hover: #e06545;
 }
 
 .teal {
@@ -76,6 +73,13 @@
 .light {
   --btn-bg: var(--color-surface-inverse);
   --btn-fg: var(--color-text-inverse);
+  --btn-bg-hover: var(--color-surface-inverse-hover);
+}
+
+.dark {
+  --btn-bg: var(--color-surface);
+  --btn-fg: var(--color-text);
+  --btn-bg-hover: var(--color-surface-hover);
 }
 
 .outline {
@@ -84,4 +88,14 @@
   --btn-border-width: 0.5px;
   --btn-border: var(--color-text);
   --btn-bg-hover: var(--alpha-white-12);
+}
+
+/* ── Sizes ─── */
+
+.small {
+  height: auto;
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-snug);
+  padding: 10px 15px;
+  border-radius: var(--radius-sm);
 }
