@@ -10,6 +10,7 @@ import termsConditionsPdf from '@/assets/documents/terms-conditions-Dw-Y0UD9.pdf
 import privacyPolicyPdf from '@/assets/documents/privacy-policy.pdf';
 import cookieNoticePdf from '@/assets/documents/cookie-notice.pdf';
 import { submitToWeb3Forms } from '@/lib/web3forms';
+import Button from '@/components/Button/Button';
 
 const Footer = () => {
   const [introDeckEmail, setIntroDeckEmail] = useState('');
@@ -145,13 +146,14 @@ const Footer = () => {
             <p className={styles.inputHelper}>
               Enter your email and we&apos;ll share with you our pitch deck
             </p>
-            <button
+            <Button
               type="submit"
+              variant="light"
               className={styles.submitBtn}
               disabled={introDeckStatus === 'Sending...'}
             >
               Submit
-            </button>
+            </Button>
             {introDeckStatus && <p className={styles.introDeckStatus}>{introDeckStatus}</p>}
           </form>
 
