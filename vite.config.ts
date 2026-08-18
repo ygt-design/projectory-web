@@ -1,101 +1,50 @@
 import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
-import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
+/** Faces used above the fold on every route. Matched against hashed bundle filenames. */
 const CRITICAL_FONTS = ['FoundersGrotesk-Regular', 'FoundersGrotesk-Semibold'];
 
 /**
- * Reads the :root block out of src/styles/tokens.css and minifies it.
+ * Preloads the two above-the-fold woff2 faces so they are requested alongside the
+ * stylesheet rather than after it parses.
  *
- * This is for the first paint of the site — the tiny CSS baked into the HTML so the page isn’t naked while the real stylesheet loads.
+ * This plugin used to also inline hand-picked "critical CSS" and defer the real
+ * stylesheet with `media="print" onload="this.media='all'"`. That was reverted:
+ * the inline block covered a handful of rules while every layout rule, every
+ * `@media` block and every CSS-module class lived in the deferred sheet, so the
+ * app painted and mounted unstyled and then re-laid out — the site's CLS was
+ * 0.641 desktop / 1.689 mobile, and off-canvas panels hidden only by `transform`
+ * flashed on screen. The sheet is ~8 KB brotli; blocking on it is the cheaper
+ * trade by a wide margin. Do not reintroduce the swap.
  */
-function readTokensRoot(): string {
-  const css = readFileSync(
-    fileURLToPath(new URL('./src/styles/tokens.css', import.meta.url)),
-    'utf8'
-  );
-  const match = css.match(/:root\s*\{[^}]*\}/);
-  if (!match)
-    throw new Error(
-      'tokens.css: no :root block found — critical CSS would ship without design tokens'
-    );
-  return match[0]
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/\s+/g, ' ')
-    .replace(/\s*([{}:;,])\s*/g, '$1')
-    .trim();
-}
-
-function criticalCssAndFonts(): Plugin {
+function criticalFontPreloads(): Plugin {
   return {
-    name: 'critical-css-and-fonts',
+    name: 'critical-font-preloads',
     enforce: 'post',
-    transformIndexHtml(html, ctx) {
-      if (!ctx.bundle) return html;
+    transformIndexHtml(_html, ctx) {
+      if (!ctx.bundle) return;
 
-      const fontAssets = Object.keys(ctx.bundle).filter(
-        (k) => k.endsWith('.woff2') && CRITICAL_FONTS.some((f) => k.includes(f))
-      );
-
-      const fontPreloads = fontAssets
-        .map(
-          (asset) =>
-            `<link rel="preload" href="/${asset}" as="font" type="font/woff2" crossorigin="anonymous">`
-        )
-        .join('\n  ');
-
-      const cssEntry = Object.keys(ctx.bundle).find(
-        (k) => k.endsWith('.css') && k.includes('index')
-      );
-
-      let criticalCss =
-        `*{margin:0;padding:0;box-sizing:border-box}` +
-        readTokensRoot() +
-        `body{background-color:var(--black);color:var(--white)}`;
-
-      if (cssEntry) {
-        const chunk = ctx.bundle[cssEntry];
-        if (chunk && 'source' in chunk) {
-          const fullCss = String(chunk.source);
-          const containerMatch = fullCss.match(/\._container_[a-z0-9_]+\{[^}]+\}/);
-          if (containerMatch) criticalCss += containerMatch[0];
-        }
-      }
-
-      const fontFaces = fontAssets
-        .map((asset) => {
-          const name = asset.includes('Regular')
-            ? 'FounderGrotesk_Regular'
-            : asset.includes('Semibold')
-              ? 'FounderGrotesk_SemiBold'
-              : '';
-          if (!name) return '';
-          return `@font-face{font-family:'${name}';src:url('/${asset}') format('woff2');font-display:swap}`;
-        })
-        .filter(Boolean)
-        .join('');
-
-      criticalCss += fontFaces;
-      criticalCss += `*{font-family:'FounderGrotesk_Regular',sans-serif}h1{font-family:'FounderGrotesk_SemiBold';font-size:80px}`;
-
-      const inlineStyle = `<style>${criticalCss}</style>`;
-
-      if (cssEntry) {
-        html = html.replace(
-          `<link rel="stylesheet" crossorigin href="/${cssEntry}">`,
-          `${inlineStyle}\n  ${fontPreloads}\n  <link rel="stylesheet" href="/${cssEntry}" media="print" onload="this.media='all'">\n  <noscript><link rel="stylesheet" href="/${cssEntry}"></noscript>`
-        );
-      }
-
-      return html;
+      return Object.keys(ctx.bundle)
+        .filter((k) => k.endsWith('.woff2') && CRITICAL_FONTS.some((f) => k.includes(f)))
+        .map((asset) => ({
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            href: `/${asset}`,
+            as: 'font',
+            type: 'font/woff2',
+            crossorigin: 'anonymous',
+          },
+          injectTo: 'head' as const,
+        }));
     },
   };
 }
 
 export default defineConfig({
   base: '/',
-  plugins: [react(), criticalCssAndFonts()],
+  plugins: [react(), criticalFontPreloads()],
   resolve: {
     // Mirrors "paths" in tsconfig.app.json.
     alias: {
