@@ -131,8 +131,8 @@ const Footer = () => {
 
         {/* Column 5: Intro deck + Contact & Support */}
         <div className={styles.footerColumn}>
-          <h4 className={styles.columnHeading}>Get an intro deck</h4>
           <form className={styles.introDeck} onSubmit={handleIntroDeckSubmit}>
+            <h4 className={styles.columnHeading}>Get an intro deck</h4>
             <input
               type="email"
               name="email"
@@ -149,6 +149,7 @@ const Footer = () => {
             <Button
               type="submit"
               variant="light"
+              size="small"
               className={styles.submitBtn}
               disabled={introDeckStatus === 'Sending...'}
             >

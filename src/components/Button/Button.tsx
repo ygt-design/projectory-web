@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
-export type ButtonVariant = 'lime' | 'coral' | 'teal' | 'plum' | 'light' | 'outline';
+export type ButtonVariant = 'lime' | 'coral' | 'teal' | 'plum' | 'light' | 'dark' | 'outline';
 
 type ButtonBaseProps = {
   variant: ButtonVariant;
+  size?: 'small';
   children: React.ReactNode;
   className?: string;
 };
@@ -34,11 +35,19 @@ const isExternal = (href: string) => /^(https?:)?\/\/|^mailto:|^tel:/.test(href)
 
 const Button: React.FC<ButtonProps> = ({
   variant,
+  size,
   className: layoutClassName,
   children,
   ...rest
 }) => {
-  const className = [styles.base, styles[variant], layoutClassName].filter(Boolean).join(' ');
+  const className = [
+    styles.base,
+    styles[variant],
+    size === 'small' && styles.small,
+    layoutClassName,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   if (rest.to !== undefined) {
     const { to, ...linkProps } = rest;

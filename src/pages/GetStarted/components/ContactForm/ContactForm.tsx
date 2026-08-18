@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '@/components/Button/Button';
 import styles from './ContactForm.module.css';
 import { submitToWeb3Forms } from '@/lib/web3forms';
 
@@ -192,9 +193,9 @@ const ContactForm = () => {
           />
         </label>
 
-        <button type="submit" className={styles.submit}>
+        <Button type="submit" variant="coral" className={styles.submit}>
           Get In Touch
-        </button>
+        </Button>
 
         {status && <p className={styles.statusMessage}>{status}</p>}
       </form>
