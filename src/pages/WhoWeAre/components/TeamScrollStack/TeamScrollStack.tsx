@@ -12,12 +12,43 @@ const EXPAND_RADIUS = 1; // lockstep: as one opens, neighbor closes
 const OPEN_BUDGET_RATIO = 0.84;
 /** Share of open budget used for hero media; detail height is measured */
 const OPEN_MEDIA_RATIO = 0.58;
+const DWELL_RATIO = 0.5;
 
 const openMediaAt = (stageUsable: number) => stageUsable * OPEN_BUDGET_RATIO * OPEN_MEDIA_RATIO;
 
-const smootherstep = (t: number) => {
+const smoothstep = (t: number) => {
   const x = Math.max(0, Math.min(1, t));
-  return x * x * x * (x * (x * 6 - 15) + 10);
+  return x * x * (3 - 2 * x);
+};
+
+/**
+ * While you scroll: sit on one founder, then switch, 
+ * then sit on the next.
+ */
+const activeFromProgress = (p: number, count: number) => {
+  if (count <= 1) return 0;
+
+  const t = Math.max(0, Math.min(1, p));
+  const dwell = DWELL_RATIO / count;
+  const transition = (1 - DWELL_RATIO) / (count - 1);
+
+  let cursor = 0;
+  for (let i = 0; i < count - 1; i += 1) {
+    cursor += dwell;
+    if (t <= cursor) return i;
+    if (t < cursor + transition) return i + (t - cursor) / transition;
+    cursor += transition;
+  }
+  return count - 1;
+};
+
+/** Inverse of activeFromProgress at the midpoint of a founder's dwell. */
+const progressForIndex = (index: number, count: number) => {
+  if (count <= 1) return 0;
+
+  const dwell = DWELL_RATIO / count;
+  const transition = (1 - DWELL_RATIO) / (count - 1);
+  return index * (dwell + transition) + dwell / 2;
 };
 
 type SizeBudget = {
@@ -48,7 +79,7 @@ const computeBudget = (count: number, viewportHeight: number, navOffset: number)
 const expandAt = (index: number, active: number, count: number) => {
   if (count <= 1) return 1;
   const distance = Math.abs(index - active);
-  return smootherstep(Math.max(0, Math.min(1, 1 - distance / EXPAND_RADIUS)));
+  return smoothstep(Math.max(0, Math.min(1, 1 - distance / EXPAND_RADIUS)));
 };
 
 const cardHeightAt = (
@@ -143,13 +174,13 @@ const ScrollCard = ({
   }, [member.bio, index, onDetailHeight]);
 
   const expand = useTransform(progress, (p) =>
-    count <= 1 ? 1 : expandAt(index, p * (count - 1), count)
+    count <= 1 ? 1 : expandAt(index, activeFromProgress(p, count), count)
   );
 
   // Direct scrub — 1:1 with scroll, no spring lag
   const mediaHeight = useTransform(expand, [0, 1], [stripHeight, openMedia]);
   const detailHeight = useTransform(expand, [0, 1], [0, detailContentH]);
-  const detailOpacity = useTransform(expand, [0, 0.35, 1], [0, 0.15, 1]);
+  const detailOpacity = useTransform(expand, [0, 0.3, 1], [0, 0.6, 1]);
   const titleScale = useTransform(
     mediaHeight,
     [stripHeight, Math.max(stripHeight + 1, openMedia)],
@@ -274,7 +305,7 @@ const TeamScrollStack = ({ members }: TeamScrollStackProps) => {
   });
 
   const stackY = useTransform(scrollYProgress, (p) => {
-    const active = count <= 1 ? 0 : p * (count - 1);
+    const active = activeFromProgress(p, count);
     return stackOffsetY(active, count, budget.stripHeight, budget.stageUsable, detailHeights);
   });
 
@@ -288,7 +319,9 @@ const TeamScrollStack = ({ members }: TeamScrollStackProps) => {
       const trackTop = rect.top + scrollTop;
       const trackHeight = track.offsetHeight;
       const viewportHeight = window.innerHeight;
-      const progress = index / (count - 1);
+      // Must be the inverse of activeFromProgress, not index / (count - 1):
+      // the dwell plateaus mean track progress is no longer linear in the index.
+      const progress = progressForIndex(index, count);
       const y = trackTop + progress * Math.max(0, trackHeight - viewportHeight);
 
       window.scrollTo({ top: y, behavior: 'smooth' });

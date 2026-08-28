@@ -6,8 +6,7 @@
   --strip-h: 140px;
   position: relative;
   width: 100%;
-  /* Longer track = slower, heavier scrub per founder */
-  height: calc(var(--member-count) * 170dvh);
+  height: calc(var(--member-count) * 120dvh);
 }
 
 .sticky {

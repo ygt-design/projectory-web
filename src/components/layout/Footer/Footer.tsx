@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { FaLinkedin, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import { FiInstagram } from 'react-icons/fi';
 import logo from '@/assets/images/logo.svg';
-import termsConditionsPdf from '@/assets/documents/terms-conditions-Dw-Y0UD9.pdf';
 import privacyPolicyPdf from '@/assets/documents/privacy-policy.pdf';
 import cookieNoticePdf from '@/assets/documents/cookie-notice.pdf';
 import { submitToWeb3Forms } from '@/lib/web3forms';
@@ -210,7 +209,7 @@ const Footer = () => {
             Copyright &copy; 2026 <strong>Projectory.live inc.</strong> All rights reserved.
           </p>
           <div className={styles.legalLinks}>
-            <a href={termsConditionsPdf} target="_blank" rel="noopener noreferrer">
+            <a href="/assets/terms-conditions-Dw-Y0UD9.pdf" target="_blank" rel="noopener noreferrer">
               Terms and conditions
             </a>
             <span className={styles.legalDivider}>|</span>
